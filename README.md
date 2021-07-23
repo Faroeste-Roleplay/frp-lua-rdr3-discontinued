@@ -1,7 +1,7 @@
 ## Server Files - Faroeste Roleplay 1.0.0
 Discontinued Project
 
-**Developers/Founders:** @slashkeyvalue and @klandestino7
+**Developers/Founders:** slashkeyvalue and klandestino7
 
 ## Requerimentos
 * [MariaDB](https://mariadb.org/)
