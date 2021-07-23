@@ -20,9 +20,9 @@ end
 
 exports("Get", Unlock.Get(unlock_id))
 
-RegisterNetEvent("VP:ORGS:RequestUnlocks")
+RegisterNetEvent("FRP:ORGS:RequestUnlocks")
 AddEventHandler(
-    "VP:ORGS:RequestUnlocks",
+    "FRP:ORGS:RequestUnlocks",
     function(reqst_org_id, rqst_outpost_id)
         local _source = source
 
@@ -53,7 +53,7 @@ AddEventHandler(
                         end
                     end
 
-                    TriggerClientEvent("VP:FORT:RespondToUnlocksRequest", _source, unlocks)
+                    TriggerClientEvent("FRP:FORT:RespondToUnlocksRequest", _source, unlocks)
                 else
                     User:notify("error", "Você não tem acesso a esse posto")
                 end

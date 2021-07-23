@@ -45,7 +45,7 @@ Citizen.CreateThread(
             chestsSyncData[chest_id] = {capacity, x, y, z, h}
         end
 
-        TriggerClientEvent("VP:CHESTS:SyncMultipleChests", -1, chestsSyncData)
+        TriggerClientEvent("FRP:CHESTS:SyncMultipleChests", -1, chestsSyncData)
     end
 )
 
@@ -66,7 +66,7 @@ function API.syncChestsWithPlayer(source)
     end
 
     if moreThanOne == true then
-        TriggerClientEvent("VP:CHESTS:SyncMultipleChests", source, chestsSyncData)
+        TriggerClientEvent("FRP:CHESTS:SyncMultipleChests", source, chestsSyncData)
     end -- Vai mandar informaçoes de todos os CHESTS registrados da seguinte forma
     -- {
     --     [chestId1] = {capacity, x, y, z, h},
@@ -85,5 +85,5 @@ function API.cacheChest(Chest)
     chests[chest_id] = Chest
 
     chestsSyncData[chest_id] = {chest_capacity, x, y, z, h} -- OUTPUT: -- {capacity, x, y, z}
-    TriggerClientEvent("VP:CHESTS:SyncChest", -1, chest_id, chest_capacity, x, y, z, h)
+    TriggerClientEvent("FRP:CHESTS:SyncChest", -1, chest_id, chest_capacity, x, y, z, h)
 end

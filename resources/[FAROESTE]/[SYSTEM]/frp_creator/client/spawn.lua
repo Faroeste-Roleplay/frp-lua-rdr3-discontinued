@@ -11,7 +11,7 @@ local coords = vector3(2538.675,-1144.211,50.175)
 
 
 RegisterCommand('first', function()
-    TriggerEvent('VP:CREATOR:FirstSpawn')
+    TriggerEvent('FRP:CREATOR:FirstSpawn')
 end)
 --[[
 RegisterCommand('goped', function()
@@ -24,9 +24,9 @@ RegisterCommand('first2', function()
 end) ]]
 
 
-RegisterNetEvent("VP:CREATOR:FirstSpawn")
+RegisterNetEvent("FRP:CREATOR:FirstSpawn")
 AddEventHandler(
-    "VP:CREATOR:FirstSpawn",
+    "FRP:CREATOR:FirstSpawn",
     function()
         if not FirstSpawn then
             TriggerMusicEvent("REHR_START")
@@ -34,13 +34,13 @@ AddEventHandler(
             Wait(100)
             SetEntityCoords(PlayerPedId(), 2541.934,-363.564,41.574)
             Wait(2500)
-            TriggerEvent('VP:CREATOR:CreateVehicle', 'STAGECOACH001X')
+            TriggerEvent('FRP:CREATOR:CreateVehicle', 'STAGECOACH001X')
             Wait(1000)
-            TriggerEvent('VP:CREATOR:CreatePedOnVehicle', 'CS_BivCoachDriver')
+            TriggerEvent('FRP:CREATOR:CreatePedOnVehicle', 'CS_BivCoachDriver')
             Wait(3000)
             SetPedIntoVehicle(PlayerPedId(), car, 1)
             Wait(2000)               
-            TriggerEvent('VP:CREATOR:StartNotify')
+            TriggerEvent('FRP:CREATOR:StartNotify')
             FirstSpawn = true
         end
     end
@@ -66,10 +66,10 @@ Citizen.CreateThread(
                     TaskLeaveVehicle(PlayerPedId(), car, 0, 0) 
                     Wait(2000)                         
                     TaskVehicleDriveToCoord(ped, GetVehiclePedIsIn(ped, false), 2600.436,-1205.932,53.323, 10.0, 1.0, GetEntityModel(GetVehiclePedIsIn(PlayerPedId())), 67633207, 5.0, false)
-                    TriggerEvent('VP:NOTIFY:Simple', 'Você perdeu todas as suas roupas, tem uma loja de roupa do outro lado da rua, que tal ir lá se trocar?', 10000)
+                    TriggerEvent('FRP:NOTIFY:Simple', 'Você perdeu todas as suas roupas, tem uma loja de roupa do outro lado da rua, que tal ir lá se trocar?', 10000)
                     TriggerMusicEvent("MC_MUSIC_STOP")                    
                     Wait(10000)
-                  --  TriggerEvent('VP:NOTIFY:Simple', 'Digite /guiainiciante ver o Jornal Guia de Iniciante.', 10000)
+                  --  TriggerEvent('FRP:NOTIFY:Simple', 'Digite /guiainiciante ver o Jornal Guia de Iniciante.', 10000)
                     DeleteVehicle(car)
                     DeleteEntity(ped)
                 else               
@@ -82,9 +82,9 @@ Citizen.CreateThread(
     end
 )
 
-RegisterNetEvent("VP:CREATOR:CreateVehicle")
+RegisterNetEvent("FRP:CREATOR:CreateVehicle")
 AddEventHandler(
-	"VP:CREATOR:CreateVehicle",
+	"FRP:CREATOR:CreateVehicle",
 	function(vModel)
 		local veh = GetHashKey(vModel)
 		local ply = GetPlayerPed()
@@ -103,23 +103,23 @@ AddEventHandler(
 	end
 )
 
-RegisterNetEvent("VP:CREATOR:StartNotify")
+RegisterNetEvent("FRP:CREATOR:StartNotify")
 AddEventHandler(
-	"VP:CREATOR:StartNotify",
+	"FRP:CREATOR:StartNotify",
     function()
     Wait(5000)
-	TriggerEvent('VP:NOTIFY:Simple', 'Saudações, caubói. Seja muito bem-vindo ao  Faroeste Roleplay, sinta-se livre para explorar as mais variadas regiões e descobrir os mistérios que esse novo mundo lhe aguarda. ', 12000)
+	TriggerEvent('FRP:NOTIFY:Simple', 'Saudações, caubói. Seja muito bem-vindo ao  Faroeste Roleplay, sinta-se livre para explorar as mais variadas regiões e descobrir os mistérios que esse novo mundo lhe aguarda. ', 12000)
     Wait(15000)
-    TriggerEvent('VP:NOTIFY:Simple', 'Leia o mural de regras~ para ficar por dentro de tudo o que é permitido no servidor, e para que assim evite dúvidas ou problemas futuros. ', 10000)
+    TriggerEvent('FRP:NOTIFY:Simple', 'Leia o mural de regras~ para ficar por dentro de tudo o que é permitido no servidor, e para que assim evite dúvidas ou problemas futuros. ', 10000)
     Wait(15000)
-    TriggerEvent('VP:NOTIFY:Simple', 'Tome cuidado ao andejar pelo anoitecer no faroeste, somente os verdadeiramente aventureiros ficam depois do escurecer... dizem que é um mundo totalmente diferente sob a luz da Lua.', 12000)
+    TriggerEvent('FRP:NOTIFY:Simple', 'Tome cuidado ao andejar pelo anoitecer no faroeste, somente os verdadeiramente aventureiros ficam depois do escurecer... dizem que é um mundo totalmente diferente sob a luz da Lua.', 12000)
     Wait(18000)
-    TriggerEvent('VP:NOTIFY:Simple', 'Aqui é Saint Dennis, a primeira cidade na qual você vai conhecer. Nela você poderá encontrar diversas lojas de departamento, como a loja de roupas, cabeleireiro, departamento de polícia, entre outros. Mas lembre-se de que há um mundo imenso para você explorar!', 18000)
+    TriggerEvent('FRP:NOTIFY:Simple', 'Aqui é Saint Dennis, a primeira cidade na qual você vai conhecer. Nela você poderá encontrar diversas lojas de departamento, como a loja de roupas, cabeleireiro, departamento de polícia, entre outros. Mas lembre-se de que há um mundo imenso para você explorar!', 18000)
 end)
 
-RegisterNetEvent("VP:CREATOR:CreatePedOnVehicle")
+RegisterNetEvent("FRP:CREATOR:CreatePedOnVehicle")
 AddEventHandler(
-    "VP:CREATOR:CreatePedOnVehicle",    
+    "FRP:CREATOR:CreatePedOnVehicle",    
     function(pedModel)
         
         local pedModelHash = GetHashKey(pedModel)

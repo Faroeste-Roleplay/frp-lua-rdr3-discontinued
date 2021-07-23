@@ -12,8 +12,8 @@ inv = {}
 --     inv = invcall
 -- end)
 
-RegisterServerEvent('VP:TENTS:createdTent')
-AddEventHandler('VP:TENTS:createdTent', function(tent, model, pos, rot, heading)
+RegisterServerEvent('FRP:TENTS:createdTent')
+AddEventHandler('FRP:TENTS:createdTent', function(tent, model, pos, rot, heading)
     local _source = source
     local User = API.getUserFromSource(source)
     local Character = User:getCharacter()
@@ -24,16 +24,16 @@ AddEventHandler('VP:TENTS:createdTent', function(tent, model, pos, rot, heading)
 end)
 
 
-RegisterServerEvent('VP:TENTS:removeTents')
-AddEventHandler('VP:TENTS:removeTents', function(tentId, id)
+RegisterServerEvent('FRP:TENTS:removeTents')
+AddEventHandler('FRP:TENTS:removeTents', function(tentId, id)
     local src = source
     Tents.removeTent(src, tonumber(tentId), tonumber(id))
 end)
 
 
 
-RegisterServerEvent('VP:TENTS:spawnTents')
-AddEventHandler('VP:TENTS:spawnTents', function()
+RegisterServerEvent('FRP:TENTS:spawnTents')
+AddEventHandler('FRP:TENTS:spawnTents', function()
     local src = source
     local User = API.getUserFromSource(src)
     local Character = User:getCharacter()
@@ -41,7 +41,7 @@ AddEventHandler('VP:TENTS:spawnTents', function()
 
     while not NotSpawned do  
         Citizen.Wait(1000)
-        TriggerClientEvent('VP:TENTS:spawnCliTents', GetHostId(), Tents.getAllTents(), Character:getId())
+        TriggerClientEvent('FRP:TENTS:spawnCliTents', GetHostId(), Tents.getAllTents(), Character:getId())
         NotSpawned = true
     end
 end)
@@ -89,7 +89,7 @@ function Tents.removeTent(src, id, itemId)
 
     return API.RemoveTents(src, id, itemId)
 
-    -- MySQL.Async.fetchAll("DELETE FROM VP:TENTS WHERE id = @id", {['@id'] = id}, function(rows)
+    -- MySQL.Async.fetchAll("DELETE FROM FRP:TENTS WHERE id = @id", {['@id'] = id}, function(rows)
     --     if rows then
     --         inv.addItem(src, itemId, 1, 0, 0) 
     --     end        

@@ -21,9 +21,9 @@ function Quantidade()
 		quantidade[source] = math.random(1,3)
 	end
 end
-RegisterServerEvent("VP:CONTRABANDO:checkPayment")
+RegisterServerEvent("FRP:CONTRABANDO:checkPayment")
 AddEventHandler(
-    "VP:CONTRABANDO:checkPayment",
+    "FRP:CONTRABANDO:checkPayment",
 	function()
 	Quantidade()
 	local _source = source
@@ -37,16 +37,16 @@ AddEventHandler(
 			Inventory:addItem("money", math.random(25,35)*quantidade[_source])
 			User:notify("item", "money", math.random(25,35)*quantidade[_source])
 			quantidade[_source] = nil
-			TriggerClientEvent("VP:CONTRABANDO:checkPayment", _source, true)
+			TriggerClientEvent("FRP:CONTRABANDO:checkPayment", _source, true)
 		else
 			User:notify("error", "Você precisa de " .. quantidade[_source].. "x Ópio.")
 		end
 	end
 end)
 
-RegisterServerEvent("VP:CONTRABANDO:ocorrencia")
+RegisterServerEvent("FRP:CONTRABANDO:ocorrencia")
 AddEventHandler(
-    "VP:CONTRABANDO:ocorrencia",
+    "FRP:CONTRABANDO:ocorrencia",
 	function()		
 	local _source = source
 	local User = API.getUserFromSource(_source)
@@ -57,8 +57,8 @@ AddEventHandler(
 		local PoliceON = API.getUsersByGroup("trooper")
 		for i = 1, #PoliceON do
 		--	vRPclient._playSound(player,"CONFIRM_BEEP","HUD_MINI_GAME_SOUNDSET")
-			TriggerClientEvent("VP:TOAST:New", PoliceON[i].getSource(), "alert", "Recebemos uma denuncia do tráfico de Ópio, verifique o ocorrido.")
-            TriggerClientEvent("VP:WANTED:denuncia", PoliceON[i].getSource(), vector3(x,y,z))
+			TriggerClientEvent("FRP:TOAST:New", PoliceON[i].getSource(), "alert", "Recebemos uma denuncia do tráfico de Ópio, verifique o ocorrido.")
+            TriggerClientEvent("FRP:WANTED:denuncia", PoliceON[i].getSource(), vector3(x,y,z))
         end
 	end
 end)

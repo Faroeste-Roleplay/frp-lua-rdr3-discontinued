@@ -258,9 +258,9 @@ Citizen.CreateThread(
     end
 )
 
-RegisterNetEvent("VP:FARM:SetIndex")
+RegisterNetEvent("FRP:FARM:SetIndex")
 AddEventHandler(
-    "VP:FARM:SetIndex",
+    "FRP:FARM:SetIndex",
     function(index, state_flag)
         if state_flag == 0 then
             pop[index] = nil
@@ -272,9 +272,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:FARM:SetPop")
+RegisterNetEvent("FRP:FARM:SetPop")
 AddEventHandler(
-    "VP:FARM:SetPop",
+    "FRP:FARM:SetPop",
     function(a)
         pop = a
 
@@ -289,7 +289,7 @@ AddEventHandler(
 )
 
 AddEventHandler(
-    "VP:AREA:PlayerEnteredArea",
+    "FRP:AREA:PlayerEnteredArea",
     function(areaId)
         if areaId == "tobacco" or areaId == "corn" or areaId == "sugarcane" then
             computeSpots()
@@ -298,7 +298,7 @@ AddEventHandler(
 )
 
 AddEventHandler(
-    "VP:AREA:PlayerLeftArea",
+    "FRP:AREA:PlayerLeftArea",
     function(areaId)
         if areaId == "tobacco" or areaId == "corn" or areaId == "sugarcane" then
             indexToVector = {}

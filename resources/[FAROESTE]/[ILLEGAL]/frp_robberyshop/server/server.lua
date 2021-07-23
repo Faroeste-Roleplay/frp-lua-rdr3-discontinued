@@ -8,9 +8,9 @@ local robberyTimer = 0
 local cops = 0
 local copsIds = {}
 
-RegisterServerEvent("VP:ROBREG:checkTheRobbery")
+RegisterServerEvent("FRP:ROBREG:checkTheRobbery")
 AddEventHandler(
-	"VP:ROBREG:checkTheRobbery",
+	"FRP:ROBREG:checkTheRobbery",
 	function(atmInfo)
 		local atmInfo = atmInfo
 		--
@@ -32,7 +32,7 @@ AddEventHandler(
 		-- end
 
 		if #PoliceON < Config.copsRequired then
-			TriggerClientEvent("VP:NOTIFY:Simple", source, "Esta loja não pode ser roubada, não há policiais disponíveis.", 10000)
+			TriggerClientEvent("FRP:NOTIFY:Simple", source, "Esta loja não pode ser roubada, não há policiais disponíveis.", 10000)
 		elseif (os.time() - Config.ATMS[atmInfo[1]]["wasRobbed"]) <= Config.robberyInterval then
 			--	TriggerClientEvent('Notify', source, 'negado',  Locales[Config.Locale]['empty_atm'] .. timeInterval .. timeUnit )
 			local timeInterval = Config.robberyInterval - (os.time() - Config.ATMS[atmInfo[1]]["wasRobbed"])
@@ -47,48 +47,48 @@ AddEventHandler(
 
 			print(timeInterval)
 
-			TriggerClientEvent("VP:NOTIFY:Simple", source, "Este caixa está vazio, aguarde " .. timeInterval .. timeUnit, 10000)
+			TriggerClientEvent("FRP:NOTIFY:Simple", source, "Este caixa está vazio, aguarde " .. timeInterval .. timeUnit, 10000)
 		else
-			--TriggerClientEvent('VP:ROBREG:PlayAlarm', source, atmInfo[2], atmInfo[3], atmInfo[4])
+			--TriggerClientEvent('FRP:ROBREG:PlayAlarm', source, atmInfo[2], atmInfo[3], atmInfo[4])
 			-- local faca = Inventory:getItemAmount("melee_knife")
 			-- if faca < 1 then
-			-- 	TriggerClientEvent('VP:NOTIFY:Simple', source, "Você não pussi uma faca.", 10000)
+			-- 	TriggerClientEvent('FRP:NOTIFY:Simple', source, "Você não pussi uma faca.", 10000)
 			-- 	return
 			-- end
 			Config.ATMS[atmInfo[1]]["wasRobbed"] = os.time()
 
-			TriggerClientEvent("VP:ROBREG:startTheRobbery", source, atmInfo)
+			TriggerClientEvent("FRP:ROBREG:startTheRobbery", source, atmInfo)
 
 			for i = 1, #PoliceON do
-				TriggerClientEvent("VP:ROBREG:warnThePolice", PoliceON[i].getSource(), atmInfo[2], atmInfo[3], atmInfo[4])
+				TriggerClientEvent("FRP:ROBREG:warnThePolice", PoliceON[i].getSource(), atmInfo[2], atmInfo[3], atmInfo[4])
 			end
 		end
 	end
 )
 
-RegisterServerEvent("VP:ROBREG:finishedTheRobbery")
+RegisterServerEvent("FRP:ROBREG:finishedTheRobbery")
 AddEventHandler(
-	"VP:ROBREG:finishedTheRobbery",
+	"FRP:ROBREG:finishedTheRobbery",
 	function(money)
 		-- for k,v in pairs(copsIds) do
 		-- 	local copPlayer = GetPlayerIdentifier(tonumber(v), 0)
 
 		-- 	if copPlayer then
 		-- 		local playerId = tonumber(v)
-		-- 		TriggerClientEvent('VP:ROBREG:removeRobBlip', -1)
+		-- 		TriggerClientEvent('FRP:ROBREG:removeRobBlip', -1)
 
 		-- 	--	TriggerClientEvent('chatMessage', playerId, _U('police_title'), Config.policeColor, _U('police_warning_finished'))
 		-- --		TriggerClientEvent('Police', playerId, 'importante2', _U('police_warning_finished'))
 		-- 	end
 		-- end
-		--TriggerClientEvent('VP:ROBREG:removeRobBlip', -1)
-		TriggerClientEvent("VP:ROBREG:cancelfreeze", source)
-		TriggerClientEvent("VP:NOTIFY:Simple", source, "Você roubou " .. money .. ".", 10000)
+		--TriggerClientEvent('FRP:ROBREG:removeRobBlip', -1)
+		TriggerClientEvent("FRP:ROBREG:cancelfreeze", source)
+		TriggerClientEvent("FRP:NOTIFY:Simple", source, "Você roubou " .. money .. ".", 10000)
 
 		local User = API.getUserFromSource(source)
 
 		if User then
-			TriggerEvent("VP:COMBATLOG:AddUserCombatReason", User:getId(), 300, "Roubo a Registradora")
+			TriggerEvent("FRP:COMBATLOG:AddUserCombatReason", User:getId(), 300, "Roubo a Registradora")
 		end
 
 		--	TriggerClientEvent('Notify', source, 'importante',  Locales[Config.Locale]['robbery_stolen_warning']  )
@@ -96,22 +96,22 @@ AddEventHandler(
 	end
 )
 
-RegisterServerEvent("VP:ROBREG:cancelTheRobbery")
+RegisterServerEvent("FRP:ROBREG:cancelTheRobbery")
 AddEventHandler(
-	"VP:ROBREG:cancelTheRobbery",
+	"FRP:ROBREG:cancelTheRobbery",
 	function(money)
 		-- for k,v in pairs(copsIds) do
 		-- 	local copPlayer = GetPlayerIdentifier(tonumber(v), 0)
 		-- 	if copPlayer then
 		-- 		local playerId = tonumber(v)
-		-- 		TriggerClientEvent('VP:ROBREG:removeRobBlip', playerId)
+		-- 		TriggerClientEvent('FRP:ROBREG:removeRobBlip', playerId)
 		-- 		--TriggerClientEvent('chatMessage', playerId, _U('police_title'), Config.policeColor, _U('police_warning_cancelled'))
 		-- 		TriggerClientEvent('Police', playerId, 'importante2', _U('police_warning_cancelled'))
 		-- 	end
 		-- end
 
-		TriggerClientEvent("VP:ROBREG:cancelfreeze", source)
-		TriggerClientEvent("VP:NOTIFY:Simple", source, "O roubo foi cancelado, você conseguiu apenas $ " .. money .. ".", 10000)
+		TriggerClientEvent("FRP:ROBREG:cancelfreeze", source)
+		TriggerClientEvent("FRP:NOTIFY:Simple", source, "O roubo foi cancelado, você conseguiu apenas $ " .. money .. ".", 10000)
 
 		--	TriggerClientEvent('Notify', source, 'negado',  Locales[Config.Locale]['robbery_stolen_cancel'] ..money )
 		--TriggerClientEvent('esx:showNotification', source, string.format( Locales[Config.Locale]['robbery_stolen_cancel'], money ))
@@ -119,14 +119,14 @@ AddEventHandler(
 		local User = API.getUserFromSource(source)
 
 		if User then
-			TriggerEvent("VP:COMBATLOG:AddUserCombatReason", User:getId(), 300, "Roubo a Registradora")
+			TriggerEvent("FRP:COMBATLOG:AddUserCombatReason", User:getId(), 300, "Roubo a Registradora")
 		end
 	end
 )
 
-RegisterServerEvent("VP:ROBREG:giveRobbedMoney")
+RegisterServerEvent("FRP:ROBREG:giveRobbedMoney")
 AddEventHandler(
-	"VP:ROBREG:giveRobbedMoney",
+	"FRP:ROBREG:giveRobbedMoney",
 	function(money)
 		local User = API.getUserFromSource(source)
 		local Character = User:getCharacter()

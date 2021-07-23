@@ -1,23 +1,23 @@
-RegisterNetEvent("VP:CHESTS:StartPlayerPlacement")
-RegisterNetEvent("VP:CHESTS:SyncChest")
-RegisterNetEvent("VP:CHESTS:SyncMultipleChests")
+RegisterNetEvent("FRP:CHESTS:StartPlayerPlacement")
+RegisterNetEvent("FRP:CHESTS:SyncChest")
+RegisterNetEvent("FRP:CHESTS:SyncMultipleChests")
 
 AddEventHandler(
-    "VP:CHESTS:StartPlayerPlacement",
+    "FRP:CHESTS:StartPlayerPlacement",
     function(capacity)
         createTempEntity(capacity)
     end
 )
 
 AddEventHandler(
-    "VP:CHESTS:SyncChest",
+    "FRP:CHESTS:SyncChest",
     function(chestId, capacity, x, y, z, h)
         Chest(chestId, capacity, x, y, z, h)
     end
 )
 
 AddEventHandler(
-    "VP:CHESTS:SyncMultipleChests",
+    "FRP:CHESTS:SyncMultipleChests",
     function(array)
         for chestId, values in pairs(array) do
             Chest(chestId, values[1], values[2], values[3], values[4], values[5])
@@ -96,7 +96,7 @@ function drawTempEntity()
             z = tonumber(string.format("%.2f", z))
             h = tonumber(string.format("%.2f", h))
 
-            TriggerServerEvent("VP:CHESTS:EndPlayerPlacement1", tempCapacity, x, y, z, h)
+            TriggerServerEvent("FRP:CHESTS:EndPlayerPlacement1", tempCapacity, x, y, z, h)
 
             tempCapacity = nil
         end
@@ -105,7 +105,7 @@ function drawTempEntity()
             DeleteEntity(tempEntity)
             tempEntity = nil
             tempCapacity = nil
-            TriggerServerEvent("VP:CHESTS:EndPlayerPlacement1", nil, nil, nil, nil, nil)
+            TriggerServerEvent("FRP:CHESTS:EndPlayerPlacement1", nil, nil, nil, nil, nil)
         end
     end
 end
@@ -243,7 +243,7 @@ Citizen.CreateThread(
                 else
                     if IsControlJustPressed(0, 0xCEFD9220) then -- E
                         -- print("Opened")
-                        TriggerServerEvent("VP:CHESTS:Open", closestChestId)
+                        TriggerServerEvent("FRP:CHESTS:Open", closestChestId)
                     end
                 end
             end
@@ -254,14 +254,14 @@ Citizen.CreateThread(
 )
 
 AddEventHandler(
-    "VP:EVENTS:PedInteractionRansackScenario",
+    "FRP:EVENTS:PedInteractionRansackScenario",
     function(pedInteracting, containerEntity, containerScenario, isClosing)
         if pedInteracting == PlayerPedId() then
             if isClosing == 0 then
                 for chestId, chest in pairs(renderedChests) do
                     local entity = chest.entity
                     if containerEntity == entity then
-                        TriggerServerEvent("VP:CHESTS:Open", chestId)
+                        TriggerServerEvent("FRP:CHESTS:Open", chestId)
                         break
                     end
                 end
@@ -302,7 +302,7 @@ AddEventHandler(
 
 Citizen.CreateThread(
     function()
-        TriggerServerEvent("VP:CHESTS:AskForSync")
+        TriggerServerEvent("FRP:CHESTS:AskForSync")
     end
 )
 

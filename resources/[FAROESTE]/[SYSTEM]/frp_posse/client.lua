@@ -40,9 +40,9 @@ Citizen.CreateThread(
     end
 )
 
-RegisterNetEvent("VP:POSSE:SetPosse")
+RegisterNetEvent("FRP:POSSE:SetPosse")
 AddEventHandler(
-    "VP:POSSE:SetPosse",
+    "FRP:POSSE:SetPosse",
     function(id)
         if id ~= nil then
             local _, h = AddRelationshipGroup('posse:' .. id)
@@ -77,7 +77,7 @@ function HandlePrompts()
                 PromptSetEnabled(prompt, true)
             end
         )     
-        TriggerServerEvent('VP:POSSE:checkBando')        
+        TriggerServerEvent('FRP:POSSE:checkBando')        
     end
 end
 
@@ -108,9 +108,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:POSSE:OpenMenu")
+RegisterNetEvent("FRP:POSSE:OpenMenu")
 AddEventHandler(
-    "VP:POSSE:OpenMenu",
+    "FRP:POSSE:OpenMenu",
     function(data, clanName)
         SetNuiFocus(true, true)
         SendNUIMessage(
@@ -124,9 +124,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:POSSE:CloseMenu")
+RegisterNetEvent("FRP:POSSE:CloseMenu")
 AddEventHandler(
-    "VP:POSSE:CloseMenu",
+    "FRP:POSSE:CloseMenu",
     function()
         SetNuiFocus(false, false)
         SendNUIMessage(
@@ -148,7 +148,7 @@ RegisterNUICallback(
     "promote",
     function(charId)
         print(charId)
-        TriggerServerEvent("VP:POSSE:Promote", charId.charId)
+        TriggerServerEvent("FRP:POSSE:Promote", charId.charId)
     end
 )
 
@@ -156,21 +156,21 @@ RegisterNUICallback(
     "demote",
     function(charId)
          print(charId)
-        TriggerServerEvent("VP:POSSE:Demote", charId.charId)
+        TriggerServerEvent("FRP:POSSE:Demote", charId.charId)
     end
 )
 
 RegisterNUICallback(
     "kick",
     function(charId)
-        TriggerServerEvent("VP:POSSE:Kick", charId.charId)
+        TriggerServerEvent("FRP:POSSE:Kick", charId.charId)
     end
 )
 
 RegisterNUICallback(
     "leave",
     function()
-        TriggerServerEvent("VP:POSSE:Leave")
+        TriggerServerEvent("FRP:POSSE:Leave")
     end
 )
 

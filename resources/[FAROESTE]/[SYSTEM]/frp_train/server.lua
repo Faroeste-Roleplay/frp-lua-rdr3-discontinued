@@ -37,15 +37,15 @@
 RegisterCommand(
   "calltrain",
   function()
-    TriggerClientEvent("VP:TRAIN:Bondroute", GetHostId())
+    TriggerClientEvent("FRP:TRAIN:Bondroute", GetHostId())
   end
 )
 
 
--- RegisterNetEvent("VP:GHOSTRAIN:calltrain")
+-- RegisterNetEvent("FRP:GHOSTRAIN:calltrain")
 -- AddEventHandler(
---   "VP:GHOSTRAIN:calltrain",
+--   "FRP:GHOSTRAIN:calltrain",
 --   function()
---     TriggerClientEvent("VP:GHOST:Trainroute", GetHostId())
+--     TriggerClientEvent("FRP:GHOST:Trainroute", GetHostId())
 --   end
 -- )

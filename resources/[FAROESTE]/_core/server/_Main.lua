@@ -158,7 +158,7 @@ function API.dropPlayer(source, reason)
         local user_id = User:getId()
         local character_id = User:getCharacter() and User:getCharacter():getId() or 0
 
-        TriggerEvent("VP:UserDropped", source, user_id, character_id, reason)
+        TriggerEvent("FRP:UserDropped", source, user_id, character_id, reason)
 
         local steamID = GetPlayerIdentifiers(source)[1]
         API.users[user_id] = nil
@@ -172,7 +172,7 @@ function API.dropPlayer(source, reason)
 
         print(#GetPlayers() .. "/32 | " .. playerName .. " (" .. ipAddress .. ") desconectou (motivo = " .. reason .. ")")
 
-        TriggerClientEvent("VP:_CORE:SetServerIdAsUserId", -1, source, nil)
+        TriggerClientEvent("FRP:_CORE:SetServerIdAsUserId", -1, source, nil)
     end
 end
 

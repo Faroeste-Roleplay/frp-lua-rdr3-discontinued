@@ -4,9 +4,9 @@ local Proxy = module("_core", "lib/Proxy")
 API = Proxy.getInterface("API")
 cAPI = Tunnel.getInterface("API")
 
-RegisterNetEvent("VP:HORSE:RequestMyHorseInfo")
+RegisterNetEvent("FRP:HORSE:RequestMyHorseInfo")
 AddEventHandler(
-    "VP:HORSE:RequestMyHorseInfo",
+    "FRP:HORSE:RequestMyHorseInfo",
     function()
         local _source = source
 
@@ -21,17 +21,17 @@ AddEventHandler(
         local Horse = Character:getHorse()
 
         if Horse ~= nil then
-            TriggerClientEvent("VP:HORSE:SetHorseInfo", _source, Horse:getModel(), Horse:getName(), Horse:getComponents())
+            TriggerClientEvent("FRP:HORSE:SetHorseInfo", _source, Horse:getModel(), Horse:getName(), Horse:getComponents())
         end
     end
 )
 
-RegisterNetEvent("VP:HORSE:HitCarriedPlayer")
+RegisterNetEvent("FRP:HORSE:HitCarriedPlayer")
 AddEventHandler(
-    "VP:HORSE:HitCarriedPlayer",
+    "FRP:HORSE:HitCarriedPlayer",
     function(playerServerId)
         local _source = source
 
-        TriggerClientEvent("VP:HORSE:PlayBeingHitAnim", playerServerId)
+        TriggerClientEvent("FRP:HORSE:PlayBeingHitAnim", playerServerId)
     end
 )

@@ -46,9 +46,9 @@ Citizen.CreateThread(
                 inMenu = true
                 SetNuiFocus(true, true)
                 SendNUIMessage({type = "openGeneral"})
-                TriggerServerEvent("VP:BANKING:balance2")
+                TriggerServerEvent("FRP:BANKING:balance2")
               else
-                TriggerEvent('VP:NOTIFY:Simple', 'Você ainda está como procurado, não pode acessar seu banco. ', 10000)
+                TriggerEvent('FRP:NOTIFY:Simple', 'Você ainda está como procurado, não pode acessar seu banco. ', 10000)
               end
             end
           end
@@ -74,12 +74,12 @@ end
 -- 			inMenu = true
 -- 			SetNuiFocus(true, true)
 -- 			SendNUIMessage({type = 'openGeneral'})
--- 			TriggerServerEvent('VP:BANKING:balance2')
+-- 			TriggerServerEvent('FRP:BANKING:balance2')
 -- end)
 
-RegisterNetEvent("VP:BANKING:sendmoney")
+RegisterNetEvent("FRP:BANKING:sendmoney")
 AddEventHandler(
-  "VP:BANKING:sendmoney",
+  "FRP:BANKING:sendmoney",
   function(player, amount, nome)
     local playeri = player
     local _amount = amount
@@ -87,7 +87,7 @@ AddEventHandler(
     local jogadornome = nome
 
     if distance ~= -1 and distance <= 3.0 then
-      TriggerServerEvent("VP:BANKING:recmoney", GetPlayerServerId(player), amount, jogadornome)
+      TriggerServerEvent("FRP:BANKING:recmoney", GetPlayerServerId(player), amount, jogadornome)
     else
       TriggerEvent("chatMessage", "^1SISTEMA", {255, 255, 255}, "Ninguem por perto")
     end
@@ -99,7 +99,7 @@ function openGui()
   inMenu = true
   SetNuiFocus(true, true)
   SendNUIMessage({type = "openGeneral"})
-  TriggerServerEvent("VP:BANKING:balance2")
+  TriggerServerEvent("FRP:BANKING:balance2")
   bankOpen = true
 end
 
@@ -157,7 +157,7 @@ RegisterNUICallback(
   function(data)
     local amount = tonumber(data.amount)
     if amount ~= nil then
-      TriggerServerEvent("VP:BANKING:deposit", amount)
+      TriggerServerEvent("FRP:BANKING:deposit", amount)
     end
   end
 )
@@ -169,7 +169,7 @@ RegisterNUICallback(
   function(data)
     local amountw = tonumber(data.amountw)
     if amountw ~= nil then
-      TriggerServerEvent("VP:BANKING:withdraw", amountw)
+      TriggerServerEvent("FRP:BANKING:withdraw", amountw)
     end
   end
 )
@@ -179,7 +179,7 @@ RegisterNUICallback(
 RegisterNUICallback(
   "balance",
   function()
-    TriggerServerEvent("VP:BANKING:balance")
+    TriggerServerEvent("FRP:BANKING:balance")
   end
 )
 

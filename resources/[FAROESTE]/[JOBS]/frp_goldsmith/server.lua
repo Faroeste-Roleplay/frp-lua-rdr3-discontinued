@@ -4,9 +4,9 @@ local Proxy = module("_core", "lib/Proxy")
 API = Proxy.getInterface("API")
 cAPI = Tunnel.getInterface("API")
 
-RegisterServerEvent("VP:GOLDSMITH:TryToStartMining")
+RegisterServerEvent("FRP:GOLDSMITH:TryToStartMining")
 AddEventHandler(
-    "VP:GOLDSMITH:TryToStartMining",
+    "FRP:GOLDSMITH:TryToStartMining",
     function()
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -16,7 +16,7 @@ AddEventHandler(
         if a <= 0 then
             User:notify("error", "Você nao possui uma " .. ItemData:getName())
         else
-            TriggerClientEvent("VP:GOLDSMITH:StartMiningAnimation", _source)
+            TriggerClientEvent("FRP:GOLDSMITH:StartMiningAnimation", _source)
         end
     end
 )
@@ -40,9 +40,9 @@ Citizen.CreateThread(
 
 local found = {}
 
-RegisterServerEvent("VP:GOLDSMITH:CollectMineral")
+RegisterServerEvent("FRP:GOLDSMITH:CollectMineral")
 AddEventHandler(
-    "VP:GOLDSMITH:CollectMineral",
+    "FRP:GOLDSMITH:CollectMineral",
     function()
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -74,13 +74,13 @@ AddEventHandler(
 
         found[_source][mineral_item] = prev + 1
 
-        TriggerClientEvent("VP:GOLDSMITH:DropMineral", _source, mineral_item)
+        TriggerClientEvent("FRP:GOLDSMITH:DropMineral", _source, mineral_item)
     end
 )
 
-RegisterServerEvent("VP:GOLDSMITH:TryToStartRefining")
+RegisterServerEvent("FRP:GOLDSMITH:TryToStartRefining")
 AddEventHandler(
-    "VP:GOLDSMITH:TryToStartRefining",
+    "FRP:GOLDSMITH:TryToStartRefining",
     function(mineral_item)
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -94,9 +94,9 @@ AddEventHandler(
     end
 )
 
-RegisterServerEvent("VP:GOLDSMITH:TryToStartRefining")
+RegisterServerEvent("FRP:GOLDSMITH:TryToStartRefining")
 AddEventHandler(
-    "VP:GOLDSMITH:TryToStartRefining",
+    "FRP:GOLDSMITH:TryToStartRefining",
     function()
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -115,7 +115,7 @@ AddEventHandler(
             return
         end
 
-        TriggerClientEvent("VP:GOLDSMITH:StartProcessingAnimation", _source)
+        TriggerClientEvent("FRP:GOLDSMITH:StartProcessingAnimation", _source)
 
         User:notify("alert", "Processando...")
 
@@ -129,9 +129,9 @@ AddEventHandler(
     end
 )
 
-RegisterServerEvent("VP:GOLDSMITH:checknum")
+RegisterServerEvent("FRP:GOLDSMITH:checknum")
 AddEventHandler(
-    "VP:GOLDSMITH:checknum",
+    "FRP:GOLDSMITH:checknum",
     function(source, num)
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -147,13 +147,13 @@ AddEventHandler(
                 return
             end
         end
-        TriggerClientEvent("VP:GOLDSMITH:processanim", _source, num)
+        TriggerClientEvent("FRP:GOLDSMITH:processanim", _source, num)
     end
 )
 
-RegisterServerEvent("VP:GOLDSMITH:processitem")
+RegisterServerEvent("FRP:GOLDSMITH:processitem")
 AddEventHandler(
-    "VP:GOLDSMITH:processitem",
+    "FRP:GOLDSMITH:processitem",
     function(num)
         local _source = source
         local User = API.getUserFromSource(_source)

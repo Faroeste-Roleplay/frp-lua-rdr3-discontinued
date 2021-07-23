@@ -286,7 +286,7 @@ Citizen.CreateThread(
                 if PromptHasHoldModeCompleted(prompt_patdown) then
                     quickPromptEnabledToggle(prompt_patdown)
 
-                    TriggerServerEvent("VP:SHERIFF:TryToPatDown", targetedPlayerServerId)
+                    TriggerServerEvent("FRP:SHERIFF:TryToPatDown", targetedPlayerServerId)
                 end
 
                 if PromptHasHoldModeCompleted(prompt_dead_pickup) then
@@ -299,7 +299,7 @@ Citizen.CreateThread(
                     quickPromptEnabledToggle(prompt_admin_revive)
 
                     if isAPlayer then
-                        TriggerServerEvent("VP:MEDIC:TreatmentCallback", targetedPlayerServerId)
+                        TriggerServerEvent("FRP:MEDIC:TreatmentCallback", targetedPlayerServerId)
                     else
                         SetEntityAsMissionEntity(entity, true, true)
                         ResurrectPed(entity)
@@ -313,7 +313,7 @@ Citizen.CreateThread(
 
                     -- SetEnableHandcuffs(entity, false, false)
 
-                    TriggerServerEvent("VP:SHERIFF:cuffing", targetedPlayerServerId)
+                    TriggerServerEvent("FRP:SHERIFF:cuffing", targetedPlayerServerId)
                 end
 
                 if PromptHasHoldModeCompleted(prompt_trooper_cuff) then
@@ -321,7 +321,7 @@ Citizen.CreateThread(
 
                     -- SetEnableHandcuffs(entity, true, false)
 
-                    TriggerServerEvent("VP:SHERIFF:unlocking", targetedPlayerServerId)
+                    TriggerServerEvent("FRP:SHERIFF:unlocking", targetedPlayerServerId)
                 end
             end
         end

@@ -4,9 +4,9 @@ local Proxy = module("_core", "lib/Proxy")
 API = Proxy.getInterface("API")
 cAPI = Tunnel.getInterface("API")
 
-RegisterServerEvent("VP:BANKING:withdraw")
+RegisterServerEvent("FRP:BANKING:withdraw")
 AddEventHandler(
-    "VP:BANKING:withdraw",
+    "FRP:BANKING:withdraw",
     function(amount)
         local _source = source
         local base = 0
@@ -29,15 +29,15 @@ AddEventHandler(
                 Wait(100)
                 -- TriggerClientEvent("redemrp_notification:start",_source, "Withdrawal made.." , 2, "success")
                 Wait(1000)
-                TriggerEvent("VP:BANKING:balance", _source)
+                TriggerEvent("FRP:BANKING:balance", _source)
             end
         end
     end
 )
 
-RegisterServerEvent("VP:BANKING:deposit")
+RegisterServerEvent("FRP:BANKING:deposit")
 AddEventHandler(
-    "VP:BANKING:deposit",
+    "FRP:BANKING:deposit",
     function(amount)
         local _source = source
         local base = 0
@@ -58,15 +58,15 @@ AddEventHandler(
                 Wait(100)
                 -- TriggerClientEvent("redemrp_notification:start",_source, "Withdrawal made.." , 2, "success")
                 Wait(1000)
-                TriggerEvent("VP:BANKING:balance", _source)
+                TriggerEvent("FRP:BANKING:balance", _source)
             end
         end
     end
 )
 
-RegisterServerEvent("VP:BANKING:balance")
+RegisterServerEvent("FRP:BANKING:balance")
 AddEventHandler(
-    "VP:BANKING:balance",
+    "FRP:BANKING:balance",
     function(source)
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -76,9 +76,9 @@ AddEventHandler(
     end
 )
 
-RegisterServerEvent("VP:BANKING:balance2")
+RegisterServerEvent("FRP:BANKING:balance2")
 AddEventHandler(
-    "VP:BANKING:balance2",
+    "FRP:BANKING:balance2",
     function()
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -96,16 +96,16 @@ RegisterCommand(
         local amount = tonumber(args[2])
 
         if amount ~= nil and playersend ~= nil then
-            TriggerServerEvent("VP:BANKING:sendmoney", source, playersend, amount)
+            TriggerServerEvent("FRP:BANKING:sendmoney", source, playersend, amount)
         else
             TriggerClientEvent("chat:addMessage", source, {args = {"^1SYSTEMA", "ID ou Valor Inválido."}})
         end
     end
 )
 
-RegisterServerEvent("VP:BANKING:sendmoney")
+RegisterServerEvent("FRP:BANKING:sendmoney")
 AddEventHandler(
-    "VP:BANKING:sendmoney",
+    "FRP:BANKING:sendmoney",
     function(source, id, amount)
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -125,16 +125,16 @@ AddEventHandler(
                 Inventory:removeItem(-1, "money", amount * 100)
                 User:notify("item", "money", -(amount))
                 Wait(500)
-                TriggerClientEvent("VP:BANKING:sendmoney", tplayer, amount, name)
+                TriggerClientEvent("FRP:BANKING:sendmoney", tplayer, amount, name)
                 TriggerClientEvent("chatMessage", source, "^1SISTEMA", {255, 255, 255}, "Você deu " .. amount * 100 .. " para " .. tname .. "")
             end
         end
     end
 )
 
-RegisterServerEvent("VP:BANKING:recmoney")
+RegisterServerEvent("FRP:BANKING:recmoney")
 AddEventHandler(
-    "VP:BANKING:recmoney",
+    "FRP:BANKING:recmoney",
     function(source, amount, name)
         local _name = name
         local _source = source

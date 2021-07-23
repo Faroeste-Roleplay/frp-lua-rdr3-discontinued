@@ -107,7 +107,7 @@ Citizen.CreateThread(
 					local pHealthCore = Citizen.InvokeNative(0x36731AC041289BB1 , playerPed, 0, Citizen.ResultAsInteger())
 					local pStaminaCore = Citizen.InvokeNative(0x36731AC041289BB1 , playerPed, 1, Citizen.ResultAsInteger())
 
-					TriggerServerEvent("VP:CacheCharacterStats", {x, y, z}, pHealth, pStamina, pHealthCore, pStaminaCore)
+					TriggerServerEvent("FRP:CacheCharacterStats", {x, y, z}, pHealth, pStamina, pHealthCore, pStaminaCore)
 				end
 			end
 		end
@@ -567,14 +567,14 @@ end
 local serverToUserChanged = false
 local serverToUser = {}
 
-RegisterNetEvent('VP:_CORE:SetServerIdAsUserId')
-AddEventHandler('VP:_CORE:SetServerIdAsUserId', function(serverid, userid)
+RegisterNetEvent('FRP:_CORE:SetServerIdAsUserId')
+AddEventHandler('FRP:_CORE:SetServerIdAsUserId', function(serverid, userid)
 	serverToUser[serverid] = userid
 	serverToUserChanged  = true
 end)
 
-RegisterNetEvent('VP:_CORE:SetServerIdAsUserIdPacked')
-AddEventHandler('VP:_CORE:SetServerIdAsUserIdPacked', function(r)
+RegisterNetEvent('FRP:_CORE:SetServerIdAsUserIdPacked')
+AddEventHandler('FRP:_CORE:SetServerIdAsUserIdPacked', function(r)
 	serverToUser = r
 	serverToUserChanged  = true
 end)

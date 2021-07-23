@@ -113,7 +113,7 @@ function OpenStable()
             }
         )
     end
-    TriggerServerEvent("VP:STABLE:AskForMyHorses")
+    TriggerServerEvent("FRP:STABLE:AskForMyHorses")
 end
 
 local promptGroup
@@ -423,7 +423,7 @@ RegisterNUICallback(
     "selectHorse",
     function(data)
         print(data.horseID)
-        TriggerServerEvent("VP:STABLE:SelectHorseWithId", tonumber(data.horseID))
+        TriggerServerEvent("FRP:STABLE:SelectHorseWithId", tonumber(data.horseID))
     end
 )
 
@@ -432,14 +432,14 @@ RegisterNUICallback(
     function(data)
         print(data.horseID)
         DeleteEntity(showroomHorse_entity)
-        TriggerServerEvent("VP:STABLE:SellHorseWithId", tonumber(data.horseID))
-        TriggerServerEvent("VP:STABLE:AskForMyHorses")
+        TriggerServerEvent("FRP:STABLE:SellHorseWithId", tonumber(data.horseID))
+        TriggerServerEvent("FRP:STABLE:AskForMyHorses")
     end
 )
 
-RegisterNetEvent("VP:STABLE:ReceiveHorsesData")
+RegisterNetEvent("FRP:STABLE:ReceiveHorsesData")
 AddEventHandler(
-    "VP:STABLE:ReceiveHorsesData",
+    "FRP:STABLE:ReceiveHorsesData",
     function(dataHorses)
         SendNUIMessage(
             {
@@ -621,7 +621,7 @@ RegisterNUICallback(
         end
         SetNuiFocus(true, true)
 
-        TriggerServerEvent('VP:STABLE:BuyHorse', data, HorseName)
+        TriggerServerEvent('FRP:STABLE:BuyHorse', data, HorseName)
     end
 )
 
@@ -678,7 +678,7 @@ function CloseStable()
         local DadosEncoded = json.encode(dados)
 
         if DadosEncoded ~= "[]" then            
-            TriggerServerEvent("VP:STABLE:UpdateHorseComponents", dados, IdMyHorse ) 
+            TriggerServerEvent("FRP:STABLE:UpdateHorseComponents", dados, IdMyHorse ) 
         end
 
        

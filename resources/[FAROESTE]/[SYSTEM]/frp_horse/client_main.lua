@@ -37,8 +37,8 @@ end
 
 
 
-RegisterNetEvent("VP:HORSE:SetHorseInfo")
-AddEventHandler("VP:HORSE:SetHorseInfo", SetHorseInfo)
+RegisterNetEvent("FRP:HORSE:SetHorseInfo")
+AddEventHandler("FRP:HORSE:SetHorseInfo", SetHorseInfo)
 
 function InitiateHorse(atCoords)
     if initializing then
@@ -48,7 +48,7 @@ function InitiateHorse(atCoords)
     initializing = true
 
     if horseModel == nil and horseName == nil then
-        TriggerServerEvent("VP:HORSE:RequestMyHorseInfo")
+        TriggerServerEvent("FRP:HORSE:RequestMyHorseInfo")
 
         local timeoutatgametimer = GetGameTimer() + (3 * 1000)
 
@@ -303,7 +303,7 @@ end
 -- end
 
 AddEventHandler(
-    "VP:EVENTS:PedWhistle",
+    "FRP:EVENTS:PedWhistle",
     function(ped, whistleTypeHash)
         if ped == PlayerPedId() then
             WhistleHorse(whistleTypeHash)
@@ -426,7 +426,7 @@ Citizen.CreateThread(
             Citizen.Wait(0)
 
             if PromptIsJustPressed(prompt_inventory) then
-                TriggerServerEvent("VP:HORSE:OpenInventory")
+                TriggerServerEvent("FRP:HORSE:OpenInventory")
             end
 
             if PromptIsJustPressed(prompt_brush) then
@@ -536,7 +536,7 @@ Citizen.CreateThread(
                     if carriedPlayer then
                         local carriedPlayerServerId = GetPlayerServerId(carriedPlayer)
 
-                        TriggerServerEvent("VP:HORSE:HitCarriedPlayer", carriedPlayerServerId)
+                        TriggerServerEvent("FRP:HORSE:HitCarriedPlayer", carriedPlayerServerId)
 
                         local animDict = "script_proc@bounty@riding_punch"
                         RequestAnimDict(animDict)
@@ -587,9 +587,9 @@ Citizen.CreateThread(
     end
 )
 
-RegisterNetEvent("VP:HORSE:PlayBeingHitAnim")
+RegisterNetEvent("FRP:HORSE:PlayBeingHitAnim")
 AddEventHandler(
-    "VP:HORSE:PlayBeingHitAnim",
+    "FRP:HORSE:PlayBeingHitAnim",
     function()
         local animDict = "script_proc@bounty@riding_punch"
         RequestAnimDict(animDict)

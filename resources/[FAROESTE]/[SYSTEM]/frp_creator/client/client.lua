@@ -99,7 +99,7 @@ Citizen.CreateThread(
                     createPeds()
                     DestroyAllCams(true)
                     createCamera()
-                    TriggerEvent('VP:NOTIFY:Simple', 'Utilize as setas do seu teclado e aperte enter para escolher um personagem.', 15000)
+                    TriggerEvent('FRP:NOTIFY:Simple', 'Utilize as setas do seu teclado e aperte enter para escolher um personagem.', 15000)
                 else
                     for k, v in pairs(choosePed) do
                         if IsControlJustReleased(0, 0xA65EBAB4) and GetEntityModel(choosePed[k]) == GetHashKey("mp_male") then -- male
@@ -146,9 +146,9 @@ Citizen.CreateThread(
     end
 )
 
-RegisterNetEvent("VP:CHARCREATION:starting")
+RegisterNetEvent("FRP:CHARCREATION:starting")
 AddEventHandler(
-    "VP:CHARCREATION:starting",
+    "FRP:CHARCREATION:starting",
     function()
         vpcreator = true
         inCustomization = false
@@ -203,7 +203,7 @@ PedScaleUsing = 1.0
 RegisterNUICallback(
     "CheckButtons",
     function(data)
-        TriggerEvent('VP:NOTIFY:Simple', data, 5000)
+        TriggerEvent('FRP:NOTIFY:Simple', data, 5000)
     end
 )
 
@@ -554,7 +554,7 @@ RegisterNUICallback(
             ["pedSize"] = tonumber(PedScaleUsing),
             ["features"] = json.encode(ffDados)
         }
-        TriggerServerEvent("VP:CREATOR:saveCreation", CharacterName, CharacterAge, SkinModf)
+        TriggerServerEvent("FRP:CREATOR:saveCreation", CharacterName, CharacterAge, SkinModf)
         closeAll()
 
         SetNuiFocus(false, false)   

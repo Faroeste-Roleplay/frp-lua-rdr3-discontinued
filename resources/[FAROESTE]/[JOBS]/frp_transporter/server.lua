@@ -4,9 +4,9 @@ local Proxy = module("_core", "lib/Proxy")
 API = Proxy.getInterface("API")
 cAPI = Tunnel.getInterface("API")
 
-RegisterServerEvent("VP:MINING:TryToStartMining")
+RegisterServerEvent("FRP:MINING:TryToStartMining")
 AddEventHandler(
-    "VP:MINING:TryToStartMining",
+    "FRP:MINING:TryToStartMining",
     function()
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -15,7 +15,7 @@ AddEventHandler(
         if a <= 0 then
             User:notify("error", "Você nao possui uma picareta")
         else
-            TriggerClientEvent("VP:MINING:StartMiningAnimation", _source)
+            TriggerClientEvent("FRP:MINING:StartMiningAnimation", _source)
         end
     end
 )
@@ -44,9 +44,9 @@ Citizen.CreateThread(
 
 local found = {}
 
-RegisterServerEvent("VP:MINING:CollectMineral")
+RegisterServerEvent("FRP:MINING:CollectMineral")
 AddEventHandler(
-    "VP:MINING:CollectMineral",
+    "FRP:MINING:CollectMineral",
     function()
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -78,13 +78,13 @@ AddEventHandler(
 
         found[_source][mineral_item] = prev + 1
 
-        TriggerClientEvent("VP:MINING:DropMineral", _source, mineral_item)
+        TriggerClientEvent("FRP:MINING:DropMineral", _source, mineral_item)
     end
 )
 
--- RegisterServerEvent("VP:MINING:TryToGetMineral")
+-- RegisterServerEvent("FRP:MINING:TryToGetMineral")
 -- AddEventHandler(
---     "VP:MINING:TryToGetMineral",
+--     "FRP:MINING:TryToGetMineral",
 --     function(mineral_item)
 --         local _source = source
 --         local User = API.getUserFromSource(_source)
@@ -124,9 +124,9 @@ AddEventHandler(
 --     end
 -- )
 
-RegisterServerEvent("VP:MINING:TryToStartRefining")
+RegisterServerEvent("FRP:MINING:TryToStartRefining")
 AddEventHandler(
-    "VP:MINING:TryToStartRefining",
+    "FRP:MINING:TryToStartRefining",
     function(mineral_item)
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -140,9 +140,9 @@ AddEventHandler(
     end
 )
 
-RegisterServerEvent("VP:MINING:TryToStartRefining")
+RegisterServerEvent("FRP:MINING:TryToStartRefining")
 AddEventHandler(
-    "VP:MINING:TryToStartRefining",
+    "FRP:MINING:TryToStartRefining",
     function()
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -176,7 +176,7 @@ AddEventHandler(
             return
         end
 
-        TriggerClientEvent("VP:MINING:StartProcessingAnimation", _source)
+        TriggerClientEvent("FRP:MINING:StartProcessingAnimation", _source)
 
         User:notify("alert", "Processando...")
 
@@ -208,9 +208,9 @@ AddEventHandler(
     end
 )
 
-RegisterServerEvent("VP:MINING:checknum")
+RegisterServerEvent("FRP:MINING:checknum")
 AddEventHandler(
-    "VP:MINING:checknum",
+    "FRP:MINING:checknum",
     function(source, num)
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -226,13 +226,13 @@ AddEventHandler(
                 return
             end
         end
-        TriggerClientEvent("VP:MINING:processanim", _source, num)
+        TriggerClientEvent("FRP:MINING:processanim", _source, num)
     end
 )
 
-RegisterServerEvent("VP:MINING:processitem")
+RegisterServerEvent("FRP:MINING:processitem")
 AddEventHandler(
-    "VP:MINING:processitem",
+    "FRP:MINING:processitem",
     function(num)
         local _source = source
         local User = API.getUserFromSource(_source)

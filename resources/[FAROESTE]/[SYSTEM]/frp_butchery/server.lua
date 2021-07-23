@@ -71,9 +71,9 @@ local sellables = {
     [1205982615] = 175 -- Californian Condor
 }
 
-RegisterNetEvent("VP:BUTCHER:TryToSell")
+RegisterNetEvent("FRP:BUTCHER:TryToSell")
 AddEventHandler(
-    "VP:BUTCHER:TryToSell",
+    "FRP:BUTCHER:TryToSell",
     function(entType, entModel, entity, quality)
         local _source = source
 
@@ -82,7 +82,7 @@ AddEventHandler(
         local payment = sellables[tonumber(entModel)]
 
         if payment == nil then
-            TriggerClientEvent("VP:BUTCHER:EntityNotAccepted", _source, entity)
+            TriggerClientEvent("FRP:BUTCHER:EntityNotAccepted", _source, entity)
             User:notify("error", "O açogueiro não quer este animal")
             return
         end
@@ -97,9 +97,9 @@ AddEventHandler(
 
             Character:varyExp(5)
 
-            TriggerClientEvent("VP:BUTCHER:EntityAccepted", _source, entity)
+            TriggerClientEvent("FRP:BUTCHER:EntityAccepted", _source, entity)
         else
-            TriggerClientEvent("VP:BUTCHER:EntityNotAccepted", _source, entity)
+            TriggerClientEvent("FRP:BUTCHER:EntityNotAccepted", _source, entity)
         end
     end
 )

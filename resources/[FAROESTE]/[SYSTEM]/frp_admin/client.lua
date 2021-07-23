@@ -4,23 +4,23 @@ local Proxy = module("_core", "lib/Proxy")
 cAPI = Proxy.getInterface("API")
 API = Tunnel.getInterface("API")
 
-RegisterNetEvent("VP:ADMIN:Model")
+RegisterNetEvent("FRP:ADMIN:Model")
 AddEventHandler(
-	"VP:ADMIN:Model",
+	"FRP:ADMIN:Model",
 	function(pedModel, clothes)
 
 		if not cAPI.IsWanted() then				
 			cAPI.SetPlayerPed(pedModel)			
 			cAPI.setPlayerAppearence(PlayerPedId())
 		else
-			TriggerEvent("VP:NOTIFY:Simple", "Você ainda está como procurado, não pode trocar de roupa. ", 10000)
+			TriggerEvent("FRP:NOTIFY:Simple", "Você ainda está como procurado, não pode trocar de roupa. ", 10000)
 		end
 	end
 )
 
-RegisterNetEvent("VP:ADMIN:SpawnPed")
+RegisterNetEvent("FRP:ADMIN:SpawnPed")
 AddEventHandler(
-	"VP:ADMIN:SpawnPed",
+	"FRP:ADMIN:SpawnPed",
 	function(pedModel, outfit)
 		local pedModelHash = GetHashKey(pedModel)
 		if not IsModelValid(pedModelHash) then
@@ -75,9 +75,9 @@ function _GET_DEFAULT_RELATIONSHIP_GROUP_HASH(iParam0)
 	return Citizen.InvokeNative(0xC80A74AC829DDD92, iParam0)
 end
 
-RegisterNetEvent("VP:ADMIN:SpawnObject")
+RegisterNetEvent("FRP:ADMIN:SpawnObject")
 AddEventHandler(
-	"VP:ADMIN:SpawnObject",
+	"FRP:ADMIN:SpawnObject",
 	function(model)
 		local modelHash = tonumber(model) == nil and GetHashKey(model) or tonumber(model)
 		if not IsModelValid(modelHash) then
@@ -116,9 +116,9 @@ AddEventHandler(
 -- 	end
 -- )
 
-RegisterNetEvent("VP:ADMIN:outift")
+RegisterNetEvent("FRP:ADMIN:outift")
 AddEventHandler(
-	"VP:ADMIN:outift",
+	"FRP:ADMIN:outift",
 	function(kek)
 		SetPedOutfitPreset(PlayerPedId(), kek)
 	end
@@ -143,23 +143,23 @@ RegisterCommand(
 
 			gamerTags = {}
 		else
-			TriggerServerEvent("VP:ADMIN:TryToGetGamerTagsInfo")
+			TriggerServerEvent("FRP:ADMIN:TryToGetGamerTagsInfo")
 		end
 	end
 )
 
-RegisterNetEvent("VP:ADMIN:ReceiveGamerTagsInfo")
+RegisterNetEvent("FRP:ADMIN:ReceiveGamerTagsInfo")
 AddEventHandler(
-	"VP:ADMIN:ReceiveGamerTagsInfo",
+	"FRP:ADMIN:ReceiveGamerTagsInfo",
 	function(gtInfo)
 		gamerTagsInfo = gtInfo
 		showGamerTags = true
 	end
 )
 
-RegisterNetEvent("VP:ADMIN:ReceiveGamerTagInfo")
+RegisterNetEvent("FRP:ADMIN:ReceiveGamerTagInfo")
 AddEventHandler(
-	"VP:ADMIN:ReceiveGamerTagInfo",
+	"FRP:ADMIN:ReceiveGamerTagInfo",
 	function(s, uid)
 		gamerTagsInfo[s] = uid
 	end
@@ -249,9 +249,9 @@ Citizen.CreateThread(
 	end
 )
 
-RegisterNetEvent("VP:ADMIN:CreateVehicle")
+RegisterNetEvent("FRP:ADMIN:CreateVehicle")
 AddEventHandler(
-	"VP:ADMIN:CreateVehicle",
+	"FRP:ADMIN:CreateVehicle",
 	function(model)
 		local veh = GetHashKey(model)
 
@@ -273,9 +273,9 @@ AddEventHandler(
 	end
 )
 
-RegisterNetEvent("VP:ADMIN:DestroyTargetEntity")
+RegisterNetEvent("FRP:ADMIN:DestroyTargetEntity")
 AddEventHandler(
-	"VP:ADMIN:DestroyTargetEntity",
+	"FRP:ADMIN:DestroyTargetEntity",
 	function()
 		print("a")
 		local ped = PlayerPedId()
@@ -389,9 +389,9 @@ RegisterCommand(
 	false
 )
 
-RegisterNetEvent("VP:ADMIN:Dual")
+RegisterNetEvent("FRP:ADMIN:Dual")
 AddEventHandler(
-	"VP:ADMIN:Dual",
+	"FRP:ADMIN:Dual",
 	function()
 		Citizen.InvokeNative(0xB282DC6EBD803C75, PlayerPedId(), GetHashKey("WEAPON_REVOLVER_CATTLEMAN"), 100, true, 0)
 		Citizen.InvokeNative(0x5E3BDDBCB83F3D84, PlayerPedId(), GetHashKey("WEAPON_REVOLVER_SCHOFIELD_GOLDEN"), 100, true, 0, true, 1.0)

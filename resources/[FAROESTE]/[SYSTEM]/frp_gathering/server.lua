@@ -10,9 +10,9 @@ local AnimalModelToItem = {
     [-1076508705] = "feather_5",
 }
 
-RegisterNetEvent("VP:GATHERING:Gathered")
+RegisterNetEvent("FRP:GATHERING:Gathered")
 AddEventHandler(
-    "VP:GATHERING:Gathered",
+    "FRP:GATHERING:Gathered",
     function(entityModelHash, isHuman, entityQuality)
         local _source = source
 
@@ -49,7 +49,7 @@ AddEventHandler(
             User:notify("item", item, itemAmount)
         else
             User:notify("Bolsa sem espaço!")
-        --     TriggerClientEvent("VP:LOOTING:LooteableDenied", _source, GetHashKey('p_whitefleshymeat01xa'))
+        --     TriggerClientEvent("FRP:LOOTING:LooteableDenied", _source, GetHashKey('p_whitefleshymeat01xa'))
         end
     end
 )

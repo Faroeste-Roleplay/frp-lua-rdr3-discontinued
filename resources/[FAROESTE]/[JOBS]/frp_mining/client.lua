@@ -120,7 +120,7 @@ Citizen.CreateThread(
                     if #(pedVector - v) <= 1.5 then
                         drawPrompt()
                         if PromptIsJustPressed(prompt) and GetScriptTaskStatus(ped, 0x3B3A458F, 0) ~= 1 then
-                            TriggerServerEvent("VP:MINING:TryToStartMining")
+                            TriggerServerEvent("FRP:MINING:TryToStartMining")
                             Wait(1000)
                         end
                     end
@@ -134,7 +134,7 @@ Citizen.CreateThread(
                 if #(pedVector - v) <= 1.5 then
                     drawPrompt()
                     if PromptIsJustPressed(prompt) then
-                        TriggerServerEvent("VP:MINING:TryToStartRefining")
+                        TriggerServerEvent("FRP:MINING:TryToStartRefining")
                         Wait(1000)
                     end
                 end
@@ -165,9 +165,9 @@ function drawPrompt(refining)
     PromptSetActiveGroupThisFrame(promptGroup, varString)
 end
 
-RegisterNetEvent("VP:MINING:DropMineral")
+RegisterNetEvent("FRP:MINING:DropMineral")
 AddEventHandler(
-    "VP:MINING:DropMineral",
+    "FRP:MINING:DropMineral",
     function(mineral_item)
         local prop
         if mineral_item == "raw_iron" then
@@ -210,9 +210,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:MINING:StartMiningAnimation")
+RegisterNetEvent("FRP:MINING:StartMiningAnimation")
 AddEventHandler(
-    "VP:MINING:StartMiningAnimation",
+    "FRP:MINING:StartMiningAnimation",
     function()
         if not IsPedMale(PlayerPedId()) then
             local waiting = 0
@@ -263,7 +263,7 @@ AddEventHandler(
 
                         SetCurrentPedWeapon(PlayerPedId(), GetHashKey("WEAPON_UNARMED"), true)
                         ClearPedTasks(PlayerPedId())
-                        TriggerServerEvent("VP:MINING:CollectMineral")
+                        TriggerServerEvent("FRP:MINING:CollectMineral")
                     end
                 end
             )
@@ -286,14 +286,14 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:MINING:StartProcessingAnimation")
+RegisterNetEvent("FRP:MINING:StartProcessingAnimation")
 AddEventHandler(
-    "VP:MINING:StartProcessingAnimation",
+    "FRP:MINING:StartProcessingAnimation",
     function(num)
         TaskStartScenarioInPlace(PlayerPedId(), GetHashKey("WORLD_HUMAN_CLEAN_TABLE"), 20000, true, false, false, false) -- colocar uma animação para processar
         --exports['progressBars']:startUI(20000, Language.translate[Config.lang]['process'])
         Wait(20000)
-        -- TriggerServerEvent("VP:MINING:processitem", num)
+        -- TriggerServerEvent("FRP:MINING:processitem", num)
         ClearPedTasksImmediately(PlayerPedId())
     end
 )

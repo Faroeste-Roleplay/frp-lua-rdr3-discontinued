@@ -35,9 +35,9 @@ RegisterCommand("getSlots", function(source, args)
     local Inventory = Character:getInventory()
 
 end)
-RegisterNetEvent("VP:INVENTORY:PickedUpDroppedItem")
+RegisterNetEvent("FRP:INVENTORY:PickedUpDroppedItem")
 AddEventHandler(
-    "VP:INVENTORY:PickedUpDroppedItem",
+    "FRP:INVENTORY:PickedUpDroppedItem",
     function(index)
         local _source = source
 
@@ -88,7 +88,7 @@ AddEventHandler(
 
             API.logs("./savedata/inventory.txt",  os.date() .. " | [PLAYER/GET DROP]: " .. Character:getId() .. " pegou no chão " .. itemAmount .. "x" .. itemId)
 
-            TriggerClientEvent("VP:INVENTORY:DROP:Delete", -1, index)
+            TriggerClientEvent("FRP:INVENTORY:DROP:Delete", -1, index)
 
             if not User:hasInventoryOpen() then
                 User:notify("item", itemId, itemAmount)
@@ -99,9 +99,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:INVENTORY:OpenPersonal")
+RegisterNetEvent("FRP:INVENTORY:OpenPersonal")
 AddEventHandler(
-    "VP:INVENTORY:OpenPersonal",
+    "FRP:INVENTORY:OpenPersonal",
     function()
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -113,13 +113,13 @@ AddEventHandler(
         -- Primary = primaryInventory:getWeight()
         -- Capacity = primaryInventory:getCapacity()
 
-        -- TriggerClientEvent('VP:INVENTORY:weight', _source, Primary, Capacity)
+        -- TriggerClientEvent('FRP:INVENTORY:weight', _source, Primary, Capacity)
     end
 )
 
-RegisterNetEvent("VP:INVENTORY:Close")
+RegisterNetEvent("FRP:INVENTORY:Close")
 AddEventHandler(
-    "VP:INVENTORY:Close",
+    "FRP:INVENTORY:Close",
     function()
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -132,9 +132,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:INVENTORY:Use")
+RegisterNetEvent("FRP:INVENTORY:Use")
 AddEventHandler(
-    "VP:INVENTORY:Use",
+    "FRP:INVENTORY:Use",
     function(slotId)
         local _source = source
 
@@ -159,9 +159,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:INVENTORY:Drop")
+RegisterNetEvent("FRP:INVENTORY:Drop")
 AddEventHandler(
-    "VP:INVENTORY:Drop",
+    "FRP:INVENTORY:Drop",
     function(slotId, x, y, z)
         local _source = source
 
@@ -216,7 +216,7 @@ AddEventHandler(
             API.logs("./savedata/inventory.txt",  os.date() .. " | [PLAYER/DROP ITEM]: " .. User:getCharacter():getId() .. " largou no chão " .. itemAmount .. "x" .. itemId)
 
 
-            TriggerClientEvent("VP:INVENTORY:DROP:Create", -1, index, x, y, z, itemId, itemAmount)
+            TriggerClientEvent("FRP:INVENTORY:DROP:Create", -1, index, x, y, z, itemId, itemAmount)
 
             if not User:hasInventoryOpen() then
                 User:notify("item", itemId, -(itemAmount))
@@ -227,9 +227,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:INVENTORY:SendItemIdAndAmountToPlayer")
+RegisterNetEvent("FRP:INVENTORY:SendItemIdAndAmountToPlayer")
 AddEventHandler(
-    "VP:INVENTORY:SendItemIdAndAmountToPlayer",
+    "FRP:INVENTORY:SendItemIdAndAmountToPlayer",
     function(itemId, itemAmount, playerTarget)
         local _source = source
 
@@ -276,9 +276,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:INVENTORY:moveSlotToPrimary")
+RegisterNetEvent("FRP:INVENTORY:moveSlotToPrimary")
 AddEventHandler(
-    "VP:INVENTORY:moveSlotToPrimary",
+    "FRP:INVENTORY:moveSlotToPrimary",
     function(slotId, itemAmount)
         local _source = source
 
@@ -322,9 +322,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:INVENTORY:moveSlotToSecondary")
+RegisterNetEvent("FRP:INVENTORY:moveSlotToSecondary")
 AddEventHandler(
-    "VP:INVENTORY:moveSlotToSecondary",
+    "FRP:INVENTORY:moveSlotToSecondary",
     function(slotId, itemAmount)
         local _source = source
 
@@ -410,9 +410,9 @@ AddEventHandler(
 
 
 
-RegisterNetEvent("VP:INVENTORY:PrimarySwitchSlot")
+RegisterNetEvent("FRP:INVENTORY:PrimarySwitchSlot")
 AddEventHandler(
-    "VP:INVENTORY:PrimarySwitchSlot",
+    "FRP:INVENTORY:PrimarySwitchSlot",
     function(slotFrom, slotTo, itemAmount)
         local _source = source
 
@@ -453,9 +453,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:INVENTORY:SecondarySwitchSlot")
+RegisterNetEvent("FRP:INVENTORY:SecondarySwitchSlot")
 AddEventHandler(
-    "VP:INVENTORY:SecondarySwitchSlot",
+    "FRP:INVENTORY:SecondarySwitchSlot",
     function(slotFrom, slotTo, itemAmount)
         slotFrom = tonumber(slotFrom)
         slotTo = tonumber(slotTo)
@@ -496,9 +496,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:INVENTORY:SaveWeaponAmmoOnDB")
+RegisterNetEvent("FRP:INVENTORY:SaveWeaponAmmoOnDB")
 AddEventHandler(
-    "VP:INVENTORY:SaveWeaponAmmoOnDB",
+    "FRP:INVENTORY:SaveWeaponAmmoOnDB",
     function(slot, ammoInClip, ammoInWeapon)
         local _source = source
 
@@ -557,7 +557,7 @@ Citizen.CreateThread(
                 if time >= deletionTimestamp then
                     dropPopulation[index] = nil
                     dropPopulation_serveronly[index] = nil
-                    TriggerClientEvent("VP:INVENTORY:DROP:Delete", index)
+                    TriggerClientEvent("FRP:INVENTORY:DROP:Delete", index)
                 end
             end
         end

@@ -13,9 +13,9 @@ local indexInPickupRange
 local prompt
 local prompt_group
 
-RegisterNetEvent("VP:INVENTORY:DROP:Create")
+RegisterNetEvent("FRP:INVENTORY:DROP:Create")
 AddEventHandler(
-    "VP:INVENTORY:DROP:Create",
+    "FRP:INVENTORY:DROP:Create",
     function(index, x, y, z, itemId, itemAmount)
         local itemName = ItemList[itemId].name or "Item Desconhecido"
         local itemWeight = ItemList[itemId].weight * itemAmount
@@ -60,9 +60,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:INVENTORY:DROP:Delete")
+RegisterNetEvent("FRP:INVENTORY:DROP:Delete")
 AddEventHandler(
-    "VP:INVENTORY:DROP:Delete",
+    "FRP:INVENTORY:DROP:Delete",
     function(index)
         deleteDroppedEntityForIndex(index)
 
@@ -124,7 +124,7 @@ Citizen.CreateThread(
                                 end
                             )
 
-                            TriggerServerEvent("VP:INVENTORY:PickedUpDroppedItem", indexInPickupRange)
+                            TriggerServerEvent("FRP:INVENTORY:PickedUpDroppedItem", indexInPickupRange)
                         end
                     else
                         indexInPickupRange = nil
@@ -237,7 +237,7 @@ AddEventHandler(
     "onResourceStart",
     function(resourceName)
         if resourceName == GetCurrentResourceName() then
-            TriggerServerEvent("VP:INVENTORY:DROP:Request")
+            TriggerServerEvent("FRP:INVENTORY:DROP:Request")
         end
     end
 )

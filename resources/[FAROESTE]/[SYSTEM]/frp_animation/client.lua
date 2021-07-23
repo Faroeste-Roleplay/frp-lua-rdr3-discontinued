@@ -152,7 +152,7 @@ RegisterCommand(
                 Bandana = false
             end
         else
-            TriggerEvent("VP:NOTIFY:Simple", "Você ainda está como procurado, não pode retirar a bandana. ", 10000)
+            TriggerEvent("FRP:NOTIFY:Simple", "Você ainda está como procurado, não pode retirar a bandana. ", 10000)
         end
     end
 )

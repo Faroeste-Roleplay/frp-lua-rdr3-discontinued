@@ -4,9 +4,9 @@ local Proxy = module("_core", "lib/Proxy")
 API = Proxy.getInterface("API")
 cAPI = Tunnel.getInterface("API")
 
-RegisterNetEvent("VP:STABLE:UpdateHorseComponents")
+RegisterNetEvent("FRP:STABLE:UpdateHorseComponents")
 AddEventHandler(
-    "VP:STABLE:UpdateHorseComponents",
+    "FRP:STABLE:UpdateHorseComponents",
     function(components, idhorse)
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -22,9 +22,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:STABLE:AskForMyHorses")
+RegisterNetEvent("FRP:STABLE:AskForMyHorses")
 AddEventHandler(
-    "VP:STABLE:AskForMyHorses",
+    "FRP:STABLE:AskForMyHorses",
     function()
         local _source = source
 
@@ -53,14 +53,14 @@ AddEventHandler(
         -- for k,v in pairs(horses) do
            -- print(k,v)
         -- end        
-        TriggerClientEvent("VP:STABLE:ReceiveHorsesData", _source, horses)
-        -- TriggerClientEvent("VP:STABLE:callhorse", _source)
+        TriggerClientEvent("FRP:STABLE:ReceiveHorsesData", _source, horses)
+        -- TriggerClientEvent("FRP:STABLE:callhorse", _source)
     end
 )
 
-RegisterNetEvent("VP:STABLE:BuyHorse")
+RegisterNetEvent("FRP:STABLE:BuyHorse")
 AddEventHandler(
-    "VP:STABLE:BuyHorse",
+    "FRP:STABLE:BuyHorse",
     function(data, name)
 
         local _source = source
@@ -70,19 +70,19 @@ AddEventHandler(
         local Inventory = Character:getInventory()
 
         if #Horses >= 1 then
-            TriggerClientEvent('VP:NOTIFY:Simple', _source, 'Limite de estabulo alcançado!', 5000)
+            TriggerClientEvent('FRP:NOTIFY:Simple', _source, 'Limite de estabulo alcançado!', 5000)
             return
         end
 
         if data.IsGold then
             if Inventory:getItemAmount("gold") < data.Gold*100 then
-                TriggerClientEvent('VP:NOTIFY:Simple', _source, 'Gold insuficiente!', 5000)
+                TriggerClientEvent('FRP:NOTIFY:Simple', _source, 'Gold insuficiente!', 5000)
                 return
             end
             Inventory:removeItem(-1, "gold", data.Gold*100)
         else
             if Inventory:getItemAmount("money") < data.Dollar*100 then
-                TriggerClientEvent('VP:NOTIFY:Simple', _source, 'Dollar insuficiente!', 5000)
+                TriggerClientEvent('FRP:NOTIFY:Simple', _source, 'Dollar insuficiente!', 5000)
                 return
             end
             Inventory:removeItem(-1, "money", data.Dollar*100)
@@ -92,9 +92,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:STABLE:SelectHorseWithId")
+RegisterNetEvent("FRP:STABLE:SelectHorseWithId")
 AddEventHandler(
-    "VP:STABLE:SelectHorseWithId",
+    "FRP:STABLE:SelectHorseWithId",
     function(id)
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -106,14 +106,14 @@ AddEventHandler(
         
         local Horse = Character:getHorse()
         
-        TriggerClientEvent('VP:NOTIFY:Simple', _source, 'Cavalo selecionado', 5000)
+        TriggerClientEvent('FRP:NOTIFY:Simple', _source, 'Cavalo selecionado', 5000)
     end
 )
 
 
-RegisterNetEvent("VP:STABLE:SellHorseWithId")
+RegisterNetEvent("FRP:STABLE:SellHorseWithId")
 AddEventHandler(
-    "VP:STABLE:SellHorseWithId",
+    "FRP:STABLE:SellHorseWithId",
     function(id)
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -122,11 +122,11 @@ AddEventHandler(
         local Horse = Character:getHorse()
 
         if Horse == nil then            
-            TriggerClientEvent('VP:NOTIFY:Simple', _source, 'Você já vendeu este cavalo.', 5000)
+            TriggerClientEvent('FRP:NOTIFY:Simple', _source, 'Você já vendeu este cavalo.', 5000)
             return
         end
 
-        TriggerClientEvent('VP:NOTIFY:Simple', _source, 'Cavalo vendido com sucesso.', 5000)  
+        TriggerClientEvent('FRP:NOTIFY:Simple', _source, 'Cavalo vendido com sucesso.', 5000)  
 
         Character:removeHorse(tonumber(id))
         Character:deleteHorse(tonumber(id))

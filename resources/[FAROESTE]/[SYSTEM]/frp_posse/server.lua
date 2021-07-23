@@ -31,13 +31,13 @@ RegisterCommand(
                     isOnline = isOnline
                 }
             end
-            TriggerClientEvent("VP:POSSE:OpenMenu", source, data, Posse:getName())
+            TriggerClientEvent("FRP:POSSE:OpenMenu", source, data, Posse:getName())
         else
             -- else
             --     User:notify('Você não tem permissao para criar um Bando')
             -- end
             -- if User:getCharacter():hasGroup('donator01') then
-            TriggerClientEvent("VP:POSSE:OpenCreationMenu", source)
+            TriggerClientEvent("FRP:POSSE:OpenCreationMenu", source)
         end
     end,
     false
@@ -47,13 +47,13 @@ RegisterCommand(
     "convidar",
     function(source, args)
         local arg = args[1]
-        TriggerEvent("VP:POSSE:Invite", source, arg)
+        TriggerEvent("FRP:POSSE:Invite", source, arg)
     end
 )
 
-RegisterNetEvent("VP:POSSE:checkBando")
+RegisterNetEvent("FRP:POSSE:checkBando")
 AddEventHandler(
-    "VP:POSSE:checkBando",
+    "FRP:POSSE:checkBando",
     function()
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -65,16 +65,16 @@ AddEventHandler(
                 User:notify("Para criar um bando você precisa ter level maior que 10")
                 return
             end
-            TriggerEvent("VP:POSSE:createBando", _source)
+            TriggerEvent("FRP:POSSE:createBando", _source)
         else
-            TriggerClientEvent("VP:NOTIFY:Simple", _source, "Você já está em um bando, para criar um novo deve sair do atual.", 5000)
+            TriggerClientEvent("FRP:NOTIFY:Simple", _source, "Você já está em um bando, para criar um novo deve sair do atual.", 5000)
         end
     end
 )
 
-RegisterNetEvent("VP:POSSE:createBando")
+RegisterNetEvent("FRP:POSSE:createBando")
 AddEventHandler(
-    "VP:POSSE:createBando",
+    "FRP:POSSE:createBando",
     function(source)
         local _source = source
         local PosseName = cAPI.prompt(source, "Nome do seu Bando", "")
@@ -82,17 +82,17 @@ AddEventHandler(
         local User = API.getUserFromSource(_source)
 
         if PosseName == "" then
-            TriggerClientEvent("VP:NOTIFY:Simple", _source, "Você não digitou um nome válido", 5000)
+            TriggerClientEvent("FRP:NOTIFY:Simple", _source, "Você não digitou um nome válido", 5000)
             return
         end
         API.createPosse(User:getCharacter():getId(), PosseName)
-        TriggerClientEvent("VP:NOTIFY:Simple", _source, "Registro do " .. PosseName .. " efetuado com Sucesso.", 5000)
+        TriggerClientEvent("FRP:NOTIFY:Simple", _source, "Registro do " .. PosseName .. " efetuado com Sucesso.", 5000)
     end
 )
 
-RegisterNetEvent("VP:POSSE:Invite")
+RegisterNetEvent("FRP:POSSE:Invite")
 AddEventHandler(
-    "VP:POSSE:Invite",
+    "FRP:POSSE:Invite",
     function(source, targetUserId)
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -100,7 +100,7 @@ AddEventHandler(
 
         if not User:isInAPosse() then
             User:notify("Você não está em um bando")
-            TriggerClientEvent("VP:POSSE:CloseMenu", _source)
+            TriggerClientEvent("FRP:POSSE:CloseMenu", _source)
             return
         end
 
@@ -140,9 +140,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:POSSE:Promote")
+RegisterNetEvent("FRP:POSSE:Promote")
 AddEventHandler(
-    "VP:POSSE:Promote",
+    "FRP:POSSE:Promote",
     function(targetUserId)
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -152,7 +152,7 @@ AddEventHandler(
 
         if not User:isInAPosse() then
             User:notify("Você não está em um bando")
-            TriggerClientEvent("VP:POSSE:CloseMenu", _source)
+            TriggerClientEvent("FRP:POSSE:CloseMenu", _source)
             return
         end
 
@@ -185,9 +185,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:POSSE:Demote")
+RegisterNetEvent("FRP:POSSE:Demote")
 AddEventHandler(
-    "VP:POSSE:Demote",
+    "FRP:POSSE:Demote",
     function(targetUserId)
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -197,7 +197,7 @@ AddEventHandler(
 
         if not User:isInAPosse() then
             User:notify("Você não está em um bando")
-            TriggerClientEvent("VP:POSSE:CloseMenu", _source)
+            TriggerClientEvent("FRP:POSSE:CloseMenu", _source)
             return
         end
 
@@ -230,16 +230,16 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:POSSE:Leave")
+RegisterNetEvent("FRP:POSSE:Leave")
 AddEventHandler(
-    "VP:POSSE:Leave",
+    "FRP:POSSE:Leave",
     function()
         local _source = source
         local User = API.getUserFromSource(_source)
 
         if not User:isInAPosse() then
             User:notify("Você não está em um bando")
-            TriggerClientEvent("VP:POSSE:CloseMenu", _source)
+            TriggerClientEvent("FRP:POSSE:CloseMenu", _source)
             return
         end
 
@@ -253,16 +253,16 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:POSSE:Kick")
+RegisterNetEvent("FRP:POSSE:Kick")
 AddEventHandler(
-    "VP:POSSE:Kick",
+    "FRP:POSSE:Kick",
     function(targetUserId)
         local TargetSource = API.getUserFromUserId(parseInt(targetUserId)):getSource()
         local User = API.getUserFromSource(TargetSource)
 
         if not User:isInAPosse() then
             User:notify("Você não está em um bando")
-            TriggerClientEvent("VP:POSSE:CloseMenu", _source)
+            TriggerClientEvent("FRP:POSSE:CloseMenu", _source)
             return
         end
 

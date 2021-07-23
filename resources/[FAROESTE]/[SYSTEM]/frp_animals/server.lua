@@ -20,17 +20,17 @@ local LEGENDARYANIMALS = {
 }
 
 
-RegisterServerEvent("VP:ANIMALS:playerActivated")
+RegisterServerEvent("FRP:ANIMALS:playerActivated")
 function ActivateANIMALS()
   if (PlayerCount) >= 1 then
-    TriggerEvent("VP:ANIMALS:timeCallLegendary")
+    TriggerEvent("FRP:ANIMALS:timeCallLegendary")
   else
     SetTimeout(1000, ActivateANIMALS)
   end
 end
 
 AddEventHandler(
-  "VP:ANIMALS:playerActivated",
+  "FRP:ANIMALS:playerActivated",
   function()
     if not list[source] then
       PlayerCount = PlayerCount + 1
@@ -56,7 +56,7 @@ RegisterCommand(
   "CALLANIMALS",
   function(source, rawCommand)
     local random = math.random(1, 6)
-    TriggerEvent("VP:ANIMALS:create", random)
+    TriggerEvent("FRP:ANIMALS:create", random)
   end
 )
 
@@ -64,26 +64,26 @@ RegisterCommand(
   "CALLLEGENDARY",
   function(source, rawCommand)
     local random = math.random(1, 3)
-    TriggerEvent("VP:ANIMALS:createLegendary", random)
+    TriggerEvent("FRP:ANIMALS:createLegendary", random)
   end
 )
 
-RegisterNetEvent("VP:ANIMALS:timeCallLegendary")
+RegisterNetEvent("FRP:ANIMALS:timeCallLegendary")
 AddEventHandler(
-  "VP:ANIMALS:timeCallLegendary",
+  "FRP:ANIMALS:timeCallLegendary",
   function()
     local hora = 60000 * 70
     local horas = 60000 * 180
     local timeram = math.random(hora, horas)
     Wait(timeram)
     local random = math.random(1, 6)
-    TriggerEvent("VP:ANIMALS:createLegendary", random)
+    TriggerEvent("FRP:ANIMALS:createLegendary", random)
   end
 )
 
-RegisterNetEvent("VP:ANIMALS:create")
+RegisterNetEvent("FRP:ANIMALS:create")
 AddEventHandler(
-  "VP:ANIMALS:create",
+  "FRP:ANIMALS:create",
   function()
     for _,k in pairs(ANIMALSHASH) do
       local yram = math.random(2, 50)
@@ -96,15 +96,15 @@ AddEventHandler(
       local modelhash = k.Animals
 
       for i = 1, #k.Animals do        
-        TriggerClientEvent("VP:ANIMALS:createPeds", GetHostId(), modelhash[i], x + xram, y + yram, z)
+        TriggerClientEvent("FRP:ANIMALS:createPeds", GetHostId(), modelhash[i], x + xram, y + yram, z)
       end
     end
   end
 )
 
-RegisterNetEvent("VP:ANIMALS:createLegendary")
+RegisterNetEvent("FRP:ANIMALS:createLegendary")
 AddEventHandler(
-  "VP:ANIMALS:createLegendary",
+  "FRP:ANIMALS:createLegendary",
   function(id)    
 
     if not LEGENDARYANIMALS[id] then
@@ -120,7 +120,7 @@ AddEventHandler(
 
     local modelhash = LEGENDARYANIMALS[id].Animals
     
-    TriggerClientEvent("VP:ANIMALS:create", -1, x, y, z)
-    TriggerClientEvent("VP:ANIMALS:createPeds", GetHostId(), tostring(modelhash), x + xram, y + yram, z)
+    TriggerClientEvent("FRP:ANIMALS:create", -1, x, y, z)
+    TriggerClientEvent("FRP:ANIMALS:createPeds", GetHostId(), tostring(modelhash), x + xram, y + yram, z)
   end
 )

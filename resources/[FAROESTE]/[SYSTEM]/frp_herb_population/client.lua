@@ -118,25 +118,25 @@ function RequestAndWaitForComposite(compositeHash)
     end
 end
 
-RegisterNetEvent("VP:HERB_POPULATION:SetVectorIndexSuppressed")
+RegisterNetEvent("FRP:HERB_POPULATION:SetVectorIndexSuppressed")
 AddEventHandler(
-    "VP:HERB_POPULATION:SetVectorIndexSuppressed",
+    "FRP:HERB_POPULATION:SetVectorIndexSuppressed",
     function(indexComposite, index, suppress)
         SetVectorIndexSuppressed(indexComposite, index, suppress)
     end
 )
 
-RegisterNetEvent("VP:HERB_POPULATION:SetPopSuppressed")
+RegisterNetEvent("FRP:HERB_POPULATION:SetPopSuppressed")
 AddEventHandler(
-    "VP:HERB_POPULATION:SetPopSuppressed",
+    "FRP:HERB_POPULATION:SetPopSuppressed",
     function(ps)
         popSuppressed = ps
     end
 )
 
-RegisterNetEvent("VP:HERB_POPULATION:ForceVectorIndexReload")
+RegisterNetEvent("FRP:HERB_POPULATION:ForceVectorIndexReload")
 AddEventHandler(
-    "VP:HERB_POPULATION:ForceVectorIndexReload",
+    "FRP:HERB_POPULATION:ForceVectorIndexReload",
     function(indexComposite, index)
         if IsVectorIndexLoaded(indexComposite, index) then
             UnloadAtVectorIndex(indexComposite, index)
@@ -146,7 +146,7 @@ AddEventHandler(
 )
 
 AddEventHandler(
-    "VP:EVENTS:PedFinishedGatheringEntity",
+    "FRP:EVENTS:PedFinishedGatheringEntity",
     function(ped, entity, bool_unk)
         if not IsEntityAPed(entity) then
             -- Plantinhas
@@ -188,7 +188,7 @@ AddEventHandler(
 
                 --      print(closestCompositeType, closestIndexComposite, closestIndex, compositeType)
 
-                TriggerServerEvent("VP:HERB_POPULATION:Gathered", closestCompositeType, closestIndexComposite, closestIndex)
+                TriggerServerEvent("FRP:HERB_POPULATION:Gathered", closestCompositeType, closestIndexComposite, closestIndex)
             end
         end
     end

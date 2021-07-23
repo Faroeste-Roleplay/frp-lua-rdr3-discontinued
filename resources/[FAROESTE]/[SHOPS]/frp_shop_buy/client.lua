@@ -124,7 +124,7 @@ end
 RegisterNUICallback(
     "buyItem",
     function(data, cb)
-        TriggerServerEvent("VP:SHOP:TryToBuy", data.shopId, data.itemId, data.withGold)
+        TriggerServerEvent("FRP:SHOP:TryToBuy", data.shopId, data.itemId, data.withGold)
     end
 )
 

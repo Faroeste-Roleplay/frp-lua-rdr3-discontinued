@@ -100,7 +100,7 @@ Citizen.CreateThread(
                                     end
                                 )
 
-                                TriggerServerEvent("VP:SHOP:TryToOpen", closestShopIndex)
+                                TriggerServerEvent("FRP:SHOP:TryToOpen", closestShopIndex)
                             end
                         end
                     else
@@ -142,7 +142,7 @@ Citizen.CreateThread(
                                 end
                             )
 
-                            TriggerServerEvent("VP:SHOP:Transaction", selected_shop_index, selected_transaction_index, 0)
+                            TriggerServerEvent("FRP:SHOP:Transaction", selected_shop_index, selected_transaction_index, 0)
                         end
                     end
 
@@ -156,7 +156,7 @@ Citizen.CreateThread(
                                 end
                             )
 
-                            TriggerServerEvent("VP:SHOP:Transaction", selected_shop_index, selected_transaction_index, 1)
+                            TriggerServerEvent("FRP:SHOP:Transaction", selected_shop_index, selected_transaction_index, 1)
                         end
                     end
                 end
@@ -194,9 +194,9 @@ function InitiatePrompts()
     PromptRegisterEnd(prompt_transaction_extra)
 end
 
-RegisterNetEvent("VP:SHOP:OpenNUI")
+RegisterNetEvent("FRP:SHOP:OpenNUI")
 AddEventHandler(
-    "VP:SHOP:OpenNUI",
+    "FRP:SHOP:OpenNUI",
     function(shopIndex, activeTransactions)
         NUIOpen = true
 
@@ -222,15 +222,15 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:SHOP:OpenShopByName")
+RegisterNetEvent("FRP:SHOP:OpenShopByName")
 
 AddEventHandler(
-    "VP:SHOP:OpenShopByName",
+    "FRP:SHOP:OpenShopByName",
     function(shopName)
         local shopIndex = getShopIndexByName(shopName)
 
         if shopIndex then
-            TriggerServerEvent("VP:SHOP:TryToOpen", shopIndex)
+            TriggerServerEvent("FRP:SHOP:TryToOpen", shopIndex)
         end
     end
 )

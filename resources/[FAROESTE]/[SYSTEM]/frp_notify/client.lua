@@ -1,5 +1,5 @@
-RegisterNetEvent("VP:NOTIFY:Toast")
-AddEventHandler("VP:NOTIFY:Toast",function(icon,title,mensagem)
+RegisterNetEvent("FRP:NOTIFY:Toast")
+AddEventHandler("FRP:NOTIFY:Toast",function(icon,title,mensagem)
 	--SendNUIMessage({ css = css, mensagem = mensagem })	
 	if icon == "alert" then
 		exports['frp_notify']:DisplayLeftNotification(title,
@@ -42,8 +42,8 @@ AddEventHandler("VP:NOTIFY:Toast",function(icon,title,mensagem)
 	end
 end)
 
-RegisterNetEvent("VP:NOTIFY:Simple")
-AddEventHandler("VP:NOTIFY:Simple",function(mensagem, time)
+RegisterNetEvent("FRP:NOTIFY:Simple")
+AddEventHandler("FRP:NOTIFY:Simple",function(mensagem, time)
 	SendNUIMessage({ css = 'sucesso', mensagem = mensagem, time =  time })
 --	exports['frp_notify']:DisplayLocationNotification(text,locale,10000)	
 end)

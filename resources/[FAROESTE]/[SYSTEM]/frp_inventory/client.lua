@@ -10,7 +10,7 @@ Citizen.CreateThread(
             Citizen.Wait(0)
 
             if IsControlJustPressed(0, 0xC1989F95) and not opened then
-                TriggerServerEvent("VP:INVENTORY:OpenPersonal")
+                TriggerServerEvent("FRP:INVENTORY:OpenPersonal")
                 opened = true
             end
 
@@ -65,7 +65,7 @@ Citizen.CreateThread(
                             local inWeapon = GetAmmoInPedWeapon(ped, weaponHash)
                             local ammoRemaining = math.floor(inWeapon - inClip)
 
-                            TriggerServerEvent("VP:INVENTORY:SaveWeaponAmmoOnDB", slotId, inClip, ammoRemaining)
+                            TriggerServerEvent("FRP:INVENTORY:SaveWeaponAmmoOnDB", slotId, inClip, ammoRemaining)
                         end
                     end
                 end
@@ -158,7 +158,7 @@ Citizen.CreateThread(
 --                         prompt_senditem = nil
 
 --                         currentlyTryingToSendItem = false
---                         TriggerServerEvent("VP:INVENTORY:SendToPlayer", slotId, lastTargetPlayerServerId)
+--                         TriggerServerEvent("FRP:INVENTORY:SendToPlayer", slotId, lastTargetPlayerServerId)
 --                     end
 --                 end
 --             end
@@ -169,9 +169,9 @@ Citizen.CreateThread(
 --     )
 -- end
 
-RegisterNetEvent("VP:INVENTORY:ToggleHotbar")
+RegisterNetEvent("FRP:INVENTORY:ToggleHotbar")
 AddEventHandler(
-    "VP:INVENTORY:ToggleHotbar",
+    "FRP:INVENTORY:ToggleHotbar",
     function(bool)
         SendNUIMessage(
             {
@@ -182,25 +182,25 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:INVENTORY:closeInv")
+RegisterNetEvent("FRP:INVENTORY:closeInv")
 AddEventHandler(
-    "VP:INVENTORY:closeInv",
+    "FRP:INVENTORY:closeInv",
     function()
         closeInv()
     end
 )
 
-RegisterNetEvent("VP:INVENTORY:NUICloseNoCallback")
+RegisterNetEvent("FRP:INVENTORY:NUICloseNoCallback")
 AddEventHandler(
-    "VP:INVENTORY:NUICloseNoCallback",
+    "FRP:INVENTORY:NUICloseNoCallback",
     function()
         closeInv(false)
     end
 )
 
-RegisterNetEvent("VP:INVENTORY:openAsPrimary")
+RegisterNetEvent("FRP:INVENTORY:openAsPrimary")
 AddEventHandler(
-    "VP:INVENTORY:openAsPrimary",
+    "FRP:INVENTORY:openAsPrimary",
     function(slots, inventoryWeight, inventoryMaxWeight)
         slots = computeSlots(slots, true)
 
@@ -216,9 +216,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:INVENTORY:openAsSecondary")
+RegisterNetEvent("FRP:INVENTORY:openAsSecondary")
 AddEventHandler(
-    "VP:INVENTORY:openAsSecondary",
+    "FRP:INVENTORY:openAsSecondary",
     function(slots, inventoryWeight, inventoryMaxWeight)
         slots = computeSlots(slots, false)
 
@@ -234,9 +234,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:INVENTORY:PrimarySyncSlots")
+RegisterNetEvent("FRP:INVENTORY:PrimarySyncSlots")
 AddEventHandler(
-    "VP:INVENTORY:PrimarySyncSlots",
+    "FRP:INVENTORY:PrimarySyncSlots",
     function(slots, inventoryWeight)
         slots = computeSlots(slots, true)
 
@@ -249,9 +249,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:INVENTORY:SecondarySyncSlots")
+RegisterNetEvent("FRP:INVENTORY:SecondarySyncSlots")
 AddEventHandler(
-    "VP:INVENTORY:SecondarySyncSlots",
+    "FRP:INVENTORY:SecondarySyncSlots",
     function(slots, inventoryWeight)
         slots = computeSlots(slots, false)
 
@@ -267,7 +267,7 @@ AddEventHandler(
 RegisterNUICallback(
     "use",
     function(cb)
-        TriggerServerEvent("VP:INVENTORY:Use", tonumber(cb.slotId))
+        TriggerServerEvent("FRP:INVENTORY:Use", tonumber(cb.slotId))
     end
 )
 
@@ -275,7 +275,7 @@ RegisterNUICallback(
     "drop",
     function(cb)
         local x, y, z = table.unpack(GetEntityCoords(PlayerPedId()))
-        TriggerServerEvent("VP:INVENTORY:Drop", tonumber(cb.slotId), x, y, z)
+        TriggerServerEvent("FRP:INVENTORY:Drop", tonumber(cb.slotId), x, y, z)
     end
 )
 
@@ -283,35 +283,35 @@ RegisterNUICallback(
 --     "startsendingslot",
 --     function(cb)
 --         -- startLookingForAPlayerToSend(cb.slotId)
---         TriggerEvent("VP:PLAYERPROMPTS:TryToSendItemSlotToTarget", cb.slotId)
+--         TriggerEvent("FRP:PLAYERPROMPTS:TryToSendItemSlotToTarget", cb.slotId)
 --     end
 -- )
 
 RegisterNUICallback(
     "moveSlotToPrimary",
     function(cb)
-        TriggerServerEvent("VP:INVENTORY:moveSlotToPrimary", cb.slotId, cb.itemAmount)
+        TriggerServerEvent("FRP:INVENTORY:moveSlotToPrimary", cb.slotId, cb.itemAmount)
     end
 )
 
 RegisterNUICallback(
     "moveSlotToSecondary",
     function(cb)
-        TriggerServerEvent("VP:INVENTORY:moveSlotToSecondary", cb.slotId, cb.itemAmount)
+        TriggerServerEvent("FRP:INVENTORY:moveSlotToSecondary", cb.slotId, cb.itemAmount)
     end
 )
 
 RegisterNUICallback(
     "primarySwitchSlot",
     function(cb)
-        TriggerServerEvent("VP:INVENTORY:PrimarySwitchSlot", cb.slotFrom, cb.slotTo, cb.itemAmount)
+        TriggerServerEvent("FRP:INVENTORY:PrimarySwitchSlot", cb.slotFrom, cb.slotTo, cb.itemAmount)
     end
 )
 
 RegisterNUICallback(
     "secondarySwitchSlot",
     function(cb)
-        TriggerServerEvent("VP:INVENTORY:SecondarySwitchSlot", cb.slotFrom, cb.slotTo, cb.itemAmount)
+        TriggerServerEvent("FRP:INVENTORY:SecondarySwitchSlot", cb.slotFrom, cb.slotTo, cb.itemAmount)
     end
 )
 
@@ -370,7 +370,7 @@ function closeInv(callback)
     )
     opened = false
     if callback == nil or callback == true then
-    TriggerServerEvent("VP:INVENTORY:Close")
+    TriggerServerEvent("FRP:INVENTORY:Close")
     end
 end
 
@@ -448,7 +448,7 @@ RegisterCommand(
         end
 
         if cAPI.IsWanted() then
-            TriggerEvent('VP:NOTIFY:Simple', 'Você ainda está como procurado, não pode transferir um item. ', 10000)
+            TriggerEvent('FRP:NOTIFY:Simple', 'Você ainda está como procurado, não pode transferir um item. ', 10000)
             return
         end
 
@@ -500,7 +500,7 @@ RegisterCommand(
         if targetPlayerServerId ~= nil then
             local nearestPed = GetPlayerPed(player)     
             if distance ~= -1 and distance <= 3.0 then
-                TriggerServerEvent("VP:INVENTORY:SendItemIdAndAmountToPlayer", lastItemId, itemAmount, targetPlayerServerId) 
+                TriggerServerEvent("FRP:INVENTORY:SendItemIdAndAmountToPlayer", lastItemId, itemAmount, targetPlayerServerId) 
             end
         end
   

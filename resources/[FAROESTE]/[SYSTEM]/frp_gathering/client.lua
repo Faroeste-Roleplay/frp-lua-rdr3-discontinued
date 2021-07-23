@@ -1,5 +1,5 @@
 AddEventHandler(
-    "VP:EVENTS:PedFinishedGatheringEntity",
+    "FRP:EVENTS:PedFinishedGatheringEntity",
     function(ped, entity, bool_unk)
         if IsEntityAPed(entity) then
             local isHuman = IsPedHuman(entity)
@@ -14,7 +14,7 @@ AddEventHandler(
                     timeout = timeout - wait
 
                     if NativeIsEntityGathered(entity) then
-                        TriggerServerEvent("VP:GATHERING:Gathered", GetEntityModel(entity), isHuman, GetAnimalCarcassQuality(entity))
+                        TriggerServerEvent("FRP:GATHERING:Gathered", GetEntityModel(entity), isHuman, GetAnimalCarcassQuality(entity))
                         break
                     end
                 end

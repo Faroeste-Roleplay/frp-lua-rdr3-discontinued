@@ -4,9 +4,9 @@ local Proxy = module("_core", "lib/Proxy")
 API = Proxy.getInterface("API")
 cAPI = Tunnel.getInterface("API")
 
-RegisterNetEvent("VP:MUGGIN:TryToMug")
+RegisterNetEvent("FRP:MUGGIN:TryToMug")
 AddEventHandler(
-    "VP:MUGGIN:TryToMug",
+    "FRP:MUGGIN:TryToMug",
     function(targetSource)
         local _source = source
 

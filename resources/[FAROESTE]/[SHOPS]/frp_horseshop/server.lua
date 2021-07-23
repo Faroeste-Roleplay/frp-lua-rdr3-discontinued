@@ -63,9 +63,9 @@ local prices = {
     }
 }
 
-RegisterNetEvent("VP:HORSESHOP:Buy")
+RegisterNetEvent("FRP:HORSESHOP:Buy")
 AddEventHandler(
-    "VP:HORSESHOP:Buy",
+    "FRP:HORSESHOP:Buy",
     function(model, name)
         if not prices[model] then
             return
@@ -99,9 +99,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:HORSESHOP:AskForMyHorses")
+RegisterNetEvent("FRP:HORSESHOP:AskForMyHorses")
 AddEventHandler(
-    "VP:HORSESHOP:AskForMyHorses",
+    "FRP:HORSESHOP:AskForMyHorses",
     function()
         local _source = source
 
@@ -129,13 +129,13 @@ AddEventHandler(
             data.charid = nil
         end
 
-        TriggerClientEvent("VP:HORSESHOP:ReceiveHorsesData", _source, horses)
+        TriggerClientEvent("FRP:HORSESHOP:ReceiveHorsesData", _source, horses)
     end
 )
 
-RegisterNetEvent("VP:HORSESHOP:SelectHorseWithId")
+RegisterNetEvent("FRP:HORSESHOP:SelectHorseWithId")
 AddEventHandler(
-    "VP:HORSESHOP:SelectHorseWithId",
+    "FRP:HORSESHOP:SelectHorseWithId",
     function(horseId)
         local _source = source
         local User = API.getUserFromSource(_source)

@@ -100,8 +100,8 @@ while true do
                                 local meatamount = 1   
 
                      
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -120,9 +120,9 @@ while true do
                                 local price = 75
                                 local item = "bird"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -139,9 +139,9 @@ while true do
                                 local price = 1
                                 local item = "game"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 200, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 200, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -158,9 +158,9 @@ while true do
                                 local price = 150
                                 local item = "biggame"
                                 local meatamount = 2
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 300, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 300, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -177,9 +177,9 @@ while true do
                                 local price = 2.0
                                 local item = "venison"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 500, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 500, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -196,9 +196,9 @@ while true do
                                 local price = 250
                                 local item = "venison"
                                 local meatamount = 2
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 500, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 500, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -215,9 +215,9 @@ while true do
                                 local price = 150
                                 local item = "biggame"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 300, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 300, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -234,9 +234,9 @@ while true do
                                 local price = 25
                                 local item = "stringy"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -253,9 +253,9 @@ while true do
                                 local price = 25
                                 local item = "bird"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -272,9 +272,9 @@ while true do
                                 local price = 50
                                 local item = "stringy"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -291,9 +291,9 @@ while true do
                                 local price = 1
                                 local item = "stringy"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 200, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 200, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -310,9 +310,9 @@ while true do
                                 local price = 250
                                 local item = "venison"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 500, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 500, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -329,9 +329,9 @@ while true do
                                 local price = 75
                                 local item = "herptile"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -348,9 +348,9 @@ while true do
                                 local price = 75
                                 local item = "bird"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -367,9 +367,9 @@ while true do
                                 local price = 150
                                 local item = "bird"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 150, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 150, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -386,9 +386,9 @@ while true do
                                 local price = 150
                                 local item = "stringy"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 300, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 300, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -405,9 +405,9 @@ while true do
                                 local price = 250
                                 local item = "biggame"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 500, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 500, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -424,9 +424,9 @@ while true do
                                 local price = 2
                                 local item = "biggame"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -443,9 +443,9 @@ while true do
                                 local price = 75
                                 local item = "game"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -462,9 +462,9 @@ while true do
                                 local price = 1.25
                                 local item = "game"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 125, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 125, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -481,9 +481,9 @@ while true do
                                 local price = 1
                                 local item = "bird"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 200, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 200, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -500,9 +500,9 @@ while true do
                                 local price = 1
                                 local item = "bird"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 200, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 200, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -519,9 +519,9 @@ while true do
                                 local price = 150
                                 local item = "biggame"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 300, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 300, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -538,9 +538,9 @@ while true do
                                 local price = 150
                                 local item = "biggame"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 300, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 300, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -557,9 +557,9 @@ while true do
                                 local price = 150
                                 local item = "biggame"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 300, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 300, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -576,9 +576,9 @@ while true do
                                 local price = 150
                                 local item = "bird"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 300, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 300, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -595,9 +595,9 @@ while true do
                                 local price = 150
                                 local item = "bird"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 300, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 300, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -614,9 +614,9 @@ while true do
                                 local price = 25
                                 local item = "pork"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 25, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 25, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -633,9 +633,9 @@ while true do
                                 local price = 25
                                 local item = "pork"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 25, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 25, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -652,9 +652,9 @@ while true do
                                 local price = 25
                                 local item = "pork"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 25, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 25, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -671,9 +671,9 @@ while true do
                                 local price = 25
                                 local item = "wool"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 25, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 25, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -690,9 +690,9 @@ while true do
                                 local price = 2
                                 local item = "biggame"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -709,9 +709,9 @@ while true do
                                 local price = 1
                                 local item = "bird"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 200, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 200, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -728,9 +728,9 @@ while true do
                                 local price = 75
                                 local item = "bird"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -747,9 +747,9 @@ while true do
                                 local price = 250
                                 local item = "fish"
                                 local meatamount = 2
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 500, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 500, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -766,9 +766,9 @@ while true do
                                 local price = 1
                                 local item = "biggame"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 200, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 200, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -785,9 +785,9 @@ while true do
                                 local price = 75
                                 local item = "herptile"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -804,9 +804,9 @@ while true do
                                 local price = 75
                                 local item = "stringy"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -823,9 +823,9 @@ while true do
                                 local price = 75
                                 local item = "stringy"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -842,9 +842,9 @@ while true do
                                 local price = 75
                                 local item = "stringy"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -861,9 +861,9 @@ while true do
                                 local price = 75
                                 local item = "bird"
                                 local meatamount = 2
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -880,9 +880,9 @@ while true do
                                 local price = 2.45
                                 local item = "fish"
                                 local meatamount = 2
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 350, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 350, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end    
@@ -899,9 +899,9 @@ while true do
                                 local price = 3.75
                                 local item = "biggame"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 350, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 350, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -918,9 +918,9 @@ while true do
                                 local price = 75
                                 local item = "stringy"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -937,9 +937,9 @@ while true do
                                 local price = 75
                                 local item = "stringy"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -956,9 +956,9 @@ while true do
                                 local price = 75
                                 local item = "stringy"
                                 local meatamount = 2
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -975,9 +975,9 @@ while true do
                                 local price = 75
                                 local item = "bird"
                                 local meatamount = 2
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -994,9 +994,9 @@ while true do
                                 local price = 1
                                 local item = "game"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 200, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 200, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1013,9 +1013,9 @@ while true do
                                 local price = 75
                                 local item = "bird"
                                 local meatamount = 2
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1032,9 +1032,9 @@ while true do
                                 local price = 175
                                 local item = "bird"
                                 local meatamount = 2
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1052,9 +1052,9 @@ while true do
                                 local price = 25
                                 local item = "bird"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1071,9 +1071,9 @@ while true do
                                 local price = 50
                                 local item = "herptile"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1090,9 +1090,9 @@ while true do
                                 local price = 50
                                 local item = "herptile"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1109,9 +1109,9 @@ while true do
                                 local price = 250
                                 local item = "fish"
                                 local meatamount = 2
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1128,9 +1128,9 @@ while true do
                                 local price = 175
                                 local item = "bird"
                                 local meatamount = 2
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1147,9 +1147,9 @@ while true do
                                 local price = 5
                                 local item = "bird"
                                 local meatamount = 2
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1166,9 +1166,9 @@ while true do
                                 local price = 2
                                 local item = "bird"
                                 local meatamount = 2
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1185,9 +1185,9 @@ while true do
                                 local price = 1
                                 local item = "bird"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1204,9 +1204,9 @@ while true do
                                 local price = 1.25
                                 local item = "bird"
                                 local meatamount = 2
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1223,9 +1223,9 @@ while true do
                                 local price = 2
                                 local item = "game"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 275, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 275, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1242,9 +1242,9 @@ while true do
                                 local price = 175
                                 local item = "game"
                                 local meatamount = 2
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1261,9 +1261,9 @@ while true do
                                 local price = 150
                                 local item = "game"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1282,9 +1282,9 @@ while true do
                                 local price = 3
                                 local item = "biggame"
                                 local meatamount = 3
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 375, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 375, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1301,9 +1301,9 @@ while true do
                                 local price = 1
                                 local item = "bird"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1320,9 +1320,9 @@ while true do
                                 local price = 225
                                 local item = "fish"
                                 local meatamount = 2
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 275, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 275, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1339,9 +1339,9 @@ while true do
                                 local price = 2.75
                                 local item = "fish"
                                 local meatamount = 2
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 275, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 275, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1358,9 +1358,9 @@ while true do
                                 local price = 3.75
                                 local item = "fish"
                                 local meatamount = 2
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 375, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 375, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1377,9 +1377,9 @@ while true do
                                 local price = 150
                                 local item = "stringy"
                                 local meatamount = 1
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, model)
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, model)
                                 --TriggerServerEvent("gunshop:giveitem", item, meatamount)
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold carcass")
                                 --TriggerEvent("redemrp_notification:start", "You earned $" .. price .. " and " .. meatamount .. ' ' .. item .. " meat", 5, "success")
                             end
@@ -1407,8 +1407,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 150, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 150, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_DEER_HIDE" then --whitetail deer Pelt
@@ -1421,8 +1421,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 275, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 275, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_DEER_HIDE_PRISTINE" then --whitetail deer Pelt
@@ -1435,8 +1435,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 400, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 400, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_FOX_FUR_POOR" then --fox pelt
@@ -1449,8 +1449,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 150, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 150, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_FOX_FUR" then --fox pelt
@@ -1463,8 +1463,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 275, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 275, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_FOX_FUR_PRISTINE" then --fox pelt
@@ -1477,8 +1477,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 600, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 600, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_PRONGHORN_FUR_POOR" then --American Pronghorn Buck Pelt
@@ -1491,8 +1491,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 150, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 150, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_PRONGHORN_FUR" then --American Pronghorn Buck Pelt
@@ -1505,8 +1505,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 275, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 275, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_PRONGHORN_FUR_PRISTINE" then --American Pronghorn Buck Pelt
@@ -1519,8 +1519,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 600, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 600, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BOAR_SKIN_POOR" then --Wild Boar Pelt
@@ -1533,8 +1533,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 300, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 300, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BOAR_SKIN" then --Wild Boar Pelt
@@ -1547,8 +1547,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 550, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 550, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BOAR_SKIN_PRISTINE" then --Wild Boar Pelt
@@ -1561,8 +1561,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 1200, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 1200, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_ELK_FUR_POOR" then --Rocky Mountain Bull Elk Pelt
@@ -1575,8 +1575,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 200, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 200, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_ELK_FUR" then --Rocky Mountain Bull Elk Pelt
@@ -1589,8 +1589,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 350, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 350, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_ELK_FUR_PRISTINE" then --Rocky Mountain Bull Elk Pelt
@@ -1603,8 +1603,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 650, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 650, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_WOLF_FUR_POOR" then --Wolf Pelt
@@ -1617,8 +1617,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 250, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 250, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_WOLF_FUR" then --Wolf Pelt
@@ -1631,8 +1631,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 375, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 375, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_WOLF_FUR_PRISTINE" then --Wolf Pelt
@@ -1645,8 +1645,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 700, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 700, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_PIG_SKIN_POOR" then --Pig Pelt
@@ -1659,8 +1659,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 250, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 250, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_PIG_SKIN" then --Pig Pelt
@@ -1673,8 +1673,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 350, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 350, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_PIG_SKIN_PRISTINE" then --Pig Pelt
@@ -1687,8 +1687,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 750, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 750, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_SHEEP_WOOL_POOR" then --Sheep Pelt
@@ -1701,8 +1701,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 150, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 150, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_SHEEP_WOOL" then --Sheep Pelt
@@ -1715,8 +1715,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 250, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 250, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_SHEEP_WOOL_PRISTINE" then --Sheep Pelt
@@ -1729,8 +1729,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 750, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 750, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_RAM_HIDE_POOR" then --Ram Pelt
@@ -1743,8 +1743,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 200, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 200, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_RAM_HIDE" then --Ram Pelt
@@ -1757,8 +1757,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 355, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 355, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_RAM_HIDE_PRISTINE" then --Ram Pelt
@@ -1771,8 +1771,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 670, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 670, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_ELK_FUR_POOR" then --Elk pelt
@@ -1785,8 +1785,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 180, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 180, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_ELK_FUR" then --Elk pelt
@@ -1799,8 +1799,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 350, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 350, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_ELK_FUR_PRISTINE" then --Elk pelt
@@ -1813,8 +1813,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 600, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 600, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BEAR_FUR_POOR" then  -- Grizzly Bear pelt
@@ -1827,8 +1827,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 400, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 400, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BEAR_FUR" then  -- Grizzly Bear pelt
@@ -1841,8 +1841,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 500, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 500, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BEAR_FUR_PRISTINE" then  -- Grizzly Bear pelt
@@ -1855,8 +1855,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 600, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 600, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BUFFALO_FUR_POOR" then  -- Grizzly Bear pelt
@@ -1869,8 +1869,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 600, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 600, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BUFFALO_FUR" then  -- Grizzly Bear pelt
@@ -1883,8 +1883,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 600, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 600, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BUFFALO_FUR_PRISTINE" then  -- Grizzly Bear pelt
@@ -1897,8 +1897,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 750, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 750, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BUCK_FUR_POOR" then  -- Grizzly Bear pelt
@@ -1911,8 +1911,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 750, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 750, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BUCK_FUR" then  -- Grizzly Bear pelt
@@ -1925,8 +1925,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 300, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 300, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BUCK_FUR_PRISTINE" then  -- Grizzly Bear pelt
@@ -1939,8 +1939,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 355, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 355, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_ALLIGATOR_SKIN_POOR" then  -- Alligator Pelt
@@ -1953,8 +1953,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 250, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 250, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_ALLIGATOR_SKIN" then  -- Alligator Pelt
@@ -1967,8 +1967,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 350, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 350, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_ALLIGATOR_SKIN_PRISTINE" then  -- Alligator Pelt
@@ -1981,8 +1981,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 275, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 275, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_OXEN_HIDE_POOR" then  -- Alligator Pelt
@@ -1995,8 +1995,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 300, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 300, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_OXEN_HIDE" then  -- Alligator Pelt
@@ -2009,8 +2009,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 305, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 305, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_OXEN_HIDE_PRISTINE" then  -- Alligator Pelt
@@ -2023,8 +2023,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 1450, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 1450, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BLACK_BEAR_FUR_POOR" then  -- Alligator Pelt
@@ -2037,8 +2037,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 500, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 500, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BLACK_BEAR_FUR" then  -- Alligator Pelt
@@ -2051,8 +2051,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 800, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 800, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BLACK_BEAR_FUR_PRISTINE" then  -- Alligator Pelt
@@ -2065,8 +2065,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 1550, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 1550, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BULL_HIDE_POOR" then  -- Alligator Pelt
@@ -2079,8 +2079,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 200, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 200, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BULL_HIDE" then  -- Alligator Pelt
@@ -2093,8 +2093,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 400, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 400, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BULL_HIDE_PRISTINE" then  -- Alligator Pelt
@@ -2107,8 +2107,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 600, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 600, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_COW_HIDE_POOR" then  -- Alligator Pelt
@@ -2121,8 +2121,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 150, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 150, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_COW_HIDE" then  -- Alligator Pelt
@@ -2135,8 +2135,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_COW_HIDE_PRISTINE" then  -- Alligator Pelt
@@ -2149,8 +2149,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 300, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 300, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_COUGAR_FUR_POOR " then  -- Alligator Pelt
@@ -2163,8 +2163,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 250, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 250, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_COUGAR_FUR" then  -- Alligator Pelt
@@ -2177,8 +2177,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 400, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 400, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_COUGAR_FUR_PRISTINE" then  -- Alligator Pelt
@@ -2191,8 +2191,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 550, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 550, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_COYOTE_FUR_POOR" then  -- Alligator Pelt
@@ -2205,8 +2205,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 125, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 125, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_COYOTE_FUR" then  -- Alligator Pelt
@@ -2219,8 +2219,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 300, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 300, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_COYOTE_FUR_PRISTINE" then  -- Alligator Pelt
@@ -2233,8 +2233,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 600, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 600, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_GOAT_HAIR_PRISTINE" then  -- Alligator Pelt
@@ -2247,8 +2247,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 300, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 300, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_GOAT_HAIR" then  -- Alligator Pelt
@@ -2261,8 +2261,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 150, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 150, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_GOAT_HAIR_POOR" then  -- Alligator Pelt
@@ -2275,8 +2275,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 175, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 175, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_PRONGHORN_FUR_POOR" then  -- Alligator Pelt
@@ -2289,8 +2289,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 150, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 150, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_PRONGHORN_FUR" then  -- Alligator Pelt
@@ -2303,8 +2303,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 200, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 200, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_PRONGHORN_FUR_PRISTINE" then  -- Alligator Pelt
@@ -2317,8 +2317,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 450, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 450, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_COW_HIDE_POOR" then  -- Alligator Pelt
@@ -2331,8 +2331,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 50, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 50, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_COW_HIDE" then  -- Alligator Pelt
@@ -2345,8 +2345,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 125, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 125, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_COW_HIDE_PRISTINE" then  -- Alligator Pelt
@@ -2359,8 +2359,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 250, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 250, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_PANTHER_FUR_POOR" then  -- Alligator Pelt
@@ -2373,8 +2373,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 215, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 215, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_PANTHER_FUR" then  -- Alligator Pelt
@@ -2387,8 +2387,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 425, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 425, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_PANTHER_FUR_PRISTINE" then  -- Alligator Pelt
@@ -2401,8 +2401,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 700, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 700, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BEAVER_FUR_POOR" then  -- Alligator Pelt
@@ -2415,8 +2415,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 100, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 100, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BEAVER_FUR" then  -- Alligator Pelt
@@ -2429,8 +2429,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 225, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 225, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_BEAVER_FUR_PRISTINE" then  -- Alligator Pelt
@@ -2443,8 +2443,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 650, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 650, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_MOOSE_FUR_POOR" then  -- Alligator Pelt
@@ -2457,8 +2457,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 215, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 215, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_MOOSE_FUR" then  -- Alligator Pelt
@@ -2471,8 +2471,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 405, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 405, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_MOOSE_FUR_PRISTINE" then  -- Alligator Pelt
@@ -2485,8 +2485,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 1250, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 1250, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_JAVELINA_SKIN_POOR" then  -- Alligator Pelt
@@ -2499,8 +2499,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 115, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 115, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_JAVELINA_SKIN" then  -- Alligator Pelt
@@ -2513,8 +2513,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 325, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 325, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     elseif HASH_PROVISIONS[carriedEntityHash] == "PROVISION_JAVELINA_SKIN_PRISTINE" then  -- Alligator Pelt
@@ -2527,8 +2527,8 @@ while true do
                             local entitycheck = Citizen.InvokeNative(0xD806CD2A4F2C2996, PlayerPedId())
                             local holding = GetPedType(entitycheck)
                             if holding == 0 then
-                                TriggerServerEvent("VP:BUTCHER:addmoney", 750, HASH_PROVISIONS[carriedEntityHash])
-                                TriggerServerEvent('VP:SYSTEMPAY:xp', tonumber(3))
+                                TriggerServerEvent("FRP:BUTCHER:addmoney", 750, HASH_PROVISIONS[carriedEntityHash])
+                                TriggerServerEvent('FRP:SYSTEMPAY:xp', tonumber(3))
                                 print("sold Hide")
                             end
                     else 

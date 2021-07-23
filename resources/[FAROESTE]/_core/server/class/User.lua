@@ -123,9 +123,9 @@ function API.User(source, id, ipAddress)
             local Horse, horseComponents = self:getCharacter():getHorse()
 
             if Horse ~= nil then
-                TriggerClientEvent("VP:HORSE:SetHorseInfo", self:getSource(), Horse:getModel(), Horse:getName(), horseComponents)
+                TriggerClientEvent("FRP:HORSE:SetHorseInfo", self:getSource(), Horse:getModel(), Horse:getName(), horseComponents)
             else
-                TriggerClientEvent("VP:HORSE:SetHorseInfo", self:getSource(), "A_C_Horse_MP_Mangy_Backup", "Pangaré", {0x106961A8, 0x508B80B9})
+                TriggerClientEvent("FRP:HORSE:SetHorseInfo", self:getSource(), "A_C_Horse_MP_Mangy_Backup", "Pangaré", {0x106961A8, 0x508B80B9})
             end
 
             local posse = API.getPosse(tonumber(json.decode(charRow[1].metaData).posse))
@@ -201,7 +201,7 @@ function API.User(source, id, ipAddress)
     end
 
     self.closeInventory = function()
-        TriggerClientEvent("VP:INVENTORY:NUICloseNoCallback", self:getSource())
+        TriggerClientEvent("FRP:INVENTORY:NUICloseNoCallback", self:getSource())
 
         if self.primaryViewingInventory ~= nil then
             self.primaryViewingInventory:removeViewer(self)
@@ -230,7 +230,7 @@ function API.User(source, id, ipAddress)
 
     self.setHorse = function(this, id)
         local Horse = self:getCharacter():setHorse(id)
-        TriggerClientEvent("VP:HORSE:SetHorseInfo", self:getSource(), Horse:getModel(), Horse:getName(), Horse:getComponents())
+        TriggerClientEvent("FRP:HORSE:SetHorseInfo", self:getSource(), Horse:getModel(), Horse:getName(), Horse:getComponents())
         -- cAPI.SetHorseInfo(self:getSource(), Horse:getModel(), Horse:getName(), Horse:getComponents())
     end
 
@@ -241,7 +241,7 @@ function API.User(source, id, ipAddress)
             type = "dev"
         end
 
-        TriggerClientEvent("VP:TOAST:New", self:getSource(), type, text, quantity)
+        TriggerClientEvent("FRP:TOAST:New", self:getSource(), type, text, quantity)
     end
 
     self.getWeapons = function()
@@ -277,7 +277,7 @@ function API.User(source, id, ipAddress)
 
     self.setPosse = function(this, id)
         self.posseId = id
-        TriggerClientEvent("VP:POSSE:SetPosse", self:getSource(), id)
+        TriggerClientEvent("FRP:POSSE:SetPosse", self:getSource(), id)
         if id ~= nil then
             self:getCharacter():setData(self:getCharacter():getId(), "metaData", "posse", id)
         else

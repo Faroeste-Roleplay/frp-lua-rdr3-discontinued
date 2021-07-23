@@ -25,9 +25,9 @@ function lockpick(pickhealth,pickdamage,pickPadding,distance)
 =======
 local doorHashBeingLockpicked
 
-RegisterNetEvent("VP:LOCKPICK:StartLockpicking")
+RegisterNetEvent("FRP:LOCKPICK:StartLockpicking")
 AddEventHandler(
-    "VP:LOCKPICK:StartLockpicking",
+    "FRP:LOCKPICK:StartLockpicking",
     function()
         local doorHash = exports.frp_doorcontainer:GetRegisteredDoorHashInRadius(1.5, 1)
 
@@ -102,7 +102,7 @@ RegisterNUICallback(
 
         doorHashBeingLockpicked = nil
 
-        TriggerServerEvent("VP:LOCKPICKING:FailedLockpicking")
+        TriggerServerEvent("FRP:LOCKPICKING:FailedLockpicking")
     end
 )
 
@@ -113,7 +113,7 @@ RegisterNUICallback(
         CloseGui()
         cb("ok")
 
-        TriggerServerEvent("VP:LOCKPICKING:SuccededLockpicking", doorHashBeingLockpicked)
+        TriggerServerEvent("FRP:LOCKPICKING:SuccededLockpicking", doorHashBeingLockpicked)
 
         doorHashBeingLockpicked = nil
     end

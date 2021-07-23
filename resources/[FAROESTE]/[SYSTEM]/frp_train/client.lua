@@ -125,8 +125,8 @@ function trainroute()
 end
 
 
-RegisterNetEvent('VP:TRAIN:Bondroute')
-AddEventHandler('VP:TRAIN:Bondroute', function(n)
+RegisterNetEvent('FRP:TRAIN:Bondroute')
+AddEventHandler('FRP:TRAIN:Bondroute', function(n)
     DeleteAllTrains()
     SetRandomTrains(false) 
     local trainWagons = N_0x635423d55ca84fc8(bondHash)
@@ -193,15 +193,15 @@ end)
 --         if GetClockHours() == 0 then
 --             if GetClockMinutes() >= 1 and GetClockMinutes() <= 3 then
 --                 if Ghost_train == nil then
---                     TriggerServerEvent("VP:GHOSTRAIN:calltrain")                
+--                     TriggerServerEvent("FRP:GHOSTRAIN:calltrain")                
 --                 end
 --             end
 --         end
 --     end
 -- end)
 
--- RegisterNetEvent('VP:GHOST:Trainroute')
--- AddEventHandler('VP:GHOST:Trainroute', function(n)
+-- RegisterNetEvent('FRP:GHOST:Trainroute')
+-- AddEventHandler('FRP:GHOST:Trainroute', function(n)
 
 --     local trainWagons = N_0x635423d55ca84fc8(241358608)
 

@@ -57,8 +57,8 @@ Citizen.CreateThread(
 
                 if IsControlJustPressed(0, 0x05CA7C52) then -- DOWNN_ARROW
                     -- if GetGameTimer() >= next_request_at then
-                    -- TriggerServerEvent("VP:FORT:RequestUnlocks")
-                    TriggerEvent("VP:FORT:RespondToUnlocksRequest", {})
+                    -- TriggerServerEvent("FRP:FORT:RequestUnlocks")
+                    TriggerEvent("FRP:FORT:RespondToUnlocksRequest", {})
 
                     next_request_at = GetGameTimer() + request_delay
                 -- else
@@ -107,9 +107,9 @@ function UpdateBalance(primary, secondary)
     )
 end
 
-RegisterNetEvent("VP:FORT:RespondToUnlocksRequest")
+RegisterNetEvent("FRP:FORT:RespondToUnlocksRequest")
 AddEventHandler(
-    "VP:FORT:RespondToUnlocksRequest",
+    "FRP:FORT:RespondToUnlocksRequest",
     function(response)
         print("Got response")
 
@@ -141,9 +141,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:FORT:SetPlayerBalance")
+RegisterNetEvent("FRP:FORT:SetPlayerBalance")
 AddEventHandler(
-    "VP:FORT:SetPlayerBalance",
+    "FRP:FORT:SetPlayerBalance",
     function(primary, secondary)
         balance = {
             primary = primary,

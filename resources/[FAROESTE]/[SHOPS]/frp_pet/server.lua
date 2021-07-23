@@ -4,8 +4,8 @@ local Proxy = module("_core", "lib/Proxy")
 API = Proxy.getInterface("API")
 cAPI = Tunnel.getInterface("API")
 
--- RegisterServerEvent('VP:PET:buydog')
--- AddEventHandler('VP:PET:buydog', function(dog)
+-- RegisterServerEvent('FRP:PET:buydog')
+-- AddEventHandler('FRP:PET:buydog', function(dog)
 --     local _source = source
 --     local User = API.getUserFromSource(_source)
 --     local Inventory = User:getCharacter():getInventory()
@@ -13,12 +13,12 @@ cAPI = Tunnel.getInterface("API")
 --         User:notify('Dinheiro insuficiente!')
 --         return
 --     end
---     TriggerClientEvent('VP:PET:spawndog', _source, dog.Model, false)
+--     TriggerClientEvent('FRP:PET:spawndog', _source, dog.Model, false)
 -- end)
 
-RegisterServerEvent("VP:PET:buydog")
+RegisterServerEvent("FRP:PET:buydog")
 AddEventHandler(
-    "VP:PET:buydog",
+    "FRP:PET:buydog",
     function(args)
         local _src = source
         local _price = args["Price"]
@@ -40,7 +40,7 @@ AddEventHandler(
             return
         end
 
-        TriggerClientEvent("VP:PET:spawndog", _src, _model, true)
+        TriggerClientEvent("FRP:PET:spawndog", _src, _model, true)
         -- print(_resul)
 
         if _resul == nil then
@@ -57,9 +57,9 @@ AddEventHandler(
     end
 )
 
-RegisterServerEvent("VP:PET:loaddog")
+RegisterServerEvent("FRP:PET:loaddog")
 AddEventHandler(
-    "VP:PET:loaddog",
+    "FRP:PET:loaddog",
     function()
         local _src = source
         local User = API.getUserFromSource(_src)
@@ -74,7 +74,7 @@ AddEventHandler(
         if Hasdogs ~= nil then
             local dog = Hasdogs
             -- print(dog)
-            TriggerClientEvent("VP:PET:spawndog", _src, dog, false)
+            TriggerClientEvent("FRP:PET:spawndog", _src, dog, false)
         else
             -- print("Error, dog!")
         end

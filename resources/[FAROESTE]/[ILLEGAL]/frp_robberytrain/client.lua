@@ -58,8 +58,8 @@ Citizen.CreateThread(function()
 end)
 
 
-RegisterNetEvent('VP:Trainroute')
-AddEventHandler('VP:Trainroute', function(n)
+RegisterNetEvent('FRP:Trainroute')
+AddEventHandler('FRP:Trainroute', function(n)
     DeleteAllTrains()
     SetRandomTrains(false)
 

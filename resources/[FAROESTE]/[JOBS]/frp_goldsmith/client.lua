@@ -86,7 +86,7 @@ Citizen.CreateThread(
                 if #(pedVector - v) <= 1.5 then
                     drawPrompt()
                     if PromptIsJustPressed(prompt) then
-                        TriggerServerEvent("VP:GOLDSMITH:TryToStartRefining")
+                        TriggerServerEvent("FRP:GOLDSMITH:TryToStartRefining")
                     end
                 end
             end
@@ -117,9 +117,9 @@ function drawPrompt(refining)
 end
 
 
-RegisterNetEvent("VP:GOLDSMITH:StartMiningAnimation")
+RegisterNetEvent("FRP:GOLDSMITH:StartMiningAnimation")
 AddEventHandler(
-    "VP:GOLDSMITH:StartMiningAnimation",
+    "FRP:GOLDSMITH:StartMiningAnimation",
     function()
         isMining = true
         TaskStartScenarioInPlace(PlayerPedId(), GetHashKey("WORLD_HUMAN_PICKAXE_WALL"), 20000, true, false, false, false)
@@ -128,18 +128,18 @@ AddEventHandler(
         ClearPedTasksImmediately(PlayerPedId())
         isMining = false
 
-        TriggerServerEvent("VP:GOLDSMITH:CollectMineral")
+        TriggerServerEvent("FRP:GOLDSMITH:CollectMineral")
     end
 )
 
-RegisterNetEvent("VP:GOLDSMITH:StartProcessingAnimation")
+RegisterNetEvent("FRP:GOLDSMITH:StartProcessingAnimation")
 AddEventHandler(
-    "VP:GOLDSMITH:StartProcessingAnimation",
+    "FRP:GOLDSMITH:StartProcessingAnimation",
     function(num)
         TaskStartScenarioInPlace(PlayerPedId(), GetHashKey("WORLD_HUMAN_CLEAN_TABLE"), 20000, true, false, false, false) -- colocar uma animação para processar
         --exports['progressBars']:startUI(20000, Language.translate[Config.lang]['process'])
         Wait(20000)
-        -- TriggerServerEvent("VP:GOLDSMITH:processitem", num)
+        -- TriggerServerEvent("FRP:GOLDSMITH:processitem", num)
         ClearPedTasksImmediately(PlayerPedId())
     end
 )

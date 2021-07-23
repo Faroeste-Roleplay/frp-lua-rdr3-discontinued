@@ -104,7 +104,7 @@ end
 -- 				PromptSetEnabled(prompt_patdown, true)
 -- 			end
 -- 		)
--- 		TriggerServerEvent("VP:SHERIFF:TryToPatDown", lastTargetPlayerServerId)
+-- 		TriggerServerEvent("FRP:SHERIFF:TryToPatDown", lastTargetPlayerServerId)
 -- 	end
 -- end
 
@@ -196,13 +196,13 @@ Citizen.CreateThread(
 				WarMenu.Display()
 			elseif WarMenu.IsMenuOpened("citizen") then
 				if WarMenu.Button("Algemar") then
-					TriggerEvent("VP:SHERIFF:cuffcheck")
+					TriggerEvent("FRP:SHERIFF:cuffcheck")
 				elseif WarMenu.Button("Soltar") then
-					TriggerServerEvent("VP:SHERIFF:soltar")
+					TriggerServerEvent("FRP:SHERIFF:soltar")
 				elseif WarMenu.Button("Colocar no veículo") then
-					TriggerEvent("VP:SHERIFF:putinvehicle")
+					TriggerEvent("FRP:SHERIFF:putinvehicle")
 				elseif WarMenu.Button("Tirar do veículo") then
-					TriggerEvent("VP:SHERIFF:outvehicle")
+					TriggerEvent("FRP:SHERIFF:outvehicle")
 				elseif WarMenu.Button("Multar") then
 				--	FUNCTION HERE
 				end
@@ -218,9 +218,9 @@ Citizen.CreateThread(
 		end
 	end
 ) ]]
--- RegisterNetEvent("VP:SHERIFF:giveweapon")
+-- RegisterNetEvent("FRP:SHERIFF:giveweapon")
 -- AddEventHandler(
--- 	"VP:SHERIFF:giveweapon",
+-- 	"FRP:SHERIFF:giveweapon",
 -- 	function(weapon)
 -- 		Citizen.CreateThread(
 -- 			function()
@@ -274,7 +274,7 @@ RegisterCommand(
 			local nearestPed = GetPlayerPed(player)		
 			if distance ~= -1 and distance <= 3.0 then
 				if IsEntityPlayingAnim(nearestPed, "script_proc@robberies@homestead@lonnies_shack@deception", "hands_up_loop", 3) then
-					TriggerServerEvent("VP:SHERIFF:TryToPatDown", GetPlayerServerId(player))
+					TriggerServerEvent("FRP:SHERIFF:TryToPatDown", GetPlayerServerId(player))
 				end
 			end
 		end
@@ -282,9 +282,9 @@ RegisterCommand(
 	false
 )
 
-RegisterNetEvent("VP:SHERIFF:putinvehicle")
+RegisterNetEvent("FRP:SHERIFF:putinvehicle")
 AddEventHandler(
-	"VP:SHERIFF:putinvehicle",
+	"FRP:SHERIFF:putinvehicle",
 	function()
 		local nearestPlayer = cAPI.getNearestPlayer(1.5)
 		if nearestPlayer ~= nil then
@@ -301,16 +301,16 @@ AddEventHandler(
 		if distance ~= -1 and distance <= 3.0 then
 			if player == handcuffed then
 			else
-				TriggerServerEvent("VP:SHERIFF:puting", GetPlayerServerId(player))
+				TriggerServerEvent("FRP:SHERIFF:puting", GetPlayerServerId(player))
 			end
 		else
 		end
 	end
 )
 
-RegisterNetEvent("VP:SHERIFF:vehiclep")
+RegisterNetEvent("FRP:SHERIFF:vehiclep")
 AddEventHandler(
-	"VP:SHERIFF:vehiclep",
+	"FRP:SHERIFF:vehiclep",
 	function()
 		local coords = GetEntityCoords(PlayerPedId())
 		if IsAnyVehicleNearPoint(coords.x, coords.y, coords.z, 5.0) then
@@ -335,9 +335,9 @@ AddEventHandler(
 	end
 )
 
-RegisterNetEvent("VP:SHERIFF:outvehicle")
+RegisterNetEvent("FRP:SHERIFF:outvehicle")
 AddEventHandler(
-	"VP:SHERIFF:outvehicle",
+	"FRP:SHERIFF:outvehicle",
 	function()
 		local nearestPlayer = cAPI.getNearestPlayer(1.5)
 		if nearestPlayer ~= nil then
@@ -355,16 +355,16 @@ AddEventHandler(
 			if player == handcuffed then
 			else
 				print("chegouaqui")
-				TriggerServerEvent("VP:SHERIFF:outing", GetPlayerServerId(player))
+				TriggerServerEvent("FRP:SHERIFF:outing", GetPlayerServerId(player))
 			end
 		else
 		end
 	end
 )
 
-RegisterNetEvent("VP:SHERIFF:vehicleout")
+RegisterNetEvent("FRP:SHERIFF:vehicleout")
 AddEventHandler(
-	"VP:SHERIFF:vehicleout",
+	"FRP:SHERIFF:vehicleout",
 	function()
 		local playerPed = PlayerPedId()
 
@@ -377,9 +377,9 @@ AddEventHandler(
 	end
 )
 
-RegisterNetEvent("VP:SHERIFF:cuff")
+RegisterNetEvent("FRP:SHERIFF:cuff")
 AddEventHandler(
-	"VP:SHERIFF:cuff",
+	"FRP:SHERIFF:cuff",
 	function()
 		ped = GetPlayerPed(-1)
 		ped2 = PlayerPedId()
@@ -400,9 +400,9 @@ AddEventHandler(
 	end
 )
 
-RegisterNetEvent("VP:SHERIFF:uncuff")
+RegisterNetEvent("FRP:SHERIFF:uncuff")
 AddEventHandler(
-	"VP:SHERIFF:uncuff",
+	"FRP:SHERIFF:uncuff",
 	function()
 		ped = GetPlayerPed(-1)
 		ped2 = PlayerPedId()
@@ -421,16 +421,16 @@ AddEventHandler(
 	end
 )
 
-RegisterNetEvent("VP:SHERIFF:cuffcheck")
+RegisterNetEvent("FRP:SHERIFF:cuffcheck")
 AddEventHandler(
-	"VP:SHERIFF:cuffcheck",
+	"FRP:SHERIFF:cuffcheck",
 	function()
 		local player, distance = GetClosestPlayer()
 		if distance ~= -1 and distance <= 3.0 then
 			if PlayerPedId() == handcuffed == true then
 				TriggerEvent("chatMessage", "SISTEMA", {255, 255, 255}, "Já está algemado.")
 			else
-				TriggerServerEvent("VP:SHERIFF:cuffing", GetPlayerServerId(player))
+				TriggerServerEvent("FRP:SHERIFF:cuffing", GetPlayerServerId(player))
 			end
 			TriggerEvent("chatMessage", "SISTEMA", {255, 255, 255}, "Você Algemou. (" .. GetPlayerName(player) .. ")")
 		else
@@ -439,15 +439,15 @@ AddEventHandler(
 	end
 )
 
-RegisterNetEvent("VP:SHERIFF:nyckelcheck")
+RegisterNetEvent("FRP:SHERIFF:nyckelcheck")
 AddEventHandler(
-	"VP:SHERIFF:nyckelcheck",
+	"FRP:SHERIFF:nyckelcheck",
 	function()
 		ped1 = GetClosestPlayer()
 		local player, distance = GetClosestPlayer()
 		local players = GetPlayerServerId(source)
 		if distance ~= -1 and distance <= 3.0 then
-			TriggerServerEvent("VP:SHERIFF:unlocking", GetPlayerServerId(player))
+			TriggerServerEvent("FRP:SHERIFF:unlocking", GetPlayerServerId(player))
 			TriggerEvent("chatMessage", "SISTEMA", {255, 255, 255}, "Você soltou. (" .. GetPlayerName(player) .. ")")
 			print("passou aqui uncuff")
 		else
@@ -456,9 +456,9 @@ AddEventHandler(
 	end
 )
 
-RegisterNetEvent("VP:SHERIFF:unlockingcuffs")
+RegisterNetEvent("FRP:SHERIFF:unlockingcuffs")
 AddEventHandler(
-	"VP:SHERIFF:unlockingcuffs",
+	"FRP:SHERIFF:unlockingcuffs",
 	function()
 		local player, distance = GetClosestPlayer()
 		local ped = GetPlayerPed(-1)
@@ -473,7 +473,7 @@ AddEventHandler(
 			FreezeEntityPosition(player, false)
 			FreezeEntityPosition(ped, false)
 			ClearPedTasksImmediately(ped)
-			TriggerServerEvent("VP:SHERIFF:unlocking", GetPlayerServerId(player))
+			TriggerServerEvent("FRP:SHERIFF:unlocking", GetPlayerServerId(player))
 			TriggerEvent("fc_notify:start", "Algemas quebradas", 5, "success")
 		else
 			TriggerEvent("chatMessage", "SISTEMA", {255, 255, 255}, '"Você já está quebrando as algemas')

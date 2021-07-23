@@ -4,8 +4,8 @@ local Proxy = module("_core", "lib/Proxy")
 API = Proxy.getInterface("API")
 cAPI = Tunnel.getInterface("API")
 
--- RegisterServerEvent('VP:SHERIFF:checkjob')
--- AddEventHandler('VP:SHERIFF:checkjob', function()
+-- RegisterServerEvent('FRP:SHERIFF:checkjob')
+-- AddEventHandler('FRP:SHERIFF:checkjob', function()
 -- 	local _source = source
 -- 	local User = API.getUserFromSource(_source)
 -- 	local Character = User:getCharacter()
@@ -18,9 +18,9 @@ cAPI = Tunnel.getInterface("API")
 -- 	end
 -- end)
 
-RegisterServerEvent("VP:SHERIFF:checkjob")
+RegisterServerEvent("FRP:SHERIFF:checkjob")
 AddEventHandler(
-	"VP:SHERIFF:checkjob",
+	"FRP:SHERIFF:checkjob",
 	function()
 		local _source = source
 		local User = API.getUserFromSource(_source)
@@ -34,28 +34,28 @@ AddEventHandler(
 		local sheriff = Character:hasGroupOrInheritance("sheriff")
 
 		if trooper then
-			TriggerClientEvent("VP:SHERIFF:trooperCheck", _source, trooper)
+			TriggerClientEvent("FRP:SHERIFF:trooperCheck", _source, trooper)
 		end
 		if sheriff then
-			TriggerClientEvent("VP:SHERIFF:SheriffCheck", _source, sheriff)
+			TriggerClientEvent("FRP:SHERIFF:SheriffCheck", _source, sheriff)
 		end
 	end
 )
 
-RegisterServerEvent("VP:SHERIFF:soltar")
+RegisterServerEvent("FRP:SHERIFF:soltar")
 AddEventHandler(
-	"VP:SHERIFF:soltar",
+	"FRP:SHERIFF:soltar",
 	function()
 		local _source = source
 		local User = API.getUserFromSource(_source)
 		local Character = User:getCharacter()
 		local trooperjob = Character:hasGroupOrInheritance("trooper")
 
-		--TriggerClientEvent('VP:SHERIFF:result', _source, trooperjob)
+		--TriggerClientEvent('FRP:SHERIFF:result', _source, trooperjob)
 
 		local trooperjob = Character:hasGroupOrInheritance("trooper")
 		if trooperjob == false then
-			TriggerEvent("VP:SHERIFF:soltar", target)
+			TriggerEvent("FRP:SHERIFF:soltar", target)
 		else
 			TriggerClientEvent("chatMessage", source, "SISTEMA", {255, 255, 255}, "Você não é um oficial")
 		end
@@ -77,7 +77,7 @@ end)
  		local trooperjob = Character:hasGroupOrInheritance('sheriff')
  		if trooperjob == true then
  			if args[1] ~= nil then
- 				TriggerClientEvent('VP:WANTED:RewardClient', _source, args[1], args[2])
+ 				TriggerClientEvent('FRP:WANTED:RewardClient', _source, args[1], args[2])
  			end
  		else
  			TriggerClientEvent('chatMessage', source, 'SISTEMA', {255, 255, 255}, 'Você não é um oficial')
@@ -96,7 +96,7 @@ RegisterCommand(
 			function(user)
 				local trooperjob = user.getJob()
 				--	if trooperjob == 'trooper' then
-				TriggerClientEvent("VP:SHERIFF:playercheck", source)
+				TriggerClientEvent("FRP:SHERIFF:playercheck", source)
 				--xPlayer.removeInventoryItem('handcuffs', 1)
 				--	else
 				--	 TriggerClientEvent('chatMessage', source, 'SISTEMA', {255, 255, 255}, 'Você não é um oficial')
@@ -106,33 +106,33 @@ RegisterCommand(
 	end
 )
 
-RegisterServerEvent("VP:SHERIFF:puting")
+RegisterServerEvent("FRP:SHERIFF:puting")
 AddEventHandler(
-	"VP:SHERIFF:puting",
+	"FRP:SHERIFF:puting",
 	function(target)
-		TriggerClientEvent("VP:SHERIFF:vehiclep", target)
+		TriggerClientEvent("FRP:SHERIFF:vehiclep", target)
 		--TriggerClientEvent("ic_sound:source",target,'cuff',0.1)
 		-- TriggerClientEvent("ic_sound:source",source,'cuff',0.1)
 	end
 )
 
-RegisterServerEvent("VP:SHERIFF:outing")
+RegisterServerEvent("FRP:SHERIFF:outing")
 AddEventHandler(
-	"VP:SHERIFF:outing",
+	"FRP:SHERIFF:outing",
 	function(target)
-		TriggerClientEvent("VP:SHERIFF:vehicleout", target)
+		TriggerClientEvent("FRP:SHERIFF:vehicleout", target)
 	end
 )
 
-RegisterServerEvent("VP:SHERIFF:putInVehicle")
+RegisterServerEvent("FRP:SHERIFF:putInVehicle")
 AddEventHandler(
-	"VP:SHERIFF:putInVehicle",
+	"FRP:SHERIFF:putInVehicle",
 	function(target)
 		local xPlayer = ESX.GetPlayerFromId(source)
 
 		if xPlayer.job.name == "trooper" then
 		else
-			print(("VP:SHERIFF: %s attempted to put in vehicle (not cop)!"):format(xPlayer.identifier))
+			print(("FRP:SHERIFF: %s attempted to put in vehicle (not cop)!"):format(xPlayer.identifier))
 		end
 	end
 )
@@ -140,51 +140,51 @@ AddEventHandler(
 RegisterCommand(
 	"testservjob",
 	function(source)
-		TriggerEvent("VP:SHERIFF:checkjob", source)
+		TriggerEvent("FRP:SHERIFF:checkjob", source)
 	end
 )
 
-RegisterServerEvent("VP:SHERIFF:cuffing")
+RegisterServerEvent("FRP:SHERIFF:cuffing")
 AddEventHandler(
-	"VP:SHERIFF:cuffing",
+	"FRP:SHERIFF:cuffing",
 	function(target)
 		local _source = source
-		TriggerClientEvent("VP:SHERIFF:cuff", target)
+		TriggerClientEvent("FRP:SHERIFF:cuff", target)
 		--TriggerClientEvent("ic_sound:source",target,'cuff',0.1)
 		--TriggerClientEvent("ic_sound:source",source,'cuff',0.1)
 	end
 )
 
--- RegisterServerEvent("VP:SHERIFF:unlocking")
+-- RegisterServerEvent("FRP:SHERIFF:unlocking")
 -- AddEventHandler(
--- 	"VP:SHERIFF:unlocking",
+-- 	"FRP:SHERIFF:unlocking",
 -- 	function(source)
--- 		TriggerClientEvent("VP:SHERIFF:uncuff", source)
+-- 		TriggerClientEvent("FRP:SHERIFF:uncuff", source)
 -- 	end
 -- )
 
-RegisterServerEvent("VP:SHERIFF:soltar")
+RegisterServerEvent("FRP:SHERIFF:soltar")
 AddEventHandler(
-	"VP:SHERIFF:soltar",
+	"FRP:SHERIFF:soltar",
 	function(target)
-		TriggerClientEvent("VP:SHERIFF:nyckelcheck", target)
+		TriggerClientEvent("FRP:SHERIFF:nyckelcheck", target)
 	end
 )
 
 
-RegisterServerEvent("VP:SHERIFF:unlocking")
+RegisterServerEvent("FRP:SHERIFF:unlocking")
 AddEventHandler(
-	"VP:SHERIFF:unlocking",
+	"FRP:SHERIFF:unlocking",
 	function(target)
 		local _source = source
-		TriggerClientEvent("VP:SHERIFF:uncuff", target)
+		TriggerClientEvent("FRP:SHERIFF:uncuff", target)
 		TriggerClientEvent("ic_sound:source", target, "uncuff", 0.1)
 	end
 )
 
-RegisterNetEvent("VP:SHERIFF:TryToPatDown")
+RegisterNetEvent("FRP:SHERIFF:TryToPatDown")
 AddEventHandler(
-	"VP:SHERIFF:TryToPatDown",
+	"FRP:SHERIFF:TryToPatDown",
 	function(playerToPatdown)
 
 		if playerToPatdown == nil then
@@ -232,14 +232,14 @@ AddEventHandler(
 		 
  		local trooperjob = Character:hasGroupOrInheritance('trooper')
  		if trooperjob == true then
- 			TriggerClientEvent('VP:SHERIFF:cuffcheck', source)
+ 			TriggerClientEvent('FRP:SHERIFF:cuffcheck', source)
  			handcuffs = true
  		else
  			TriggerClientEvent('chatMessage', source, 'SISTEMA', {255, 255, 255}, 'Você não é um oficial')
 		 end
 		 
  		if handcuffs == true then
- 			TriggerEvent('VP:SHERIFF:prender', target)
+ 			TriggerEvent('FRP:SHERIFF:prender', target)
  		end
  end)
 
@@ -253,7 +253,7 @@ RegisterCommand(
 		
 		local trooperjob = Character:hasGroupOrInheritance('trooper')
 		if trooperjob == true then
-			TriggerClientEvent("VP:SHERIFF:nyckelcheck", source)			
+			TriggerClientEvent("FRP:SHERIFF:nyckelcheck", source)			
 			handcuffs = true
 		else
 			TriggerClientEvent('chatMessage', source, 'SISTEMA', {255, 255, 255}, 'Você não é um oficial')
@@ -276,7 +276,7 @@ RegisterCommand(
 		
 		local trooperjob = Character:hasGroupOrInheritance('trooper')
 		if trooperjob == true then			
-			TriggerClientEvent("VP:SHERIFF:putinvehicle", source)
+			TriggerClientEvent("FRP:SHERIFF:putinvehicle", source)
 		else
 			TriggerClientEvent('chatMessage', source, 'SISTEMA', {255, 255, 255}, 'Você não é um oficial')
 		end
@@ -292,7 +292,7 @@ RegisterCommand(
 		
 		local trooperjob = Character:hasGroupOrInheritance('trooper')
 		if trooperjob == true then			
-			TriggerClientEvent("VP:SHERIFF:outvehicle", source)
+			TriggerClientEvent("FRP:SHERIFF:outvehicle", source)
 		else
 			TriggerClientEvent('chatMessage', source, 'SISTEMA', {255, 255, 255}, 'Você não é um oficial')
 		end
@@ -300,39 +300,39 @@ RegisterCommand(
 )
 
 
--- RegisterServerEvent('VP:SHERIFF:checkjob')
--- AddEventHandler('VP:SHERIFF:checkjob', function(source, playerjob)
+-- RegisterServerEvent('FRP:SHERIFF:checkjob')
+-- AddEventHandler('FRP:SHERIFF:checkjob', function(source, playerjob)
 -- local _source = source
 
 -- TriggerEvent("redemrp:getPlayerFromId", _source, function(user)
 
 -- 	playerjob = user.getJob()
 
--- 	TriggerClientEvent('VP:SHERIFF:checkjob', _source, playerjob)
+-- 	TriggerClientEvent('FRP:SHERIFF:checkjob', _source, playerjob)
 -- 	end)
 -- end)
 
--- RegisterServerEvent('VP:SHERIFF:soltar')
--- AddEventHandler('VP:SHERIFF:prender', function(target)
--- 	TriggerClientEvent('VP:SHERIFF:nyckelcheck', target)
+-- RegisterServerEvent('FRP:SHERIFF:soltar')
+-- AddEventHandler('FRP:SHERIFF:prender', function(target)
+-- 	TriggerClientEvent('FRP:SHERIFF:nyckelcheck', target)
 -- end)
 
 -- RegisterCommand('soltar', function(target)
 
--- 	TriggerClientEvent('VP:SHERIFF:nyckelcheck', target)
+-- 	TriggerClientEvent('FRP:SHERIFF:nyckelcheck', target)
 -- 	--xPlayer.removeInventoryItem('handcuffs', 1)
 -- end)
 
--- RegisterServerEvent('VP:SHERIFF:remove')
--- AddEventHandler('VP:SHERIFF:remove', function()
+-- RegisterServerEvent('FRP:SHERIFF:remove')
+-- AddEventHandler('FRP:SHERIFF:remove', function()
 -- 	local _source = source
 -- 	TriggerEvent("redemrp:getPlayerFromId", _source, function(user)
 -- 	--xPlayer.removeInventoryItem('handcuffs', 1)
 -- end)
 -- end)
 
--- RegisterServerEvent('VP:SHERIFF:give')
--- AddEventHandler('VP:SHERIFF:give', function()
+-- RegisterServerEvent('FRP:SHERIFF:give')
+-- AddEventHandler('FRP:SHERIFF:give', function()
 -- 	local _source = source
 -- 	TriggerEvent("redemrp:getPlayerFromId", _source, function(user)
 -- 	--xPlayer.addInventoryItem('handcuffs', 1)
@@ -341,7 +341,7 @@ RegisterCommand(
 
 --  --[[
 -- ESX.RegisterUsableItem('key', function(target)
---     TriggerClientEvent('VP:SHERIFF:nyckelcheck', target)
+--     TriggerClientEvent('FRP:SHERIFF:nyckelcheck', target)
 --     --TriggerClientEvent("ic_sound:source",target,'uncuff',0.1)
 --  --   TriggerClientEvent("ic_sound:source",target,'uncuff',0.1)
 
@@ -350,7 +350,7 @@ RegisterCommand(
 -- --[[
 -- ESX.RegisterUsableItem('blowpipe', function(source)
 -- 	local xPlayer = ESX.GetPlayerFromId(target)
--- 	TriggerClientEvent('VP:SHERIFF:unlockingcuffs', source)
+-- 	TriggerClientEvent('FRP:SHERIFF:unlockingcuffs', source)
 -- 	xPlayer.removeInventoryItem('blowpipe', 1)
 -- end) ]]
 

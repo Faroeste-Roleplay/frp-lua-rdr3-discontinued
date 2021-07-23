@@ -1,5 +1,5 @@
-RegisterNetEvent('VP:HORSE:OpenInventory')
-AddEventHandler('VP:HORSE:OpenInventory', function()
+RegisterNetEvent('FRP:HORSE:OpenInventory')
+AddEventHandler('FRP:HORSE:OpenInventory', function()
     local _source = source
     local User = API.getUserFromSource(_source)
 

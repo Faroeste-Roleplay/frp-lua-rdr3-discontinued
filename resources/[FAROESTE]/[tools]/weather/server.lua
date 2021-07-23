@@ -153,18 +153,18 @@ Citizen.CreateThread(
                 end
             end
 
-            TriggerClientEvent("VP:W:Sync", -1, currentRegionWeather)
+            TriggerClientEvent("FRP:W:Sync", -1, currentRegionWeather)
         end
     end
 )
 
-RegisterNetEvent("VP:W:AskForSync")
+RegisterNetEvent("FRP:W:AskForSync")
 AddEventHandler(
-    "VP:W:AskForSync",
+    "FRP:W:AskForSync",
     function()
         local _source = source
         if #currentRegionWeather > 0 then
-            TriggerClientEvent("VP:W:Sync", _source, currentRegionWeather)
+            TriggerClientEvent("FRP:W:Sync", _source, currentRegionWeather)
         else
             for region, weathers in pairs(weatherPerRegion) do
                 local total = weightPerRegion[region]
@@ -184,7 +184,7 @@ AddEventHandler(
                 end
             end
 
-            TriggerClientEvent("VP:W:Sync", _source, currentRegionWeather)
+            TriggerClientEvent("FRP:W:Sync", _source, currentRegionWeather)
         end
     end
 )

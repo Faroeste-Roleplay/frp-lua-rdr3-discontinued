@@ -137,7 +137,7 @@ Citizen.CreateThread(
                         end
                     )
 
-                    TriggerServerEvent("VP:HOUSING:TryToBuyHouse", show_house_prompts_id, false)
+                    TriggerServerEvent("FRP:HOUSING:TryToBuyHouse", show_house_prompts_id, false)
                 end
 
                 if PromptHasHoldModeCompleted(prompt_buy_gold) then
@@ -149,7 +149,7 @@ Citizen.CreateThread(
                         end
                     )
 
-                    TriggerServerEvent("VP:HOUSING:TryToBuyHouse", show_house_prompts_id, true)
+                    TriggerServerEvent("FRP:HOUSING:TryToBuyHouse", show_house_prompts_id, true)
                 end
 
                 if PromptIsJustPressed(prompt_camera) then

@@ -25,14 +25,14 @@ end
 
 RegisterNUICallback('escape', function(data, cb)
     local text = data.text
-    TriggerEvent("VP:NOTEPAD:CloseNotepad")
+    TriggerEvent("FRP:NOTEPAD:CloseNotepad")
 end)
 
 RegisterNUICallback('updating', function(data, cb)
     local text = data.text
-    TriggerServerEvent("VP:NOTEPAD:updateNote",editingNotpadId, text)
+    TriggerServerEvent("FRP:NOTEPAD:updateNote",editingNotpadId, text)
     editingNotpadId = nil
-    TriggerEvent("VP:NOTEPAD:CloseNotepad")
+    TriggerEvent("FRP:NOTEPAD:CloseNotepad")
 end)
 
 RegisterNUICallback('droppingEmpty', function(data, cb)
@@ -42,22 +42,22 @@ end)
 RegisterNUICallback('dropping', function(data, cb)
     local text = data.text
     local location = GetEntityCoords(PlayerPedId())
-    TriggerServerEvent("VP:NOTEPAD:newNote",text,location["x"],location["y"],location["z"])
-    TriggerEvent("VP:NOTEPAD:CloseNotepad")
+    TriggerServerEvent("FRP:NOTEPAD:newNote",text,location["x"],location["y"],location["z"])
+    TriggerEvent("FRP:NOTEPAD:CloseNotepad")
 end)
 
-RegisterNetEvent("VP:NOTEPAD:OpenNotepadGui")
-AddEventHandler("VP:NOTEPAD:OpenNotepadGui", function()
+RegisterNetEvent("FRP:NOTEPAD:OpenNotepadGui")
+AddEventHandler("FRP:NOTEPAD:OpenNotepadGui", function()
     if not isUiOpen then
         openGui()
         Notepad = true
         Wait(100)
-        TriggerEvent("VP:NOTEPAD:note")
+        TriggerEvent("FRP:NOTEPAD:note")
     end
 end)
 
-RegisterNetEvent("VP:NOTEPAD:CloseNotepad")
-AddEventHandler("VP:NOTEPAD:CloseNotepad", function()
+RegisterNetEvent("FRP:NOTEPAD:CloseNotepad")
+AddEventHandler("FRP:NOTEPAD:CloseNotepad", function()
     SendNUIMessage({
         action = 'closeNotepad'
     })
@@ -73,12 +73,12 @@ AddEventHandler("VP:NOTEPAD:CloseNotepad", function()
     DeleteObject(secondaryprop)
     Notepad = false
     Wait(100)
-    TriggerEvent("VP:NOTEPAD:note")
+    TriggerEvent("FRP:NOTEPAD:note")
 
 end)
 
--- RegisterNetEvent('VP:NOTEPAD:note')
--- AddEventHandler('VP:NOTEPAD:note', function()
+-- RegisterNetEvent('FRP:NOTEPAD:note')
+-- AddEventHandler('FRP:NOTEPAD:note', function()
 --     local player = PlayerPedId()
 --     local ad = "missheistdockssetup1clipboard@base"
                 
@@ -107,8 +107,8 @@ end)
 -- end)
 
 
-RegisterNetEvent('VP:NOTEPAD:note')
-AddEventHandler('VP:NOTEPAD:note', function()
+RegisterNetEvent('FRP:NOTEPAD:note')
+AddEventHandler('FRP:NOTEPAD:note', function()
     if Notepad then
         Citizen.InvokeNative(0x524B54361229154F, PlayerPedId(), GetHashKey("WORLD_HUMAN_WRITE_NOTEBOOK"), -1,false,false, false, false)
     else
@@ -124,8 +124,8 @@ function loadAnimDict(dict)
     end
 end
 
-RegisterNetEvent('VP:NOTEPAD:updateNotes')
-AddEventHandler('VP:NOTEPAD:updateNotes', function(serverNotesPassed)
+RegisterNetEvent('FRP:NOTEPAD:updateNotes')
+AddEventHandler('FRP:NOTEPAD:updateNotes', function(serverNotesPassed)
     TestLocalTable = serverNotesPassed
 end)
 
@@ -145,7 +145,7 @@ function openGuiRead(text)
   local veh = GetVehiclePedIsUsing(PlayerPedId())
   if GetPedInVehicleSeat(veh, -1) ~= PlayerPedId() then
         SetPlayerControl(PlayerId(), 0, 0)
-        TriggerEvent("VP:NOTEPAD:note")
+        TriggerEvent("FRP:NOTEPAD:note")
         isUiOpen = true
         Citizen.Trace("OPENING")
         SendNUIMessage({
@@ -194,7 +194,7 @@ Citizen.CreateThread(function()
                     editingNotpadId = closestNoteId
                 end
                 if IsControlJustReleased(0, 0x760A9C6F) then
-                  TriggerServerEvent("VP:NOTEPAD:destroyNote",closestNoteId)
+                  TriggerServerEvent("FRP:NOTEPAD:destroyNote",closestNoteId)
                   table.remove(TestLocalTable,closestNoteId)
                 end
 

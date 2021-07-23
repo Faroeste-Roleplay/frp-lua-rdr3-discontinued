@@ -11,8 +11,8 @@ function API.getPlayersAtArea(areaId)
     return playersAreas[areaId] or {}
 end
 
-RegisterNetEvent("VP:AREA:PlayerEnteredArea")
-RegisterNetEvent("VP:AREA:PlayerLeftArea")
+RegisterNetEvent("FRP:AREA:PlayerEnteredArea")
+RegisterNetEvent("FRP:AREA:PlayerLeftArea")
 
 AddEventHandler(
     "API:playerSpawned",
@@ -37,7 +37,7 @@ AddEventHandler(
 )
 
 AddEventHandler(
-    "VP:AREA:PlayerEnteredArea",
+    "FRP:AREA:PlayerEnteredArea",
     function(areaId)
         local _source = source
 
@@ -50,7 +50,7 @@ AddEventHandler(
 )
 
 AddEventHandler(
-    "VP:AREA:PlayerLeftArea",
+    "FRP:AREA:PlayerLeftArea",
     function(areaId)
         local _source = source
 

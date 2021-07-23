@@ -16,9 +16,9 @@ local houses = {
     ["house:7"] = {200.0, 80.0}
 }
 
-RegisterNetEvent("VP:HOUSING:TryToBuyHouse")
+RegisterNetEvent("FRP:HOUSING:TryToBuyHouse")
 AddEventHandler(
-    "VP:HOUSING:TryToBuyHouse",
+    "FRP:HOUSING:TryToBuyHouse",
     function(house_id, withGold)
         local _source = source
 
@@ -124,7 +124,7 @@ function IsRentExpired(house_id)
 end
 
 -- AddEventHandler(
---     "VP:HOUSING:RequestAvailableHouses",
+--     "FRP:HOUSING:RequestAvailableHouses",
 --     function()
 
 --     end

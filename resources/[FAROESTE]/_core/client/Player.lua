@@ -61,7 +61,7 @@ function cAPI.Initialize(pedModel, charAppearence, lastPosition, stats)
     cAPI.VaryPlayerCore(0, pHealthCore)
     cAPI.VaryPlayerCore(1, pStaminaCore)
 
-    TriggerServerEvent("VP:RESPAWN:CheckDeath")
+    TriggerServerEvent("FRP:RESPAWN:CheckDeath")
     TriggerServerEvent("API:pre_OnUserCharacterInitialization")
     
     if not cAPI.isStartedNeeds() then
@@ -100,7 +100,7 @@ function cAPI.notify(type, text, quantity)
         type = "dev"
     end
 
-    TriggerEvent("VP:TOAST:New", type, text, quantity)
+    TriggerEvent("FRP:TOAST:New", type, text, quantity)
 end
 
 function cAPI.TeleportPlayerToWaypoint()
@@ -262,7 +262,7 @@ Citizen.CreateThread(
                             end
                         )
 
-                        TriggerServerEvent("VP:HORSE:OpenInventory")
+                        TriggerServerEvent("FRP:HORSE:OpenInventory")
                     end
 
                     -- Flee
@@ -322,17 +322,17 @@ Citizen.CreateThread(
 
 local role = 0
 
-RegisterNetEvent("VP:EVENTS:CharacterSetRole")
+RegisterNetEvent("FRP:EVENTS:CharacterSetRole")
 AddEventHandler(
-    "VP:EVENTS:CharacterSetRole",
+    "FRP:EVENTS:CharacterSetRole",
     function(_role)
         role = _role
     end
 )
 
-RegisterNetEvent("VP:EVENTS:CharacterJoinedGroup")
+RegisterNetEvent("FRP:EVENTS:CharacterJoinedGroup")
 AddEventHandler(
-    "VP:EVENTS:CharacterJoinedGroup",
+    "FRP:EVENTS:CharacterJoinedGroup",
     function(group)
         if not cAPI.hasGroup(group) then
             local bit = config_file_GROUPS[group:lower()]
@@ -355,9 +355,9 @@ function cAPI.setMyOrg(orgs)
     myOrgs = json.decode(orgs)
 end
 
-RegisterNetEvent("VP:EVENTS:CharacterLeftGroup")
+RegisterNetEvent("FRP:EVENTS:CharacterLeftGroup")
 AddEventHandler(
-    "VP:EVENTS:CharacterLeftGroup",
+    "FRP:EVENTS:CharacterLeftGroup",
     function(group)
         if cAPI.hasGroup(group) then
             local bit = config_file_GROUPS[group:lower()]
@@ -410,7 +410,7 @@ function cAPI.AddWantedTime(wanted, time)
     end
 
     if wanted ~= isWanted then
-        TriggerServerEvent("VP:WANTED:MarkAsWanted", wanted)
+        TriggerServerEvent("FRP:WANTED:MarkAsWanted", wanted)
     end
 
     isWanted = wanted

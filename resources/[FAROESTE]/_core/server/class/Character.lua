@@ -51,7 +51,7 @@ function API.Character(id, charName, level, xp, role, charAge, inventory)
             if bit ~= nil then
                 self.role = self.role + bit
 
-                TriggerClientEvent("VP:EVENTS:CharacterJoinedGroup", self:getSource(), group)
+                TriggerClientEvent("FRP:EVENTS:CharacterJoinedGroup", self:getSource(), group)
 
                 API_Database.execute("UPDATE:character_data_role", {charid = self:getId(), role = self.role})
             end
@@ -65,7 +65,7 @@ function API.Character(id, charName, level, xp, role, charAge, inventory)
             if bit ~= nil then
                 self.role = self.role - bit
 
-                TriggerClientEvent("VP:EVENTS:CharacterLeftGroup", self:getSource(), group)
+                TriggerClientEvent("FRP:EVENTS:CharacterLeftGroup", self:getSource(), group)
 
                 API_Database.execute("UPDATE:character_data_role", {charid = self:getId(), role = self.role})
             end
@@ -128,7 +128,7 @@ function API.Character(id, charName, level, xp, role, charAge, inventory)
             end
         end
 
-        TriggerClientEvent("VP:TOAST:New", self:getSource(), "xp", variation)
+        TriggerClientEvent("FRP:TOAST:New", self:getSource(), "xp", variation)
 
         API_Database.execute("FCRP/UpdateXP", {charid = self:getId(), xp = self:getExp()})
     end

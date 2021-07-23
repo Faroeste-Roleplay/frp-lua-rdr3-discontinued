@@ -41,17 +41,17 @@ local DESTINYWAGON = {
   [10] = {-1311.280,382.569,95.536}  
 }
 
-RegisterServerEvent("VP:WAGONCHARGE:playerActivated")
+RegisterServerEvent("FRP:WAGONCHARGE:playerActivated")
 function ActivateWAGONCHARGE()
   if (PlayerCount) >= 1 then
-    TriggerEvent("VP:WAGONCHARGE:timeCall")
+    TriggerEvent("FRP:WAGONCHARGE:timeCall")
   else
     SetTimeout(1000, ActivateWAGONCHARGE)
   end
 end
 
 AddEventHandler(
-  "VP:WAGONCHARGE:playerActivated",
+  "FRP:WAGONCHARGE:playerActivated",
   function()
     if not list[source] then
       PlayerCount = PlayerCount + 1
@@ -73,9 +73,9 @@ AddEventHandler(
   end
 )
 
-RegisterNetEvent("VP:WAGONCHARGE:timeCall")
+RegisterNetEvent("FRP:WAGONCHARGE:timeCall")
 AddEventHandler(
-  "VP:WAGONCHARGE:timeCall",
+  "FRP:WAGONCHARGE:timeCall",
   function()
     local hora = 60000 * 60
     local TimeSpawnMax = hora * 10
@@ -95,14 +95,14 @@ RegisterCommand('testeWagon', function()
   math.randomseed(GetGameTimer())
   local r1 = math.random(1, 6)
   local r2 = math.random(1, 10)
-  TriggerEvent("VP:WAGONCHARGE:create", r1, r2)
+  TriggerEvent("FRP:WAGONCHARGE:create", r1, r2)
 
 end)
 
 
-RegisterNetEvent("VP:WAGONCHARGE:create")
+RegisterNetEvent("FRP:WAGONCHARGE:create")
 AddEventHandler(
-  "VP:WAGONCHARGE:create",
+  "FRP:WAGONCHARGE:create",
   function(id, r2)
     FinishedDelivery = false
 
@@ -114,18 +114,18 @@ AddEventHandler(
       return
     end
         --print(vector3(json.encode(SPAWNWAGON[id])), DESTINYWAGON[r2])
-    TriggerClientEvent("VP:WAGONCHARGE:StartNotify", -1, vector3(table.unpack(SPAWNWAGON[id])), vector3(table.unpack(DESTINYWAGON[r2])))
+    TriggerClientEvent("FRP:WAGONCHARGE:StartNotify", -1, vector3(table.unpack(SPAWNWAGON[id])), vector3(table.unpack(DESTINYWAGON[r2])))
     Wait(200)
-    TriggerClientEvent("VP:WAGONCHARGE:StartMission", GetHostId())
+    TriggerClientEvent("FRP:WAGONCHARGE:StartMission", GetHostId())
      
 
-  --  TriggerEvent("VP:WAGONCHARGE:timeCall")
+  --  TriggerEvent("FRP:WAGONCHARGE:timeCall")
   end
 )
 
-RegisterNetEvent("VP:WAGONCHARGE:Finished")
+RegisterNetEvent("FRP:WAGONCHARGE:Finished")
 AddEventHandler(
-  "VP:WAGONCHARGE:Finished",
+  "FRP:WAGONCHARGE:Finished",
   function()
     local User = API.getUserFromSource(source)
     local Character = User:getCharacter()
@@ -143,7 +143,7 @@ AddEventHandler(
       FinishedDelivery = true
     end
 
-    TriggerClientEvent("VP:WAGONCHARGE:killblip", source)
+    TriggerClientEvent("FRP:WAGONCHARGE:killblip", source)
     print('sumiu')
   end
 )

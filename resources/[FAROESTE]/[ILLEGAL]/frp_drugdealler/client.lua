@@ -75,13 +75,13 @@ Citizen.CreateThread(function()
 				if distance <= 1.2 then
 					DrawText("PRESSIONE  ~b~E~w~  PARA ENTREGAR" , 0.925, 0.96, 0.25, 0.25, false, 255, 255, 255, 145, 1, 7)
 					if IsControlJustPressed(0, 0xE8342FF2) then
-						TriggerServerEvent("VP:CONTRABANDO:checkPayment")
+						TriggerServerEvent("FRP:CONTRABANDO:checkPayment")
 						Citizen.Wait(1000)
 						if checkPayment then	
 							Citizen.Wait(1)
 							porcentagem = math.random(100)
 							if porcentagem >= 90 then
-								TriggerServerEvent("VP:CONTRABANDO:ocorrencia")
+								TriggerServerEvent("FRP:CONTRABANDO:ocorrencia")
 							end
 							RemoveBlip(blip)
 							print(backentrega)
@@ -106,12 +106,12 @@ end)
 
 RegisterCommand("callp", function()
 
-	TriggerServerEvent("VP:CONTRABANDO:ocorrencia")
+	TriggerServerEvent("FRP:CONTRABANDO:ocorrencia")
 
 end)
 
-RegisterNetEvent('VP:CONTRABANDO:checkPayment')
-AddEventHandler('VP:CONTRABANDO:checkPayment', function(bool)
+RegisterNetEvent('FRP:CONTRABANDO:checkPayment')
+AddEventHandler('FRP:CONTRABANDO:checkPayment', function(bool)
 	checkPayment = bool
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------

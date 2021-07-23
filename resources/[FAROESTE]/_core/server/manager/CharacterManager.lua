@@ -12,9 +12,9 @@ end
 
 -- serverPositions	= {}
 
-RegisterServerEvent("VP:CacheCharacterStats")
+RegisterServerEvent("FRP:CacheCharacterStats")
 AddEventHandler(
-    "VP:CacheCharacterStats",
+    "FRP:CacheCharacterStats",
     function(position, health, stamina, healthCore, staminaCore)
         local _source = source
         local User = API.getUserFromSource(_source)

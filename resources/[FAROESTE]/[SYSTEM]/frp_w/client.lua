@@ -133,14 +133,14 @@ AddEventHandler(
     "onResourceStart",
     function(resourceName)
         if resourceName == GetCurrentResourceName() then
-            TriggerServerEvent("VP:W:AskForSync")
+            TriggerServerEvent("FRP:W:AskForSync")
         end
     end
 )
 
-RegisterNetEvent("VP:W:Sync")
+RegisterNetEvent("FRP:W:Sync")
 AddEventHandler(
-    "VP:W:Sync",
+    "FRP:W:Sync",
     function(data)
         regionsWeather = data
     end

@@ -6,9 +6,9 @@ cAPI = Tunnel.getInterface("API")
 
 local playersDamages = {}
 
--- RegisterServerEvent("VP:Respawn:_Dead")
+-- RegisterServerEvent("FRP:Respawn:_Dead")
 -- AddEventHandler(
---     "VP:Respawn:_Dead",
+--     "FRP:Respawn:_Dead",
 --     function()
 --         local _source = source
 --         local User = API.getUserFromSource(_source)
@@ -23,9 +23,9 @@ local playersDamages = {}
 --     end
 -- )
 
--- RegisterServerEvent("VP:RESPAWN:onPlayerDeath")
+-- RegisterServerEvent("FRP:RESPAWN:onPlayerDeath")
 -- AddEventHandler(
---     "VP:RESPAWN:onPlayerDeath",
+--     "FRP:RESPAWN:onPlayerDeath",
 --     function(data)
 --         local _source = source
 --         local User = API.getUserFromSource(_source)
@@ -39,9 +39,9 @@ local playersDamages = {}
 --     end
 -- )
 
-RegisterServerEvent("VP:RESPAWN:SetPlayerAsDead")
+RegisterServerEvent("FRP:RESPAWN:SetPlayerAsDead")
 AddEventHandler(
-    "VP:RESPAWN:SetPlayerAsDead",
+    "FRP:RESPAWN:SetPlayerAsDead",
     function(bool)
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -53,9 +53,9 @@ AddEventHandler(
     end
 )
 
-RegisterServerEvent("VP:RESPAWN:SetPlayerDamage")
+RegisterServerEvent("FRP:RESPAWN:SetPlayerDamage")
 AddEventHandler(
-    "VP:RESPAWN:SetPlayerDamage",
+    "FRP:RESPAWN:SetPlayerDamage",
     function(data)
 
         local _source = source
@@ -72,9 +72,9 @@ AddEventHandler(
     end
 )
 
-RegisterServerEvent("VP:RESPAWN:SetPlayerAsAliveAndClearInventory")
+RegisterServerEvent("FRP:RESPAWN:SetPlayerAsAliveAndClearInventory")
 AddEventHandler(
-    "VP:RESPAWN:SetPlayerAsAliveAndClearInventory",
+    "FRP:RESPAWN:SetPlayerAsAliveAndClearInventory",
     function()
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -89,23 +89,23 @@ AddEventHandler(
     end
 )
 
-RegisterServerEvent("VP:RESPAWN:CheckDeath")
+RegisterServerEvent("FRP:RESPAWN:CheckDeath")
 AddEventHandler(
-    "VP:RESPAWN:CheckDeath",
+    "FRP:RESPAWN:CheckDeath",
     function()
         local _source = source
         local User = API.getUserFromSource(_source)
         local Character = User:getCharacter()
 
         if Character:getDeath() == 1 then
-            TriggerClientEvent("VP:RESPAWN:PlayerDead", _source)
+            TriggerClientEvent("FRP:RESPAWN:PlayerDead", _source)
         end
     end
 )
 
--- RegisterServerEvent("VP:Respawn:checkgroup")
+-- RegisterServerEvent("FRP:Respawn:checkgroup")
 -- AddEventHandler(
---     "VP:Respawn:checkgroup",
+--     "FRP:Respawn:checkgroup",
 --     function(spawn)
 --         local _source = source
 --         local User = API.getUserFromSource(_source)

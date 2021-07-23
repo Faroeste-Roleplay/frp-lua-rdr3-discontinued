@@ -248,9 +248,9 @@ Citizen.CreateThread(
             --     }
             -- )
 
-            RegisterNetEvent("VP:DOORSTATECONTAINER:TryToToggleDoorState")
+            RegisterNetEvent("FRP:DOORSTATECONTAINER:TryToToggleDoorState")
             AddEventHandler(
-                "VP:DOORSTATECONTAINER:TryToToggleDoorState",
+                "FRP:DOORSTATECONTAINER:TryToToggleDoorState",
                 function(doorHash)
                     local _source = source
                     local User = API.getUserFromSource(_source)
@@ -283,7 +283,7 @@ Citizen.CreateThread(
                         end
                     end
 
-                    TriggerClientEvent("VP:DOORSTATECONTAINER:SetDoorState", -1, doorHash, newDoorState)
+                    TriggerClientEvent("FRP:DOORSTATECONTAINER:SetDoorState", -1, doorHash, newDoorState)
                 end
             )
 
@@ -297,7 +297,7 @@ Citizen.CreateThread(
                             v.pair = nil
                         end
 
-                        TriggerClientEvent("VP:DOORSTATECONTAINER:SetMultipleDoorsState", source, _temp)
+                        TriggerClientEvent("FRP:DOORSTATECONTAINER:SetMultipleDoorsState", source, _temp)
                     end
                 end
             )
@@ -312,13 +312,13 @@ Citizen.CreateThread(
                         v.pair = nil
                     end
 
-                    TriggerClientEvent("VP:DOORSTATECONTAINER:SetMultipleDoorsState", -1, _temp)
+                    TriggerClientEvent("FRP:DOORSTATECONTAINER:SetMultipleDoorsState", -1, _temp)
                 end
             )
         elseif CLIENT then
-            RegisterNetEvent("VP:DOORSTATECONTAINER:SetDoorState")
+            RegisterNetEvent("FRP:DOORSTATECONTAINER:SetDoorState")
             AddEventHandler(
-                "VP:DOORSTATECONTAINER:SetDoorState",
+                "FRP:DOORSTATECONTAINER:SetDoorState",
                 function(doorHash, doorState)
                     doorStates[doorHash].isOpen = doorState
 
@@ -338,9 +338,9 @@ Citizen.CreateThread(
                 end
             )
 
-            RegisterNetEvent("VP:DOORSTATECONTAINER:SetMultipleDoorsState")
+            RegisterNetEvent("FRP:DOORSTATECONTAINER:SetMultipleDoorsState")
             AddEventHandler(
-                "VP:DOORSTATECONTAINER:SetMultipleDoorsState",
+                "FRP:DOORSTATECONTAINER:SetMultipleDoorsState",
                 function(_doorStates)
                     for doorHash, d in pairs(_doorStates) do
                         doorStates[doorHash].isOpen = d.isOpen
@@ -436,11 +436,11 @@ Citizen.CreateThread(
 
                                     if hour >= hourCloseAt and house < hourOpenAt then
                                         if isOpen then
-                                            TriggerClientEvent("VP:DOORSTATECONTAINER:SetDoorState", closestDoorHash, false)
+                                            TriggerClientEvent("FRP:DOORSTATECONTAINER:SetDoorState", closestDoorHash, false)
                                         end
                                     else
                                         if not isOpen then
-                                            TriggerClientEvent("VP:DOORSTATECONTAINER:SetDoorState", closestDoorHash, true)
+                                            TriggerClientEvent("FRP:DOORSTATECONTAINER:SetDoorState", closestDoorHash, true)
                                         end
                                     end
                                 end
@@ -459,7 +459,7 @@ Citizen.CreateThread(
                                             )
 
                                             unlockAnimation()
-                                            TriggerServerEvent("VP:DOORSTATECONTAINER:TryToToggleDoorState", closestDoorHash)
+                                            TriggerServerEvent("FRP:DOORSTATECONTAINER:TryToToggleDoorState", closestDoorHash)
                                         end
                                     else
                                         if closestDoor_displayasclosed == false then
@@ -475,7 +475,7 @@ Citizen.CreateThread(
                                                 )
 
                                                 unlockAnimation()
-                                                TriggerServerEvent("VP:DOORSTATECONTAINER:TryToToggleDoorState", closestDoorHash)
+                                                TriggerServerEvent("FRP:DOORSTATECONTAINER:TryToToggleDoorState", closestDoorHash)
                                             end
                                         else
                                             if hourOpenAt then

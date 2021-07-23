@@ -379,7 +379,7 @@ function API.Inventory(id, capacity, slots)
             end
 
             for vSource, _ in pairs(self.viewersSources) do
-                TriggerClientEvent("VP:TOAST:New", vSource, "item", itemId, itemAmount)
+                TriggerClientEvent("FRP:TOAST:New", vSource, "item", itemId, itemAmount)
             end
 
             -- self:addRecent(itemId, itemAmount)
@@ -445,7 +445,7 @@ function API.Inventory(id, capacity, slots)
             end
 
             for vSource, _ in pairs(self.viewersSources) do
-                TriggerClientEvent("VP:TOAST:New", vSource, "item", itemId, -(itemAmount))
+                TriggerClientEvent("FRP:TOAST:New", vSource, "item", itemId, -(itemAmount))
             end
         else
             local Slot = self.slots[slotId]
@@ -479,7 +479,7 @@ function API.Inventory(id, capacity, slots)
             end
 
             for vSource, _ in pairs(self.viewersSources) do
-                TriggerClientEvent("VP:TOAST:New", vSource, "item", itemId, -(itemAmount))
+                TriggerClientEvent("FRP:TOAST:New", vSource, "item", itemId, -(itemAmount))
             end
         end
 
@@ -605,7 +605,7 @@ function API.Inventory(id, capacity, slots)
             _slots[slotId] = Slot:getSyncData()
         end
        
-        TriggerClientEvent("VP:INVENTORY:openAsPrimary", viewerSource, _slots, self:getWeight(), self:getCapacity())
+        TriggerClientEvent("FRP:INVENTORY:openAsPrimary", viewerSource, _slots, self:getWeight(), self:getCapacity())
     end
 
     self.viewAsSecondary = function(this, viewerSource)
@@ -617,7 +617,7 @@ function API.Inventory(id, capacity, slots)
             _slots[slotId] = Slot:getSyncData()
         end
 
-        TriggerClientEvent("VP:INVENTORY:openAsSecondary", viewerSource, _slots, self:getWeight(), self:getCapacity())
+        TriggerClientEvent("FRP:INVENTORY:openAsSecondary", viewerSource, _slots, self:getWeight(), self:getCapacity())
     end
 
     self.removeViewer = function(this, User)
@@ -725,9 +725,9 @@ end
 function syncToViewers(viewers, slotsToSync, inventoryWeight)
     for viewerSource, asPrimary in pairs(viewers) do
         if asPrimary then
-            TriggerClientEvent("VP:INVENTORY:PrimarySyncSlots", viewerSource, slotsToSync, inventoryWeight)
+            TriggerClientEvent("FRP:INVENTORY:PrimarySyncSlots", viewerSource, slotsToSync, inventoryWeight)
         else
-            TriggerClientEvent("VP:INVENTORY:SecondarySyncSlots", viewerSource, slotsToSync, inventoryWeight)
+            TriggerClientEvent("FRP:INVENTORY:SecondarySyncSlots", viewerSource, slotsToSync, inventoryWeight)
         end
     end
 end

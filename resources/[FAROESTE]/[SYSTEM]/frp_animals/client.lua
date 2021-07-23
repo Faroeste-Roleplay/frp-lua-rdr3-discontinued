@@ -6,8 +6,8 @@ API = Proxy.getInterface('API')
 cAPI = Tunnel.getInterface('API')
 
 
-RegisterNetEvent('VP:ANIMALS:create')
-AddEventHandler('VP:ANIMALS:create', function(x,y,z)
+RegisterNetEvent('FRP:ANIMALS:create')
+AddEventHandler('FRP:ANIMALS:create', function(x,y,z)
 	TriggerEvent('Distress', 'sucesso', 'Um animal lendário foi visto por essas redondesas.')
 	local blip = Citizen.InvokeNative(0x45F13B7E0A15C880, 693035517, x, y, z, 100.0)
 	Citizen.InvokeNative(0x9CB1A1623062F402, blip, 'Animal Lendário')
@@ -16,8 +16,8 @@ AddEventHandler('VP:ANIMALS:create', function(x,y,z)
 end)
 
 
-RegisterNetEvent('VP:ANIMALS:createPeds')
-AddEventHandler('VP:ANIMALS:createPeds', function(model, x,y,z)
+RegisterNetEvent('FRP:ANIMALS:createPeds')
+AddEventHandler('FRP:ANIMALS:createPeds', function(model, x,y,z)
 	local pedModelHash = GetHashKey(model)
 	if not HasModelLoaded(pedModelHash) then
 		RequestModel(pedModelHash)
@@ -71,7 +71,7 @@ Citizen.CreateThread(function()
         Wait(1000)
 		local game = NetworkIsGameInProgress()
 		if game == 1 then
-			TriggerServerEvent('VP:ANIMALS:playerActivated')
+			TriggerServerEvent('FRP:ANIMALS:playerActivated')
 			return
 		end
     end

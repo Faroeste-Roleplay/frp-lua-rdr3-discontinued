@@ -6,9 +6,9 @@ API = Tunnel.getInterface("API")
 
 Showing = false
 
-RegisterNetEvent("VP:DOCUMENTS:opening")
+RegisterNetEvent("FRP:DOCUMENTS:opening")
 AddEventHandler(
-    "VP:DOCUMENTS:opening",
+    "FRP:DOCUMENTS:opening",
     function(data)   
         SendNUIMessage(
             {
@@ -20,9 +20,9 @@ AddEventHandler(
         Showing = false
 end)
 
-RegisterNetEvent("VP:DOCUMENTS:close")
+RegisterNetEvent("FRP:DOCUMENTS:close")
 AddEventHandler(
-    "VP:DOCUMENTS:close",
+    "FRP:DOCUMENTS:close",
     function(data)   
         SendNUIMessage(
             {
@@ -34,10 +34,10 @@ end)
 
 RegisterCommand('meuid', function(source)
     if not Showing then
-        TriggerServerEvent("VP:DOCUMENTS:getCharInfo", GetPlayerServerId())
+        TriggerServerEvent("FRP:DOCUMENTS:getCharInfo", GetPlayerServerId())
         Showing = true
     else
-        TriggerEvent("VP:DOCUMENTS:close")
+        TriggerEvent("FRP:DOCUMENTS:close")
         Showing = false
     end
 end)
@@ -50,10 +50,10 @@ RegisterCommand('pedirid', function(source)
         local nearestPed = GetPlayerPed(player)		
         if distance ~= -1 and distance <= 3.0 then                    
             if not Showing then
-                TriggerServerEvent("VP:DOCUMENTS:requestCharInfo", GetPlayerServerId(player))
+                TriggerServerEvent("FRP:DOCUMENTS:requestCharInfo", GetPlayerServerId(player))
                 Showing = true
             else
-                TriggerEvent("VP:DOCUMENTS:close")
+                TriggerEvent("FRP:DOCUMENTS:close")
                 Showing = false
             end
         else
@@ -63,7 +63,7 @@ RegisterCommand('pedirid', function(source)
 end)
 
 RegisterCommand('fecharid', function(source)
-    TriggerEvent("VP:DOCUMENTS:close")
+    TriggerEvent("FRP:DOCUMENTS:close")
     Showing = false
 end)
 

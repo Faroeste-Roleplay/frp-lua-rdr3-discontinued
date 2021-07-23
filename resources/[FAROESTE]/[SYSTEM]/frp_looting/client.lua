@@ -32,7 +32,7 @@ Citizen.CreateThread(
 
             for entity, model in pairs(pocketing) do
                 if not DoesEntityExist(entity) then
-                    TriggerServerEvent("VP:LOOTING:TryToLoot", model)
+                    TriggerServerEvent("FRP:LOOTING:TryToLoot", model)
                     pocketing[entity] = nil
                 end
             end
@@ -44,9 +44,9 @@ function GetCarriableCarryConfig(carriable)
     return Citizen.InvokeNative(0x0FD25587BB306C86, carriable)
 end
 
-RegisterNetEvent("VP:LOOTING:LooteableDenied")
+RegisterNetEvent("FRP:LOOTING:LooteableDenied")
 AddEventHandler(
-    "VP:LOOTING:LooteableDenied",
+    "FRP:LOOTING:LooteableDenied",
     function(entityModel)
         local ped = PlayerPedId()
         local coords = GetEntityCoords(ped) + (GetEntityForwardVector(ped) * 0.5)

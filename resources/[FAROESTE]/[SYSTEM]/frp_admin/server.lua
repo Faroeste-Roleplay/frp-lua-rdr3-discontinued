@@ -16,7 +16,7 @@ RegisterCommand(
         local model = Character:getModel()
         local clothes = Character:getClothes()
 
-        TriggerClientEvent("VP:ADMIN:Model", source, model, clothes)
+        TriggerClientEvent("FRP:ADMIN:Model", source, model, clothes)
     end
 )
 
@@ -231,7 +231,7 @@ RegisterCommand(
         local User = API.getUserFromSource(source)
         local Character = User:getCharacter()
         if Character:hasGroupOrInheritance("admin") then
-            TriggerClientEvent("VP:ADMIN:CreateVehicle", source, args[1])
+            TriggerClientEvent("FRP:ADMIN:CreateVehicle", source, args[1])
         else
             User:notify("error", "Você não tem permissão!")
         end
@@ -484,9 +484,9 @@ RegisterCommand(
             local Character = User:getCharacter()
             if Character:hasGroupOrInheritance("admin") then
                 if args[2] ~= nil then
-                    TriggerClientEvent("VP:ADMIN:SpawnPed", source, args[1], tonumber(args[2]))
+                    TriggerClientEvent("FRP:ADMIN:SpawnPed", source, args[1], tonumber(args[2]))
                 else
-                    TriggerClientEvent("VP:ADMIN:SpawnPed", source, args[1])
+                    TriggerClientEvent("FRP:ADMIN:SpawnPed", source, args[1])
                 end
             else
                 User:notify("error", "Você não tem permissão!")
@@ -502,7 +502,7 @@ RegisterCommand(
             local User = API.getUserFromSource(source)
             local Character = User:getCharacter()
             if Character:hasGroupOrInheritance("admin") then
-                TriggerClientEvent("VP:ADMIN:SpawnObject", source, args[1])
+                TriggerClientEvent("FRP:ADMIN:SpawnObject", source, args[1])
             else
                 User:notify("error", "Você não tem permissão!")
             end
@@ -521,12 +521,12 @@ RegisterCommand(
             if args[1] ~= nil then
                 local tplayer = API.getUserFromUserId(parseInt(args[1])):getSource()
                 if tplayer ~= nil then
-                    TriggerClientEvent("VP:RESPAWN:revive", tplayer)
+                    TriggerClientEvent("FRP:RESPAWN:revive", tplayer)
 
                     API.logs("./savedata/revive.txt",  os.date() .. " | [AdminID]: " .. Character:getId() .. " / [TargetID]: " .. args[1] .. " [FUNÇÃO]: REVIVE")
                 end
             else
-                TriggerClientEvent("VP:RESPAWN:revive", _source)
+                TriggerClientEvent("FRP:RESPAWN:revive", _source)
             end
         end
     end
@@ -560,7 +560,7 @@ RegisterCommand(
         local Character = User:getCharacter()
 
         if Character:hasGroupOrInheritance("admin") then
-            TriggerClientEvent("VP:ADMIN:DestroyTargetEntity", _source)
+            TriggerClientEvent("FRP:ADMIN:DestroyTargetEntity", _source)
         end
     end
 )
@@ -579,7 +579,7 @@ RegisterCommand(
                     m = m .. " " .. args[i]
                 end
 
-                TriggerClientEvent("VP:NOTIFY:Simple", -1, m, 10000)
+                TriggerClientEvent("FRP:NOTIFY:Simple", -1, m, 10000)
             end
         end
     end
@@ -662,16 +662,16 @@ RegisterCommand(
 -- )
 
 local sourcesUsingGamerTags = {}
-RegisterNetEvent("VP:ADMIN:TryToGetGamerTagsInfo")
+RegisterNetEvent("FRP:ADMIN:TryToGetGamerTagsInfo")
 AddEventHandler(
-    "VP:ADMIN:TryToGetGamerTagsInfo",
+    "FRP:ADMIN:TryToGetGamerTagsInfo",
     function()
         local _source = source
         local User = API.getUserFromSource(source)
         local Character = User:getCharacter()
 
         if Character:hasGroupOrInheritance("admin") then
-            TriggerClientEvent("VP:ADMIN:ReceiveGamerTagsInfo", _source, API.getSources())
+            TriggerClientEvent("FRP:ADMIN:ReceiveGamerTagsInfo", _source, API.getSources())
             sourcesUsingGamerTags[_source] = true
         end
     end
@@ -696,7 +696,7 @@ AddEventHandler(
             if User ~= nil then
                 local user_id = User:getId()
                 for sourceUsingGt, _ in pairs(sourcesUsingGamerTags) do
-                    TriggerClientEvent("VP:ADMIN:ReceiveGamerTagInfo", sourceUsingGt, source, user_id)
+                    TriggerClientEvent("FRP:ADMIN:ReceiveGamerTagInfo", sourceUsingGt, source, user_id)
                 end
             end
         end
@@ -714,10 +714,10 @@ RegisterCommand(
             if args[2] ~= nil then
                 local tplayer = API.getUserFromUserId(parseInt(args[1])):getSource()
                 if tplayer ~= nil then
-                    TriggerClientEvent("VP:ADMIN:outift", tplayer, tonumber(args[2]))
+                    TriggerClientEvent("FRP:ADMIN:outift", tplayer, tonumber(args[2]))
                 end
             else
-                TriggerClientEvent("VP:ADMIN:outift", _source, tonumber(args[1]))
+                TriggerClientEvent("FRP:ADMIN:outift", _source, tonumber(args[1]))
             end
         end
     end
@@ -731,7 +731,7 @@ RegisterCommand(
         local Character = User:getCharacter()
 
         if Character:hasGroupOrInheritance("admin") then
-            TriggerClientEvent("VP:ADMIN:Dual", _source)
+            TriggerClientEvent("FRP:ADMIN:Dual", _source)
         end
     end
 )

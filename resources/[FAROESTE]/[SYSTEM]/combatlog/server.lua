@@ -10,7 +10,7 @@ local oncombat = {}
 os.setlocale("pt_BR")
 
 AddEventHandler(
-    "VP:UserDropped",
+    "FRP:UserDropped",
     function(source, user_id, character_id, reason)
         if oncombat[user_id] then
             local reasons = {}
@@ -65,9 +65,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:COMBATLOG:AddUserCombatReason")
+RegisterNetEvent("FRP:COMBATLOG:AddUserCombatReason")
 AddEventHandler(
-    "VP:COMBATLOG:AddUserCombatReason",
+    "FRP:COMBATLOG:AddUserCombatReason",
     function(user_id, duration, reason)
         local l = {
             reason = reason,
@@ -93,7 +93,7 @@ AddEventHandler(
 --         local character_id = User:getCharacter() and User:getCharacter():getId() or 0
 --         local reason = "Disconnected."
 
---         TriggerEvent("VP:UserDropped", source, user_id, character_id, reason)
+--         TriggerEvent("FRP:UserDropped", source, user_id, character_id, reason)
 --     end,
 --     false
 -- )
@@ -104,7 +104,7 @@ AddEventHandler(
 --         local User = API.getUserFromSource(source)
 --         local user_id = User:getId()
 
---         TriggerEvent("VP:COMBATLOG:AddUserCombatReason", user_id, 300, "Roubo a Loja")
+--         TriggerEvent("FRP:COMBATLOG:AddUserCombatReason", user_id, 300, "Roubo a Loja")
 --     end,
 --     false
 -- )

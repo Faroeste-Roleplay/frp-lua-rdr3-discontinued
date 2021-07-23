@@ -4,8 +4,8 @@ JailTime = 0
 fastTimer = 0
 local JailLocation = 3372.48, -667.09, 46.41
 
-RegisterNetEvent('VP:JAIL:jail')
-AddEventHandler('VP:JAIL:jail', function(jailTime)
+RegisterNetEvent('FRP:JAIL:jail')
+AddEventHandler('FRP:JAIL:jail', function(jailTime)
 
 	if IsJailed then -- don't allow multiple jails
 		return
@@ -85,7 +85,7 @@ AddEventHandler('VP:JAIL:jail', function(jailTime)
 					ClearPedTasksImmediately(playerPed)
 				end
 				if JailTime % 100 == 0 then
-					TriggerServerEvent('VP:JAIL:updateRemaining', JailTime)
+					TriggerServerEvent('FRP:JAIL:updateRemaining', JailTime)
 				end
 				Citizen.Wait(20000)
 				-- Is the player trying to escape?
@@ -95,7 +95,7 @@ AddEventHandler('VP:JAIL:jail', function(jailTime)
 				end				
 				JailTime = JailTime - 20
 			end
-			TriggerServerEvent('VP:JAIL:unjailTime', -1)
+			TriggerServerEvent('FRP:JAIL:unjailTime', -1)
 			--SetEntityCoords(playerPed, 3372.48, -667.09, 46.41)
 			IsJailed = false
 		end)
@@ -118,8 +118,8 @@ Citizen.CreateThread(function()
 	end
 end)
 
-RegisterNetEvent('VP:JAIL:unjail')
-AddEventHandler('VP:JAIL:unjail', function(source)
+RegisterNetEvent('FRP:JAIL:unjail')
+AddEventHandler('FRP:JAIL:unjail', function(source)
 	unjail = true
 	JailTime = 0
 	fastTimer = 0
@@ -135,7 +135,7 @@ Citizen.CreateThread(function()
 	Citizen.Wait(7000)
 	if spawned then
 		print(spawned)
-		TriggerServerEvent('VP:JAIL:checkJail')
+		TriggerServerEvent('FRP:JAIL:checkJail')
 	end
 end)
 

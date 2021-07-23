@@ -96,7 +96,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
           --  spawn_faggio()
             goliv(livpt,livr)
             nbDelivery = 5
-           -- TriggerServerEvent("VP:DELIVERY:itemadd", nbDelivery)
+           -- TriggerServerEvent("FRP:DELIVERY:itemadd", nbDelivery)
         end
       end
     end
@@ -107,7 +107,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
 
       while notif == true do
 
-        TriggerEvent('VP:NOTIFY:Simple', 'Entregue as cartas no destino marcado', 10000)
+        TriggerEvent('FRP:NOTIFY:Simple', 'Entregue as cartas no destino marcado', 10000)
         notif = false
 
         i = 1
@@ -127,16 +127,16 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
           posibilidad = math.random(1, 100)
           afaitunepizzamin = true
 
-         -- TriggerServerEvent("VP:DELIVERY:itemrm")
+         -- TriggerServerEvent("FRP:DELIVERY:itemrm")
           nbDelivery = nbDelivery - 1
 
           if (posibilidad > 70) and (posibilidad < 90) then
 
             pourboire = math.random(25, 60)
 
-            TriggerEvent('VP:NOTIFY:Simple', 'Você recebeu $'.. pourboire, 10000)
+            TriggerEvent('FRP:NOTIFY:Simple', 'Você recebeu $'.. pourboire, 10000)
 
-            TriggerServerEvent("VP:DELIVERY:pay", pourboire)
+            TriggerServerEvent("FRP:DELIVERY:pay", pourboire)
 
           end
 
@@ -171,7 +171,7 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
       while notif2 == true do
      --   SetNewWaypoint(place.x,place.y)
 
-        TriggerEvent('VP:NOTIFY:Simple', 'Volte para pegar mais cartas.', 10000)
+        TriggerEvent('FRP:NOTIFY:Simple', 'Volte para pegar mais cartas.', 10000)
 
         notif2 = false
 
@@ -191,9 +191,9 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
 
               afaitunepizzamin = false
 
-              TriggerEvent('VP:NOTIFY:Simple', 'Obrigado pelo seu trabalho, aqui está seu pagamento $'.. paie, 10000)
+              TriggerEvent('FRP:NOTIFY:Simple', 'Obrigado pelo seu trabalho, aqui está seu pagamento $'.. paie, 10000)
 
-              TriggerServerEvent("VP:DELIVERY:pay", paie)
+              TriggerServerEvent("FRP:DELIVERY:pay", paie)
 
               isInJobDelivery = true
               isToHouse = true
@@ -209,19 +209,19 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
               goliv(livpt,livr)
               nbDelivery = 5
 
-        --      TriggerServerEvent("VP:DELIVERY:itemadd", nbDelivery)
+        --      TriggerServerEvent("FRP:DELIVERY:itemadd", nbDelivery)
 
            --[[ else
               notifmoto1 = true
               while notifmoto1 == true do                
-                TriggerEvent('VP:NOTIFY:Simple', 'Cadê a carroça?', 10000)
+                TriggerEvent('FRP:NOTIFY:Simple', 'Cadê a carroça?', 10000)
               notifmoto1 = false
               end
             end ]]
           end
       --[[  else     
           while notifmoto2 == true do
-            TriggerEvent('VP:NOTIFY:Simple', 'Cadê a carroça?', 10000)
+            TriggerEvent('FRP:NOTIFY:Simple', 'Cadê a carroça?', 10000)
             notifmoto2 = false
           end
         end ]]
@@ -264,7 +264,7 @@ Citizen.CreateThread(function() -- Thread de "fin de service" depuis le point ro
         DrawText("Aperte ALT para cancelar as entregas.", 0.925, 0.96, 0.25, 0.25, false, 255, 255, 255, 145, 1, 7)
 
         if IsControlJustReleased(0, 0xE8342FF2) then -- LEFT ALT
-     --     TriggerServerEvent('VP:DELIVERY:deleteAllPizz')
+     --     TriggerServerEvent('FRP:DELIVERY:deleteAllPizz')
           isInJobDelivery = false
           livr = 0
           isToHouse = false
@@ -282,9 +282,9 @@ Citizen.CreateThread(function() -- Thread de "fin de service" depuis le point ro
             SetEntityAsMissionEntity( vehicleu, true, true )
             deleteCar( vehicleu )
 
-            TriggerEvent('VP:NOTIFY:Simple', 'Obrigado pelos seus serviços.', 10000)
+            TriggerEvent('FRP:NOTIFY:Simple', 'Obrigado pelos seus serviços.', 10000)
 
-           -- TriggerServerEvent("VP:DELIVERY:paiefinale")
+           -- TriggerServerEvent("FRP:DELIVERY:paiefinale")
 
             SetWaypointOff()
 
@@ -297,7 +297,7 @@ Citizen.CreateThread(function() -- Thread de "fin de service" depuis le point ro
             SetEntityAsMissionEntity( vehicleu, true, true )
             deleteCar( vehicleu )
 
-            TriggerEvent('VP:NOTIFY:Simple', 'Obrigado pelos seus serviços.', 10000)
+            TriggerEvent('FRP:NOTIFY:Simple', 'Obrigado pelos seus serviços.', 10000)
 
           end
         end

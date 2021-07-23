@@ -50,18 +50,18 @@ local tempPlacementSeedType
 local insideFarmAreaId
 
 AddEventHandler(
-    "VP:AREA:PlayerEnteredArea",
+    "FRP:AREA:PlayerEnteredArea",
     function(areaId)
         -- print("Entrou " .. areaId)
         if areaId == "tobacco" or areaId == "corn" or areaId == "sugarcane" then
             insideFarmAreaId = areaId
-            TriggerServerEvent("VP:FARM:AskForFarmsInfo", areaId)
+            TriggerServerEvent("FRP:FARM:AskForFarmsInfo", areaId)
         end
     end
 )
 
 AddEventHandler(
-    "VP:AREA:PlayerLeftArea",
+    "FRP:AREA:PlayerLeftArea",
     function(areaId)
         -- print("Saiu " .. areaId)
         if areaId == "tobacco" or areaId == "corn" or areaId == "sugarcane" then
@@ -79,18 +79,18 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:FARM:SetFarmsInfo")
+RegisterNetEvent("FRP:FARM:SetFarmsInfo")
 AddEventHandler(
-    "VP:FARM:SetFarmsInfo",
+    "FRP:FARM:SetFarmsInfo",
     function(farmAreaId, info)
         spotsData[farmAreaId] = info
         renderSpots(farmAreaId)
     end
 )
 
-RegisterNetEvent("VP:FARM:SetSpot")
+RegisterNetEvent("FRP:FARM:SetSpot")
 AddEventHandler(
-    "VP:FARM:SetSpot",
+    "FRP:FARM:SetSpot",
     function(farmAreaId, spotId, percentGrown)
         if drawnObjects[farmAreaId] then
             if drawnObjects[farmAreaId][spotId] then
@@ -129,9 +129,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:FARM:StartPlacingSeed")
+RegisterNetEvent("FRP:FARM:StartPlacingSeed")
 AddEventHandler(
-    "VP:FARM:StartPlacingSeed",
+    "FRP:FARM:StartPlacingSeed",
     function(seedType)
         -- TaskStartScenarioInPlace(PlayerPedId(), GetHashKey('WORLD_HUMAN_BUCKET_POUR_LOW'), 3000, true, false, false, false)
 
@@ -324,7 +324,7 @@ Citizen.CreateThread(
                                             if  NativeGetScenarioPointPedIsUsing(ped) ~= scenario_pour then
                                                     ClearPedTasks(ped)
                                                     SetCurrentPedWeapon(ped, GetHashKey('weapon_unarmed'), true)
-                                                    TriggerServerEvent("VP:FARM:TryToWaterCrop", insideFarmAreaId, aimingAtSpotId)
+                                                    TriggerServerEvent("FRP:FARM:TryToWaterCrop", insideFarmAreaId, aimingAtSpotId)
                                                 break
                                             end
                                         end
@@ -343,7 +343,7 @@ Citizen.CreateThread(
                             end
                             else
                                 -- if growPercentage <= 100 then
-                                    TriggerServerEvent("VP:FARM:TryToHarvestCrop", insideFarmAreaId, aimingAtSpotId)
+                                    TriggerServerEvent("FRP:FARM:TryToHarvestCrop", insideFarmAreaId, aimingAtSpotId)
                                 -- end
                             end
                         end
@@ -372,7 +372,7 @@ Citizen.CreateThread(
                             ClearPedTasks(ped)
                             SetCurrentPedWeapon(ped, GetHashKey('weapon_unarmed'), true)
 
-                            TriggerServerEvent("VP:FARM:TryToPlantSeed", tempPlacementSeedType, insideFarmAreaId, aimingAtSpotId)
+                            TriggerServerEvent("FRP:FARM:TryToPlantSeed", tempPlacementSeedType, insideFarmAreaId, aimingAtSpotId)
                         end
                     else
                         if IsControlJustPressed(1, 0xF84FA74F) then -- RMB

@@ -6,9 +6,9 @@ cAPI = Tunnel.getInterface("API")
 
 local wantedUserIds = {}
 
-RegisterServerEvent("VP:WANTED:checkJOB")
+RegisterServerEvent("FRP:WANTED:checkJOB")
 AddEventHandler(
-    "VP:WANTED:checkJOB",
+    "FRP:WANTED:checkJOB",
     function()
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -19,9 +19,9 @@ AddEventHandler(
     end
 )
 
-RegisterServerEvent("VP:WANTED:gunshotInProgress")
+RegisterServerEvent("FRP:WANTED:gunshotInProgress")
 AddEventHandler(
-    "VP:WANTED:gunshotInProgress",
+    "FRP:WANTED:gunshotInProgress",
     function(targetCoords, CityName, playerGender, suspectInstead)
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -36,20 +36,20 @@ AddEventHandler(
         local PoliceON = API.getUsersByGroup("trooper")
 
         for i = 1, #PoliceON do
-            TriggerClientEvent("VP:WANTED:gunshotInProgress", PoliceON[i].getSource(), targetCoords)
+            TriggerClientEvent("FRP:WANTED:gunshotInProgress", PoliceON[i].getSource(), targetCoords)
 
             if suspectInstead then
-                TriggerClientEvent("VP:TOAST:New", PoliceON[i].getSource(), "alert", "Sheriff: Suspeito(a) encontrado em " .. CityName)
+                TriggerClientEvent("FRP:TOAST:New", PoliceON[i].getSource(), "alert", "Sheriff: Suspeito(a) encontrado em " .. CityName)
             else
-                TriggerClientEvent("VP:TOAST:New", PoliceON[i].getSource(), "alert", "Sheriff: Disparos por " .. playerGender .. " foram relatados em " .. CityName)
+                TriggerClientEvent("FRP:TOAST:New", PoliceON[i].getSource(), "alert", "Sheriff: Disparos por " .. playerGender .. " foram relatados em " .. CityName)
             end
         end
     end
 )
 
-RegisterServerEvent("VP:WANTED:RewardNotify")
+RegisterServerEvent("FRP:WANTED:RewardNotify")
 AddEventHandler(
-    "VP:WANTED:RewardNotify",
+    "FRP:WANTED:RewardNotify",
     function(id, reward, city)
         local tplayer = API.getUserFromUserId(parseInt(id)):getSource()
 
@@ -66,21 +66,21 @@ AddEventHandler(
             if wan ~= nil then
                 if wan == "{}" then
                     local wantedvalue = 0
-                    TriggerClientEvent("VP:WANTED:RewardNotify", PoliceON[i].getSource(), reward + wantedvalue, pname, city)
+                    TriggerClientEvent("FRP:WANTED:RewardNotify", PoliceON[i].getSource(), reward + wantedvalue, pname, city)
                 else
                     local wantedvalue = json.decode(wan)
-                    TriggerClientEvent("VP:WANTED:RewardNotify", PoliceON[i].getSource(), reward + wantedvalue, pname, city)
+                    TriggerClientEvent("FRP:WANTED:RewardNotify", PoliceON[i].getSource(), reward + wantedvalue, pname, city)
                 end
             else
-                TriggerClientEvent("VP:WANTED:RewardNotify", PoliceON[i].getSource(), reward, pname, city)
+                TriggerClientEvent("FRP:WANTED:RewardNotify", PoliceON[i].getSource(), reward, pname, city)
             end
         end
     end
 )
 
-RegisterServerEvent("VP:WANTED:RewardSERVER")
+RegisterServerEvent("FRP:WANTED:RewardSERVER")
 AddEventHandler(
-    "VP:WANTED:RewardSERVER",
+    "FRP:WANTED:RewardSERVER",
     function(id, value, city)
         local tplayer = API.getUserFromUserId(parseInt(id)):getSource()
         local User = API.getUserFromSource(tplayer)
@@ -116,13 +116,13 @@ RegisterCommand(
 
         local wan = Character:getData(charid, "wanted", nil)
         local wanted = json.decode(wan)
-        TriggerClientEvent("VP:WANTED:GetWanted", _source, wanted)
+        TriggerClientEvent("FRP:WANTED:GetWanted", _source, wanted)
     end
 )
 
-RegisterNetEvent("VP:WANTED:MarkAsWanted")
+RegisterNetEvent("FRP:WANTED:MarkAsWanted")
 AddEventHandler(
-    "VP:WANTED:MarkAsWanted",
+    "FRP:WANTED:MarkAsWanted",
     function(asWanted)
         local _source = source
 
@@ -136,7 +136,7 @@ AddEventHandler(
             for _, User in pairs(API.getUsersByGroup("trooper")) do
                 local uSource = User:getSource()
 
-                TriggerClientEvent("VP:WANTED:SyncWantedOrNotPlayer", uSource, v)
+                TriggerClientEvent("FRP:WANTED:SyncWantedOrNotPlayer", uSource, v)
             end
         end
     end
@@ -156,7 +156,7 @@ AddEventHandler(
                 table.insert(r, sSource)
             end
 
-            TriggerClientEvent("VP:WANTED:SyncWantedPlayers", source, r)
+            TriggerClientEvent("FRP:WANTED:SyncWantedPlayers", source, r)
         end
     end
 )

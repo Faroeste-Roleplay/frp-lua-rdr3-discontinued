@@ -4,9 +4,9 @@ local Proxy = module("_core", "lib/Proxy")
 cAPI = Proxy.getInterface("API")
 API = Tunnel.getInterface("API")
 
-RegisterNetEvent("VP:WANTED:gunshotInProgress")
+RegisterNetEvent("FRP:WANTED:gunshotInProgress")
 AddEventHandler(
-    "VP:WANTED:gunshotInProgress",
+    "FRP:WANTED:gunshotInProgress",
     function(targetCoords)
         --   if cAPI.hasGroupOrInheritance('trooper') or cAPI.hasGroupOrInheritance('sheriff') then
         local blip = Citizen.InvokeNative(0x45F13B7E0A15C880, 408396114, targetCoords.x, targetCoords.y, targetCoords.z, 60.0)
@@ -18,9 +18,9 @@ AddEventHandler(
 )
 
 
-RegisterNetEvent("VP:WANTED:denuncia")
+RegisterNetEvent("FRP:WANTED:denuncia")
 AddEventHandler(
-    "VP:WANTED:denuncia",
+    "FRP:WANTED:denuncia",
     function(targetCoords)
         local blip = Citizen.InvokeNative(0x45F13B7E0A15C880, 408396114, targetCoords.x, targetCoords.y, targetCoords.z, 60.0)
         Citizen.InvokeNative(0x9CB1A1623062F402, blip, "Denuncia")
@@ -59,7 +59,7 @@ Citizen.CreateThread(
                             Citizen.Wait(3000)
                             -- DecorSetInt(playerPed, 'isOutlaw', 2)
                             TriggerServerEvent(
-                                "VP:WANTED:gunshotInProgress",
+                                "FRP:WANTED:gunshotInProgress",
                                 {
                                     x = playerCoords.x,
                                     y = playerCoords.y,
@@ -77,18 +77,18 @@ Citizen.CreateThread(
     end
 )
 
-RegisterNetEvent("VP:WANTED:RewardClient")
+RegisterNetEvent("FRP:WANTED:RewardClient")
 AddEventHandler(
-    "VP:WANTED:RewardClient",
+    "FRP:WANTED:RewardClient",
     function(arg1, arg2)
-        TriggerServerEvent("VP:WANTED:RewardNotify", arg1, arg2, GetCurrentTownName())
-        TriggerServerEvent("VP:WANTED:RewardSERVER", arg1, arg2, GetCurrentTownName())
+        TriggerServerEvent("FRP:WANTED:RewardNotify", arg1, arg2, GetCurrentTownName())
+        TriggerServerEvent("FRP:WANTED:RewardSERVER", arg1, arg2, GetCurrentTownName())
     end
 )
 
-RegisterNetEvent("VP:WANTED:RewardNotify")
+RegisterNetEvent("FRP:WANTED:RewardNotify")
 AddEventHandler(
-    "VP:WANTED:RewardNotify",
+    "FRP:WANTED:RewardNotify",
     function(reward, playername, city)
         reward2 = reward
         pname = playername
@@ -101,9 +101,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:WANTED:GetWanted")
+RegisterNetEvent("FRP:WANTED:GetWanted")
 AddEventHandler(
-    "VP:WANTED:GetWanted",
+    "FRP:WANTED:GetWanted",
     function(city)
         for key, value in pairs(city) do
             print(key, value)
@@ -125,12 +125,12 @@ Citizen.CreateThread(
     end
 )
 
--- RegisterNetEvent("VP:WANTED:outlawNotify")
+-- RegisterNetEvent("FRP:WANTED:outlawNotify")
 -- AddEventHandler(
---     "VP:WANTED:outlawNotify",
+--     "FRP:WANTED:outlawNotify",
 --     function(alert)
 --         --  if cAPI.hasGroupOrInheritance('trooper') or cAPI.hasGroupOrInheritance('sheriff') then
---         TriggerEvent("VP:NOTIFY:Simple", "Sheriff: " .. (alert), 5000)
+--         TriggerEvent("FRP:NOTIFY:Simple", "Sheriff: " .. (alert), 5000)
 --         --   end
 --     end
 -- )
@@ -278,9 +278,9 @@ Citizen.CreateThread(
 
 local suspects = {}
 
-RegisterNetEvent("VP:WANTED:UsedEagleEye")
+RegisterNetEvent("FRP:WANTED:UsedEagleEye")
 AddEventHandler(
-    "VP:WANTED:UsedEagleEye",
+    "FRP:WANTED:UsedEagleEye",
     function()
         cAPI.VarySickness(70)
 
@@ -340,9 +340,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:WANTED:SyncWantedOrNotPlayer")
+RegisterNetEvent("FRP:WANTED:SyncWantedOrNotPlayer")
 AddEventHandler(
-    "VP:WANTED:SyncWantedOrNotPlayer",
+    "FRP:WANTED:SyncWantedOrNotPlayer",
     function(src, asWanted)
         if asWanted then
             table.insert(suspects, src)
@@ -357,9 +357,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:WANTED:SyncWantedPlayers")
+RegisterNetEvent("FRP:WANTED:SyncWantedPlayers")
 AddEventHandler(
-    "VP:WANTED:SyncWantedPlayers",
+    "FRP:WANTED:SyncWantedPlayers",
     function(a)
         for _, src in pairs(a) do
             table.insert(suspects, src)

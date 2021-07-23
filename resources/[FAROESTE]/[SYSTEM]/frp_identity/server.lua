@@ -4,9 +4,9 @@ local Proxy = module('_core', 'lib/Proxy')
 API = Proxy.getInterface('API')
 cAPI = Tunnel.getInterface('API')
 
-RegisterServerEvent('VP:IDENTITY:DisplayCharSelection')
+RegisterServerEvent('FRP:IDENTITY:DisplayCharSelection')
 AddEventHandler(
-    'VP:IDENTITY:DisplayCharSelection',
+    'FRP:IDENTITY:DisplayCharSelection',
     function(User)
         if User == nil then
             return
@@ -19,13 +19,13 @@ AddEventHandler(
             table.insert(appearence,User:getCharacterAppearenceFromId(userId))     
         end
         
-        TriggerClientEvent('VP:IDENTITY:DisplayCharSelection', User:getSource(), User:getCharacters(), appearence)
+        TriggerClientEvent('FRP:IDENTITY:DisplayCharSelection', User:getSource(), User:getCharacters(), appearence)
     end
 )
 
-RegisterServerEvent('VP:IDENTITY:DisplayCharSelectionWithUser')
+RegisterServerEvent('FRP:IDENTITY:DisplayCharSelectionWithUser')
 AddEventHandler(
-    'VP:IDENTITY:DisplayCharSelectionWithUser',
+    'FRP:IDENTITY:DisplayCharSelectionWithUser',
     function(User)
         if User == nil then
             return
@@ -38,13 +38,13 @@ AddEventHandler(
             table.insert(appearence,User:getCharacterAppearenceFromId(userId))     
         end
         
-        TriggerClientEvent('VP:IDENTITY:DisplayCharSelection', User:getSource(), User:getCharacters(), appearence)
+        TriggerClientEvent('FRP:IDENTITY:DisplayCharSelection', User:getSource(), User:getCharacters(), appearence)
     end
 )
 
-RegisterServerEvent('VP:IDENTITY:selectCharacter')
+RegisterServerEvent('FRP:IDENTITY:selectCharacter')
 AddEventHandler(
-    'VP:IDENTITY:selectCharacter',
+    'FRP:IDENTITY:selectCharacter',
     function(cid)
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -52,13 +52,13 @@ AddEventHandler(
     end
 )
 
-RegisterServerEvent('VP:IDENTITY:deleteCharacter')
+RegisterServerEvent('FRP:IDENTITY:deleteCharacter')
 AddEventHandler(
-    'VP:IDENTITY:deleteCharacter',
+    'FRP:IDENTITY:deleteCharacter',
     function(cid)
         local _source = source
         local User = API.getUserFromSource(_source)
         User:deleteCharacter(cid)
-        TriggerEvent('VP:IDENTITY:DisplayCharSelection', source, _source)
+        TriggerEvent('FRP:IDENTITY:DisplayCharSelection', source, _source)
     end
 )

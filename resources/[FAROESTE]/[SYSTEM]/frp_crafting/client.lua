@@ -23,9 +23,9 @@ local _tempParsedConfig
 
 local DEFAULT_CRAFTING_POSITION_RADIUS = 1.5
 
-RegisterNetEvent("VP:CRAFT:ShouldClose")
+RegisterNetEvent("FRP:CRAFT:ShouldClose")
 AddEventHandler(
-    "VP:CRAFT:ShouldClose",
+    "FRP:CRAFT:ShouldClose",
     function(clearTasks)
         SetNuiFocus(false, false)
         SetNuiFocusKeepInput(false)
@@ -47,7 +47,7 @@ AddEventHandler(
 RegisterNUICallback(
     "shouldClose",
     function()
-        TriggerEvent("VP:CRAFT:ShouldClose")
+        TriggerEvent("FRP:CRAFT:ShouldClose")
     end
 )
 
@@ -125,7 +125,7 @@ Citizen.CreateThread(
                 if not isCrafting then
                     if IsControlJustPressed(0, 0x5966D52A) and not alreadyRequestedCraftingNui then
                         if not Citizen.InvokeNative(0x1BE19185B8AFE299, 0x5966D52A) then
-                            TriggerEvent("VP:CRAFTING:client_TryToOpenCrafting")
+                            TriggerEvent("FRP:CRAFTING:client_TryToOpenCrafting")
                         end
                     end
                 else
@@ -141,7 +141,7 @@ Citizen.CreateThread(
                         PromptSetActiveGroupThisFrame(prompt_group, CreateVarString(10, "LITERAL_STRING", selected_name), 0, 0, 0, 0)
 
                         if craftingEndGameTimer <= GetGameTimer() then
-                            TriggerServerEvent("VP:CRAFTING:FinishedCrafting", selected_cGroup, selected_cIndex)
+                            TriggerServerEvent("FRP:CRAFTING:FinishedCrafting", selected_cGroup, selected_cIndex)
 
                             -- local soundId = GetSoundId()
 
@@ -153,7 +153,7 @@ Citizen.CreateThread(
 
                             ClearPosCrafting()
 
-                            TriggerEvent("VP:CRAFTING:client_TryToOpenCrafting")
+                            TriggerEvent("FRP:CRAFTING:client_TryToOpenCrafting")
                         elseif PromptHasHoldModeCompleted(prompt_cancel) then
                             ClearPosCrafting()
                         else
@@ -184,7 +184,7 @@ Citizen.CreateThread(
 
                         craftingEndGameTimer = GetGameTimer() + (selected_time * 1000)
 
-                        TriggerEvent("VP:CRAFT:ShouldClose", false)
+                        TriggerEvent("FRP:CRAFT:ShouldClose", false)
 
                     -- Citizen.InvokeNative(0x6FB1DA3CA9DA7D90, "cook_meat_sizzle_loop", playerPed, "Player_Campfire_Sounds", false, 0, 0)
                     -- Citizen.InvokeNative(0x9821B68CD3E05F2B, "distanceToFlame", 1.0, "cook_meat_sizzle_loop", "Player_Campfire_Sounds")
@@ -312,9 +312,9 @@ function ClearPosCrafting()
     craftingEndGameTimer = nil
 end
 
-RegisterNetEvent("VP:CRAFTING:client_TryToOpenCrafting")
+RegisterNetEvent("FRP:CRAFTING:client_TryToOpenCrafting")
 AddEventHandler(
-    "VP:CRAFTING:client_TryToOpenCrafting",
+    "FRP:CRAFTING:client_TryToOpenCrafting",
     function()
         local playerPed = PlayerPedId()
         local playerPosition = GetEntityCoords(playerPed)
@@ -351,13 +351,13 @@ AddEventHandler(
 
         alreadyRequestedCraftingNui = true
 
-        TriggerServerEvent("VP:CRAFTING:TryToOpenCrafting", craftingGroups)
+        TriggerServerEvent("FRP:CRAFTING:TryToOpenCrafting", craftingGroups)
     end
 )
 
-RegisterNetEvent("VP:CRAFTING:OpenCrafting")
+RegisterNetEvent("FRP:CRAFTING:OpenCrafting")
 AddEventHandler(
-    "VP:CRAFTING:OpenCrafting",
+    "FRP:CRAFTING:OpenCrafting",
     function(r)
         alreadyRequestedCraftingNui = false
 
@@ -445,7 +445,7 @@ AddEventHandler(
     function(resourceName)
         if (GetCurrentResourceName() == resourceName) then
             -- PromptDelete(prompt)
-            TriggerEvent("VP:CRAFT:ShouldClose")
+            TriggerEvent("FRP:CRAFT:ShouldClose")
 
             PromptDelete(prompt_craft)
             PromptDelete(prompt_cancel)

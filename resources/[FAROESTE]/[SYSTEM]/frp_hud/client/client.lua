@@ -80,7 +80,7 @@ Citizen.CreateThread(
             if IsControlJustPressed(0, 0x446258B6) then
                 print("press")
                 opened = true
-                TriggerServerEvent("VP:HUD:request")
+                TriggerServerEvent("FRP:HUD:request")
             end
 
             Citizen.InvokeNative(0x4B8F743A4A6D2FF8, true)
@@ -129,9 +129,9 @@ end)
 --     end
 -- )
 
-RegisterNetEvent("VP:HUD:RevealMap")
+RegisterNetEvent("FRP:HUD:RevealMap")
 AddEventHandler(
-    "VP:HUD:RevealMap",
+    "FRP:HUD:RevealMap",
     function(toggle)
         if toggle == nil then
             SetMinimapHideFow(false)
@@ -144,9 +144,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:HUD:show")
+RegisterNetEvent("FRP:HUD:show")
 AddEventHandler(
-    "VP:HUD:show",
+    "FRP:HUD:show",
     function(data)
         SendNUIMessage(
             {
@@ -155,13 +155,13 @@ AddEventHandler(
             }
         )
         Wait(10000)
-        TriggerEvent("VP:HUD:hide")
+        TriggerEvent("FRP:HUD:hide")
     end
 )
 
-RegisterNetEvent("VP:HUD:hide")
+RegisterNetEvent("FRP:HUD:hide")
 AddEventHandler(
-    "VP:HUD:hide",
+    "FRP:HUD:hide",
     function()
         opened = false
         SendNUIMessage(

@@ -4,9 +4,9 @@ local Proxy = module("_core", "lib/Proxy")
 API = Proxy.getInterface("API")
 cAPI = Tunnel.getInterface("API")
 
-RegisterNetEvent("VP:SHOP:TryToOpen")
+RegisterNetEvent("FRP:SHOP:TryToOpen")
 AddEventHandler(
-    "VP:SHOP:TryToOpen",
+    "FRP:SHOP:TryToOpen",
     function(shopIndex)
         local _source = source
 
@@ -82,13 +82,13 @@ AddEventHandler(
             end
         end
 
-        TriggerClientEvent("VP:SHOP:OpenNUI", _source, shopIndex, r)
+        TriggerClientEvent("FRP:SHOP:OpenNUI", _source, shopIndex, r)
     end
 )
 
-RegisterNetEvent("VP:SHOP:Transaction")
+RegisterNetEvent("FRP:SHOP:Transaction")
 AddEventHandler(
-    "VP:SHOP:Transaction",
+    "FRP:SHOP:Transaction",
     function(shopIndex, transactionIndex, transactionType)
         local _source = source
 

@@ -186,7 +186,7 @@ Citizen.CreateThread( function()
 		if WarMenu.IsMenuOpened('id_dog') then
 			for i = 1, #dogs do
 				if WarMenu.Button(dogs[i]['Text'], dogs[i]['SubText'], dogs[i]['Desc']) then
-					TriggerServerEvent('VP:PET:buydog', dogs[i]['Param'])
+					TriggerServerEvent('FRP:PET:buydog', dogs[i]['Param'])
 					print()
 					WarMenu.CloseMenu()
 				end
@@ -222,7 +222,7 @@ Citizen.CreateThread(function()
 		if pressTime == 1 then
 			if recentlySpawned <= 0 then
 				recentlySpawned = 10
-				TriggerServerEvent('VP:PET:loaddog')
+				TriggerServerEvent('FRP:PET:loaddog')
 			end
 			pressTime = 0
 		end
@@ -293,8 +293,8 @@ end)
 
 -- | Spawn dog | --
 
-RegisterNetEvent( 'VP:PET:spawndog' )
-AddEventHandler( 'VP:PET:spawndog', function ( dog, isInShop )
+RegisterNetEvent( 'FRP:PET:spawndog' )
+AddEventHandler( 'FRP:PET:spawndog', function ( dog, isInShop )
 
 	local player = PlayerPedId()
 

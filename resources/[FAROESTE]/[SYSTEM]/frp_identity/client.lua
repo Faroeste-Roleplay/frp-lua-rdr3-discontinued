@@ -6,9 +6,9 @@ API = Tunnel.getInterface("API")
 
 local fakePeds = {}
 
-RegisterNetEvent("VP:IDENTITY:DisplayCharSelection")
+RegisterNetEvent("FRP:IDENTITY:DisplayCharSelection")
 AddEventHandler(
-    "VP:IDENTITY:DisplayCharSelection",
+    "FRP:IDENTITY:DisplayCharSelection",
     function(characterArray, charAppearence)
         Destroy()
 
@@ -113,7 +113,7 @@ RegisterNUICallback(
     "createCharacter",
     function()
         SetNuiFocus(false, false)
-        TriggerEvent("VP:CHARCREATION:starting")
+        TriggerEvent("FRP:CHARCREATION:starting")
         Destroy()
     end
 )
@@ -123,7 +123,7 @@ RegisterNUICallback(
     function(id)
         SetNuiFocus(false, false)
         DisplayHud(true)
-        TriggerServerEvent("VP:IDENTITY:selectCharacter", id)
+        TriggerServerEvent("FRP:IDENTITY:selectCharacter", id)
         cAPI.StartFade(500)
         Citizen.Wait(500)
         Destroy()
@@ -137,8 +137,8 @@ RegisterNUICallback(
 RegisterNUICallback(
     "deleteCharacter",
     function(id)
-        TriggerServerEvent("VP:IDENTITY:deleteCharacter", id)
-        TriggerEvent("VP:NOTIFY:Simple", "Personagem deletado.")
+        TriggerServerEvent("FRP:IDENTITY:deleteCharacter", id)
+        TriggerEvent("FRP:NOTIFY:Simple", "Personagem deletado.")
     end
 )
 

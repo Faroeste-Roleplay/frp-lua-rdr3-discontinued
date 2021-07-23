@@ -145,7 +145,7 @@ function tryToBuyHorse(horseModel, buyWithGold)
 	local horseName = cAPI.prompt('Nomeie seu Cavalo:', 'Cavalo')
 	WarMenu.CloseMenu()
 	if horseName ~= '' then
-		TriggerServerEvent('VP:HORSESHOP:Buy', horseModel, horseName, buyWithGold)
+		TriggerServerEvent('FRP:HORSESHOP:Buy', horseModel, horseName, buyWithGold)
 	end
 end
 
@@ -221,9 +221,9 @@ Citizen.CreateThread(
 	end
 )
 
-RegisterNetEvent('VP:HORSESHOP:ReceiveHorsesData')
+RegisterNetEvent('FRP:HORSESHOP:ReceiveHorsesData')
 AddEventHandler(
-	'VP:HORSESHOP:ReceiveHorsesData',
+	'FRP:HORSESHOP:ReceiveHorsesData',
 	function(data)
 		myHorses = data
 	end
@@ -241,7 +241,7 @@ Citizen.CreateThread(
 				WarMenu.MenuButton('Comprar Cavalo', 'horse_shop')
 
 				if WarMenu.MenuButton('Meus Cavalos', 'my_horses') then
-					TriggerServerEvent('VP:HORSESHOP:AskForMyHorses')
+					TriggerServerEvent('FRP:HORSESHOP:AskForMyHorses')
 				end
 
 				-- if WarMenu.IsMenuAboutToBeClosed() then
@@ -277,7 +277,7 @@ Citizen.CreateThread(
 				--	print(json.encode(horseData))
 					if WarMenu.Button(horseData.name .. ' ' .. horseData.model .. ' ' or 'false') then	
 								
-						TriggerServerEvent('VP:HORSESHOP:SelectHorseWithId', horseData.id)
+						TriggerServerEvent('FRP:HORSESHOP:SelectHorseWithId', horseData.id)
 					end
 				end
 

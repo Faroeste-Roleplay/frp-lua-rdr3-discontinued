@@ -279,9 +279,9 @@ RegisterCommand(
 	end
 )
 
-RegisterNetEvent("VP:EVENTS:PedFinishedGatheringEntity")
-RegisterNetEvent("VP:EVENTS:PedWhistle")
-RegisterNetEvent("VP:EVENTS:PedInteractionRansackScenario")
+RegisterNetEvent("FRP:EVENTS:PedFinishedGatheringEntity")
+RegisterNetEvent("FRP:EVENTS:PedWhistle")
+RegisterNetEvent("FRP:EVENTS:PedInteractionRansackScenario")
 
 -- RegisterCommand(
 -- 	"ye",
@@ -367,7 +367,7 @@ Citizen.CreateThread(
 						-- exports["frp_admin"]:js_teste_native(0, i, 2)
 
 						local view = exports["research"]:DataViewNativeGetEventData(0, i, 2)
-						TriggerEvent("VP:EVENTS:PedWhistle", view["0"], view["2"])
+						TriggerEvent("FRP:EVENTS:PedWhistle", view["0"], view["2"])
 					elseif eventAtIndex == GetHashKey("EVENT_PLAYER_PROMPT_TRIGGERED") then
 						local view = exports["research"]:DataViewNativeGetEventData(0, i, 10)
 
@@ -400,7 +400,7 @@ Citizen.CreateThread(
 						local containerEntity = view["2"]
 						local containerScenario = view["4"]
 						local isClosing = view["6"]
-						TriggerEvent("VP:EVENTS:PedInteractionRansackScenario", pedInteracting, containerEntity, containerScenario, isClosing)
+						TriggerEvent("FRP:EVENTS:PedInteractionRansackScenario", pedInteracting, containerEntity, containerScenario, isClosing)
 					elseif eventAtIndex == 1208357138 then
 						-- local carriableEntity = view["0"]
 						-- local pedCarrier
@@ -428,7 +428,7 @@ Citizen.CreateThread(
 						-- print(ped, entity, bool_unk, IsEntityAPed(entity))
 						-- print(GetEntityModel(entity))
 
-						TriggerEvent("VP:EVENTS:PedFinishedGatheringEntity", ped, entity, bool_unk)
+						TriggerEvent("FRP:EVENTS:PedFinishedGatheringEntity", ped, entity, bool_unk)
 					elseif eventAtIndex == 218595333 then
 					-- print("Horse broken")
 					end

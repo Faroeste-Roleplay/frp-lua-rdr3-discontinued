@@ -1,5 +1,5 @@
 Citizen.CreateThread(
     function()
-        TriggerEvent("VP:COWMILKING:PreStart")
+        TriggerEvent("FRP:COWMILKING:PreStart")
     end
 )

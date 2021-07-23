@@ -67,7 +67,7 @@ Citizen.CreateThread(
                         PromptSetActiveGroupThisFrame(prompt_group, CreateVarString(10, "LITERAL_STRING", closestShopId))
                         if PromptHasHoldModeCompleted(prompt) then
                             if IsControlPressed(0, 0xDFF812F9) then
-                                TriggerEvent("VP:SHOP:SELL:OpenShop", closestShopId)
+                                TriggerEvent("FRP:SHOP:SELL:OpenShop", closestShopId)
                                 Citizen.Wait(1000)
                             end
                         end
@@ -89,7 +89,7 @@ Citizen.CreateThread(
                             end
                         )
 
-                        TriggerServerEvent("VP:SHOP:TryToSell", selected_shopId, selected_itemId, false)
+                        TriggerServerEvent("FRP:SHOP:TryToSell", selected_shopId, selected_itemId, false)
                     end
                 end
             end
@@ -121,9 +121,9 @@ function InitiatePrompts()
     PromptRegisterEnd(prompt_sell)
 end
 
-RegisterNetEvent("VP:SHOP:SELL:OpenShop")
+RegisterNetEvent("FRP:SHOP:SELL:OpenShop")
 AddEventHandler(
-    "VP:SHOP:SELL:OpenShop",
+    "FRP:SHOP:SELL:OpenShop",
     function(shopId)
         if sentFirstData == true then
             SendNUIMessage(
@@ -173,7 +173,7 @@ AddEventHandler(
 -- RegisterNUICallback(
 --     "sellItem",
 --     function(data, cb)
---         TriggerServerEvent("VP:SHOP:TryToSell", data.shopId, data.itemId, data.withGold)
+--         TriggerServerEvent("FRP:SHOP:TryToSell", data.shopId, data.itemId, data.withGold)
 --     end
 -- )
 

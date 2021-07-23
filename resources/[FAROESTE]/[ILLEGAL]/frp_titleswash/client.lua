@@ -26,7 +26,7 @@ Citizen.CreateThread(function()
 
             if dist <= 0.5 then
 				if IsControlJustPressed(0, Keys['E']) then -- "E"
-					TriggerServerEvent('VP:TITLESWASH:washMoney')
+					TriggerServerEvent('FRP:TITLESWASH:washMoney')
 				end			
             end
         end

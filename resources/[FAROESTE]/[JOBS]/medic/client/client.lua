@@ -9,44 +9,44 @@ cAPI = Tunnel.getInterface("API")
 ---------------------------
 -- Variables
 
-RegisterNetEvent('VP:MEDIC:checkdeath')
-AddEventHandler('VP:MEDIC:checkdeath', function()
+RegisterNetEvent('FRP:MEDIC:checkdeath')
+AddEventHandler('FRP:MEDIC:checkdeath', function()
   local player, distance = GetClosestPlayer()
 
   if distance ~= -1 and distance <= 3.0 then
-    TriggerServerEvent('VP:MEDIC:checkcallback', GetPlayerServerId(player))
+    TriggerServerEvent('FRP:MEDIC:checkcallback', GetPlayerServerId(player))
    -- TriggerEvent('chatMessage', 'SISTEMA', {255, 255, 255}, 'Curou o (' .. GetPlayerName(player) .. ')')
   else
     TriggerEvent('chatMessage', 'SISTEMA', {255, 255, 255}, 'Ninguem por perto')
   end
 end)
 
-RegisterNetEvent('VP:MEDIC:TreatmentCheck')
-AddEventHandler('VP:MEDIC:TreatmentCheck', function()
+RegisterNetEvent('FRP:MEDIC:TreatmentCheck')
+AddEventHandler('FRP:MEDIC:TreatmentCheck', function()
   local player, distance = GetClosestPlayer()
 
   if distance ~= -1 and distance <= 3.0 then
-    TriggerServerEvent('VP:MEDIC:TreatmentCallback', GetPlayerServerId(player))
+    TriggerServerEvent('FRP:MEDIC:TreatmentCallback', GetPlayerServerId(player))
    -- TriggerEvent('chatMessage', 'SISTEMA', {255, 255, 255}, 'Curou o (' .. GetPlayerName(player) .. ')')
   else
     TriggerEvent('chatMessage', 'SISTEMA', {255, 255, 255}, 'Ninguem por perto')
   end
 end)
 
-RegisterNetEvent('VP:MEDIC:revivecheck')
-AddEventHandler('VP:MEDIC:revivecheck', function()
+RegisterNetEvent('FRP:MEDIC:revivecheck')
+AddEventHandler('FRP:MEDIC:revivecheck', function()
   local player, distance = GetClosestPlayer()
 
   if distance ~= -1 and distance <= 3.0 then
-    TriggerServerEvent('VP:MEDIC:revivecallback', GetPlayerServerId(player))
+    TriggerServerEvent('FRP:MEDIC:revivecallback', GetPlayerServerId(player))
    -- TriggerEvent('chatMessage', 'SISTEMA', {255, 255, 255}, 'Curou o (' .. GetPlayerName(player) .. ')')
   else
     TriggerEvent('chatMessage', 'SISTEMA', {255, 255, 255}, 'Ninguem por perto')
   end
 end)
 
--- RegisterNetEvent('VP:MEDIC:ReceiveStatus')
--- AddEventHandler('VP:MEDIC:ReceiveStatus', function(data)     
+-- RegisterNetEvent('FRP:MEDIC:ReceiveStatus')
+-- AddEventHandler('FRP:MEDIC:ReceiveStatus', function(data)     
 -- 	if data.InstaDeath ~= nil then		
 -- 		if data.InstaDeath == true then
 -- 			print('este player está em coma.')
@@ -71,8 +71,8 @@ end)
 -- 	end
 -- end)
 
-RegisterNetEvent('VP:MEDIC:revive')
-AddEventHandler('VP:MEDIC:revive', function(data)
+RegisterNetEvent('FRP:MEDIC:revive')
+AddEventHandler('FRP:MEDIC:revive', function(data)
 
     -- PUT HERE ANIMATION
 

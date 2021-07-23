@@ -9,6 +9,6 @@ RegisterCommand(
 
 		local message = table.concat(args, " ")
 
-		TriggerClientEvent("VP:ME:DisplayAboveHeadText", -1, message, source)
+		TriggerClientEvent("FRP:ME:DisplayAboveHeadText", -1, message, source)
 	end
 )

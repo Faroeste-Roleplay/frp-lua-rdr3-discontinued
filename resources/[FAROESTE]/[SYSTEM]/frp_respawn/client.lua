@@ -271,7 +271,7 @@ Citizen.CreateThread(
 												tempTable[index] = 1
 											end
 
-											TriggerServerEvent("VP:RESPAWN:SetPlayerDamage", tempTable)
+											TriggerServerEvent("FRP:RESPAWN:SetPlayerDamage", tempTable)
 										end
 									end
 								end
@@ -339,9 +339,9 @@ RegisterCommand(
 
 
 
-RegisterNetEvent("VP:RESPAWN:revive")
+RegisterNetEvent("FRP:RESPAWN:revive")
 AddEventHandler(
-	"VP:RESPAWN:revive",
+	"FRP:RESPAWN:revive",
 	function()
 		NetworkResurrectLocalPlayer(GetEntityCoords(PlayerPedId()), true, true, false)
 		DestroyAllCams(true)
@@ -349,9 +349,9 @@ AddEventHandler(
 	end
 )
 
-RegisterNetEvent("VP:RESPAWN:Treatment")
+RegisterNetEvent("FRP:RESPAWN:Treatment")
 AddEventHandler(
-	"VP:RESPAWN:Treatment",
+	"FRP:RESPAWN:Treatment",
 	function()
 		cAPI.VaryPlayerHealth(5, 5)
 		Citizen.InvokeNative(0xC6258F41D86676E0, PlayerPedId(), 0, 100)
@@ -361,9 +361,9 @@ AddEventHandler(
 	end
 )
 
-RegisterNetEvent("VP:RESPAWN:PlayerUp")
+RegisterNetEvent("FRP:RESPAWN:PlayerUp")
 AddEventHandler(
-	"VP:RESPAWN:PlayerUp",
+	"FRP:RESPAWN:PlayerUp",
 	function()
 		NetworkResurrectLocalPlayer(GetEntityCoords(PlayerPedId()), true, true, false)
 		DestroyAllCams(true)
@@ -371,9 +371,9 @@ AddEventHandler(
 	end
 )
 
-RegisterNetEvent("VP:RESPAWN:PlayerDead")
+RegisterNetEvent("FRP:RESPAWN:PlayerDead")
 AddEventHandler(
-	"VP:RESPAWN:PlayerDead",
+	"FRP:RESPAWN:PlayerDead",
 	function()
 		Citizen.InvokeNative(0x697157CED63F18D4, PlayerPedId(), 500000, false, true, true)
 	end
@@ -400,7 +400,7 @@ function HandleAsInjured(fatal)
 
 	-- print('Called HandleAsInjured', fatal)
 
-	TriggerServerEvent("VP:RESPAWN:SetPlayerAsDead", 1)
+	TriggerServerEvent("FRP:RESPAWN:SetPlayerAsDead", 1)
 
 	if fatal == true then
 		-- print("Died of fatal cause", fatal)
@@ -446,7 +446,7 @@ function HandleAsInjured(fatal)
 							end
 						end
 
-						TriggerServerEvent("VP:RESPAWN:SetPlayerAsAliveAndClearInventory")
+						TriggerServerEvent("FRP:RESPAWN:SetPlayerAsAliveAndClearInventory")
 
 						DoScreenFadeOut(500)
 
@@ -457,7 +457,7 @@ function HandleAsInjured(fatal)
 
 						DoScreenFadeIn(500)
 
-						-- TriggerServerEvent("VP:Respawn:checkgroup", closestIndex)
+						-- TriggerServerEvent("FRP:Respawn:checkgroup", closestIndex)
 						break
 					end
 				else
@@ -473,7 +473,7 @@ function HandleAsInjured(fatal)
 						]]
 				-- print("Broke")
 
-				TriggerServerEvent("VP:RESPAWN:SetPlayerAsDead", 0)
+				TriggerServerEvent("FRP:RESPAWN:SetPlayerAsDead", 0)
 
 				break
 			end			
@@ -530,7 +530,7 @@ function HandleAsInjured(fatal)
 				if PromptIsEnabled(prompt_giveup) == 1 and PromptHasHoldModeCompleted(prompt_giveup) == 1 then
 					isBadlyInjuried = false
 
-					TriggerServerEvent("VP:RESPAWN:SetPlayerAsDead", 1)
+					TriggerServerEvent("FRP:RESPAWN:SetPlayerAsDead", 1)
 
 					PromptDelete(prompt_getup)
 					PromptDelete(prompt_giveup)
@@ -590,7 +590,7 @@ function HandleAsInjured(fatal)
 
 						isBadlyInjuried = false
 
-						TriggerServerEvent("VP:RESPAWN:SetPlayerAsDead", 1)
+						TriggerServerEvent("FRP:RESPAWN:SetPlayerAsDead", 1)
 
 						PromptDelete(prompt_getup)
 						PromptDelete(prompt_giveup)
@@ -645,7 +645,7 @@ function HandleAsInjured(fatal)
 
 									acaba o thread
 								]]
-						TriggerServerEvent("VP:RESPAWN:SetPlayerAsDead", 0)
+						TriggerServerEvent("FRP:RESPAWN:SetPlayerAsDead", 0)
 
 						isBadlyInjuried = false
 						break
@@ -869,13 +869,13 @@ end
 -- 		)
 -- 		SetNuiFocus(true, true)
 -- 		-- remove all items
--- 		TriggerServerEvent("VP:Respawn:_Dead")
+-- 		TriggerServerEvent("FRP:Respawn:_Dead")
 -- 	end
 -- )
 
-RegisterNetEvent("VP:RESPAWN:CheckDeath")
+RegisterNetEvent("FRP:RESPAWN:CheckDeath")
 AddEventHandler(
-	"VP:RESPAWN:CheckDeath",
+	"FRP:RESPAWN:CheckDeath",
 	function()
 		local data = {
 			deathCause,
@@ -886,7 +886,7 @@ AddEventHandler(
 
 		local player, distance = GetClosestPlayer()
 		if distance ~= -1 and distance <= 3.0 then
-			TriggerServerEvent("VP:MEDIC:StatusDeath", GetPlayerServerId(player), data)
+			TriggerServerEvent("FRP:MEDIC:StatusDeath", GetPlayerServerId(player), data)
 		end
 	end
 )
@@ -896,7 +896,7 @@ AddEventHandler(
 -- 	"FRP_respawn:respawn",
 -- 	function(spawn)
 -- 		DestroyDeathRelatedInformation()
--- 		TriggerServerEvent("VP:Respawn:_Dead")
+-- 		TriggerServerEvent("FRP:Respawn:_Dead")
 -- 		DoScreenFadeOut(500)
 -- 		-- print(Locations[spawn])
 -- 		NetworkResurrectLocalPlayer(Locations[spawn], 59.95, true, true, false)
@@ -931,7 +931,7 @@ function DestroyDeathRelatedInformation()
 	DisplayHud(true)
 	DisplayRadar(true)
 
-	-- TriggerServerEvent("VP:RESPAWN:onPlayerDeath")
+	-- TriggerServerEvent("FRP:RESPAWN:onPlayerDeath")
 	newDestroy()
 end
 

@@ -2,8 +2,8 @@ local registeredAreas = {}
 
 local areasPlayerIsInside = {}
 
-RegisterNetEvent("VP:AREA:PlayerEnteredArea")
-RegisterNetEvent("VP:AREA:PlayerLeftArea")
+RegisterNetEvent("FRP:AREA:PlayerEnteredArea")
+RegisterNetEvent("FRP:AREA:PlayerLeftArea")
 
 function cAPI.RegisterAreas(areas)
     for areaId, _ in pairs(areas) do
@@ -30,8 +30,8 @@ function cAPI.RegisterArea(areaId, ...)
 
     if areasPlayerIsInside[areaId] ~= nil then
         areasPlayerIsInside[areaId] = nil
-        TriggerServerEvent("VP:AREA:PlayerLeftArea", areaId)
-        TriggerEvent("VP:AREA:PlayerLeftArea", areaId)
+        TriggerServerEvent("FRP:AREA:PlayerLeftArea", areaId)
+        TriggerEvent("FRP:AREA:PlayerLeftArea", areaId)
     end
 
     return area
@@ -49,14 +49,14 @@ Citizen.CreateThread(
                 if area.isInside() then
                     if not areasPlayerIsInside[areaId] then
                         areasPlayerIsInside[areaId] = true
-                        TriggerServerEvent("VP:AREA:PlayerEnteredArea", areaId)
-                        TriggerEvent("VP:AREA:PlayerEnteredArea", areaId)
+                        TriggerServerEvent("FRP:AREA:PlayerEnteredArea", areaId)
+                        TriggerEvent("FRP:AREA:PlayerEnteredArea", areaId)
                     end
                 else
                     if areasPlayerIsInside[areaId] then
                         areasPlayerIsInside[areaId] = nil
-                        TriggerServerEvent("VP:AREA:PlayerLeftArea", areaId)
-                        TriggerEvent("VP:AREA:PlayerLeftArea", areaId)
+                        TriggerServerEvent("FRP:AREA:PlayerLeftArea", areaId)
+                        TriggerEvent("FRP:AREA:PlayerLeftArea", areaId)
                     end
                 end
             end

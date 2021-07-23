@@ -162,7 +162,7 @@ RegisterCommand('testtable', function()
 end)
 
 AddEventHandler(
-  "VP:CHESTS:Open",
+  "FRP:CHESTS:Open",
   function(chestId)
     if chest_id ~= nil then
       TriggerClientEvent("TREASURE:killblip", -1)

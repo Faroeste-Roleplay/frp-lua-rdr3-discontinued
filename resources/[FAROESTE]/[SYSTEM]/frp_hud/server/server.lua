@@ -6,7 +6,7 @@ API_DB = Proxy.getInterface("API_DB")
 cAPI = Tunnel.getInterface("API")
 
 AddEventHandler(
-    "VP:INVENTORY:UPDATE:AddItem",
+    "FRP:INVENTORY:UPDATE:AddItem",
     function(Inventory, itemId)
 
         if itemId == 'map' then
@@ -17,7 +17,7 @@ AddEventHandler(
          
             if Inventory:getId() == user_Inventory:getId() then
                 if map_amount >= 1 then
-                    TriggerClientEvent('VP:HUD:RevealMap', _source, true)
+                    TriggerClientEvent('FRP:HUD:RevealMap', _source, true)
                 end
             end
 
@@ -26,7 +26,7 @@ AddEventHandler(
 end)
 
 AddEventHandler(
-    "VP:INVENTORY:UPDATE:RemoveItem",
+    "FRP:INVENTORY:UPDATE:RemoveItem",
     function(Inventory, itemId)
 
         if itemId == 'map' then
@@ -37,15 +37,15 @@ AddEventHandler(
          
             if user_inventory:getId() == user_Inventory:getId() then
                 if map_amount < 1 then
-                    TriggerClientEvent('VP:HUD:RevealMap', _source, false)
+                    TriggerClientEvent('FRP:HUD:RevealMap', _source, false)
                 end
             end
         end
 end)
 
 
-RegisterServerEvent('VP:HUD:request')
-AddEventHandler('VP:HUD:request', function()
+RegisterServerEvent('FRP:HUD:request')
+AddEventHandler('FRP:HUD:request', function()
 	local _source = source
 	local User = API.getUserFromSource(_source)
     local Character = User:getCharacter()
@@ -70,10 +70,10 @@ AddEventHandler('VP:HUD:request', function()
         ["level"] = level,
     }
 
-	TriggerClientEvent('VP:HUD:show', _source, data)
+	TriggerClientEvent('FRP:HUD:show', _source, data)
 end) 
 
 
 RegisterCommand("reveal", function(source, args)
-    TriggerClientEvent('VP:HUD:RevealMap', source, args[1])
+    TriggerClientEvent('FRP:HUD:RevealMap', source, args[1])
 end)

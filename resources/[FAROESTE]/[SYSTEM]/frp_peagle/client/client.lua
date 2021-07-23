@@ -5,15 +5,15 @@ local prompt_name = CreateVarString(10, "LITERAL_STRING", "Pombo Correio")
 
 
 
-RegisterNetEvent("VP:PEAGLE:GetCoords")
+RegisterNetEvent("FRP:PEAGLE:GetCoords")
 AddEventHandler(
-    "VP:PEAGLE:GetCoords",
+    "FRP:PEAGLE:GetCoords",
     function(tplayer,Mensagem)
 
     local ped = PlayerPedId()
     local Coords = GetEntityCoords(ped)
 
-    TriggerServerEvent("VP:PEAGLE:ReceiveCoords", Coords, tplayer, Mensagem)
+    TriggerServerEvent("FRP:PEAGLE:ReceiveCoords", Coords, tplayer, Mensagem)
 end)
 
 
@@ -24,8 +24,8 @@ local pigeon = nil
 message = nil
 local blip
 
-RegisterNetEvent('VP:PEAGLE:ReceiveMenssage')
-AddEventHandler('VP:PEAGLE:ReceiveMenssage', function(PlayerCoords, text)
+RegisterNetEvent('FRP:PEAGLE:ReceiveMenssage')
+AddEventHandler('FRP:PEAGLE:ReceiveMenssage', function(PlayerCoords, text)
         pigeon = CreatePed("A_C_Pigeon", PlayerCoords, 92.0, true, true, true, true)
         Citizen.InvokeNative(0x283978A15512B2FE, pigeon, true)
         message = text
@@ -62,7 +62,7 @@ AddEventHandler('VP:PEAGLE:ReceiveMenssage', function(PlayerCoords, text)
               
                 if dst < 25 then  
                     if not Notified then
-                        TriggerEvent('VP:NOTIFY:Simple', 'Você recebeu um pombo correio, espere até o pombo se aproximar de ti.', 5000)
+                        TriggerEvent('FRP:NOTIFY:Simple', 'Você recebeu um pombo correio, espere até o pombo se aproximar de ti.', 5000)
                         Notified = true 
                         back = false                   
                     end
@@ -141,7 +141,7 @@ function HandlePrompts()
             local carriable = Citizen.InvokeNative(0xF0B4F759F35CC7F5, pigeon, Citizen.InvokeNative(0x34F008A7E48C496B, pigeon, 2), 0, 0, 512)
             TaskPickupCarriableEntity(PlayerPedId(), carriable)  
             openGuiRead(message)
-            TriggerServerEvent("VP:PEAGLE:AddPombo")
+            TriggerServerEvent("FRP:PEAGLE:AddPombo")
             Wait(2500)
             DeleteEntity(pigeon)
             --RemoveBlip(blip)     

@@ -175,7 +175,7 @@ function addWitness(entity, crime)
                                     playerPosition = GetEntityCoords(playerPed)
 
                                     TriggerServerEvent(
-                                        "VP:WANTED:gunshotInProgress",
+                                        "FRP:WANTED:gunshotInProgress",
                                         {
                                             x = playerPosition.x,
                                             y = playerPosition.y,

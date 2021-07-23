@@ -73,9 +73,9 @@ local SUPPRESSION_WEAROFF_SECONDS = 10 * 60
 
 local popSuppressed = {}
 
-RegisterNetEvent("VP:HERB_POPULATION:Gathered")
+RegisterNetEvent("FRP:HERB_POPULATION:Gathered")
 AddEventHandler(
-    "VP:HERB_POPULATION:Gathered",
+    "FRP:HERB_POPULATION:Gathered",
     function(compositeTypeFormatted, indexComposite, index)
         local _source = source
         if not IsVectorIndexSuppressed(indexComposite, index) then
@@ -101,7 +101,7 @@ AddEventHandler(
                     User:notify("xp", 2)
                 else
                     User:notify("error", "Sem espaço no aforje!")
-                    TriggerClientEvent("VP:HERB_POPULATION:ForceVectorIndexReload", _source, indexComposite, index)
+                    TriggerClientEvent("FRP:HERB_POPULATION:ForceVectorIndexReload", _source, indexComposite, index)
                 end
             end
         end
@@ -127,7 +127,7 @@ function SetVectorIndexSuppressed(indexComposite, index, suppress)
         popSuppressed[indexComposite][index] = nil
     end
 
-    TriggerClientEvent("VP:HERB_POPULATION:SetVectorIndexSuppressed", -1, indexComposite, index, suppress)
+    TriggerClientEvent("FRP:HERB_POPULATION:SetVectorIndexSuppressed", -1, indexComposite, index, suppress)
 end
 
 Citizen.CreateThread(
@@ -153,7 +153,7 @@ AddEventHandler(
     "API:playerSpawned",
     function(source, user_id, isFirstSpawn)
         if isFirstSpawn then
-            TriggerClientEvent("VP:HERB_POPULATION:SetPopSuppressed", source, popSuppressed)
+            TriggerClientEvent("FRP:HERB_POPULATION:SetPopSuppressed", source, popSuppressed)
         end
     end
 )

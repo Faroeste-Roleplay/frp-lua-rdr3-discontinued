@@ -4,8 +4,8 @@ local Proxy = module("_core", "lib/Proxy")
 API = Proxy.getInterface("API")
 cAPI = Tunnel.getInterface("API")
 
-RegisterServerEvent('VP:TITLESWASH:washMoney')
-AddEventHandler('VP:TITLESWASH:washMoney', function()
+RegisterServerEvent('FRP:TITLESWASH:washMoney')
+AddEventHandler('FRP:TITLESWASH:washMoney', function()
     local _source = source
     local User = API.getUserFromSource(source)
     local Character = User:getCharacter()

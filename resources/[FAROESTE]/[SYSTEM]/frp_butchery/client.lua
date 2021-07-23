@@ -72,7 +72,7 @@ Citizen.CreateThread(
 
                     if #(carriableVec - butcherVec) <= 2.5 and NativeGetCarrierAsPed(lastCarriable) == 0 then
                         Citizen.InvokeNative(0x18FF3110CF47115D, lastCarriable, 2, false)
-                        TriggerServerEvent("VP:BUTCHER:TryToSell", type, GetEntityModel(lastCarriable), lastCarriable, GetAnimalCarcassQuality(lastCarriable))
+                        TriggerServerEvent("FRP:BUTCHER:TryToSell", type, GetEntityModel(lastCarriable), lastCarriable, GetAnimalCarcassQuality(lastCarriable))
 
                         lastCarriable = nil
                     end
@@ -82,9 +82,9 @@ Citizen.CreateThread(
     end
 )
 
-RegisterNetEvent("VP:BUTCHER:EntityAccepted")
+RegisterNetEvent("FRP:BUTCHER:EntityAccepted")
 AddEventHandler(
-    "VP:BUTCHER:EntityAccepted",
+    "FRP:BUTCHER:EntityAccepted",
     function(entity)
         if DoesEntityExist(entity) then
             -- if GetEntityModel(entity) == entModel then
@@ -103,9 +103,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:BUTCHER:EntityNotAccepted")
+RegisterNetEvent("FRP:BUTCHER:EntityNotAccepted")
 AddEventHandler(
-    "VP:BUTCHER:EntityNotAccepted",
+    "FRP:BUTCHER:EntityNotAccepted",
     function(entity)
         if DoesEntityExist(entity) then
             -- if GetEntityModel(entity) == entModel then

@@ -7,10 +7,10 @@ cAPI = Tunnel.getInterface("API")
 local PlayerCount = 0
 local list = {}
 
-RegisterServerEvent("VP:TRAIN:playerActivated")
+RegisterServerEvent("FRP:TRAIN:playerActivated")
 function ActivateFRPTRAIN()
   if (PlayerCount) >= 1 then
-    TriggerClientEvent("VP:Trainroute", GetHostId())
+    TriggerClientEvent("FRP:Trainroute", GetHostId())
     print("chamou train")
   else
     SetTimeout(1000, ActivateFRPTRAIN)
@@ -18,7 +18,7 @@ function ActivateFRPTRAIN()
 end
 
 AddEventHandler(
-  "VP:TRAIN:playerActivated",
+  "FRP:TRAIN:playerActivated",
   function()
     if not list[source] then
       PlayerCount = PlayerCount + 1
@@ -43,13 +43,13 @@ AddEventHandler(
 RegisterCommand(
   "calltrain",
   function()
-    TriggerClientEvent("VP:Trainroute", GetHostId())
+    TriggerClientEvent("FRP:Trainroute", GetHostId())
   end
 )
 
-RegisterNetEvent("VP:TRAIN:timeCall")
+RegisterNetEvent("FRP:TRAIN:timeCall")
 AddEventHandler(
-  "VP:TRAIN:timeCall",
+  "FRP:TRAIN:timeCall",
   function()
     local hora = 6000 * 60
     local horas = 60000 * 180
@@ -58,17 +58,17 @@ AddEventHandler(
     Wait(timeram)
 
     local random = math.random(1, 6)
-    TriggerEvent("VP:TRAIN:createBAU", random)
+    TriggerEvent("FRP:TRAIN:createBAU", random)
 
-    TriggerClientEvent("VP:TRAIN:createPedDefender", GetHostId(), x + xram, y + yram, z)
-    TriggerClientEvent("VP:TRAIN:create", -1, x, y, z)
-    TriggerEvent("VP:TRAIN:timeCall")
+    TriggerClientEvent("FRP:TRAIN:createPedDefender", GetHostId(), x + xram, y + yram, z)
+    TriggerClientEvent("FRP:TRAIN:create", -1, x, y, z)
+    TriggerEvent("FRP:TRAIN:timeCall")
   end
 )
 
-RegisterNetEvent("VP:TRAIN:createBAU")
+RegisterNetEvent("FRP:TRAIN:createBAU")
 AddEventHandler(
-  "VP:TRAIN:createBAU",
+  "FRP:TRAIN:createBAU",
   function(id)
     if not FRPTRAIN[id] then
       return
@@ -101,10 +101,10 @@ AddEventHandler(
 )
 
 AddEventHandler(
-  "VP:CHESTS:Open",
+  "FRP:CHESTS:Open",
   function()
     if bauId[chest_id] ~= nil then
-      TriggerClientEvent("VP:TRAIN:killblip", GetHostId())
+      TriggerClientEvent("FRP:TRAIN:killblip", GetHostId())
     end
   end
 )

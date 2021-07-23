@@ -48,7 +48,7 @@ function OpenTrashCan()
     Citizen.InvokeNative(0x524B54361229154F, PlayerPedId(), GetHashKey("PROP_PLAYER_LOOT_WALL_STASH"), -1, true, false, false, false)
 
     Citizen.Wait(10000)
-    TriggerServerEvent("VP:TRASH:receive")
+    TriggerServerEvent("FRP:TRASH:receive")
     ClearPedTasks(PlayerPedId())
 end
 

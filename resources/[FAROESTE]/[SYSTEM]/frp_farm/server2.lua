@@ -4,23 +4,23 @@ local cache_timeout_timestamp = 0
 
 local cache_is_from_db = false
 
-RegisterNetEvent("VP:FARM:AddIndex")
+RegisterNetEvent("FRP:FARM:AddIndex")
 AddEventHandler(
-    "VP:FARM:AddIndex",
+    "FRP:FARM:AddIndex",
     function(index, state_flag)
         dbAPI.execute("INSERT:farm_add_index", {index = index, state_flag = state_flag})
 
-        TriggerClientEvent("VP:FARM:SetIndex", -1, index, state_flag)
+        TriggerClientEvent("FRP:FARM:SetIndex", -1, index, state_flag)
     end
 )
 
-RegisterNetEvent("VP:FARM:RemoveIndex")
+RegisterNetEvent("FRP:FARM:RemoveIndex")
 AddEventHandler(
-    "VP:FARM:RemoveIndex",
+    "FRP:FARM:RemoveIndex",
     function(index, state_flag)
         dbAPI.execute("REMOVE:farm_remove_index", {index = index})
 
-        TriggerClientEvent("VP:FARM:SetIndex", -1, index, 0)
+        TriggerClientEvent("FRP:FARM:SetIndex", -1, index, 0)
 
         addindextocache(index, state_flag)
     end
@@ -59,9 +59,9 @@ function startcachetimeout()
     end
 end
 
-RegisterNetEvent("VP:FARM:RequestPop")
+RegisterNetEvent("FRP:FARM:RequestPop")
 AddEventHandler(
-    "VP:FARM:RequestPop",
+    "FRP:FARM:RequestPop",
     function()
         local _source = source
 
@@ -84,6 +84,6 @@ AddEventHandler(
             startcachetimeout()
         end
 
-        TriggerClientEvent("VP:FARM:SetPop", _source, cache_pop)
+        TriggerClientEvent("FRP:FARM:SetPop", _source, cache_pop)
     end
 )

@@ -49,9 +49,9 @@ local sellables = {
     {model = 1205982615, name = "Condor-da-Califórnia", value = 175} --
 }
 
-RegisterNetEvent("VP:ANIMAL_HUNTING:TryToStartQuest")
+RegisterNetEvent("FRP:ANIMAL_HUNTING:TryToStartQuest")
 AddEventHandler(
-    "VP:ANIMAL_HUNTING:TryToStartQuest",
+    "FRP:ANIMAL_HUNTING:TryToStartQuest",
     function()
         local _source = source
 
@@ -70,9 +70,9 @@ AddEventHandler(
 
         -- Character:setData(Character:getId(), "metaData", "caca", choosenAnimalModel)
 
-        -- TriggerClientEvent("VP:ANIMAL_HUNTING:taskMission", _source, choosenAnimalModel)
-        -- TriggerClientEvent('VP:ANIMAL_HUNTING:AnimalHuntingPromptEnabled', _source, false, )
-        TriggerClientEvent("VP:ANIMAL_HUNTING:NotifyAnimalName", _source, 1, choosenAnimalModel)
+        -- TriggerClientEvent("FRP:ANIMAL_HUNTING:taskMission", _source, choosenAnimalModel)
+        -- TriggerClientEvent('FRP:ANIMAL_HUNTING:AnimalHuntingPromptEnabled', _source, false, )
+        TriggerClientEvent("FRP:ANIMAL_HUNTING:NotifyAnimalName", _source, 1, choosenAnimalModel)
 
         -- User:notify("alert", "Procure por " .. choosenAnimalName.. "!")
 
@@ -80,9 +80,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:ANIMAL_HUNTING:TryToEndQuest")
+RegisterNetEvent("FRP:ANIMAL_HUNTING:TryToEndQuest")
 AddEventHandler(
-    "VP:ANIMAL_HUNTING:TryToEndQuest",
+    "FRP:ANIMAL_HUNTING:TryToEndQuest",
     function(entType, entModel, entity, quality)
         local _source = source
 
@@ -98,7 +98,7 @@ AddEventHandler(
         local characterId = Character:getId()
 
         if onGoingHunting[characterId] == nil or entModel ~= onGoingHunting[characterId] then
-            TriggerClientEvent("VP:BUTCHER:EntityNotAccepted", _source, entity)
+            TriggerClientEvent("FRP:BUTCHER:EntityNotAccepted", _source, entity)
             User:notify("error", "O açogueiro não quer este animal")
             return
         end
@@ -113,9 +113,9 @@ AddEventHandler(
             User:notify("item", "money", reward)
             Character:varyExp(5)
 
-            TriggerClientEvent("VP:BUTCHER:EntityAccepted", _source, entity)
+            TriggerClientEvent("FRP:BUTCHER:EntityAccepted", _source, entity)
         else
-            TriggerClientEvent("VP:BUTCHER:EntityNotAccepted", _source, entity)
+            TriggerClientEvent("FRP:BUTCHER:EntityNotAccepted", _source, entity)
         end
     end
 )
@@ -138,7 +138,7 @@ AddEventHandler(
             local animalHashBeingHunted = onGoingHunting[characterId]
             -- local animalName = sellables[animalHashBeingHunted]['name']
             -- TriggerClientEvent("FRP_notify", _source, "você ainda precisa procurar por um " ..  animalName .. "!")
-            TriggerClientEvent("VP:ANIMAL_HUNTING:NotifyAnimalName", _source, 2, animalHashBeingHunted)
+            TriggerClientEvent("FRP:ANIMAL_HUNTING:NotifyAnimalName", _source, 2, animalHashBeingHunted)
         end
     end
 )

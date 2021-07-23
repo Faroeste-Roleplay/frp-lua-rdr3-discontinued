@@ -415,7 +415,7 @@ Citizen.CreateThread(
                     end
 
                     if FISHING_GET_F_(5) == 96 and FISHING_GET_F_(6) == 0 then
-                        TriggerServerEvent("VP:INVENTORY:getItem", fishs[GetEntityModel(FISHING_GET_FISH_HANDLE())], 1)
+                        TriggerServerEvent("FRP:INVENTORY:getItem", fishs[GetEntityModel(FISHING_GET_FISH_HANDLE())], 1)
                         SetEntityVisible(FISHING_GET_FISH_HANDLE(), false)
                         SetEntityAsMissionEntity(FISHING_GET_FISH_HANDLE(), true, true)
                         DeleteEntity(FISHING_GET_FISH_HANDLE())

@@ -9,9 +9,9 @@ local loadedFromDatabase = {}
 local farmsInfo = {}
 local notReadyFarmsInfo = {}
 
-RegisterNetEvent("VP:FARM:TryToPlantSeed")
+RegisterNetEvent("FRP:FARM:TryToPlantSeed")
 AddEventHandler(
-    "VP:FARM:TryToPlantSeed",
+    "FRP:FARM:TryToPlantSeed",
     function(seedTryingToPlant, farmAreaId, slot_id)
         local _source = source
         if not farmsInfo[farmAreaId] then
@@ -51,16 +51,16 @@ AddEventHandler(
         User:notify("item", seedItem, -1)
 
         for _, player in pairs(API.getPlayersAtArea(farmAreaId)) do
-            TriggerClientEvent("VP:FARM:SetSpot", player, farmAreaId, slot_id, 0)
+            TriggerClientEvent("FRP:FARM:SetSpot", player, farmAreaId, slot_id, 0)
         end
 
         dbAPI.execute("INSERT:crop_insert_slot", {crop_id = farmAreaId, slot_id = slot_id, crop_min_time_water = time_next_water})
     end
 )
 
-RegisterNetEvent("VP:FARM:TryToWaterCrop")
+RegisterNetEvent("FRP:FARM:TryToWaterCrop")
 AddEventHandler(
-    "VP:FARM:TryToWaterCrop",
+    "FRP:FARM:TryToWaterCrop",
     function(farmAreaId, slot_id)
         local _source = source
 
@@ -119,19 +119,19 @@ AddEventHandler(
 
                     print("planta cresceu")
                     for _, player in pairs(API.getPlayersAtArea(farmAreaId)) do
-                        TriggerClientEvent("VP:FARM:SetSpot", player, farmAreaId, slot_id, newgrowth)
+                        TriggerClientEvent("FRP:FARM:SetSpot", player, farmAreaId, slot_id, newgrowth)
                     end
                 end
             end
         )
 
-        -- TriggerClientEvent('VP:FARM:WaterPlantAnimation', _source, ...)
+        -- TriggerClientEvent('FRP:FARM:WaterPlantAnimation', _source, ...)
     end
 )
 
-RegisterNetEvent("VP:FARM:TryToHarvestCrop")
+RegisterNetEvent("FRP:FARM:TryToHarvestCrop")
 AddEventHandler(
-    "VP:FARM:TryToHarvestCrop",
+    "FRP:FARM:TryToHarvestCrop",
     function(farmAreaId, slot_id)
         local _source = source
 
@@ -163,7 +163,7 @@ AddEventHandler(
             --             Citizen.Wait(5000)
             --             print("planta sumiu")
             --             for _, player in pairs(API.getPlayersAtArea(farmAreaId)) do
-            --                 TriggerClientEvent("VP:FARM:SetSpot", player, farmAreaId, slot_id, nil)
+            --                 TriggerClientEvent("FRP:FARM:SetSpot", player, farmAreaId, slot_id, nil)
             --             end
             --         end
             --     )
@@ -174,7 +174,7 @@ AddEventHandler(
             dbAPI.execute("UPDATE:crop_remove_slot", {crop_id = farmAreaId, slot_id = slot_id})
 
             for _, player in pairs(API.getPlayersAtArea(farmAreaId)) do
-                TriggerClientEvent("VP:FARM:SetSpot", player, farmAreaId, slot_id, percentToSync)
+                TriggerClientEvent("FRP:FARM:SetSpot", player, farmAreaId, slot_id, percentToSync)
             end
         else
             User:notify("error", "Bolsa sem espaço")
@@ -182,9 +182,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:FARM:AskForFarmsInfo")
+RegisterNetEvent("FRP:FARM:AskForFarmsInfo")
 AddEventHandler(
-    "VP:FARM:AskForFarmsInfo",
+    "FRP:FARM:AskForFarmsInfo",
     function(farmAreaId)
         local _source = source
 
@@ -207,6 +207,6 @@ AddEventHandler(
             t[k] = {v[1]}
         end
 
-        TriggerClientEvent("VP:FARM:SetFarmsInfo", _source, farmAreaId, farmsInfo[farmAreaId])
+        TriggerClientEvent("FRP:FARM:SetFarmsInfo", _source, farmAreaId, farmsInfo[farmAreaId])
     end
 )

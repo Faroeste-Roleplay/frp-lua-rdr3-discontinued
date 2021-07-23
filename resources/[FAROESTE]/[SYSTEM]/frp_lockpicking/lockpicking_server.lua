@@ -19,20 +19,20 @@ function RemoveLockpickItem(source)
     return Inventory:removeItem(-1, "lockpick", 1)
 end
 
-RegisterNetEvent("VP:LOCKPICKING:FailedLockpicking")
+RegisterNetEvent("FRP:LOCKPICKING:FailedLockpicking")
 AddEventHandler(
-    "VP:LOCKPICKING:FailedLockpicking",
+    "FRP:LOCKPICKING:FailedLockpicking",
     function()
         RemoveLockpickItem(source)
     end
 )
 
-RegisterNetEvent("VP:LOCKPICKING:SuccededLockpicking")
+RegisterNetEvent("FRP:LOCKPICKING:SuccededLockpicking")
 AddEventHandler(
-    "VP:LOCKPICKING:SuccededLockpicking",
+    "FRP:LOCKPICKING:SuccededLockpicking",
     function(doorHash)
         if RemoveLockpickItem(source) then
-            TriggerClientEvent("VP:DOORSTATECONTAINER:SetDoorState", -1, doorHash, true)
+            TriggerClientEvent("FRP:DOORSTATECONTAINER:SetDoorState", -1, doorHash, true)
         end
     end
 )

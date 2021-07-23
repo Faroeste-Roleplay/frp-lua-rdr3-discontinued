@@ -84,11 +84,11 @@ function Process(action, start, tick, finish)
                         tick()
                     end
                     if IsControlJustPressed(0, 178) and frp_action.canCancel then
-                        TriggerEvent("VP:PROGBAR:client:cancel")
+                        TriggerEvent("FRP:PROGBAR:client:cancel")
                     end
 
                     if IsEntityDead(PlayerPedId()) and not frp_action.useWhileDead then
-                        TriggerEvent("VP:PROGBAR:client:cancel")
+                        TriggerEvent("FRP:PROGBAR:client:cancel")
                     end
                 end
                 if finish ~= nil then

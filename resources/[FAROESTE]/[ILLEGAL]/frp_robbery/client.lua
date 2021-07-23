@@ -70,7 +70,7 @@ Citizen.CreateThread(
                     if interiorIndexBeingRobbed == nil then
                         if not shootingToStartCooldown then
                             notify("Atire para começar o assalto.")
-                            --  TriggerEvent('VP:Notify', 'Atire para começar o assalto.')
+                            --  TriggerEvent('FRP:Notify', 'Atire para começar o assalto.')
                             if IsPedShooting(ped) then
                                 initShootingCountdown()
 
@@ -96,7 +96,7 @@ Citizen.CreateThread(
                                 end
 
                                 if NetworkIsSessionActive() == 1 then
-                                    TriggerServerEvent("VP:ROBBERY:TryToStartRobbery", interiorIndexPlayerIsIn, participants)
+                                    TriggerServerEvent("FRP:ROBBERY:TryToStartRobbery", interiorIndexPlayerIsIn, participants)
                                 else
                                     cAPI.notify("error", "Sessão solo!")
                                 end
@@ -104,7 +104,7 @@ Citizen.CreateThread(
                         else
                             -- notify('Aguarde 10 segundos...')
                             -- DisplayHelpTextThisFrame("wait_to_shoot", false)
-                            --TriggerEvent('VP:Notify', 'Aguarde 10 segundos...')
+                            --TriggerEvent('FRP:Notify', 'Aguarde 10 segundos...')
                         end
                     else
                         if IsPedShooting(ped) then
@@ -181,14 +181,14 @@ function initCheckPedIsOutside()
                     if secondsUntilAbandonRobbery <= 0 then
                         if not isBlockedByRobbery then
                             -- print("Você ficou tempo demais fora do roubo")
-                            TriggerServerEvent("VP:ROBBERY:PlayerAbandonedRobbery")
+                            TriggerServerEvent("FRP:ROBBERY:PlayerAbandonedRobbery")
                         else
                             -- print("Você ficou tempo demais fora do roubo blocked")
                             isBlockedByRobbery = false
                             ClearPedTasks(ped)
                         end
 
-                        TriggerEvent("VP:ROBBERY:EndRobbery")
+                        TriggerEvent("FRP:ROBBERY:EndRobbery")
 
                         break
                     end
@@ -244,9 +244,9 @@ function initShootingCountdown()
     )
 end
 
-RegisterNetEvent("VP:ROBBERY:StartRobbery")
+RegisterNetEvent("FRP:ROBBERY:StartRobbery")
 AddEventHandler(
-    "VP:ROBBERY:StartRobbery",
+    "FRP:ROBBERY:StartRobbery",
     function(index, asParticipant, seconds)
         interiorIndexBeingRobbed = index
         if asParticipant then
@@ -254,13 +254,13 @@ AddEventHandler(
             initSecondsCountdown(seconds)
             cAPI.AddWantedTime(true, 30)
         end
-        TriggerEvent("VP:TOAST:New", "alert", "O assalto acabará em " .. seconds .. " segundos")
+        TriggerEvent("FRP:TOAST:New", "alert", "O assalto acabará em " .. seconds .. " segundos")
     end
 )
 
-RegisterNetEvent("VP:ROBBERY:StartRobberyAsBlocked")
+RegisterNetEvent("FRP:ROBBERY:StartRobberyAsBlocked")
 AddEventHandler(
-    "VP:ROBBERY:StartRobberyAsBlocked",
+    "FRP:ROBBERY:StartRobberyAsBlocked",
     function(index)
         interiorIndexBeingRobbed = index
         isBlockedByRobbery = true
@@ -272,9 +272,9 @@ AddEventHandler(
     end
 )
 
-RegisterNetEvent("VP:ROBBERY:EndRobbery")
+RegisterNetEvent("FRP:ROBBERY:EndRobbery")
 AddEventHandler(
-    "VP:ROBBERY:EndRobbery",
+    "FRP:ROBBERY:EndRobbery",
     function()
         interiorIndexBeingRobbed = nil
 
@@ -294,9 +294,9 @@ function setSatchel(model)
     Citizen.InvokeNative(0xD3A7B003ED343FD9, PlayerPedId(), parseInt(model), true, true, true)
 end
 
-RegisterNetEvent("VP:ROBBERY:Bolsa")
+RegisterNetEvent("FRP:ROBBERY:Bolsa")
 AddEventHandler(
-    "VP:ROBBERY:Bolsa",
+    "FRP:ROBBERY:Bolsa",
     function()
         --   cAPI.AddWantedTime(true, 30)
 

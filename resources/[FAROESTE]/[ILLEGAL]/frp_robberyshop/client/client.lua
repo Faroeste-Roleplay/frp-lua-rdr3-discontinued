@@ -41,7 +41,7 @@ Citizen.CreateThread(
 
 						if IsControlJustPressed(0, 0xC7B5340A) and not IsPedInAnyVehicle(player) then
 							if NetworkIsSessionActive() == 1 then
-								TriggerServerEvent("VP:ROBREG:checkTheRobbery", {v.id, v.x, v.y, v.z, v.h, v.seconds})
+								TriggerServerEvent("FRP:ROBREG:checkTheRobbery", {v.id, v.x, v.y, v.z, v.h, v.seconds})
 							else
 								cAPI.notify("error", "Sessão solo!")
 							end
@@ -53,9 +53,9 @@ Citizen.CreateThread(
 	end
 )
 
-RegisterNetEvent("VP:ROBREG:cancelfreeze")
+RegisterNetEvent("FRP:ROBREG:cancelfreeze")
 AddEventHandler(
-	"VP:ROBREG:cancelfreeze",
+	"FRP:ROBREG:cancelfreeze",
 	function()
 		FreezeEntityPosition(PlayerPedId(), false)
 
@@ -80,11 +80,11 @@ Citizen.CreateThread(
 					robberyTime = math.floor(robberyTime - 1)
 					robberyAmmount = math.ceil(robberyAmmount + robberyMoney)
 
-					TriggerServerEvent("VP:ROBREG:giveRobbedMoney", robberyMoney)
+					TriggerServerEvent("FRP:ROBREG:giveRobbedMoney", robberyMoney)
 
 					if robberyTime <= 0 then
 						ClearPedTasks(PlayerPedId())
-						TriggerServerEvent("VP:ROBREG:finishedTheRobbery", robberyAmmount)
+						TriggerServerEvent("FRP:ROBREG:finishedTheRobbery", robberyAmmount)
 						isRobberyActive = false
 						robberyMoney = 0
 						robberyAmmount = 0
@@ -92,7 +92,7 @@ Citizen.CreateThread(
 				else
 					ClearPedTasks(PlayerPedId())
 					FreezeEntityPosition(PlayerPedId(), false)
-					TriggerServerEvent("VP:ROBREG:cancelTheRobbery", robberyAmmount)
+					TriggerServerEvent("FRP:ROBREG:cancelTheRobbery", robberyAmmount)
 					isRobberyActive = false
 					robberyMoney = 0
 					robberyAmmount = 0
@@ -102,9 +102,9 @@ Citizen.CreateThread(
 	end
 )
 
-RegisterNetEvent("VP:ROBREG:startTheRobbery")
+RegisterNetEvent("FRP:ROBREG:startTheRobbery")
 AddEventHandler(
-	"VP:ROBREG:startTheRobbery",
+	"FRP:ROBREG:startTheRobbery",
 	function(atmInfo)
 		ClearPedTasks(PlayerPedId())
 
@@ -140,9 +140,9 @@ function setSatchel(model)
 	Citizen.InvokeNative(0xD3A7B003ED343FD9, PlayerPedId(), parseInt(model), true, true, true)
 end
 
-RegisterNetEvent("VP:ROBREG:warnThePolice")
+RegisterNetEvent("FRP:ROBREG:warnThePolice")
 AddEventHandler(
-	"VP:ROBREG:warnThePolice",
+	"FRP:ROBREG:warnThePolice",
 	function(AtmX, AtmY, AtmZ)
 		Wait(10000)
 		--	if cAPI.hasGroupOrInheritance('trooper') or cAPI.hasGroupOrInheritance('sheriff') then
@@ -151,14 +151,14 @@ AddEventHandler(
 
 		local zone = GetCurrentTownName()
 		--	TriggerEvent('chatMessage', _U('police_title'), Config.policeColor, string.format( Locales[Config.Locale]['police_warning_location'], location ) )
-		TriggerEvent("VP:NOTIFY:Simple", "SHERIFF:<br>Roubo à uma Loja! Vá até o local e impeça os assaltantes em " .. zone, 10000)
-		TriggerEvent("VP:ROBREG:InfoSheriff", AtmX, AtmY, AtmZ)
+		TriggerEvent("FRP:NOTIFY:Simple", "SHERIFF:<br>Roubo à uma Loja! Vá até o local e impeça os assaltantes em " .. zone, 10000)
+		TriggerEvent("FRP:ROBREG:InfoSheriff", AtmX, AtmY, AtmZ)
 		--	end
 	end
 )
 
--- RegisterNetEvent('VP:ROBREG:createRobBlip')
--- AddEventHandler('VP:ROBREG:createRobBlip',function(targetAtm)
+-- RegisterNetEvent('FRP:ROBREG:createRobBlip')
+-- AddEventHandler('FRP:ROBREG:createRobBlip',function(targetAtm)
 -- 	local x,y,z = targetAtm[1],targetAtm[2],targetAtm[3]
 -- 	if not DoesBlipExist(robberyBlip) then
 -- 		robberyBlip = AddBlipForCoord(x,y,z)
@@ -173,16 +173,16 @@ AddEventHandler(
 -- 	end
 -- end)
 
-RegisterNetEvent("VP:ROBREG:InfoSheriff")
+RegisterNetEvent("FRP:ROBREG:InfoSheriff")
 AddEventHandler(
-	"VP:ROBREG:InfoSheriff",
+	"FRP:ROBREG:InfoSheriff",
 	function(x, y, z)
 		AllowSonarBlips(true)
 		StartGpsMultiRoute(76603059, true, true)
 		--StartGpsMultiRoute(76603059, true, true)					-- Add the points
 		AddPointToGpsMultiRoute(x, y, z)
 		SetGpsMultiRouteRender(true)
-		TriggerEvent("VP:ROBREG:ClearGps")
+		TriggerEvent("FRP:ROBREG:ClearGps")
 		local time = 60
 		Citizen.CreateThread(
 			function()
@@ -198,9 +198,9 @@ AddEventHandler(
 	end
 )
 
-RegisterNetEvent("VP:ROBREG:ClearGps")
+RegisterNetEvent("FRP:ROBREG:ClearGps")
 AddEventHandler(
-	"VP:ROBREG:ClearGps",
+	"FRP:ROBREG:ClearGps",
 	function()
 		Wait(60000)
 		ClearGpsMultiRoute()
@@ -229,9 +229,9 @@ function DrawText3D(x, y, z, text)
 	DrawSprite("generic_textures", "hud_menu_4a", _x, _y + 0.0125, 0.015 + factor, 0.03, 0.1, 100, 1, 1, 190, 0)
 end
 
-RegisterNetEvent("VP:ROBREG:PlayAlarm")
+RegisterNetEvent("FRP:ROBREG:PlayAlarm")
 AddEventHandler(
-	"VP:ROBREG:PlayAlarm",
+	"FRP:ROBREG:PlayAlarm",
 	function(x, y, z)
 		print(x, y, z)
 		Wait(20000)

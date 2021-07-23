@@ -6,8 +6,8 @@ cAPI = Tunnel.getInterface("API")
 
 local savedMensage = {}
 
-RegisterServerEvent('VP:PEAGLE:checkJOB')
-AddEventHandler('VP:PEAGLE:checkJOB', function()
+RegisterServerEvent('FRP:PEAGLE:checkJOB')
+AddEventHandler('FRP:PEAGLE:checkJOB', function()
 
 end)
 
@@ -41,17 +41,17 @@ RegisterCommand(
           return
       end
     
-      TriggerClientEvent("VP:PEAGLE:GetCoords", _source, tplayer, Mensagem)
+      TriggerClientEvent("FRP:PEAGLE:GetCoords", _source, tplayer, Mensagem)
       Inventory:removeItem("pigeonpost", 1)
     else
-      TriggerClientEvent('VP:TOAST:New', _source, "error", "Você não pussi uma pombo correio.")
+      TriggerClientEvent('FRP:TOAST:New', _source, "error", "Você não pussi uma pombo correio.")
     end
-      --TriggerEvent("VP:PEAGLE:newNote", -1, Mensagem, "CART"..idcart)
+      --TriggerEvent("FRP:PEAGLE:newNote", -1, Mensagem, "CART"..idcart)
 end)
 
 
-RegisterNetEvent("VP:PEAGLE:SendMessage")
-AddEventHandler("VP:PEAGLE:SendMessage", function(source)
+RegisterNetEvent("FRP:PEAGLE:SendMessage")
+AddEventHandler("FRP:PEAGLE:SendMessage", function(source)
   local _source = source
 
   local User = API.getUserFromSource(_source)
@@ -78,41 +78,41 @@ AddEventHandler("VP:PEAGLE:SendMessage", function(source)
       return
   end
 
-  TriggerClientEvent("VP:PEAGLE:GetCoords", _source, tplayer, Mensagem)
+  TriggerClientEvent("FRP:PEAGLE:GetCoords", _source, tplayer, Mensagem)
   Inventory:removeItem(-1, "pigeonpost", 1)
   
-  --TriggerEvent("VP:PEAGLE:newNote", -1, Mensagem, "CART"..idcart)
+  --TriggerEvent("FRP:PEAGLE:newNote", -1, Mensagem, "CART"..idcart)
 end)
 
-RegisterNetEvent("VP:PEAGLE:ReceiveCoords")
-AddEventHandler("VP:PEAGLE:ReceiveCoords", function(coords, tplayer, Mensagem)
-  TriggerClientEvent("VP:PEAGLE:ReceiveMenssage", tplayer, coords, Mensagem)
+RegisterNetEvent("FRP:PEAGLE:ReceiveCoords")
+AddEventHandler("FRP:PEAGLE:ReceiveCoords", function(coords, tplayer, Mensagem)
+  TriggerClientEvent("FRP:PEAGLE:ReceiveMenssage", tplayer, coords, Mensagem)
 end)
 
-RegisterNetEvent("VP:PEAGLE:LoadsNote")
-AddEventHandler("VP:PEAGLE:LoadsNote", function()
-   TriggerClientEvent('VP:PEAGLE:updateNotes', -1, savedMensage)
+RegisterNetEvent("FRP:PEAGLE:LoadsNote")
+AddEventHandler("FRP:PEAGLE:LoadsNote", function()
+   TriggerClientEvent('FRP:PEAGLE:updateNotes', -1, savedMensage)
 end)
 
-RegisterNetEvent("VP:PEAGLE:newNote")
-AddEventHandler("VP:PEAGLE:newNote", function(text, id)
+RegisterNetEvent("FRP:PEAGLE:newNote")
+AddEventHandler("FRP:PEAGLE:newNote", function(text, id)
       local import = {
         ["ID"] = ""..id.."",
         ["text"] = ""..text.."",
       }
       table.insert(savedMensage, import)
-      TriggerEvent("VP:PEAGLE:LoadsNote")
+      TriggerEvent("FRP:PEAGLE:LoadsNote")
 end)
 
-RegisterNetEvent("VP:PEAGLE:updateNote")
-AddEventHandler("VP:PEAGLE:updateNote", function(noteID, text)
+RegisterNetEvent("FRP:PEAGLE:updateNote")
+AddEventHandler("FRP:PEAGLE:updateNote", function(noteID, text)
   savedMensage[noteID]["text"]=text
-  TriggerEvent("VP:PEAGLE:LoadsNote")
+  TriggerEvent("FRP:PEAGLE:LoadsNote")
 end)
 
 
-RegisterNetEvent("VP:PEAGLE:AddPombo")
-AddEventHandler("VP:PEAGLE:AddPombo", function()
+RegisterNetEvent("FRP:PEAGLE:AddPombo")
+AddEventHandler("FRP:PEAGLE:AddPombo", function()
   local _source = source
   local User = API.getUserFromSource(_source)
   local Character = User:getCharacter()
@@ -123,8 +123,8 @@ AddEventHandler("VP:PEAGLE:AddPombo", function()
 end)
 
 
-RegisterNetEvent("VP:PEAGLE:destroyNote")
-AddEventHandler("VP:PEAGLE:destroyNote", function(noteID)
+RegisterNetEvent("FRP:PEAGLE:destroyNote")
+AddEventHandler("FRP:PEAGLE:destroyNote", function(noteID)
   table.remove(savedMensage, noteID)
-  TriggerEvent("VP:PEAGLE:LoadsNote")
+  TriggerEvent("FRP:PEAGLE:LoadsNote")
 end)

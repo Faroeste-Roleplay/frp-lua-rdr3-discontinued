@@ -4,9 +4,9 @@ local Proxy = module("_core", "lib/Proxy")
 API = Proxy.getInterface("API")
 cAPI = Tunnel.getInterface("API")
 
-RegisterServerEvent("VP:DELIVERY:pay")
+RegisterServerEvent("FRP:DELIVERY:pay")
 AddEventHandler(
-    "VP:DELIVERY:pay",
+    "FRP:DELIVERY:pay",
     function(payment)
         local _source = source
         local User = API.getUserFromSource(_source)
@@ -16,8 +16,8 @@ AddEventHandler(
     end
 )
 
--- RegisterServerEvent("VP:DELIVERY:paiefinale") --Paie "bonus" lors de la fin de service
--- AddEventHandler("VP:DELIVERY:paiefinale", function()
+-- RegisterServerEvent("FRP:DELIVERY:paiefinale") --Paie "bonus" lors de la fin de service
+-- AddEventHandler("FRP:DELIVERY:paiefinale", function()
 --     local _source = source
 --     local User = API.getUserFromSource(_source)
 --     local Inventory = User:getCharacter():getInventory()
@@ -26,6 +26,6 @@ AddEventHandler(
     
 --     Inventory:addItem('money', payment*100)
 
---     TriggerClientEvent('VP:NOTIFY:Simple', source, 'Aqui está uma bonificação $'.. payment, 10000)  
+--     TriggerClientEvent('FRP:NOTIFY:Simple', source, 'Aqui está uma bonificação $'.. payment, 10000)  
 
 -- end)

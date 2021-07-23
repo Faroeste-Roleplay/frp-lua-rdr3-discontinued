@@ -17,9 +17,9 @@ local pocketables = {
 -- -2094368529 -- joias
 }
 
-RegisterNetEvent("VP:LOOTING:TryToLoot")
+RegisterNetEvent("FRP:LOOTING:TryToLoot")
 AddEventHandler(
-    "VP:LOOTING:TryToLoot",
+    "FRP:LOOTING:TryToLoot",
     function(entityModel)
         local _source = source
 
@@ -27,7 +27,7 @@ AddEventHandler(
 
         if not pocketables[entityModel] then
             User:notify("Você não pode pegar este item!")
-            TriggerClientEvent("VP:LOOTING:LooteableDenied", _source, entityModel)
+            TriggerClientEvent("FRP:LOOTING:LooteableDenied", _source, entityModel)
             return
         end
 
@@ -44,7 +44,7 @@ AddEventHandler(
         if Inventory:addItem(itemId, 1) then
         else
             User:notify("Espaço insuficiente!")
-            TriggerClientEvent("VP:LOOTING:LooteableDenied", _source, entityModel)
+            TriggerClientEvent("FRP:LOOTING:LooteableDenied", _source, entityModel)
         end
     end
 )

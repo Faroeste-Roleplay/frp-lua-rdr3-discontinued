@@ -4,9 +4,9 @@ local Proxy = module("_core", "lib/Proxy")
 API = Proxy.getInterface("API")
 cAPI = Tunnel.getInterface("API")
 
-RegisterServerEvent("VP:CARTEIRO:pay")
+RegisterServerEvent("FRP:CARTEIRO:pay")
 AddEventHandler(
-    "VP:CARTEIRO:pay",
+    "FRP:CARTEIRO:pay",
     function()
         local _source = source
         local User = API.getUserFromSource(_source)

@@ -4,9 +4,9 @@ local Proxy = module("_core", "lib/Proxy")
 API = Proxy.getInterface("API")
 cAPI = Tunnel.getInterface("API")
 
-RegisterNetEvent("VP:CRAFTING:TryToOpenCrafting")
+RegisterNetEvent("FRP:CRAFTING:TryToOpenCrafting")
 AddEventHandler(
-    "VP:CRAFTING:TryToOpenCrafting",
+    "FRP:CRAFTING:TryToOpenCrafting",
     function(craftingGroups)
         local _source = source
 
@@ -102,14 +102,14 @@ AddEventHandler(
                 }
             }
             ]]
-            TriggerClientEvent("VP:CRAFTING:OpenCrafting", _source, r)
+            TriggerClientEvent("FRP:CRAFTING:OpenCrafting", _source, r)
         end
     end
 )
 
-RegisterNetEvent("VP:CRAFTING:FinishedCrafting")
+RegisterNetEvent("FRP:CRAFTING:FinishedCrafting")
 AddEventHandler(
-    "VP:CRAFTING:FinishedCrafting",
+    "FRP:CRAFTING:FinishedCrafting",
     function(cGroup, cIndex)
         local _source = source
 

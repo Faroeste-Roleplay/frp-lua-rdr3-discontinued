@@ -11,14 +11,14 @@ Tents = {}
 myIdentifier = nil
 position = {}
 
-RegisterNetEvent('VP:TENTS:usedItem')
-AddEventHandler('VP:TENTS:usedItem', function(model)   
+RegisterNetEvent('FRP:TENTS:usedItem')
+AddEventHandler('FRP:TENTS:usedItem', function(model)   
     local coords  = GetEntityCoords(PlayerPedId())
     local forward = GetEntityForwardVector(PlayerPedId())
     local x, y, z = table.unpack(coords + forward * 1.6)
 
     if GetCurrentTownName() ~= false then
-        TriggerEvent('VP:NOTIFY:Simple', "Você não pode montar acampamento próximo a uma cidade.", 5000)
+        TriggerEvent('FRP:NOTIFY:Simple', "Você não pode montar acampamento próximo a uma cidade.", 5000)
         return
     end
 
@@ -76,7 +76,7 @@ Citizen.CreateThread(function()
                         local pRot = GetEntityRotation(tempObj)
                         local pHea = GetEntityHeading(tempObj)  
 
-                        TriggerServerEvent('VP:TENTS:createdTent', Config.Tents[k].itemId, Config.Tents[k].tentModel, pPos, pRot, pHea)
+                        TriggerServerEvent('FRP:TENTS:createdTent', Config.Tents[k].itemId, Config.Tents[k].tentModel, pPos, pRot, pHea)
                         DeleteObject(tempObj)
                         tempObj = nil                                 
                         exports['frp_progbar']:Progress({
@@ -101,7 +101,7 @@ Citizen.CreateThread(function()
                             }
                         }, function(status)
                             if not status then
-                                TriggerServerEvent('VP:TENTS:spawnTents')
+                                TriggerServerEvent('FRP:TENTS:spawnTents')
                             end
                         end)
                     end
@@ -115,12 +115,12 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()    
-    TriggerServerEvent('VP:TENTS:spawnTents')
+    TriggerServerEvent('FRP:TENTS:spawnTents')
 end)
 
 
-RegisterNetEvent('VP:TENTS:spawnCliTents')
-AddEventHandler('VP:TENTS:spawnCliTents', function(tents, identifier)
+RegisterNetEvent('FRP:TENTS:spawnCliTents')
+AddEventHandler('FRP:TENTS:spawnCliTents', function(tents, identifier)
     myIdentifier = identifier
 
     print(myIdentifier)
@@ -156,7 +156,7 @@ Citizen.CreateThread(function()
                             print('dell1')
                             if Config.Tents[x].tentModel == GetEntityModel(TentsSpawned[k]) then
                             print('dell2')
-                                TriggerServerEvent('VP:TENTS:removeTents', Tents[k].id, Config.Tents[x].itemId)
+                                TriggerServerEvent('FRP:TENTS:removeTents', Tents[k].id, Config.Tents[x].itemId)
                                 DeleteObject(TentsSpawned[k])
                             end
                         end

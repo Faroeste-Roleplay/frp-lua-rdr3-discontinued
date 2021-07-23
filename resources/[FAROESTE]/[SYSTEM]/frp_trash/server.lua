@@ -4,8 +4,8 @@ local Proxy = module("_core", "lib/Proxy")
 API = Proxy.getInterface("API")
 cAPI = Tunnel.getInterface("API")
 
-RegisterServerEvent("VP:TRASH:receive")
-AddEventHandler("VP:TRASH:receive", function()
+RegisterServerEvent("FRP:TRASH:receive")
+AddEventHandler("FRP:TRASH:receive", function()
     local _source = source
     local User = API.getUserFromSource(_source)
     local Character = User:getCharacter()

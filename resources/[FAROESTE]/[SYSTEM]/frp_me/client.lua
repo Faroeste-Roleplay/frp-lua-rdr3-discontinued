@@ -1,6 +1,6 @@
-RegisterNetEvent("VP:ME:DisplayAboveHeadText")
+RegisterNetEvent("FRP:ME:DisplayAboveHeadText")
 AddEventHandler(
-    "VP:ME:DisplayAboveHeadText",
+    "FRP:ME:DisplayAboveHeadText",
     function(text, targetServerId)
         local playerPed = PlayerPedId()
         local targetPlayerPed = GetPlayerPed(GetPlayerFromServerId(targetServerId))

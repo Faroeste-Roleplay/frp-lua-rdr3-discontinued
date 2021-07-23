@@ -12,7 +12,7 @@ RegisterCommand(
 		if Character:hasGroup("police") or Character:hasGroup("admin") and args[1] then
 			if args[1] then				
 				print(API.getUserFromUserId(tonumber(args[1])):getSource())
-                TriggerEvent('VP:JAIL:sendToJail', API.getUserFromUserId(tonumber(args[1])):getSource(), tonumber(args[2] * 60))
+                TriggerEvent('FRP:JAIL:sendToJail', API.getUserFromUserId(tonumber(args[1])):getSource(), tonumber(args[2] * 60))
             end
         end
     end
@@ -25,30 +25,30 @@ RegisterCommand(
 		local Character = User:getCharacter()
 		if Character:hasGroup("police") or Character:hasGroup("admin") and args[1] then
 			if args[1] then
-				TriggerEvent('VP:JAIL:unjailQuest', API.getUserFromUserId(tonumber(args[1])):getSource())
+				TriggerEvent('FRP:JAIL:unjailQuest', API.getUserFromUserId(tonumber(args[1])):getSource())
             end
         end
     end
 )
 
 -- send to jail and register in database
-RegisterServerEvent('VP:JAIL:sendToJail')
-AddEventHandler('VP:JAIL:sendToJail', function(target, jailTime)
+RegisterServerEvent('FRP:JAIL:sendToJail')
+AddEventHandler('FRP:JAIL:sendToJail', function(target, jailTime)
 	local User = API.getUserFromSource(target)
 	
 	local Character = User:getCharacter()
 	local nome = Character:getName()
 
-	TriggerClientEvent('VP:JAIL:jail', User, jailTime)
+	TriggerClientEvent('FRP:JAIL:jail', User, jailTime)
 
 	local check = Character:getJail(Character:getId())
 
 	if check == '' then	
 		Character:setJail(Character:getId(), jailTime)
-		TriggerClientEvent('VP:JAIL:jail', User, tonumber(jailTime))
+		TriggerClientEvent('FRP:JAIL:jail', User, tonumber(jailTime))
 	else
 		Character:updJail(Character:getId(), jailTime)
-		TriggerClientEvent('VP:JAIL:jail', User, json.encode(check[1].jail_time))
+		TriggerClientEvent('FRP:JAIL:jail', User, json.encode(check[1].jail_time))
 	end
 
 	print(nome .. ' foi preso por ' .. jailTime)
@@ -56,8 +56,8 @@ end)
 
 
 -- should the player be in jail?
-RegisterServerEvent('VP:JAIL:checkJail')
-AddEventHandler('VP:JAIL:checkJail', function()
+RegisterServerEvent('FRP:JAIL:checkJail')
+AddEventHandler('FRP:JAIL:checkJail', function()
 	local _source = source
 	local User = API.getUserFromSource(_source)
 	local Character = User:getCharacter()
@@ -71,28 +71,28 @@ AddEventHandler('VP:JAIL:checkJail', function()
 
 	
 	if check ~= '' then		
-		TriggerClientEvent('VP:JAIL:jail', _source, tonumber(check[1].jail_time))
+		TriggerClientEvent('FRP:JAIL:jail', _source, tonumber(check[1].jail_time))
 	end
 	
 end) 
 
 -- unjail via command
-RegisterServerEvent('VP:JAIL:unjailQuest')
-AddEventHandler('VP:JAIL:unjailQuest', function(source)
+RegisterServerEvent('FRP:JAIL:unjailQuest')
+AddEventHandler('FRP:JAIL:unjailQuest', function(source)
 	if source ~= nil then
 		unjail(source)
 	end
 end)
 
 -- unjail after time served
-RegisterServerEvent('VP:JAIL:unjailTime')
-AddEventHandler('VP:JAIL:unjailTime', function()
+RegisterServerEvent('FRP:JAIL:unjailTime')
+AddEventHandler('FRP:JAIL:unjailTime', function()
 	unjail(source)
 end)
 
 
-RegisterServerEvent('VP:JAIL:updateRemaining')
-AddEventHandler('VP:JAIL:updateRemaining', function(jailTime)
+RegisterServerEvent('FRP:JAIL:updateRemaining')
+AddEventHandler('FRP:JAIL:updateRemaining', function(jailTime)
 	local _source = source
 	local User = API.getUserFromSource(_source)
 	local Character = User:getCharacter()	
@@ -119,7 +119,7 @@ function unjail(target)
 	Wait(500)                
 	cAPI.SetPedClothinges(User:getSource(), Character:getClothes())
 
-	TriggerClientEvent('VP:JAIL:unjail', target)
+	TriggerClientEvent('FRP:JAIL:unjail', target)
 
 	print(nome .. ' foi solto por ')
 end

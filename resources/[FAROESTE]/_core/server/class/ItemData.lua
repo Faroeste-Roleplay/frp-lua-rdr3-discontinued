@@ -203,23 +203,23 @@ function triggerUse(User, itemData)
     end
 
     if itemId == "pigeonpost" then
-        TriggerEvent("VP:PEAGLE:SendMessage", source)
+        TriggerEvent("FRP:PEAGLE:SendMessage", source)
     end
 
     if itemId == "chest_small" then
         local var = itemData.varOnUse
-        TriggerEvent("VP:CHESTS:StartPlayerPlacement", source, var)
+        TriggerEvent("FRP:CHESTS:StartPlayerPlacement", source, var)
         return true
     end
 
     if itemId:find("acamp") then
         local var = itemData.varOnUse
-        TriggerClientEvent("VP:TENTS:usedItem", source, var)
+        TriggerClientEvent("FRP:TENTS:usedItem", source, var)
         User:closeInventory()
     end
 
     if itemId:find("_seed") then        
-        TriggerClientEvent("VP:FARM:StartPlacingSeed", source, itemId:sub(0, itemId:find("_") - 1))
+        TriggerClientEvent("FRP:FARM:StartPlacingSeed", source, itemId:sub(0, itemId:find("_") - 1))
         User:closeInventory()
         return false
     end
@@ -250,7 +250,7 @@ function triggerUse(User, itemData)
     end
 
     if itemId == "pigeonpost" then
-        TriggerClientEvent("VP:PIGEONPOST:Init", source)
+        TriggerClientEvent("FRP:PIGEONPOST:Init", source)
     end
 
     if itemId == "pan" then
@@ -283,14 +283,14 @@ function triggerUse(User, itemData)
 
     if itemId == "eagleeye" then
         cAPI.TaskInteraction(source, "drink_tonic")
-        TriggerClientEvent("VP:WANTED:UsedEagleEye", source)
+        TriggerClientEvent("FRP:WANTED:UsedEagleEye", source)
 
         return true
     end
 
     if itemId == "lockpick" then
         User:closeInventory()
-        TriggerClientEvent("VP:LOCKPICK:StartLockpicking", source)
+        TriggerClientEvent("FRP:LOCKPICK:StartLockpicking", source)
     end
 
     return false

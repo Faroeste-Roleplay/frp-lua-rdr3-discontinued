@@ -412,7 +412,7 @@ Citizen.CreateThread(
                     if PromptHasHoldModeCompleted(prompt_dollar) then
                         PromptSetEnabled(prompt_dollar, false)
 
-                        TriggerServerEvent("VP:GUNSMITH:TryToBuy", itemId, false)
+                        TriggerServerEvent("FRP:GUNSMITH:TryToBuy", itemId, false)
 
                         Citizen.CreateThread(
                             function()
@@ -425,7 +425,7 @@ Citizen.CreateThread(
                     if PromptHasHoldModeCompleted(prompt_gold) then
                         PromptSetEnabled(prompt_gold, false)
 
-                        TriggerServerEvent("VP:GUNSMITH:TryToBuy", itemId, true)
+                        TriggerServerEvent("FRP:GUNSMITH:TryToBuy", itemId, true)
 
                         Citizen.CreateThread(
                             function()

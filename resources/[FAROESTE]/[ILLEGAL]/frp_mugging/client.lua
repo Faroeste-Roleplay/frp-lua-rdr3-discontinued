@@ -45,7 +45,7 @@ Citizen.CreateThread(
                 PromptSetActiveGroupThisFrame(promptGroup, promptGroupName)
                 if PromptHasHoldModeCompleted(prompt) then
                     Citizen.Wait(1000)
-                    TriggerServerEvent('VP:MUGGIN:TryToMug', GetPlayerServerId(muggablePlayer))
+                    TriggerServerEvent('FRP:MUGGIN:TryToMug', GetPlayerServerId(muggablePlayer))
                 end
             end
         end

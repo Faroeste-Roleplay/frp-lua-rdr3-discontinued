@@ -1,5 +1,5 @@
-RegisterNetEvent("VP:COWMILKING:PreStart")
-onNet('VP:COWMILKING:PreStart', (arg1, arg2) => {
+RegisterNetEvent("FRP:COWMILKING:PreStart")
+onNet('FRP:COWMILKING:PreStart', (arg1, arg2) => {
 
     console.log('yeeaeeksakda');
 

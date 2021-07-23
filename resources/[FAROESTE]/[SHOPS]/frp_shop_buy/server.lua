@@ -64,9 +64,9 @@ local verificationData = {
     }
 }
 
-RegisterNetEvent("VP:SHOP:TryToBuy")
+RegisterNetEvent("FRP:SHOP:TryToBuy")
 AddEventHandler(
-    "VP:SHOP:TryToBuy",
+    "FRP:SHOP:TryToBuy",
     function(shopId, itemId, withGold)
         local _source = source
 

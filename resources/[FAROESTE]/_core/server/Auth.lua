@@ -22,10 +22,10 @@ function connectUser(source, user_id)
 
     print(#GetPlayers() .. "/32 | " .. GetPlayerName(source) .. " (" .. User:getIpAddress() .. ") entrou (user_id = " .. user_id .. ", source = " .. source .. ")")
 
-    TriggerEvent("VP:IDENTITY:DisplayCharSelection", User)
+    TriggerEvent("FRP:IDENTITY:DisplayCharSelection", User)
 
-    TriggerClientEvent("VP:_CORE:SetServerIdAsUserId", -1, source, user_id)
-    TriggerClientEvent("VP:_CORE:SetServerIdAsUserIdPacked", source, API.sources)
+    TriggerClientEvent("FRP:_CORE:SetServerIdAsUserId", -1, source, user_id)
+    TriggerClientEvent("FRP:_CORE:SetServerIdAsUserIdPacked", source, API.sources)
 
     return User
 end
@@ -272,7 +272,7 @@ RegisterNetEvent("API:OnUserCharacterInitialization")
 AddEventHandler(
     "API:OnUserCharacterInitialization",
     function(User, character_id)
-        TriggerClientEvent("VP:EVENTS:CharacterSetRole", User:getSource(), User:getCharacter().role)
+        TriggerClientEvent("FRP:EVENTS:CharacterSetRole", User:getSource(), User:getCharacter().role)
     end
 )
 

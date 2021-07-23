@@ -23,8 +23,8 @@ local prompts = {}
 
 
 
-RegisterNetEvent('VP:FAROESTE:loadtenue')
-AddEventHandler('VP:FAROESTE:loadtenue', function(kek) 
+RegisterNetEvent('FRP:FAROESTE:loadtenue')
+AddEventHandler('FRP:FAROESTE:loadtenue', function(kek) 
 
     SetPedOutfitPreset(PlayerPedId(), kek)
 end)

@@ -289,7 +289,7 @@ RegisterNUICallback(
                     end
                 end
 
-            -- TriggerServerEvent("VP:CONTAINERS:INVENTORY:TryToSwitchSlot", slot_from, slot_to)
+            -- TriggerServerEvent("FRP:CONTAINERS:INVENTORY:TryToSwitchSlot", slot_from, slot_to)
             end
 
             --[[

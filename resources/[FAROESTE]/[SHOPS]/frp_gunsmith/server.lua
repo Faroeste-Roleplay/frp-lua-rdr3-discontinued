@@ -46,9 +46,9 @@ local verificationData = {
 -- ["rifle_varmint"] = {1, 7, 72, 3},
 -- ["rifle_boltaction"] = {1, 9, 216, 9},
 
-RegisterNetEvent("VP:GUNSMITH:TryToBuy")
+RegisterNetEvent("FRP:GUNSMITH:TryToBuy")
 AddEventHandler(
-    "VP:GUNSMITH:TryToBuy",
+    "FRP:GUNSMITH:TryToBuy",
     function(itemId, withGold)
         local _source = source
 

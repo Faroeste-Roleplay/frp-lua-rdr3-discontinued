@@ -91,7 +91,7 @@ Citizen.CreateThread(
 
                     if #(carriableVec - spotPosition) <= 2.5 and NativeGetCarrierAsPed(lastCarriable) == 0 then
                         Citizen.InvokeNative(0x18FF3110CF47115D, lastCarriable, 2, false)
-                        TriggerServerEvent("VP:ANIMAL_HUNTING:TryToEndQuest", type, GetEntityModel(lastCarriable), lastCarriable, GetAnimalCarcassQuality(lastCarriable))
+                        TriggerServerEvent("FRP:ANIMAL_HUNTING:TryToEndQuest", type, GetEntityModel(lastCarriable), lastCarriable, GetAnimalCarcassQuality(lastCarriable))
 
                         lastCarriable = nil
                     end
@@ -101,8 +101,8 @@ Citizen.CreateThread(
     end
 )
 
--- RegisterNetEvent("VP:ANIMAL_HUNTING:taskMission")
--- AddEventHandler("VP:ANIMAL_HUNTING:taskMission", function(modelHash, modelName)
+-- RegisterNetEvent("FRP:ANIMAL_HUNTING:taskMission")
+-- AddEventHandler("FRP:ANIMAL_HUNTING:taskMission", function(modelHash, modelName)
 --         if DoesEntityExist(entity) then
 --             -- if GetEntityModel(entity) == entModel then
 --             Citizen.InvokeNative(0x18FF3110CF47115D, entity, 2, true)
@@ -131,16 +131,16 @@ function GetModelAnimalName(entityModel)
     return GetLabelTextByHash(animalNameLabelHash)
 end
 
-RegisterNetEvent("VP:ANIMAL_HUNTING:NotifyAnimalName")
+RegisterNetEvent("FRP:ANIMAL_HUNTING:NotifyAnimalName")
 AddEventHandler(
-    "VP:ANIMAL_HUNTING:NotifyAnimalName",
+    "FRP:ANIMAL_HUNTING:NotifyAnimalName",
     function(type, entityModel)
         local r = {}
 
         if type == 1 then
-            TriggerEvent("VP:NOTIFY:Simple", "Estou a procura de um(a) " .. GetModelAnimalName(entityModel) .. ", irei recompensa-lo caso você traga para mim", 5000)
+            TriggerEvent("FRP:NOTIFY:Simple", "Estou a procura de um(a) " .. GetModelAnimalName(entityModel) .. ", irei recompensa-lo caso você traga para mim", 5000)
         elseif type == 2 then
-            TriggerEvent("VP:NOTIFY:Simple", "O açougueiro ainda está a procura de um(a) " .. GetModelAnimalName(entityModel), 5000)
+            TriggerEvent("FRP:NOTIFY:Simple", "O açougueiro ainda está a procura de um(a) " .. GetModelAnimalName(entityModel), 5000)
         elseif type == 3 then
             cAPI.notify("error", "Termine a caça atual para poder começar outra!")
         end
@@ -163,14 +163,14 @@ end
 function HandlePrompts()
     if PromptHasHoldModeCompleted(prompt) then
         if IsControlPressed(0, 0xE8342FF2) then
-            TriggerServerEvent("VP:ANIMAL_HUNTING:TryToStartQuest")
+            TriggerServerEvent("FRP:ANIMAL_HUNTING:TryToStartQuest")
             Citizen.Wait(1000)
         end
     end
 
     if PromptIsJustPressed(prompt_shop) then
-        -- TriggerEvent("VP:SHOP:SELL:OpenShop", "Acogueiro")
-        TriggerEvent("VP:SHOP:OpenShopByName", "Acogueiro")
+        -- TriggerEvent("FRP:SHOP:SELL:OpenShop", "Acogueiro")
+        TriggerEvent("FRP:SHOP:OpenShopByName", "Acogueiro")
     end
 end
 
@@ -199,9 +199,9 @@ function InitiatePrompts()
     PromptRegisterEnd(prompt)
 end
 
--- RegisterNetEvent("VP:ANIMAL_HUNTING:AnimalHuntingPromptEnabled")
+-- RegisterNetEvent("FRP:ANIMAL_HUNTING:AnimalHuntingPromptEnabled")
 -- AddEventHandler(
---     "VP:ANIMAL_HUNTING:AnimalHuntingPromptEnabled",
+--     "FRP:ANIMAL_HUNTING:AnimalHuntingPromptEnabled",
 --     function(toggle)
 --         PromptSetEnabled(prompt, toggle)
 --     end

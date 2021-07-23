@@ -7,13 +7,13 @@ dbAPI = Proxy.getInterface("API_DB")
 
 local tempPCapacity = {}
 
-RegisterNetEvent("VP:CHESTS:AskForSync")
-RegisterNetEvent("VP:CHESTS:StartPlayerPlacement")
-RegisterNetEvent("VP:CHESTS:EndPlayerPlacement1")
-RegisterNetEvent("VP:CHESTS:Open")
+RegisterNetEvent("FRP:CHESTS:AskForSync")
+RegisterNetEvent("FRP:CHESTS:StartPlayerPlacement")
+RegisterNetEvent("FRP:CHESTS:EndPlayerPlacement1")
+RegisterNetEvent("FRP:CHESTS:Open")
 
 AddEventHandler(
-    "VP:CHESTS:AskForSync",
+    "FRP:CHESTS:AskForSync",
     function()
         local _source = source
         API.syncChestsWithPlayer(_source)
@@ -21,16 +21,16 @@ AddEventHandler(
 )
 
 AddEventHandler(
-    "VP:CHESTS:StartPlayerPlacement",
+    "FRP:CHESTS:StartPlayerPlacement",
     function(source, capacity)
         local _source = source
         tempPCapacity[_source] = capacity
-        TriggerClientEvent("VP:CHESTS:StartPlayerPlacement", _source, capacity)
+        TriggerClientEvent("FRP:CHESTS:StartPlayerPlacement", _source, capacity)
     end
 )
 
 AddEventHandler(
-    "VP:CHESTS:EndPlayerPlacement1",
+    "FRP:CHESTS:EndPlayerPlacement1",
     function(capacity, x, y, z, h)
         local _source = source
 
@@ -77,7 +77,7 @@ AddEventHandler(
 )
 
 AddEventHandler(
-    "VP:CHESTS:Open",
+    "FRP:CHESTS:Open",
     function(chestId)
         local _source = source
 
@@ -114,12 +114,12 @@ AddEventHandler(
     "playerConnecting",
     function(name, setReason)
         local _source = source
-        TriggerClientEvent("VP:CHESTS:SyncMultipleChests", _source, tempChests)
+        TriggerClientEvent("FRP:CHESTS:SyncMultipleChests", _source, tempChests)
     end
 )
 
 AddEventHandler(
-    "VP:playerSpawned",
+    "FRP:playerSpawned",
     function(source, user_id, isFirstSpawn)
         if isFirstSpawn then
             API.syncChestsWithPlayer(source)

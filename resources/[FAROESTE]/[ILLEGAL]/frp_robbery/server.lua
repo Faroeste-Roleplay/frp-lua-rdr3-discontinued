@@ -41,23 +41,23 @@ local indexBeingRobbed_playerSourceWhoStarted = nil
 
 local robberyBeingEnded = false
 
-RegisterNetEvent("VP:ROBBERY:TryToStartRobbery")
+RegisterNetEvent("FRP:ROBBERY:TryToStartRobbery")
 AddEventHandler(
-    "VP:ROBBERY:TryToStartRobbery",
+    "FRP:ROBBERY:TryToStartRobbery",
     function(index, participants)
         local _source = source
         local User = API.getUserFromSource(_source)
 
         if interiorIndexBeingRobbed ~= nil then
             -- print("Interior já está sendo roubado")
-            TriggerClientEvent("VP:NOTIFY:Simple", _source, "Esse local já está sendo roubado")
+            TriggerClientEvent("FRP:NOTIFY:Simple", _source, "Esse local já está sendo roubado")
             return
         end
 
         if cooldownEndsAtTimeStamp > os.time() then
             -- print("Fomos assaltados a pouco tempo, não temos dinheiro")
             print("FRP_ROBBERY", cooldownEndsAtTimeStamp, cooldownEndsAtTimeStamp - os.time())
-            TriggerClientEvent("VP:NOTIFY:Simple", _source, "Fomos assaltados a pouco tempo, não temos dinheiro")
+            TriggerClientEvent("FRP:NOTIFY:Simple", _source, "Fomos assaltados a pouco tempo, não temos dinheiro")
             return
         else
             cooldownEndsAtTimeStamp = 0
@@ -66,7 +66,7 @@ AddEventHandler(
         local numTroopers = #API.getUsersByGroup("trooper")
 
         if 6 < 5 then
-            TriggerClientEvent("VP:NOTIFY:Simple", _source, "Este banco não pode ser roubado, polícia insuficiente.")
+            TriggerClientEvent("FRP:NOTIFY:Simple", _source, "Este banco não pode ser roubado, polícia insuficiente.")
             return
         end
 
@@ -89,18 +89,18 @@ AddEventHandler(
                         isParticipant = true
                         -- if numParticipants < maxParticipants then
                         numParticipants = numParticipants + 1
-                        TriggerClientEvent("VP:ROBBERY:StartRobbery", participantSource, index, true, indexBeingRobbed_seconds)
+                        TriggerClientEvent("FRP:ROBBERY:StartRobbery", participantSource, index, true, indexBeingRobbed_seconds)
                         participants[participantSource] = true
                     --      API.logs("./savedata/roubobanco.txt","[USUARIOID]: "..Character:getId().. "Iniciou o roubo")
                     -- else
-                    --     TriggerClientEvent("VP:ROBBERY:StartRobberyAsBlocked", participantSource, index)
+                    --     TriggerClientEvent("FRP:ROBBERY:StartRobberyAsBlocked", participantSource, index)
                     -- end
                     end
                 end
             end
 
             if isParticipant == false then
-                TriggerClientEvent("VP:ROBBERY:StartRobbery", playerSource, index, false, nil)
+                TriggerClientEvent("FRP:ROBBERY:StartRobbery", playerSource, index, false, nil)
             end
 
             isParticipant = nil
@@ -122,7 +122,7 @@ function countdownRobberyTime()
 
                     if indexBeingRobbed_seconds == 0 then
                         -- for _, participantSource in pairs(indexBeingRobbed_participants) do
-                        --     TriggerClientEvent('VP:TOAST:New', participantSource, 'alert', indexBeingRobbed .. ' secs')
+                        --     TriggerClientEvent('FRP:TOAST:New', participantSource, 'alert', indexBeingRobbed .. ' secs')
                         -- end
 
                         endRobberyGiveReward()
@@ -147,7 +147,7 @@ function endRobberyGiveReward()
     if indexBeingRobbed_playerSourceWhoStarted ~= nil then
         User = API.getUserFromSource(indexBeingRobbed_playerSourceWhoStarted)
         _source = indexBeingRobbed_playerSourceWhoStarted
-        TriggerClientEvent("VP:ROBBERY:Bolsa", _source)
+        TriggerClientEvent("FRP:ROBBERY:Bolsa", _source)
     end
 
     for participantSource, _ in pairs(indexBeingRobbed_participants) do
@@ -155,7 +155,7 @@ function endRobberyGiveReward()
 
         local user_id = p_User:getId()
 
-        TriggerEvent("VP:COMBATLOG:AddUserCombatReason", user_id, 300, "Roubo a Banco")
+        TriggerEvent("FRP:COMBATLOG:AddUserCombatReason", user_id, 300, "Roubo a Banco")
 
         if User == nil then
             _source = participantSource
@@ -164,7 +164,7 @@ function endRobberyGiveReward()
     end
 
     if User ~= nil then
-        TriggerClientEvent("VP:ROBBERY:Bolsa", _source)
+        TriggerClientEvent("FRP:ROBBERY:Bolsa", _source)
 
         local Character = User:getCharacter()
 
@@ -183,13 +183,13 @@ function endRobberyGiveReward()
     indexBeingRobbed_participants = {}
     robberyBeingEnded = false
 
-    TriggerClientEvent("VP:TOAST:New", -1, "alert", "O assalto acabou!")
-    TriggerClientEvent("VP:ROBBERY:EndRobbery", -1)
+    TriggerClientEvent("FRP:TOAST:New", -1, "alert", "O assalto acabou!")
+    TriggerClientEvent("FRP:ROBBERY:EndRobbery", -1)
 end
 
-RegisterNetEvent("VP:ROBBERY:PlayerAbandonedRobbery")
+RegisterNetEvent("FRP:ROBBERY:PlayerAbandonedRobbery")
 AddEventHandler(
-    "VP:ROBBERY:PlayerAbandonedRobbery",
+    "FRP:ROBBERY:PlayerAbandonedRobbery",
     function()
         if indexBeingRobbed == nil then
             return
@@ -211,13 +211,13 @@ AddEventHandler(
             indexBeingRobbed_participants = {}
             robberyBeingEnded = false
 
-            TriggerClientEvent("VP:ROBBERY:EndRobbery", -1)
+            TriggerClientEvent("FRP:ROBBERY:EndRobbery", -1)
         end
 
         API.NotifyUsersWithGroup("trooper", "-1 Assaltante")
 
         -- print("Player " .. _source .. " left the robbery")
-        -- TriggerClientEvent('VP:Notify', _source, "O " .. _source .. " left the robbery")
+        -- TriggerClientEvent('FRP:Notify', _source, "O " .. _source .. " left the robbery")
     end
 )
 
@@ -225,7 +225,7 @@ AddEventHandler(
     "playerDropped",
     function(source, reason)
         if indexBeingRobbed_participants[source] ~= nil then
-            TriggerEvent("VP:ROBBERY:PlayerAbandonedRobbery", source)
+            TriggerEvent("FRP:ROBBERY:PlayerAbandonedRobbery", source)
             API.NotifyUsersWithGroup("trooper", "-1 Assaltante")
         end
     end

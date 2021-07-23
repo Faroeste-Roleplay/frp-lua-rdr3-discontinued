@@ -107,9 +107,9 @@ RegisterCommand(
     end
 )
 
-RegisterNetEvent("VP:STORECLOTHES:OpenClothingMenu")
+RegisterNetEvent("FRP:STORECLOTHES:OpenClothingMenu")
 AddEventHandler(
-    "VP:STORECLOTHES:OpenClothingMenu",
+    "FRP:STORECLOTHES:OpenClothingMenu",
     function()
         if not cAPI.GetWanted() then
             inCustomization = true
@@ -119,7 +119,7 @@ AddEventHandler(
             Citizen.InvokeNative(0xF1CA12B18AEF5298, PlayerPedId(), true)
         -- SetEveryoneAsInvisible()        
         else
-            TriggerEvent('VP:NOTIFY:Simple', 'Você ainda está como procurado, não pode trocar de roupa. ', 10000)
+            TriggerEvent('FRP:NOTIFY:Simple', 'Você ainda está como procurado, não pode trocar de roupa. ', 10000)
         end
     end
 )
@@ -231,7 +231,7 @@ function createCamera()
     SetCamRot(fixedCam, -15.0, 0, 115.09)
     Wait(3000)
     cAPI.OutFade(500)
-    TriggerEvent("VP:NOTIFY:Simple", "Utilize as teclas A e D para rotacionar o personagem, e as setas do teclado para selecionar as opções.", 10000)
+    TriggerEvent("FRP:NOTIFY:Simple", "Utilize as teclas A e D para rotacionar o personagem, e as setas do teclado para selecionar as opções.", 10000)
     --SetCamFov(fixedCam, 100)
     SetCamActive(fixedCam, true)
     SetCamActiveWithInterp(fixedCam, groundCam, 3900, true, true)
@@ -1057,7 +1057,7 @@ RegisterNUICallback(
 
        -- print(json.encode(dados))
 
-        TriggerServerEvent("VP:CLOTHES:SavePlayerClothing", dados, true)
+        TriggerServerEvent("FRP:CLOTHES:SavePlayerClothing", dados, true)
         DestroyClothingMenu()
         cAPI.InFade(500)
         if positionBack ~= nil then
@@ -1106,7 +1106,7 @@ Citizen.CreateThread(
                     DrawTxt("Pressione ALT para abrir a loja de roupas.", 0.85, 0.95, 0.35, 0.35, true, 255, 255, 255, 200, true, 10000)
                     if IsControlJustReleased(0, 0xE8342FF2) then -- LEFT ALT
                         print('presses')
-                        TriggerEvent("VP:STORECLOTHES:OpenClothingMenu")
+                        TriggerEvent("FRP:STORECLOTHES:OpenClothingMenu")
                     end
                 end
             end

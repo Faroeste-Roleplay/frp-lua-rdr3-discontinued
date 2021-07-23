@@ -14,14 +14,14 @@ local CoordsDestiny = vector3(0,0,0)
 
 local FinishedDelivery = false
 
-RegisterNetEvent('VP:WAGONCHARGE:StartNotify')
-AddEventHandler('VP:WAGONCHARGE:StartNotify', function(CoordsSpawn, Destiny)
+RegisterNetEvent('FRP:WAGONCHARGE:StartNotify')
+AddEventHandler('FRP:WAGONCHARGE:StartNotify', function(CoordsSpawn, Destiny)
 
 	CoordsInitial = CoordsSpawn
 	CoordsDestiny = Destiny     
 
 	Wait(3000)  
-	TriggerEvent('VP:NOTIFY:Simple', 'Há uma carroça de contrabando sendo transportada, intercepte-á e entregue no destino.', 10000)
+	TriggerEvent('FRP:NOTIFY:Simple', 'Há uma carroça de contrabando sendo transportada, intercepte-á e entregue no destino.', 10000)
 	
 	-- iniciar blip aqui!
 	FinishedDelivery = false
@@ -34,22 +34,22 @@ AddEventHandler('VP:WAGONCHARGE:StartNotify', function(CoordsSpawn, Destiny)
 	--end
 end)
 
-RegisterNetEvent("VP:WAGONCHARGE:StartMission")
+RegisterNetEvent("FRP:WAGONCHARGE:StartMission")
 AddEventHandler(
-    "VP:WAGONCHARGE:StartMission",
+    "FRP:WAGONCHARGE:StartMission",
 	function()	
 		Banditos = {}
 
-		TriggerEvent('VP:WAGONCHARGE:createWagon')
+		TriggerEvent('FRP:WAGONCHARGE:createWagon')
 		Wait(1000)
-		TriggerEvent('VP:WAGONCHARGE:spawnped')
+		TriggerEvent('FRP:WAGONCHARGE:spawnped')
 		Wait(3000)
 		SetPedsOnWagon()
     end
 )
 
-RegisterNetEvent('VP:WAGONCHARGE:spawnped')
-AddEventHandler('VP:WAGONCHARGE:spawnped', function()
+RegisterNetEvent('FRP:WAGONCHARGE:spawnped')
+AddEventHandler('FRP:WAGONCHARGE:spawnped', function()
 
 	--local x,y,z = GetEntityCoords(PlayerPedId())
 	local pedModelHash = GetHashKey("G_M_M_UniBanditos_01")
@@ -103,8 +103,8 @@ AddEventHandler('VP:WAGONCHARGE:spawnped', function()
 	end
 end)
 
-RegisterNetEvent('VP:WAGONCHARGE:createWagon')
-AddEventHandler('VP:WAGONCHARGE:createWagon', function()
+RegisterNetEvent('FRP:WAGONCHARGE:createWagon')
+AddEventHandler('FRP:WAGONCHARGE:createWagon', function()
 	local veh = GetHashKey("STAGECOACH004X")
 
 	Citizen.CreateThread(
@@ -168,7 +168,7 @@ function()
 				if not MultiRoute then
 					--local x,y,z = GetEntityCoords(wagon)
 					SetCoordsMultiRoute(CoordsDestiny)
-					TriggerEvent('VP:NOTIFY:Simple', 'Entregue a carroça no destino.', 10000)
+					TriggerEvent('FRP:NOTIFY:Simple', 'Entregue a carroça no destino.', 10000)
 				end
 				MultiRoute = true
 			else
@@ -198,7 +198,7 @@ Citizen.CreateThread(
 						Citizen.InvokeNative(0x6E884BAB713A2A94, VehiclePlayer, true)
 						BringVehicleToHalt(VehiclePlayer, 7, 50, 1)
 
-						TriggerServerEvent("VP:WAGONCHARGE:Finished")
+						TriggerServerEvent("FRP:WAGONCHARGE:Finished")
 						print('SUMIU')
 						WagonDel = VehiclePlayer
 
@@ -264,8 +264,8 @@ function SetCoordsMultiRoute(Coords)
 	SetGpsMultiRouteRender(true)
 end
 
-RegisterNetEvent('VP:WAGONCHARGE:killblip')
-AddEventHandler('VP:WAGONCHARGE:killblip', function()
+RegisterNetEvent('FRP:WAGONCHARGE:killblip')
+AddEventHandler('FRP:WAGONCHARGE:killblip', function()
 	WagonDel = GetVehiclePedIsIn(PlayerPedId(), false)
 	Wait(1500)
 		
@@ -284,7 +284,7 @@ Citizen.CreateThread(function()
         Wait(1000)
 		local game = NetworkIsGameInProgress()
 		if game == 1 then
-			TriggerServerEvent('VP:WAGONCHARGE:playerActivated')
+			TriggerServerEvent('FRP:WAGONCHARGE:playerActivated')
 			return
 		end
     end

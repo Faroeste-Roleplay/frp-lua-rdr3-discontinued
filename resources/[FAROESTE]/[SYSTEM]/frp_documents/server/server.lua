@@ -4,8 +4,8 @@ local Proxy = module('_core', 'lib/Proxy')
 API = Proxy.getInterface('API')
 cAPI = Tunnel.getInterface('API')
 
-RegisterNetEvent("VP:DOCUMENTS:getCharInfo")
-AddEventHandler("VP:DOCUMENTS:getCharInfo", function(source)
+RegisterNetEvent("FRP:DOCUMENTS:getCharInfo")
+AddEventHandler("FRP:DOCUMENTS:getCharInfo", function(source)
     local _source = source
     local User = API.getUserFromSource(_source)
     local Character = User:getCharacter()   
@@ -15,11 +15,11 @@ AddEventHandler("VP:DOCUMENTS:getCharInfo", function(source)
         ['name'] = Character:getName(),
         ['age'] = Character:getAge(),
     }
-   TriggerClientEvent("VP:DOCUMENTS:opening", _source, data)
+   TriggerClientEvent("FRP:DOCUMENTS:opening", _source, data)
 end)
 
-RegisterNetEvent("VP:DOCUMENTS:requestCharInfo")
-AddEventHandler("VP:DOCUMENTS:requestCharInfo", function(TargetSource)
+RegisterNetEvent("FRP:DOCUMENTS:requestCharInfo")
+AddEventHandler("FRP:DOCUMENTS:requestCharInfo", function(TargetSource)
     local _source = source
     local User = API.getUserFromSource(_source)
     local Character = User:getCharacter()
@@ -36,7 +36,7 @@ AddEventHandler("VP:DOCUMENTS:requestCharInfo", function(TargetSource)
             ['name'] = CharacterTarget:getName(),
             ['age'] = CharacterTarget:getAge(),
         }
-        TriggerClientEvent("VP:DOCUMENTS:opening", _source, data)
+        TriggerClientEvent("FRP:DOCUMENTS:opening", _source, data)
     else
         User:notify("O cidadão recusou, mostrar sua identidade")
     end
