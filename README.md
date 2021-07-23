@@ -1,13 +1,14 @@
-## Arquivos do Servidor - Faroeste Roleplay 1.0.0
-Projeto Descontinuado 
+## Server Files - Faroeste Roleplay 1.0.0
+Discontinued Project
 
 
 ## Requerimentos
 * [MariaDB](https://mariadb.org/)
 
 ### INSTALAÇÃO
-- DOWNLOAD Baixe os Resources
-- Coloque na sua pasta do jogo
--
+- Download
+- Import db.sql into your database
+- Add your license key to license.cfg
+- Start the start.bat file 
 
 
