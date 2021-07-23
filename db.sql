@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Servidor:                     127.0.0.1
--- Versão do servidor:           10.5.8-MariaDB - mariadb.org binary distribution
+-- Versão do servidor:           10.5.9-MariaDB - mariadb.org binary distribution
 -- OS do Servidor:               Win64
--- HeidiSQL Versão:              11.1.0.6116
+-- HeidiSQL Versão:              11.2.0.6213
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -36,8 +36,8 @@ CREATE TABLE IF NOT EXISTS `characters` (
 
 -- Copiando dados para a tabela redm.characters: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `characters` DISABLE KEYS */;
-INSERT INTO `characters` (`charid`, `user_id`, `characterName`, `level`, `age`, `xp`, `wanted`, `groups`, `charTable`, `is_dead`) VALUES
-	(1, 1, 'Jorge Madeira', 1, 33, 10, '{}', 1, '{"hunger": "100", "thirst": "100", "banco": "0", "position": "[2687.286,-873.782,42.375]", "stats": "[200,33.6,50,100]"}', 0);
+INSERT IGNORE INTO `characters` (`charid`, `user_id`, `characterName`, `level`, `age`, `xp`, `wanted`, `groups`, `charTable`, `is_dead`) VALUES
+	(1, 1, 'Jorge Madeira', 1, 33, 12, '{}', 1, '{"hunger": "100", "thirst": "100", "banco": "0", "position": "[2687.286,-873.782,42.375]", "stats": "[200,33.6,50,100]"}', 0);
 /*!40000 ALTER TABLE `characters` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela redm.characters_appearence
@@ -57,10 +57,10 @@ CREATE TABLE IF NOT EXISTS `characters_appearence` (
   CONSTRAINT `characters_appearence_ibfk_1` FOREIGN KEY (`charid`) REFERENCES `characters` (`charid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
--- Copiando dados para a tabela redm.characters_appearence: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela redm.characters_appearence: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `characters_appearence` DISABLE KEYS */;
-INSERT INTO `characters_appearence` (`id`, `charid`, `isMale`, `model`, `enabledComponents`, `faceFeatures`, `overlays`, `clothes`, `pedHeight`, `pedWeight`) VALUES
-	(1, 1, 1, 'mp_male', '{"heads":1931485756,"BODIES_UPPER":3212342147,"BODIES_LOWER":202858862,"skin_tone":0,"porte":0,"hair":1286449448,"mustache":0,"eyes":46507404,"teeth":0}', '[{"hash":34006,"index":"0.1"}]', '{}', '{}', '0.9573360085487366', 70);
+INSERT IGNORE INTO `characters_appearence` (`id`, `charid`, `isMale`, `model`, `enabledComponents`, `faceFeatures`, `overlays`, `clothes`, `pedHeight`, `pedWeight`) VALUES
+	(1, 1, 1, 'mp_male', '{"heads":1931485756,"BODIES_UPPER":3212342147,"BODIES_LOWER":202858862,"skin_tone":0,"porte":0,"hair":1286449448,"mustache":0,"eyes":46507404,"teeth":0}', '[{"hash":34006,"index":"0.1"}]', '"{}"', '"{}"', '0.9573360085487366', 70);
 /*!40000 ALTER TABLE `characters_appearence` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela redm.chests
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `chests` (
 
 -- Copiando dados para a tabela redm.chests: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `chests` DISABLE KEYS */;
-INSERT INTO `chests` (`id`, `charid`, `position`, `type`, `capacity`) VALUES
+INSERT IGNORE INTO `chests` (`id`, `charid`, `position`, `type`, `capacity`) VALUES
 	('1', NULL, '[-63.092,331.621,110.446,180.0]', 0, 20);
 /*!40000 ALTER TABLE `chests` ENABLE KEYS */;
 
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `fort` (
 
 -- Copiando dados para a tabela redm.fort: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `fort` DISABLE KEYS */;
-INSERT INTO `fort` (`id`, `nome`, `bando`) VALUES
+INSERT IGNORE INTO `fort` (`id`, `nome`, `bando`) VALUES
 	(1, 'Mercer', 0),
 	(2, 'Wallace', 0);
 /*!40000 ALTER TABLE `fort` ENABLE KEYS */;
@@ -165,9 +165,9 @@ CREATE TABLE IF NOT EXISTS `inventories` (
   `inv_slots` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`inv_slots`))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela redm.inventories: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela redm.inventories: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `inventories` DISABLE KEYS */;
-INSERT INTO `inventories` (`id`, `charid`, `inv_capacity`, `inv_slots`) VALUES
+INSERT IGNORE INTO `inventories` (`id`, `charid`, `inv_capacity`, `inv_slots`) VALUES
 	('char:113', 113, 40, '{}');
 /*!40000 ALTER TABLE `inventories` ENABLE KEYS */;
 
@@ -348,11 +348,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 -- Copiando dados para a tabela redm.users: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`user_id`, `identifier`, `name`, `banned`, `reason`, `whitelist`, `createdAt`) VALUES
+INSERT IGNORE INTO `users` (`user_id`, `identifier`, `name`, `banned`, `reason`, `whitelist`, `createdAt`) VALUES
 	(1, 'steam:11000010596ee06', 'KlandesTino', 0, 'não definido', 1, 'Tue Dec 29 13:27:42 2020');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;

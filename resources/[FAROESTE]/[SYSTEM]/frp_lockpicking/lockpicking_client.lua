@@ -29,7 +29,7 @@ RegisterNetEvent("FRP:LOCKPICK:StartLockpicking")
 AddEventHandler(
     "FRP:LOCKPICK:StartLockpicking",
     function()
-        local doorHash = exports.frp_doorcontainer:GetRegisteredDoorHashInRadius(1.5, 1)
+        local doorHash = exports.vp_doorcontainer:GetRegisteredDoorHashInRadius(1.5, 1)
 
         if doorHash then
             TriggerServerEvent("OutPost:InvadeOutpostAlert")

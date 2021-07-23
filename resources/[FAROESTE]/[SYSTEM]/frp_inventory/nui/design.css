@@ -9,22 +9,20 @@
 }
 
 * {
-    font-family: 'Lino';
     color: white;
     /* color: #9d9f9d; */
     user-select: none;
     /* letter-spacing: 0.10em; */
-    font-size: 14px;
-    font-weight: 500;
 }
 
 body {
     display: flex;
     align-content: center;
+    justify-content: center;
 }
 
 .container {
-    margin: auto 10vh;
+    margin: auto 0;
     width: fit-content;
     display: flex;
     flex-direction: row;
@@ -47,7 +45,6 @@ body {
 
 .container #secondary {
     display: none;
-    margin: 0px 0px 0px 200px;
 }
 
 .container #background-image {
@@ -80,6 +77,9 @@ body {
     align-items: center;
     display: flex;
     flex-direction: row;
+    font-family: "Hapna";
+    font-weight: 100;
+
 }
 
 .container .inventory .inventory-container .info span {
@@ -134,11 +134,15 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    font-family: 'Lino';
+    font-size: 1em;
+    font-weight: 400;
 }
 
 .container .inventory .inventory-container .menutab .control-info-container .selected-category,
 .container .inventory .inventory-container .control-info-container .selected-category {
-    position: relative;
+    position: relative;    
+    font-family: 'Lino';
 }
 
 .container .inventory .inventory-container .menutab .control-info-container .squared,
@@ -207,7 +211,7 @@ body {
     width: 70px;
     height: 70px;
     background-image: url(images/slot.png);
-    background-size: contain;
+    background-size: 103%;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
@@ -226,14 +230,16 @@ Its simulated from .selected :D
 }*/
 
 .container .inventory .inventory-container .slot-container .slot img {
-    max-width: 60%;
-    max-height: 60%;
+    max-width: 52px;
+    max-height: 52px;
 }
 
 .container .inventory .inventory-container .slot-container .selected {
     /* opacity: 0.3; */
-    background-image: url('images/border.png');
-    background-size: contain;
+    border-image-repeat: round;
+    border-image-slice: 1 1 1 1 fill;
+    border-image-source: url('images/border.png');
+
 }
 
 .container .inventory .inventory-container .slot-container .slot .counter {
@@ -243,7 +249,10 @@ Its simulated from .selected :D
     bottom: 10%;
     color: white;
     font-size: 11px;
+   /* background-image: url('images/counter.png'); */
+    background-size: contain;
 }
+
 
 .container .inventory .inventory-container .description-container {
     position: relative;

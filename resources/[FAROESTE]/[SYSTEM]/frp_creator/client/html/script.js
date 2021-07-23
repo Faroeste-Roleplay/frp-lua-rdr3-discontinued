@@ -143,7 +143,7 @@ function confirm(){
 
 function changeoptions(name) {
     var change = document.getElementById(name).value;
-    $.post('http:/frp_creator/' + name,  JSON.stringify({ change }));
+    $.post('http://frp_creator/' + name,  JSON.stringify({ change }));
 }
 
 

@@ -1,11 +1,11 @@
 var cancelledTimer = null;
 
 $('document').ready(function() {
-    VPProgBar = {};
+    FRPProgBar = {};
 
 
 
-    VPProgBar.Progress = function(data) {
+    FRPProgBar.Progress = function(data) {
         clearTimeout(cancelledTimer);
 
         $("#progress-label").text(data.label);
@@ -30,7 +30,7 @@ $('document').ready(function() {
         });
     };
 
-    VPProgBar.ProgressCancel = function() {
+    FRPProgBar.ProgressCancel = function() {
         $("#progress-barbg").text("CANCELADO");
         $("#progress-barbg").stop().css( {"width": 0});
         $('#progress-barbg').removeClass('cancellable');
@@ -45,17 +45,17 @@ $('document').ready(function() {
         }, 1000);
     };
 
-    VPProgBar.CloseUI = function() {
+    FRPProgBar.CloseUI = function() {
         $('.main-container').fadeOut('fast');
     };
     
     window.addEventListener('message', function(event) {
         switch(event.data.action) {
             case 'frp_progbar':
-                VPProgBar.Progress(event.data);
+                FRPProgBar.Progress(event.data);
                 break;
             case 'frp_progbar_cancel':
-                VPProgBar.ProgressCancel();
+                FRPProgBar.ProgressCancel();
                 break;
         }
     });

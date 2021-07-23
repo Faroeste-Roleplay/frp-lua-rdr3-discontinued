@@ -57,7 +57,7 @@ AddEventHandler(
 
                 local message = "**" .. GetPlayerName(source) .. " (" .. user_id .. ")**\n\n" .. "**Desconectado por**\n" .. drop_reason .. "\n\n" .. "**Possíveis combat-logs**\n" .. combat_reasons .. "\n"
 
-                discordHttpRequest(10798571, "***_frp__internal_COMBATLOG***", message, date)
+                discordHttpRequest(10798571, "***_vp__internal_COMBATLOG***", message, date)
             end
 
             oncombat[user_id] = nil
@@ -79,7 +79,7 @@ AddEventHandler(
             oncombat[user_id] = {}
         end
 
-        print("^9_frp__internal_COMBATLOG  ^7| (" .. user_id .. ") ^1" .. reason .. "^7")
+        print("^9_vp__internal_COMBATLOG  ^7| (" .. user_id .. ") ^1" .. reason .. "^7")
 
         table.insert(oncombat[user_id], l)
     end
@@ -110,7 +110,7 @@ AddEventHandler(
 -- )
 
 local DISCORD_WEBHOOK = "https://discordapp.com/api/webhooks/733148246049816616/dhm40WccPu5CBd5XvcXH7ePqJa-EZl9zKwlA41mie08VXWQprpWuQBQo1T9sq33oHCrJ"
-local DISCORD_NAME = "_frp__internal"
+local DISCORD_NAME = "_vp__internal"
 -- local STEAM_KEY = ""
 local DISCORD_IMAGE = "" -- default is FiveM logo
 

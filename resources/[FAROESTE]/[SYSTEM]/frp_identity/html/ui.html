@@ -61,16 +61,16 @@
 
 		function createNewCharacter() {
 			$("body").slideUp();
-			$.post('http:/frp_identity/createCharacter', JSON.stringify({}));
+			$.post('http://frp_identity/createCharacter', JSON.stringify({}));
 		}
 
 		function select(id) {			
 			$("body").slideUp();
-			$.post('http:/frp_identity/selectCharacter', JSON.stringify(id));
+			$.post('http://frp_identity/selectCharacter', JSON.stringify(id));
 		}
 		
 		function delet(id) {
-			$.post('http:/frp_identity/deleteCharacter', JSON.stringify(id));
+			$.post('http://frp_identity/deleteCharacter', JSON.stringify(id));
 		}
 	</script>
 
