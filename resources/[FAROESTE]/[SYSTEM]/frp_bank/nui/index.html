@@ -1,0 +1,153 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <style>
+        #depositUI,
+        #withdrawUI,
+        #general {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- ########### GENERAL ###########  -->
+        <div class="cont-content" id="general">
+            <div class="flex">
+                <div class="balance">
+                    <p>Bem vindo ao seu banco<br>
+                        <span class="name"><span class="username1"></span></span><br> SEU DINHEIRO<br>
+                        <span class="money"><span class="euro">$</span><span class="curbalance"></span></span>
+                    </p>
+                </div>
+                <div class="list-btn">
+                    <button class="btn btn-blue" id="deposit">		  
+		    				<p>DEPOSITO<br>
+		    			</button>
+                    <button class="btn btn-violet" id="withdraw">			
+		    				<p>RETIRAR DINHEIRO<br>		
+			    		</button>
+                    <button class="btn btn-out">SAIR</button>
+                </div>
+            </div>
+        </div>
+        <!-- ########### DEPOSIT ###########  -->
+        <div class="cont-content2" id="depositUI">
+            </br>
+            </br>
+            <form id="deposit1">
+                <div class="input-cont">
+                    <label>QUANTO VOCÊ QUER DEPOSITAR ? <p>centavos não contam</p></label>
+                    <input id="amount" step="0.01" pattern="^\d*(\.\d{0,2})?$" type="number" placeholder="$0">
+                </div>
+                <button class="btn btn-check" type="submit">				
+	    				<p>ACEITAR<br>
+    				</button>
+                <br>
+                <button class="btn btn-back back">    					
+	    				<p>VOLTAR</p>
+    				</button>
+            </form>
+            </br>
+            </br>
+        </div>
+        <!-- ########### WITHDRAW ###########  -->
+        <div class="cont-content2" id="withdrawUI">
+            </br>
+            </br>
+            <form id="withdraw1">
+                <div class="input-cont box-shadow">
+                    <label>QUANTO VOÇE QUER RETIRAR ? <p>centavos não contam</p></label>
+                    <input id="amountw" class="amountw" type="number" step=".01" placeholder="$0">
+                    <p> .00</p>
+                </div>
+                <button class="btn btn-check" type="submit">    					
+	    				<p>ACEITAR</p>
+    				</button>
+                <br>
+                <button class="btn btn-back back">   					
+	    				<p>VOLTAR</p>
+    				</button>
+            </form>
+            <br>
+            </br>
+        </div>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/lib/jquery/3.3.1/jquery.min.js"></script>
+    <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function() {
+            window.addEventListener('message', function(event) {
+                $(".amountw").blur(function() {
+                    console.log('ss')
+                    this.value = parseFloat(this.value).toFixed(2);
+                });
+
+                if (event.data.type === "balanceHUD") {
+                    $('.username1').html(event.data.player);
+                    $('.curbalance').html(event.data.balance);
+                    setTimeout(function() {
+                        $('#general').css('display', 'block')
+                    }, 100);
+                } else if (event.data.type === "closeAll") {
+                    $('#waiting, #general, #transferUI, #withdrawUI, #depositUI, #topbar').hide();
+                    $('body').removeClass("active");
+                }
+
+
+
+            });
+        });
+
+
+        $('.btn-out').click(function() {
+            $('#general, #waiting, #transferUI, #withdrawUI, #depositUI, #topbar').hide();
+            $('body').removeClass("active");
+            $.post('http://frp_bank/NUIFocusOff', JSON.stringify({}));
+        })
+        $('.back').click(function() {
+            $('#depositUI, #withdrawUI').hide();
+            $('#general').show();
+        })
+        $('#deposit').click(function() {
+            $('#general').hide();
+            $('#depositUI').show();
+        })
+        $('#withdraw').click(function() {
+            $('#general').hide();
+            $('#withdrawUI').show();
+        })
+        $("#deposit1").submit(function(e) {
+            e.preventDefault(); // Prevent form from submitting
+            $.post('http://frp_bank/deposit', JSON.stringify({
+                amount: $("#amount").val()
+            }));
+            $('#depositUI').hide();
+            $('#general').show();
+            $("#amount").val('');
+        });
+        $("#withdraw1").submit(function(e) {
+            e.preventDefault(); // Prevent form from submitting
+            $.post('http://frp_bank/withdrawl', JSON.stringify({
+                amountw: $("#amountw").val()
+            }));
+            $('#withdrawUI').hide();
+            $('#general').show();
+            $("#amountw").val('');
+        });
+        document.onkeyup = function(data) {
+            if (data.which == 27) {
+                $('#general,#withdrawUI, #depositUI').hide();
+                $('body').removeClass("active");
+                $.post('http://frp_bank/NUIFocusOff', JSON.stringify({}));
+            }
+        }
+    </script>
+</body>
+
+</html>

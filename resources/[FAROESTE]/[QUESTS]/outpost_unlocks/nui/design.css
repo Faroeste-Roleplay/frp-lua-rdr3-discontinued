@@ -1,0 +1,121 @@
+@font-face {
+    font-family: 'Lino';
+    src: url("assets/fonts/RDRLino-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Hapna';
+    src: url("assets/fonts/HapnaSlabSerif-DemiBold.ttf");
+}
+
+body {
+    user-select: none;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Lino";
+    /* background-color: black; */
+    letter-spacing: 0.07em;
+}
+
+.main-container{
+    width: 300px;
+    height: 500px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container .item {
+    width: 100%;
+    height: 40px;
+    color: white;
+    text-align: center;
+}
+
+.main-container .item.unowned {
+    color: grey;
+}
+
+.main-container .item.locked {
+    color: red;
+}
+
+.top-right-container{
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.top-right-container .row{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: fit-content;
+}
+
+.top-right-container .icon-shell{
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-right-container .icon-shell img{
+    width: 100%;
+    height: 100%;
+    /* filter: invert(0%) sepia(52%) saturate(3355%) hue-rotate(298deg) brightness(50%) contrast(260%); */
+}
+
+.top-right-container .dynamic-values-column{
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    margin-top: 6px;
+    float: right;
+}
+
+.top-right-container .dynamic-values-column .row {
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.top-right-container .dynamic-values-column .row span{
+    color: white;
+    font-size: 20px;
+    float: left;
+}
+
+.top-right-container .dynamic-values-column .row .balance-container{
+    float: right;
+}
+
+.top-right-container .dynamic-values-column .row .cents-container {
+    height: 100%;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin: 0px 13px 0px 10px;
+}
+
+.top-right-container .dynamic-values-column .row .cents-container span {
+    letter-spacing: 0;
+    border-bottom: 1px solid white;
+    font-family: "Hapna";
+    font-size: 14px;
+    margin: -4px 0px 0px 0px;
+}
+
+.top-right-container .dynamic-values-column .row .icon-shell{
+    margin: 0;
+}

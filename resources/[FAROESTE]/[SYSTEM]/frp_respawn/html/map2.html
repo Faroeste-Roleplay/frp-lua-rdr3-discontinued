@@ -1,0 +1,185 @@
+<html>
+<style>
+    .SaintDenis {
+        clip-path: ellipse(4% 3.5% at 85.5% 54.5%);
+    }
+    
+    .Valentine {
+        clip-path: ellipse(5% 4% at 59.5% 33%);
+    }
+    
+    .Rhodes {
+        clip-path: ellipse(3% 3% at 73% 56%);
+    }
+    
+    .Annesburg {
+        clip-path: ellipse(3.8% 3.5% at 85.6% 25.5%);
+    }
+    
+    .Blackwater {
+        clip-path: ellipse(4% 4% at 54% 55%);
+    }
+    
+    .Strawberry {
+        clip-path: ellipse(3.5% 3% at 46.5% 46%);
+    }
+    
+    .Armadillo {
+        clip-path: ellipse(3% 3% at 34% 70%);
+    }
+    
+    .Tumbleweed {
+        clip-path: ellipse(4% 4% at 17.5% 74%);
+    }
+    
+    .MountHagen {
+        clip-path: ellipse(2.5% 2% at 50.5% 25%);
+    }
+    
+    .BacchusStation {
+        clip-path: ellipse(2.5% 2% at 68% 21.5%);
+    }
+    
+    .VanHorn {
+        clip-path: ellipse(3% 3% at 89% 34%);
+    }
+    
+    img {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .top {
+        z-index: 1000;
+    }
+    
+    .background {
+        position: absolute;
+    }
+</style>
+
+<script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
+<script src="js/jquery-func.js" type="text/javascript"></script>
+<script src="js/listener.js" type="text/javascript"></script>
+<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+
+<body id='content' style='visibility: hidden'>
+    <div id='info' class='top'></div>
+    <img src='map_shadow.jpg' class="background">
+    <img src="map.jpg" class="SaintDeniss" id='map' onclick="clickE()">
+
+    <script>
+        var w = screen.width;
+        var h = screen.height;
+        var points = [{
+            x: 0.86,
+            y: 0.54,
+            r: 100,
+            n: 'SaintDenis'
+        }, {
+            x: 0.6,
+            y: 0.31,
+            r: 80,
+            n: 'Valentine'
+        }, {
+            x: 0.73,
+            y: 0.56,
+            r: 100,
+            n: 'Rhodes'
+        }, {
+            x: 0.88,
+            y: 0.23,
+            r: 100,
+            n: 'Annesburg'
+        }, {
+            x: 0.56,
+            y: 0.55,
+            r: 80,
+            n: 'Blackwater'
+        }, {
+            x: 0.48,
+            y: 0.44,
+            r: 70,
+            n: 'Strawberry'
+        }, {
+            x: 0.31,
+            y: 0.67,
+            r: 80,
+            n: 'Armadillo'
+        }, {
+            x: 0.16,
+            y: 0.71,
+            r: 80,
+            n: 'Tumbleweed'
+        }, {
+            x: 0.50,
+            y: 0.30,
+            r: 50,
+            n: 'MountHagen'
+        }, {
+            x: 0.68,
+            y: 0.18,
+            r: 50,
+            n: 'BacchusStation'
+        }, {
+            x: 0.88,
+            y: 0.3,
+            r: 100,
+            n: 'VanHorn'
+        }];
+        var map = document.getElementById('map');
+        var info = document.getElementById('info');
+        var content = document.getElementById('content');
+        var selected = -1;
+        onmousemove = function(e) {
+            info.innerHTML = "X: " + e.clientX / w + " Y: " + e.clientY / h;
+            //console.warn(points[0].x, points[0].y, w);
+            var show = false;
+            var i = 0
+            for (var p in points) {
+                var posX = e.clientX;
+                var posY = e.clientY;
+                if (dist(posX, posY, points[p].x * w, points[p].y * h) < points[p].r) {
+                    show = true
+                    map.className = points[p].n;
+                    selected = i;
+                    break;
+
+                }
+                i++;
+
+            }
+            if (!show) map.className = "";
+            selected = -1;
+
+        }
+
+        function clickE() {
+            if (map.className != "") select();
+        }
+
+        function dist(x1, y1, x2, y2) {
+            var a = x1 - x2;
+            var b = y1 - y2;
+            return Math.sqrt(a * a + b * b);
+        }
+
+        function showMap(yes) {
+            if (yes) content.style.visibility = 'inherit';
+
+            else content.style.visibility = 'hidden';
+        }
+
+        function select() {
+            $.post('http:/frp_respawn/select', JSON.stringify(map.className));
+        }
+    </script>
+
+
+</body>
+
+</html>

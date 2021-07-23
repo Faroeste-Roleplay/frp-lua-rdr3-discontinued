@@ -1,0 +1,117 @@
+html {
+	overflow-x: hidden !important;
+	overflow-y: hidden !important;
+	background-color: transparent !important;
+}
+
+body {
+	background-color: transparent !important;
+}
+
+@font-face {
+    font-family: 'crock';
+    font-style: normal;
+    src: url('crock.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: 'robotoslab';
+    font-style: normal;
+    src: url('robotoslab.ttf') format('truetype')
+}
+
+#notifications {
+	transition: all 0.5s;
+	top: 100px;
+	left: 50px;
+	color: rgba(255,255,255,0.7);
+	max-width: 450px;
+	font-size: 14px;
+	position: absolute !important;
+	font-family: 'robotoslab';
+
+}
+
+#notifications b {
+	color: rgba(255,255,255,1);
+}
+
+#sucesso {
+	position: relative;
+	animation: intro 1s 0.1s forwards;	
+	border-radius: 4px;
+	margin: 0 0 10px 10px;
+	min-width: 11vw;
+	transition: all 0.5s;		
+}
+
+
+.content{
+	border-radius: 4px 0px 0px 4px;
+	background-image: url('bg.png');
+	background-size: 100% 100%;
+	display: flex;
+	align-items: center;
+}
+
+/* .timer{
+	background-image: url('timer.png');
+	background-size: 90% 100%;
+	background-repeat: no-repeat;
+	width: 20px;
+	height: 50px;
+	animation: fadeout 11s 0.1s forwards;	
+} */
+
+.title{
+	background: rgba(255,0,0,0.4);
+	border-radius: 2px;
+	padding: 2px 5px;
+	margin-right:5px;
+}
+
+
+.text{
+	background-image: url("earth.png");
+	background-size: 15px 15px;
+	background-repeat: no-repeat;
+	background-position: 1px 6px;
+	padding: 17px 40px;
+}
+
+b{
+	font-weight: 800;
+}
+
+@-webkit-keyframes color_change {
+	from { 
+		background: linear-gradient(to right, rgba(0, 13, 255,0.7),rgba(255, 0, 0,0.5),rgba(0, 13, 255,0.5));	
+		background-size: 300% 100%;
+		background-position: 100% 100%;
+	}
+	to { 		
+		background: linear-gradient(to right, rgba(0, 13, 255,0.8),rgba(255, 0, 0,0.6),rgba(0, 13, 255,0.6));
+		background-size: 300% 100%;
+		background-position: 0% 100%;
+	}
+}
+
+@keyframes intro {
+	0% {
+	opacity: 0;	
+	}
+
+	100% {
+	  opacity: 1;
+	}
+  }
+
+  @keyframes fadeout {
+	0% {
+	height: 50px;
+	}
+
+	100% {
+		height: 0px;
+	}
+  }

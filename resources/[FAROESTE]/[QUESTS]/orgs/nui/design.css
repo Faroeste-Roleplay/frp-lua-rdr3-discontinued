@@ -1,0 +1,152 @@
+@font-face {
+  font-family: "Abel";
+  src: url("assets/fonts/Abel-Regular.ttf");
+}
+
+body {
+  user-select: none;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Abel";
+  /* background-color: rgb(90, 164, 224); */
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  height: fit-content;
+  border-left: 1px solid white;
+}
+
+.container .org.selected > .member-list {
+  opacity: 1;
+  transition: all 0.3s ease;
+  max-height: 300px;
+}
+
+.container .org.selected > .header {
+  background-color: white;
+  color: black;
+  /* transform: scaleX(1.05); */
+}
+
+.container .org .header {
+  /* height: 40px; */
+  position: relative;
+  height: 28px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0px 5px 0px 5px;
+  background-color: rgba(0, 0, 0, 0.3);
+  font-size: 18px;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.container .org .header span:nth-child(2) {
+  font-size: 12px;
+}
+
+.container .org .member-list {
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  max-height: 0px;
+  /* overflow-y: hidden; */
+  /* overflow-x: visible; */
+  transition: all 0.3s ease;
+}
+
+.container .org .member-list .member {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(80, 80, 80, 0.3);
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  padding: 0px 0px 0px 5px;
+  height: 24px;
+}
+
+.container .org .member-list .member .info {
+  /* flex: 1; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 16px;
+}
+
+.container .org .member-list .member .info img {
+  width: 16px;
+  margin: 0px 5px 0px 0px;
+}
+
+.container .org .member-list .member .rank {
+  font-size: 14px;
+  /* margin: 0px 10px 0px 0px; */
+  width: 80px;
+}
+
+.container .org .member-list .member .rank-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.container button {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  outline-color: yellowgreen;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 14px;
+  /* border: 1px solid red; */
+}
+
+.container button.outside {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(150%) translateY(15%);
+  width: 20px;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  font-size: 1em;
+}
+
+.container .org:last-child .member:last-child {
+  margin-bottom: 0;
+}
+
+.container .org:first-child .header {
+  background-color: #26fdd980;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 50px;
+}
+
+.container .org:first-child.selected .header {
+  background-color: white;
+}

@@ -1,0 +1,107 @@
+
+@font-face
+{
+    font-family: 'Holimount';
+    font-style: normal; 
+    src: url('fonts/Holimount.otf') format('opentype');
+}
+
+
+@font-face
+{
+    font-family: 'Typewriter';
+    font-style: normal; 
+    src: url('fonts/Typewriter.ttf') format('truetype');
+}
+
+@font-face
+{
+    font-family: 'Holimount-Black';
+    font-style: black; 
+    src: url('fonts/Typewriter-Black.ttf') format('truetype');
+}
+
+@font-face
+{
+    font-family: 'Holimount-Bold';
+    font-style: bold; 
+    src: url('fonts/Typewriter-Bold.ttf') format('truetype');
+}
+
+@font-face
+{
+    font-family: 'Holimount-Thin';
+    font-style: thin; 
+    src: url('fonts/Typewriter-Thin.ttf') format('truetype');
+}
+
+
+body{
+    width: 100%;
+    height: 100%;
+}
+
+.container{
+    position: absolute;
+    width: 25vw;
+    height: 15vw;
+    max-height: 15vw;
+    max-width: 25vw;
+    right: 40px;
+    bottom: 20px;
+    display: none;
+}
+.body-document{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: url(background.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Holimount-Bold';
+
+}
+
+.content-header{
+    position: absolute;
+    display: flex;
+    bottom:8.6vw;
+    font-size: 2vw;
+    width: 72%;
+    justify-content: center;
+    color:#d93b30;
+}
+
+.content-center{
+    position: absolute;
+    display: flex;
+    bottom:6.0vw;
+    font-size: 1.0vw;
+    width: 72%;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+.content-footer{
+    position: absolute;
+    display: flex;
+    bottom:2.6vw;
+    font-size: 1.0vw;
+    width: 72%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-footer #id{
+    display: flex;
+    justify-content: center;
+}
+
+.content-footer #name{
+    font-family: 'Holimount';
+    font-size: 2.2em;
+    text-transform: capitalize;
+}

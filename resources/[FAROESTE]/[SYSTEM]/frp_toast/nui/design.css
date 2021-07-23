@@ -1,0 +1,117 @@
+@font-face {
+    font-family: 'RDR';
+    /* src: url("../../frp_inventory/nui/fonts/HapnaSlabSerif-DemiBold.ttf"); */
+    src: url("nui://frp_inventory/nui/fonts/HapnaSlabSerif-DemiBold.ttf");
+    /* src: url("../../frp_creator/client/html/fonts/robotoslab.ttf"); */
+}
+
+* {
+    font-family: 'RDR';
+    overflow: hidden;
+}
+
+body {
+    font-size: 16px;
+}
+
+.toast-container {
+    position: absolute;
+    right: 25px;
+    top: 40%;
+    transform: translate(0, -50%);
+    height: 52px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#no-icon {
+    top: 60%;
+}
+
+.toast {
+    position: absolute;
+    height: 20px;
+    width: fit-content;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    bottom: -100%;
+}
+
+.toast.gold{
+    color: rgb(255, 200, 0);
+}
+
+.toast.red{
+    color: #e61717;
+}
+
+.toast .toast-text {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.toast .toast-type {
+    height: 20px;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.toast .type-quantity {
+    margin: 0 6px 0 -6px;
+}
+
+.toast .toast-type-icon {
+    margin: 0 0 0 6px;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+.toast .toast-type-icon img {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* .toast:nth-child(even) {
+    margin: 10px 0px 10px 0px;
+}
+
+.toast:first-child {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.toast:last-child {
+    margin-bottom: 0;
+} */
+
+.toast.background {
+    background: url(assets/toast-bg.png);
+    background-size: cover;
+}
+
+.toast.background span {
+    margin: 0px 10px 0px 10px;
+    font-size: 14px;
+}
+
+.toast .toast-text priority {
+    color: rgb(255, 200, 0);
+}

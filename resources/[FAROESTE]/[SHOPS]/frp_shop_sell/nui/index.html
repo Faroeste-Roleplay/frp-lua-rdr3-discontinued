@@ -1,0 +1,110 @@
+<html>
+
+
+<head>
+    <link rel="stylesheet" href="design.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="script.js"></script>
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="shop">
+            <img id="background-image" src="nui://frp_inventory/nui/images/bginventory.png">
+            <div class="inner-container">
+                <div class="control-info-container">
+                    <span class="title" style="margin: 30px auto 0 auto;">Loja</span>
+                </div>
+                <div class="divider"></div>
+                <div class="slot-container">
+                    <!-- <div class="slot">
+                        <img src="nui://frp_inventory/nui/images/items/ammo_arrow.png">
+                    </div>
+                    <div class="slot">
+                        <img src="nui://frp_inventory/nui/images/items/ammo_arrow.png">
+                    </div>
+                    <div class="slot">
+                        <img src="nui://frp_inventory/nui/images/items/ammo_arrow.png">
+                    </div>
+                    <div class="slot">
+                        <img src="nui://frp_inventory/nui/images/items/ammo_arrow.png">
+                    </div>
+                    <div class="slot">
+                        <img src="nui://frp_inventory/nui/images/items/ammo_arrow.png">
+                    </div>
+                    <div class="slot">
+                        <img src="nui://frp_inventory/nui/images/items/ammo_arrow.png">
+                    </div>
+                    <div class="slot">
+                        <img src="nui://frp_inventory/nui/images/items/ammo_arrow.png">
+                    </div>
+                    <div class="slot">
+                        <img src="nui://frp_inventory/nui/images/items/ammo_arrow.png">
+                    </div>
+                    <div class="slot">
+                        <img src="nui://frp_inventory/nui/images/items/ammo_arrow.png">
+                    </div>
+                    <div class="slot">
+                        <img src="nui://frp_inventory/nui/images/items/ammo_arrow.png">
+                    </div>
+                    <div class="slot">
+                        <img src="nui://frp_inventory/nui/images/items/ammo_arrow.png">
+                    </div>
+                    <div class="slot">
+                        <img src="nui://frp_inventory/nui/images/items/ammo_arrow.png">
+                    </div>
+                    <div class="slot">
+                        <img src="nui://frp_inventory/nui/images/items/ammo_arrow.png">
+                    </div>
+                    <div class="slot">
+                        <img src="nui://frp_inventory/nui/images/items/ammo_arrow.png">
+                    </div>
+                    <div class="slot">
+                        <img src="nui://frp_inventory/nui/images/items/ammo_arrow.png">
+                    </div>
+                    <div class="slot">
+                        <img src="nui://frp_inventory/nui/images/items/ammo_arrow.png">
+                    </div> -->
+                </div>
+                <div class="divider" id="weight-divider"></div>
+                <div class="description-container">
+                    <div class="description-title">
+                        <span id="name"></span>
+                    </div>
+                    <div class="description-description">
+                        <span id="description"></span>
+                    </div>
+                </div>
+
+                <div class="bottom-container">
+                    <div class="divider"></div>
+                    <div class="inner">
+                        <!-- <span><img src="nui://frp_inventory/nui/images/peso.png"><span id="weight">0.0KG</span></span> -->
+                        <span>Valor</span>
+                        <div style="display: flex; flex-direction: column;">
+                            <!-- <span id="p_gold" onclick="sell(false)">G0.00</span> -->
+                            <span id="p_dollar">$0.00</span>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <span id="carrying">Carregando ?</span>
+                </div>
+
+                <div id="confirmation-container">
+                    <div id="confirmation-bg"></div>
+                    <div id="confirmation-content">
+                        <span id="confirm_title"></span>
+                        <div class='row'>
+                            <button onclick="cancel()">cancelar</button>
+                            <button onclick="sellItem()">vender</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

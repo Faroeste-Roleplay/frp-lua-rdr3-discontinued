@@ -1,0 +1,539 @@
+<html>
+
+<head>
+
+    <script src="jquery.js" type="text/javascript"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto&display=swap" rel="stylesheet">
+
+	<script src="https://kit.fontawesome.com/eb73bbb7e4.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    
+</head>
+
+<body>
+    <div class="container">
+        
+        <!-- <div id="closemenu" class="modal">
+            <div class="modal-content">
+                <h4>Fechando</h4>
+                <p>Gostaria de comprar essas roupas?</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" id="save" class="modal-close waves-effect waves-light btn green">Comprar e salvar</a>
+                <a href="#!" id="discard" class="modal-close waves-effect waves-light btn red">Descartar</a>
+                <a href="#!" id="cancel" class="modal-close waves-effect waves-light btn grey">Voltar</a>
+            </div>
+        </div> -->
+
+        <div id="creatormenu"  style="display: none" class="row">
+            <div id="creator-container" class="col s5">
+                <div id="head">
+                    <div class="header-text">Loja de Roupas</div>     
+                </div>
+              <!--  <div id="camera_menu" class="row">
+                    <div class="menucam">
+                        <button class="tog_hat menu-button">
+                            <i class="fab fa-redhat"></i>
+                        </button>
+                        <button class="tog_glasses menu-button">
+                            <i class="fas fa-glasses"></i>
+                        </button>
+                        <button class="tog_tops menu-button">
+                            <i class="fas fa-tshirt"></i>
+                        </button>
+                        <button class="tog_head menu-button">
+                            <i class="fas fa-meh"></i>
+                        </button>
+                        <button class="tog_torso menu-button">
+                            <i class="fas fa-user-tie"></i>
+                        </button>
+                        <button class="tog_leg menu-button">
+                            <i class="fas fa-socks"></i>
+                        </button>
+                    </div>     
+                </div> -->
+                <div id="button_menu" class="row">
+                    <button id="button-creator" data-target="Roupas"
+                        class="menu-selectb active">Roupas</button>
+                    <button id="button-head" data-target="Acessorios"
+                        class="menu-selectb">Acessórios</button>
+                    <button id="button-body" data-target="Ped"
+                        class="menu-selectb disabled">Ped</button>
+                </div>                  
+                <div class='spacing2'></div>                
+                
+                <div id="Roupas" class="row" style="display: block;">
+                    <div class="scroll-container">
+                        <div id="Chapeu" class="col s12 panel ">
+                            <!-- <div class="col s12 panel-title">
+                                <h6 class="grey-text"> GERAL</h6>
+                            </div> -->
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Chapeu <span class="qtd">0/429</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Chapeu" class="input-number col s4" type="number" value="0" min="0" max="429" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>         
+
+                        <div id="Camisa" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Camisa <span class="qtd">0/339</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Camisa" class="input-number col s4" type="number" value="0" min="0" max="339" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>            
+
+                        <div id="Colete" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Colete <span class="qtd">0/199</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Colete" class="input-number col s4" type="number" value="0" min="0" max="199" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>     
+                        
+                        <div id="Casaco" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Casaco <span class="qtd">0/90</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Casaco" class="input-number col s4" type="number" value="0" min="0" max="90" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>    
+
+                        <div id="Jaqueta" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Jaqueta <span class="qtd">0/313</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Jaqueta" class="input-number col s4" type="number" value="0" min="0" max="313" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>   
+
+                        <div id="Cloaks" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Capas <span class="qtd">0/16</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Cloaks" class="input-number col s4" type="number" value="0" min="0" max="16" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>   
+
+                        
+                        <div id="Ponchos" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Ponchos <span class="qtd">0/55</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Ponchos" class="input-number col s4" type="number" value="0" min="0" max="55" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>       
+                        
+
+                        <div id="Calca" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Calça <span class="qtd">0/328</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Calca" class="input-number col s4" type="number" value="0" min="0" max="328" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div> 
+
+                        <div id="Saia" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Saia <span class="qtd">0/102</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Saia" class="input-number col s4" type="number" value="0" min="0" max="102" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="Chaps" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Chaps <span class="qtd">1/52</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Chaps" class="input-number col s4" type="number" value="0" min="0" max="52" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div> 
+
+                        <div id="Sapato" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Sapato <span class="qtd">1/426</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Sapato" class="input-number col s4" type="number" value="0" min="0" max="426" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+
+                <div id="Acessorios" class="row" style="display: none;">
+                    <div class="scroll-container">           
+
+                        <div id="Mascara" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Mascara <span class="qtd">0/79</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Mascara" class="input-number col s4" type="number" value="0" min="0" max="79" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="Bandana" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Bandana <span class="qtd">0/258</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Bandana" class="input-number col s4" type="number" value="0" min="0" max="258" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="Coldre" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Coldre <span class="qtd">0/27</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Coldre" class="input-number col s4" type="number" value="0" min="0" max="27" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="Luva" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Luva <span class="qtd">0/166</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Luva" class="input-number col s4" type="number" value="0" min="0" max="166" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="Spurs" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Esporas <span class="qtd">0/128</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Spurs" class="input-number col s4" type="number" value="0" min="0" max="128" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>         
+                        
+                        <div id="Beltbuckle" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Fivela <span class="qtd">0/174</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Beltbuckle" class="input-number col s4" type="number" value="0" min="0" max="174" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>   
+
+                        <div id="Eyewear" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Óculos <span class="qtd">0/38</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Eyewear" class="input-number col s4" type="number" value="0" min="0" max="38" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>   
+                        
+                        <div id="Suspenders" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Suspensórios <span class="qtd">0/69</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Suspenders" class="input-number col s4" type="number" value="0" min="0" max="69" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>  
+                        
+                        <div id="Access" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Acessórios <span class="qtd">0/33</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Access" class="input-number col s4" type="number" value="0" min="0" max="33" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <div id="Neckties" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Gravata <span class="qtd">0/81</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Neckties" class="input-number col s4" type="number" value="0" min="0" max="81" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>  
+
+                        <div id="Offhand" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Coldre imp. <span class="qtd">0/83</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Offhand" class="input-number col s4" type="number" value="0" min="0" max="83" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div> 
+                          
+                        <div id="Belts" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Cinto <span class="qtd">0/83</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Belts" class="input-number col s4" type="number" value="0" min="0" max="68" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div> 
+
+                        <div id="Gauntlets" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Manopla <span class="qtd">0/11</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Gauntlets" class="input-number col s4" type="number" value="0" min="0" max="11" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>                           
+
+                        <div id="Bracelets" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Braceletes <span class="qtd">0/6</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Bracelets" class="input-number col s4" type="number" value="0" min="0" max="6" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>                  
+                    </div>                      
+                </div>
+                
+                <div id="Ped" class="row" style="display: none;">
+                    <div class="scroll-container">           
+                        <div id="Outfit" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Outfit <span class="qtd">0/100</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Outfit" class="input-number col s4" type="number" value="0" min="0" max="100" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>                                       
+                    </div>
+                </div>
+                
+                <div class="confirm">
+                    <button id="confirm" class="confirm-button btn" onclick="confirm()"><span>Confirmar</span></button>
+                </div>      
+                
+                
+            </div>
+        </div>        
+ 
+    </div>
+    <script src="script.js" type="text/javascript"></script>
+</body>
+
+</html>

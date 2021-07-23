@@ -1,0 +1,135 @@
+* {
+    padding: 0;
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+@font-face {
+    font-family: 'Lino';
+    src: url("fonts/lino.ttf");
+}
+
+* {
+    font-family: 'Lino';
+}
+
+.wprompt {
+    font-family: 'Lino';
+    position: absolute;
+    background-image: url(img/Prompt.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: #fff;
+    width: 750px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+}
+
+.wprompt h1 {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.wprompt textarea {
+    background-color: transparent !important;
+    margin-left: 16%;
+    flex: 0.8;
+    color: #fff;
+    font-size: 15px;
+    width: 68%;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.wprompt textarea:focus {
+    outline: none !important;
+}
+
+.wprompt .help {
+    top: 0%;
+    text-align: center;
+    font-size: 12px;
+}
+
+.wprompt textarea::-webkit-scrollbar {
+    display: none;
+}
+
+.request_manager {
+    top: 5%;
+    right: 2.2%;
+    position: absolute;
+    font-family: Arial;
+    font-size: 13px;
+    color: #fff;
+    text-align: right;
+    max-width: 1280px;
+    /* border: 1px solid red; */
+}
+
+.request_manager div {
+    margin-top: 55px;
+    text-align: right;
+}
+
+.request_manager b {
+    color: #769D00;
+}
+
+.request_manager div>span {
+    /* background: rgba(15, 15, 15, 0.7); */
+    padding: 20px;
+    text-align: right;
+    /* background-image: url(img/bgPanel.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transform: rotate(180deg); */
+}
+
+.request_manager div>span:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 25%;
+    left: 0%;
+    z-index: -1;
+    background: url(img/bgPanel.png) 0 0 repeat;
+    transform: rotate(360deg);
+}
+
+.request_manager .yes {
+    background-image: url(img/input.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    /* background: #769D00; */
+    padding: 5px 10px;
+    color: #fff;
+    margin-left: 20px;
+    font-size: 13px;
+    /* border-radius: 10px; */
+}
+
+.request_manager .no {
+    background-image: url(img/input.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    /* background: #AA0000; */
+    padding: 5px 10px;
+    color: #fff;
+    margin-left: 7px;
+    margin-right: 7px;
+    font-size: 13px;
+}

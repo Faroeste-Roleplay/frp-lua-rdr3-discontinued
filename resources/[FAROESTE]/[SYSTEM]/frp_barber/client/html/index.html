@@ -1,0 +1,138 @@
+<html>
+
+<head>
+
+    <script src="jquery.js" type="text/javascript"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto&display=swap" rel="stylesheet">
+
+	<script src="https://kit.fontawesome.com/eb73bbb7e4.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    
+</head>
+
+<body>
+    <div class="container">
+        
+        <!-- <div id="closemenu" class="modal">
+            <div class="modal-content">
+                <h4>Fechando</h4>
+                <p>Gostaria de comprar essas roupas?</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" id="save" class="modal-close waves-effect waves-light btn green">Comprar e salvar</a>
+                <a href="#!" id="discard" class="modal-close waves-effect waves-light btn red">Descartar</a>
+                <a href="#!" id="cancel" class="modal-close waves-effect waves-light btn grey">Voltar</a>
+            </div>
+        </div> -->
+
+        <div id="creatormenu"  style="display: none" class="row">
+            <div id="creator-container" class="col s5">
+                <div id="head">
+                    <div class="header-text">Barbeiro</div>     
+                </div>
+              <!--  <div id="camera_menu" class="row">
+                    <div class="menucam">
+                        <button class="tog_hat menu-button">
+                            <i class="fab fa-redhat"></i>
+                        </button>
+                        <button class="tog_glasses menu-button">
+                            <i class="fas fa-glasses"></i>
+                        </button>
+                        <button class="tog_tops menu-button">
+                            <i class="fas fa-tshirt"></i>
+                        </button>
+                        <button class="tog_head menu-button">
+                            <i class="fas fa-meh"></i>
+                        </button>
+                        <button class="tog_torso menu-button">
+                            <i class="fas fa-user-tie"></i>
+                        </button>
+                        <button class="tog_leg menu-button">
+                            <i class="fas fa-socks"></i>
+                        </button>
+                    </div>     
+                </div> -->
+                <div id="button_menu" class="row">
+                    <button id="button-creator" data-target="Rosto"
+                        class="menu-selectb active">Roupas</button>
+                    <button id="button-head" data-target="Acessorios"
+                        class="menu-selectb">Acessórios</button>
+                    <button id="button-body" data-target="Ped"
+                        class="menu-selectb disabled">Ped</button>
+                </div>                  
+                <div class='spacing2'></div>                
+                
+                <div id="Rosto" class="row" style="display: block;">
+                    <div class="scroll-container">
+                        <div id="Cabelo" class="col s12 panel ">
+                            <!-- <div class="col s12 panel-title">
+                                <h6 class="grey-text"> GERAL</h6>
+                            </div> -->
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Cabelo <span class="qtd">0/429</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Cabelo" class="input-number col s4" type="number" value="0" min="0" max="429" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>         
+
+                        <div id="Camisa" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Barba <span class="qtd">0/339</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Camisa" class="input-number col s4" type="number" value="0" min="0" max="339" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>            
+
+                        <div id="Colete" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Colete <span class="qtd">0/199</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Colete" class="input-number col s4" type="number" value="0" min="0" max="199" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>     
+                        
+                
+                </div>
+
+                <div class="confirm">
+                    <button id="confirm" class="confirm-button btn" onclick="confirm()"><span>Confirmar</span></button>
+                </div>      
+                
+                
+            </div>
+        </div>        
+ 
+    </div>
+    <script src="script.js" type="text/javascript"></script>
+</body>
+
+</html>

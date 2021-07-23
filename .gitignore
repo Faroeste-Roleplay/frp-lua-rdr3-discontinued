@@ -1,0 +1,8 @@
+citizen/system_resources/
+cache
+*.cfg
+*.bat
+*.txt
+savedata
+resources/GHMattiMySQL/settings.xml
+resources/redemrp_inventory

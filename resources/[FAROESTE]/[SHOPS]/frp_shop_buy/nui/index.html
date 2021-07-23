@@ -1,0 +1,69 @@
+<html>
+
+
+<head>
+    <link rel="stylesheet" href="design.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="script.js"></script>
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="shop">
+            <img id="background-image" src="nui://frp_inventory/nui/images/bginventory.png">
+            <div class="inner-container">
+
+                <!-- <div class="menutab">
+                    <div class="buttonstab">
+                        <div class="button active" data-target="all"><img src="nui://frp_inventory/nui/images/type_all.png"/></div>
+                        <div class="button" data-target="weapon"><img src="nui://frp_inventory/nui/images/type_all.png"/></div>
+                        <div class="button" data-target="ammo"><img src="nui://frp_inventory/nui/images/type_all.png"/></div>
+                        <div class="button" data-target="melee"><img src="nui://frp_inventory/nui/images/type_all.png"/></div>
+                    </div>
+                </div> -->
+                <div class="control-info-container">
+                    <span class="title" style="margin: 30px auto 0 auto;"></span>
+                </div>
+                <div class="divider"></div>
+                <div class="slot-container">
+                    <div class="slot">
+                        <img src="nui://frp_inventory/nui/images/items/generic_tobacco2.png">
+                    </div>
+                </div>
+                <div class="divider" id="weight-divider"></div>
+                <div class="description-container">
+                    <div class="description-title">
+
+                    </div>
+                    <div class="description-description">
+                        
+                    </div>
+                </div>    
+                <div id="confirmation-container">
+                    <div id="confirmation-bg"></div>
+                    <div id="confirmation-content">
+                        <span id="confirm_title"></span>
+                        <div class='row'>
+                            <button onclick="cancelPurchase()">cancelar</button>
+                            <button onclick="buyItem()">comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-container">
+                    <div class="divider"></div>
+                    <div class="info">
+                        <span><img src="nui://frp_inventory/nui/images/peso.png"><span id="weight">0.0KG</span></span>
+                        <span onclick="buy(false)"><img id="p_dollar_img" src="nui://frp_inventory/nui/images/money.png"><span id="p_dollar">0.00</span></span>
+                        <span onclick="buy(true)"><img id="p_gold_img" src="nui://frp_inventory/nui/images/gold.png"><span id="p_gold">0.00</span></span>
+                    </div>          
+                    <div class="divider"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

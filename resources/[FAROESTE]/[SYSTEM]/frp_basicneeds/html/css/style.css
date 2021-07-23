@@ -1,0 +1,323 @@
+
+
+body {
+	overflow: hidden;
+	user-select: none;
+	margin: 0;	
+	height: 100%;
+	width: 100%;	
+}
+
+@font-face {
+	font-family: hapna;
+	src: url(../assets/Hapna.ttf);	
+
+}
+
+*{
+	font-family: hapna;
+}
+
+#boxhud{
+	bottom: 10px;
+	width: auto;
+	height: auto;
+	left: 3em;
+}
+
+#hudsocial {
+	margin-left:0.2em;
+	color: white;
+	height:30px;
+	display:flex;
+	flex-direction: row;
+    flex-wrap: wrap;
+	text-shadow:
+		-0.5px -0.5px 0 #000,
+		0.5px -0.5px 0 #000,
+		-0.5px 0.5px 0 #000,
+		0.5px 0.5px 0 #000;
+}
+
+
+
+.hudac {
+	margin-left:0.8vw;
+}
+
+/*
+
+.hud1 {
+	margin-left:2.0em;
+} */
+
+
+.pulse {
+	-webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+	border-radius: 50%;
+
+	box-shadow: 0 0 0 rgba(255,0,0, 0.4);
+	animation: pulse 0.8s infinite;
+  }
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(255,0,0, 0.4);
+  }
+  70% {
+      -webkit-box-shadow: 0 0 0 10px rgba(255,0,0, 0);
+  }
+  100% {
+      -webkit-box-shadow: 0 0 0 0 rgba(255,0,0, 0);
+  }
+}
+@keyframes pulse {
+  0% { 	background: rgba(255,0,0, 0.0);
+    box-shadow: 0 0 0 0 rgba(255,0,0, 0.4);
+  }
+  70% {
+	background: rgba(255,0,0, 0.2);
+      box-shadow: 0 0 10px 15px rgba(255,0,0,0);
+  }
+  100% {
+	background: rgba(255,0,0, 0.5);		
+    box-shadow: 0 0 0 0 rgba(255,0,0, 0);
+  }
+}
+
+#progcircle1 {
+	position: relative;
+	width:2.2vw;
+}
+
+#progcircle2 {
+	position: relative;
+	width:2.2vw;
+}
+
+#progcircle3 {
+	position: relative;
+	width:2.2vw;
+}
+
+#progcircle4 {
+	position: relative;
+	width:2.2vw;
+}
+
+
+#hudsocial #health .img {
+	width:2.2vw;
+	height:2.2vw;
+	background-image: url(../assets/health.png);
+	background-size: contain;
+	background-repeat:no-repeat;
+}
+
+
+#hudsocial #hunger .img {
+	background-image: url(../assets/hunger.png);
+	background-size: contain;
+	background-repeat:no-repeat;
+	width:2.2vw;
+	height:2.2vw;
+}
+
+#hudsocial #thirst .img {
+	background-image: url(../assets/thirst.png);
+	background-size: contain;
+	background-repeat:no-repeat;
+	width:2.2vw;
+	height:2.2vw;
+}
+
+#hudsocial #talk .img {
+	background-image: url(../assets/talk.png);
+	background-size: contain;
+	background-repeat:no-repeat;
+	width:2.2vw;
+	height:2.2vw;
+}
+
+
+/* 
+@media only screen and (min-width: 1440px) {
+	#boxhud{
+		position:absolute;
+		bottom:2.0vw;
+		left:-1.3vw;
+	}
+	#progcircle1 {
+		position: relative;
+		margin-top: -1.75vh;
+		width:2.2vw;
+	}
+	
+	#progcircle2 {
+		position: relative;
+		margin-top: -1.75vh;
+		width:2.2vw;
+	}
+	
+	#progcircle3 {
+		position: relative;
+		margin-top: -1.75vh;
+		width:2.2vw;
+	}
+	
+	#progcircle4 {
+		position: relative;
+		margin-top: -1.75vh;
+		width:2.2vw;
+	}
+
+  }
+
+
+  @media only screen and (min-width: 1600px) {
+	#boxhud{
+		position:absolute;
+		bottom:2.2vw;
+		left:-1.3vw;
+	}
+	#progcircle1 {
+		position: relative;
+		margin-top: -1.75vh;
+		width:2.2vw;
+	}
+	
+	#progcircle2 {
+		position: relative;
+		margin-top: -1.75vh;
+		width:2.2vw;
+	}
+	
+	#progcircle3 {
+		position: relative;
+		margin-top: -1.75vh;
+		width:2.2vw;
+	}
+	
+	#progcircle4 {
+		position: relative;
+		margin-top: -1.75vh;
+		width:2.2vw;
+	}
+
+  }
+ */
+
+#container{
+	position:absolute;
+	bottom: 5px;
+	width: auto;
+	height: auto;
+	display:none;
+	flex-direction: row;
+	align-items: center;
+}
+
+ .infos {
+	margin-left: 0.8em;
+	display:flex;
+	flex-direction: column;
+}
+
+.infos .divisor {
+	display:flex;
+	flex-direction: row;
+	height:20px;
+	width:fit-content;
+	
+	align-items: center;
+}
+
+.divisor div {
+	display:flex;
+	height:100%;
+	align-items: center;
+	margin-right: 7px;
+	
+}
+
+.clock {
+	height: 15.5px;
+	margin-right: 3px;
+}
+
+.time {
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+	font-family: hapna; 
+}
+
+.compas { 
+	height: 15px;
+	margin-right: 3px;
+}
+
+.compass {
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+	font-family: hapna; 	
+}
+
+.world {
+	
+	margin-right: 3px;
+	height: 15px;
+}
+
+.location {
+	color: green;
+	font-size: 14px;
+	font-weight: bold;
+	font-family: hapna; 
+}
+
+
+.thermo {
+	
+	margin-right: 3px;	
+	height: 15px;	
+}
+
+.hudcomp {
+	color: white;
+	font-family: hapna;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.voiceType{
+	margin-left: 0.8em;
+	height: 30px;
+	width: 0.7vh;
+}
+
+.voice-block {
+    height: 0.7vh;
+	width: 0.7vh;	
+    background-color: #535050;
+}
+
+[data-voicetype="1"] {
+	margin-top: 100%;
+}
+
+[data-voicetype="2"] {
+	margin-top: 66.6%;
+}
+
+[data-voicetype="3"] {
+	margin-top: 33.3%;
+}
+
+.voice-block.active {
+    background:#ffffff;
+}

@@ -1,0 +1,39 @@
+body{
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-image: url('BG.png');
+    background-position: center;
+    background-size: 72% 84%;
+    background-repeat: no-repeat;
+}
+
+.jornal{
+    width:68%;
+    height:80%;
+    overflow: hidden;    
+}
+.close {
+    position: absolute;
+    right: 15%;
+    top:9%;
+}
+
+.close img{
+    position: relative;
+    right:1px;
+    width: 24px;
+}
+
+::-webkit-scrollbar { 
+    display: none;
+}
+
+.frame{
+    z-index:0;
+    border: 0px solid;
+    overflow: hidden;
+}

@@ -1,0 +1,302 @@
+@font-face
+{
+    font-family: 'crock';
+
+    font-style: normal; 
+
+    src: url('../font/crock.ttf') format('truetype')
+}
+
+		body{
+			overflow: hidden;
+			background-size: 100%;
+			user-select: none;
+		}
+		#main{			
+			width: 100%;
+			height: 60%;
+		  display: -webkit-flex;
+		  display: flex;
+		  -webkit-align-items: center;
+		  align-items: center;
+		  -webkit-justify-content: center;
+		  justify-content: center;
+		}
+		
+		#body{
+
+		}
+
+		#videobg 
+		{
+		  user-select: none;
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  min-width: 100%;
+		  z-index: -10;
+		  mix-blend-mode: screen;
+		}		
+		#logo {
+			z-index:1;
+			margin: 0px auto;
+			margin-top:70px;
+			margin-bottom:50px;
+			width: 200px;
+			height: 200px;
+			background-image: url('../img/logo.png');
+			background-size: 200px;
+  			background-repeat: no-repeat;
+  			background-position: top center; 
+		}
+		.char{
+			text-align:center;
+			margin-top: -10%;
+			float: left;
+			width: 360px;
+			height: 400px;
+			background-image: url("../img/bg.png");
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+		}
+		.char header h2
+		{
+		    font-size: 30px;
+		    padding-top:3%;
+		    padding-bottom:3%;
+		    font-family: 'crock';
+		    color:white;
+		    font-weight: normal;
+		    background-image: url('../img/headbg.png');
+		    background-repeat: no-repeat;
+		    background-position: center; 
+		    -webkit-background-size: contain; 
+		    background-size: contain;
+		    margin-bottom: 1%;
+
+		}
+		.nometitle{
+		  position: absolute;
+		  margin-top:-10px;
+		  margin-left:45px;
+		  font-size: 15px;
+		  color: white;
+		  font-family: 'crock';	
+
+		}
+
+		.linehead 
+		{	margin-left:35px;
+			width:80%;
+			margin-top:4%;
+			margin-bottom:4%;
+			height:5px;
+		    background-size: 100% 50%;
+		    background-image: url('../img/menu.png');
+		    background-repeat: no-repeat;
+		    background-position: center;
+
+		}
+
+		.lname, .money, .gold{
+			text-align: center;
+			margin-top: 1%;
+			margin-left: 5%;
+			font-family: "crock", crock, serif;
+			color:white;
+		}
+		.fname{
+			margin-top: 22px;
+			text-align: center;			
+			font-family: "crock", crock, serif;
+			font-size: 1.5rem;
+			color:black;
+			font-weight: normal;
+			background-image: url('../img/bgtext.png');
+			background-position: center;
+  			background-size: 75% 90%;
+  			background-repeat: no-repeat;
+		}
+		.create{			
+			line-height: 20px;
+			width: 35%;
+			margin-top: 20%;
+			font-family: "crock", crock, serif;
+			font-size: 20px;
+			color:white;
+			border: 0;
+			background-color:transparent;
+			border-bottom: 0px solid white;
+		}
+
+		.create:hover{
+			border-bottom: 2px solid red;
+		}				
+
+		.delete{
+			line-height: 20px;
+			width: 65%;
+			margin-top: 5%;
+			font-family: "crock", crock, serif;
+			font-size: 20px;
+			color:white;
+			border: 0;
+			background-color:transparent;
+			border-bottom: 0px solid white;
+		}
+		.delete:hover{
+			border-bottom: 2px solid red;
+		}
+		.createnew{
+			line-height: 20px;
+			width: 35%;
+			height:10%;
+			margin-top: 20%;
+			font-family: "crock", crock, serif;
+			font-size: 20px;
+			color:black;
+			border: 0;
+			background-color:transparent;
+			border-bottom: 0px solid white;
+			background-image:url('../img/button.png');
+			background-size: 100% 100%;
+		}
+		.createnew:hover{
+			color:red;
+		}
+		.form-group{
+						font-family: "crock", crock, serif;
+			font-size: 20px;
+		}
+		.ctext{
+			font-family: "crock", crock, serif;
+			font-size: 30px;
+			color:white;
+			margin-top: 16%;
+		}
+		#creatorcontain{
+			margin-top: -19%;
+			position:relative;
+			width:100%;
+			height:100%;
+			z-index:1;
+			background-image: url('../img/bg.png');
+			background-size:30% 40%;
+			background-repeat: no-repeat;
+			background-position: center 55%;
+		}
+
+		#creator{
+			width: 100%;
+			height: 20%;
+			font-family: "crock", crock, serif;
+			position:absolute;
+			text-align:center;
+			top: 40%;
+
+		}
+		#name{
+			font-family: "crock", crock, serif;
+			font-size: 20px;
+			width: 250px;
+			border:  0;
+			background:transparent;
+			background-image: url('../img/input.png');
+			background-position: center;
+  			background-size: 100% 100%;
+  			background-repeat: no-repeat;
+    		padding: 15px 30px;
+   			margin: 0 0 10px 0;
+			margin: 5px auto;
+		}
+		#name:hover, #name:active, #name:focus{
+			background-image: url('../img/input2.png');
+			border: 0px;
+
+		}
+		#lastname{
+			font-family: "crock", crock, serif;
+			font-size: 20px;
+			width: 250px;
+			border:  0;
+			background:transparent;
+			background-image: url('../img/input.png');
+			background-position: center;
+  			background-size: 100% 100%;
+  			background-repeat: no-repeat;
+    		padding: 15px 30px;
+   			margin: 0 0 10px 0;
+			margin: 5px auto;
+		}
+		#lastname:hover, #name:active, #name:focus{
+			background-image: url('../img/input2.png');
+			border:  0;
+
+		}
+
+
+.create2 {
+	width: 142px;
+	height: 52px;
+	margin-top: 3%;
+	border: 0;
+	font-family: "crock", crock, serif;
+	font-size: 20px;
+	color:#f00202;
+	background:transparent;
+	background-image: url('../img/button.png');
+	background-position: center;
+  	background-size: 100%;
+  	background-repeat: no-repeat;
+
+
+
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.create2:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-image: url('../img/button2.png');
+  background-size: 100%;
+  border-radius: 20px;
+
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.create2:hover, .hvr-bounce-to-right:focus, .hvr-bounce-to-right:active {
+  color: white;
+    color:#f00202;
+    transition-delay: 1.5s;
+    background-color: rgba(0,0,0,0);
+}
+.create2:hover:before, .hvr-bounce-to-right:focus:before, .hvr-bounce-to-right:active:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+

@@ -1,0 +1,44 @@
+-- local sellables = {
+--     {model = -2011226991, name = 'Peru Selvagem do Oriental', value = 175}, --
+--     {model = -466054788, name = 'Peru Selvagem do Rio Grande', value = 175}, --
+--     {model = 1458540991, name = 'Racoon', value = 200}, --
+--     {model = 90267823, name = 'Pantera', value = 300}, --
+--     {model = 1110710183, name = 'Veado-de-Cauda-Branca', value = 500}, --
+--     {model = -1963605336, name = 'Cariacu', value = 500}, --
+--     {model = 480688259, name = 'Coiote do Vale da Califórnia', value = 300}, --
+--     {model = -1414989025, name = 'Gambá Saruê da Virgínia', value = 175}, --
+--     {model = -2063183075, name = 'Galinha Dominicana', value = 175}, --
+--     {model = -1170118274, name = 'Texugo-Americano', value = 175}, --
+--     {model = -1458540991, name = 'Guaxinim-Americano', value = 200}, --
+--     {model = 1755643085, name = 'Antilocapra-Americana', value = 500}, --
+--     {model = -723190474, name = 'Ganso do Canadá', value = 175}, --
+--     {model = -1568716381, name = 'Uapiti das Montanhas-Rochosas', value = 500}, --
+--     {model = -885451903, name = 'Lobo Ocidental', value = 175}, -- Raro
+--     {model = -1003616053, name = 'Pato de Pequim', value = 200}, --
+--     {model = 40345436, name = 'Ovelha Merino', value = 25}, --
+--     {model = -1568716381, name = 'Uapiti-das-Montanhas-Rochosa', value = 175}, --
+--     {model = -575340245, name = 'Western Raven', value = 200}, --
+--     {model = 1416324601, name = 'Ring-neck Phesant', value = 175}, --
+--     {model = -1211566332, name = 'Striped Skunk', value = 175}, --
+--     {model = -593056309, name = 'Desert Iguana', value = 175}, --
+--     {model = 457416415, name = 'Monstro de Gila-Listrado', value = 175}, --
+--     {model = -1134449699, name = 'Rato-Almiscarado-Americano', value = 175}, --
+--     {model = -407730502, name = 'Tartaruga-Mordedora', value = 175}, --
+--     {model = -1854059305, name = 'Iguana-Verde', value = 200}, --
+--     {model = 2079703102, name = 'Galinha-Legorne', value = 175}, --
+--     {model = 1459778951, name = 'Águia-Careca', value = 175}, --
+--     {model = 1104697660, name = 'Abutre Careca-Oriental', value = 175}, --
+--     {model = -164963696, name = 'Laughing Gull', value = 175}, --
+--     {model = 386506078, name = 'Yellow-Billed Loon', value = 175}, --
+--     {model = -1797625440, name = 'Nine-Banded Armadillo', value = 275}, --
+--     {model = 759906147, name = 'Castor Americano', value = 175}, --
+--     {model = -753902995, name = 'Cabra-Alpina', value = 175}, --
+--     {model = 1654513481, name = 'Legendary Panther', value = 375}, --
+--     {model = 1205982615, name = 'Condor-da-Califórnia', value = 175} --
+-- }
+
+-- local limite = (#sellables)
+-- print(limite)
+-- local num = math.random(1, limite)
+-- print(num)
+-- print(sellables[num].model, sellables[num].name, sellables[num].value)

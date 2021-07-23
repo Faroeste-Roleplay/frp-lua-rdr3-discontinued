@@ -1,0 +1,344 @@
+
+@font-face
+{
+    font-family: 'crock';
+    font-style: normal; 
+    src: url('../font/crock.ttf') format('truetype');
+}
+
+@font-face
+{
+    font-family: 'robotoslab';
+    font-style: normal; 
+    src: url('../font/robotoslab.ttf') format('truetype');
+}
+
+
+  * {
+    font-family: 'crock';
+    user-select: none;
+    overflow: none;
+	text-overflow: ellipsis;
+	transition: all 0.5s;
+}
+
+		body{
+			overflow: hidden;
+			background-size: 100%;
+			user-select: none;
+		}
+		.contain{		
+			width:100%;
+			height:100%;
+			display:flex;
+			-webkit-align-items: center;
+			align-items:left;
+			padding-left: 60px;
+			-webkit-justify-content: center;
+			justify-content: left;
+			/*background-image: url('../img/logo.png');
+			background-size: 200px;
+  			background-repeat: no-repeat;
+  			background-position: 5% 15%; */
+		}
+		#logo {
+			z-index:1;
+			
+		}
+		#head{			
+			min-width: 450px;
+			background: url('../img/bg.png');
+			background-size: 100% 100%;
+			left:150px;
+			border-radius: 2px;			
+			overflow: hidden;						
+			transition: all 0.5s;				
+			padding-bottom: 20px;			 
+		}
+		#main{		
+			margin: 15px 20px 5px 25px;					
+			padding-bottom: 10px;					
+		}		
+
+		.header-text{			
+			background: url('../img/toast_bg.png');
+			background-size: 100% 100%;
+			position: relative;
+			padding: 15px 20px;
+			font-size: 1.3em;
+			color: white;  
+		}
+		#head:hover{
+			background: url('../img/bg.png');
+			background-size: 100% 100%;
+		}
+		.char{			
+			background: url('../img/toastb.png');
+			background-size: 105% 100%;
+			-webkit-align-items: center;
+			align-items:center;
+			-webkit-justify-content: center;
+			justify-content: center;
+			margin-top:5px;
+			text-align:center;
+			width: 450px;
+			height: 130px;
+			border-radius: 4px;			
+			color:black;
+			display:flex;
+			margin-right:10px;	
+		}
+		.char img{
+			width: 5.5vw;
+			padding-left: 7px;
+			padding-right: 7px;
+			border-right: rgba(255,255,255,0.2) 1px solid;
+		}
+		.char:hover{
+			background: url('../img/toast.png');
+			background-size: 105% 100%;
+		}
+		.char .content	{
+			width: 100%;	
+			text-align: left;
+			padding-left: 20px;
+			padding-right: 50px;
+			
+		}
+		.nometitle{
+		  font-size: 15px;
+		  color: black;
+		  font-family: crock;	
+		}
+			.lname {
+			padding-left: 10px;
+			margin-top: 3px;
+			font-family: 'crock';
+			font-weight: normal;
+			color:white;
+			border-radius: 10px; 
+			font-size: 1.5vw;
+			}
+			.money, .job{
+			padding-left: 10px;
+			margin-top: 2px;		
+			font-weight: normal;
+			color:white;
+			border-radius: 10px; 
+			font-size: 0.8vw;
+			
+		}
+		.fname{
+			padding-left: 10px;
+			font-size: 1.5vw;		
+			font-weight: normal;
+			color:white;
+			border-radius: 10px; 
+		}			
+		.buttons {	
+			width: 60%;
+			height:100%;	
+			display:flex;					
+			flex-direction: column;
+			-webkit-align-items: center;
+			align-items: center;
+			-webkit-justify-content: center;
+			justify-content: center;	
+			border-radius: 0px 4px 4px 0px;
+			transition: all 0.4s;
+		}
+		.buttons .b1 {
+			border-radius: 3px;
+			background: url('../img/button.png');
+			background-size: 100% 100%;
+			height: 30%;
+			width: 50%;
+			display:flex;		
+			margin-bottom: 5px;
+			align-items: center;			
+			justify-content: center;	
+			transition: all 0.2s;		
+		}
+		.buttons .b2 {
+			display:flex;		
+			align-items: center;			
+			justify-content: center;
+			height: 30%;
+			width: 50%;
+			background: url('../img/button.png');
+			background-size: 100% 100%;
+			transition: all 0.2s;
+			border-radius: 3px;
+		}
+		.create{	
+			width: 100%;
+			height: 100%;	
+			font-family: 'crock';
+			font-size: 0.8vw;
+			color:white;
+			background: transparent;
+			border: 0px solid red;
+		}
+		.buttons .b1:hover {			
+			width: 95%;
+			color:#710000;
+			background: url('../img/button.png');
+			background-size: 100% 100%;
+
+		}
+
+		.buttons .b2:hover {
+			width: 95%;
+			color:#710000;
+			background: url('../img/buttong.png');
+			background-size: 100% 100%;
+		}	
+
+		.create .name, .delete .name{
+			font-size: 0.8vw;
+			display:none;
+			color:#710000;
+			font-weight: 800;
+		}
+		.create:hover .name, .delete:hover .name{
+			
+			display: inline;
+			font-size: 0.8vw;			
+			transition: all 2s;
+			animation: fade-in 1.5s;
+		}
+	
+
+		.b1:not(:hover) .name.did-fade-in,.b2:not(:hover) .name.did-fade-in {
+			display: inline;
+			font-size: 0.8vw;
+			animation: fade-out 1.5s;
+		}
+
+		@keyframes fade-in {
+		  from {
+			transition: all 1s;
+			opacity: 0;
+		  }
+		  to {
+			transition: all 1s;
+			opacity: 1;
+		  }
+		}
+		
+		@keyframes fade-out {
+		  from {
+			transition: all 1s;
+			opacity: 1;
+		  }
+		  to {
+			transition: all 1s;
+			opacity: 0;
+		  }
+		}
+
+		.delete{			
+			width: 100%;
+			height: 100%;	
+			font-family: 'crock';
+			font-size: 0.8vw;			
+			color:#f2f2f2;
+			background: transparent;
+			border: 0px solid red;
+			transition: all 0.4s;			
+		}
+		.delete:hover{
+			color:white;
+		}
+		.createnew{
+			line-height: 20px;
+			width: 60%;
+			height:40px;
+			margin-top: 10%;
+			font-family: 'crock';
+			font-size: 15px;
+			color:#f2f2f2;
+			border: 0;
+			background: url('../img/toast.png');
+			background-repeat: no-repeat;
+			background-size: 0% 100%;
+			border-radius: 4px;
+			padding: 10px 15px;
+
+		}
+		.createnew:hover{
+			color:white;
+			background: url('../img/toast.png');
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+		}
+		.form-group{
+			font-family: 'crock';
+			font-size: 20px;
+		}
+		.ctext{
+			font-family: 'crock';
+			font-size: 30px;
+
+			margin-top: 16%;
+		}
+		#creatorcontain{
+			margin-top: -19%;
+			position:relative;
+			width:100%;
+			height:100%;
+			z-index:1;
+			background:#fff;
+			background-size:30% 40%;
+			background-repeat: no-repeat;
+			background-position: center 55%;
+		}
+
+		#creator{
+			width: 100%;
+			height: 20%;
+			font-family: 'crock';
+			position:absolute;
+			text-align:center;
+			top: 40%;
+
+		}
+		#name{
+			font-family: 'crock';
+			font-size: 20px;
+			width: 250px;
+			border:  0;
+			background:transparent;
+			background-image: url('../img/input.png');
+			background-position: center;
+  			background-size: 100% 100%;
+  			background-repeat: no-repeat;
+    		padding: 15px 30px;
+   			margin: 0 0 10px 0;
+			margin: 5px auto;
+		}
+		#name:hover, #name:active, #name:focus{
+			background-image: url('../img/input2.png');
+			border: 0px;
+
+		}
+		#lastname{
+			font-family: 'crock';
+			font-size: 20px;
+			width: 250px;
+			border:  0;
+			background:transparent;
+			background-image: url('../img/input.png');
+			background-position: center;
+  			background-size: 100% 100%;
+  			background-repeat: no-repeat;
+    		padding: 15px 30px;
+   			margin: 0 0 10px 0;
+			margin: 5px auto;
+		}
+		#lastname:hover, #name:active, #name:focus{
+			background-image: url('../img/input2.png');
+			border:  0;
+
+		}
+

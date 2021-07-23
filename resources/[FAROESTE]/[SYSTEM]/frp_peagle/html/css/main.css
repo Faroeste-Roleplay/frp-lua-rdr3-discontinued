@@ -1,0 +1,141 @@
+@import url(https://fonts.googleapis.com/css?family=Allura|Aladin);
+
+
+@font-face {
+  font-family: 'Manu';
+  src: url("manu.otf");
+
+}
+
+html {
+  overflow-y: hidden; 
+}
+
+body {
+  font-family: 'Manu';
+  color: #404040;
+  background: transparent;
+}
+*{  font-family: 'Manu';}
+#main {
+  display: none;
+}
+
+.notepad, .notepad:before, .notepad:after {
+  background-image: url('../paper.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  /* background-color: #fff;
+  background-image: -webkit-linear-gradient(#f6abca 1px, transparent 1px), 
+                    -webkit-linear-gradient(#f6abca 1px, transparent 1px), 
+                    -webkit-linear-gradient(#e8e8e8 1px, transparent 1px);
+  background-image:    -moz-linear-gradient(#f6abca 1px, transparent 1px), 
+                       -moz-linear-gradient(#f6abca 1px, transparent 1px), 
+                       -moz-linear-gradient(#e8e8e8 1px, transparent 1px);
+  background-image:      -o-linear-gradient(#f6abca 1px, transparent 1px), 
+                         -o-linear-gradient(#f6abca 1px, transparent 1px), 
+                         -o-linear-gradient(#e8e8e8 1px, transparent 1px);
+  background-image:         linear-gradient(#f6abca 1px, transparent 1px), 
+                            linear-gradient(#f6abca 1px, transparent 1px), 
+                            linear-gradient(#e8e8e8 1px, transparent 1px);
+  background-size: 1px 1px, 1px 1px, 23px 23px;
+  background-repeat: repeat-y, repeat-y, repeat;
+  background-position: 22px 0, 24px 0, 0 50px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 
+                        0 0 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 
+                        0 0 4px rgba(0, 0, 0, 0.5); */
+}
+textarea::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+textarea::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+textarea::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+textarea::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.button {
+  background: url(../buttonv.png); /* Coral */
+  background-size: 100% 100%;
+  border: none;
+  color: white;
+  padding: 0px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 21px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+textarea {
+  resize: none;
+  height: 350px;
+  width: 560px;
+  background: transparent;
+  outline: none;
+  border: none;
+  color: rgba(0, 0, 0, 0.75) !important;
+}
+
+
+.notepad {
+  position: relative;
+  margin: 27% 59%;
+  padding: 25px 23px 14px 35px;
+  width: 600px;
+  line-height: 23px;
+  font-size: 21px;
+  color: #333;
+}
+.notepad p, .notepad blockquote {
+  margin-bottom: 93px;
+}
+.notepad :last-child {
+  margin-bottom: 0;
+}
+.notepad:before, .notepad:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 100%;
+  left: 3px;
+  right: 3px;
+  margin-top: -2px;
+  height: 4px;
+  background-size: 1px 1px, 1px 1px, 0 0;
+}
+.notepad:before {
+  z-index: -2;
+  left: 6px;
+  right: 6px;
+}
+
+
+.notepad-heading:before, .notepad-heading:after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 1px;
+  right: 1px;
+  height: 0;
+  border-top: 1px dashed #617c90;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.notepad-heading:after {
+  bottom: 3px;
+  border-color: #071c2c;
+  border-color: rgba(0, 0, 0, 0.5);
+}

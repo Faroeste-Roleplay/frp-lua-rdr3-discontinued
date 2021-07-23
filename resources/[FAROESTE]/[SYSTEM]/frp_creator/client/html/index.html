@@ -1,0 +1,1042 @@
+<html>
+
+<head>
+
+    <script src="jquery.js" type="text/javascript"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto&display=swap" rel="stylesheet">
+
+	<script src="https://kit.fontawesome.com/eb73bbb7e4.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    
+</head>
+
+<body>
+    <div class="container">
+        <div id="closemenu" class="modal">
+            <div class="modal-content">
+                <h4>Fechando</h4>
+                <p>Gostaria de comprar essas roupas?</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" id="save" class="modal-close waves-effect waves-light btn green">Comprar e salvar</a>
+                <a href="#!" id="discard" class="modal-close waves-effect waves-light btn red">Descartar</a>
+                <a href="#!" id="cancel" class="modal-close waves-effect waves-light btn grey">Voltar</a>
+            </div>
+        </div>
+
+        <div id="creatormenu"  style="display: none" class="row">
+            <div id="creator-container" class="col s5">
+                <div id="head">
+                    <div class="header-text">Aparência</div>     
+                </div>
+              <!--  <div id="camera_menu" class="row">
+                    <div class="menucam">
+                        <button class="tog_hat menu-button">
+                            <i class="fab fa-redhat"></i>
+                        </button>
+                        <button class="tog_glasses menu-button">
+                            <i class="fas fa-glasses"></i>
+                        </button>
+                        <button class="tog_tops menu-button">
+                            <i class="fas fa-tshirt"></i>
+                        </button>
+                        <button class="tog_head menu-button">
+                            <i class="fas fa-meh"></i>
+                        </button>
+                        <button class="tog_torso menu-button">
+                            <i class="fas fa-user-tie"></i>
+                        </button>
+                        <button class="tog_leg menu-button">
+                            <i class="fas fa-socks"></i>
+                        </button>
+                    </div>     
+                </div> -->
+                <div id="button_menu" class="row">
+                    <button id="button-creator" data-target="char-info"
+                        class="menu-selectb active">Informações</button>
+                    <button id="button-head" data-target="head-char"
+                        class="menu-selectb">Rosto</button>
+                    <button id="button-body" data-target="body-char"
+                        class="menu-selectb">Corpo</button>
+                    <button id="button-skill" data-target="skills"
+                        class="menu-selectb disabled" disabled>Habilidades</button>
+                </div>                  
+                <div class='spacing2'></div>
+                <div id="char-info" class="row" style="display: block;">
+                    <div class="scroll-container">
+                        <div class='spacing2'></div>
+                        <form> 
+                            <div id="sex" class="col s12 panel">
+                                <div class="col s12 panel">                               
+                                    <!-- <div class="col s6 panel-col">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" data-value="mp_male" value="option1" checked>
+                                            <label class="form-check-label" for="exampleRadios1">
+                                               <span class="namespan">Homem</span> 
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col s6 panel-col">                                   
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="exampleRadios" data-value="mp_female" id="exampleRadios2" value="option2">
+                                            <label class="form-check-label" for="exampleRadios2">
+                                                <span class="namespan">Mulher</span> 
+                                            </label>
+                                        </div>
+                                    </div> -->
+                                    <div class='spacing5'></div>
+                                </div>
+                            </div>           
+                            <div id="name" class="col s12 panel">
+                                <div class="col s12 panel">                                
+                                    <div class="col s12 panel-col">                                     
+                                            <input id="NomePlayer" type="text" class="input-text s12" placeholder="Nome completo" value="" onchange="changeoptions('NomePlayer')">                                  
+                                    </div>                          
+                                </div>
+                            </div>
+                            <div id="info" class="col s12 panel">
+                                <div class="col s12 panel">
+                                    <div class='spacing2'></div>                                
+                                    <div class="col s6 panel-col">
+                                        <div class="col">
+                                            <input type="text" class="input-text s6" placeholder="Cidade" value="">
+                                        </div>                                      
+                                    </div>
+                                    <div class="col s6 panel-col">                                   
+                                        <div class="col">                                    
+                                            <input id="Idade" type="number" class="input-number s6" placeholder="Idade" onchange="changeoptions('Idade')">
+                                        
+                                     </div>
+                                    </div>                                
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div id="head-char" class="row" style="display: none;">
+                    <div class="scroll-container">
+                        <div id="heads" class="col s12 panel ">
+                            <div class="col s12 panel-title">
+                                <h6 class="grey-text"> GERAL</h6>
+                            </div>
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Rosto <span class="qtd">1/123</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="HeadType" class="input-number col s4" type="number" value="0" min="1" max="123" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="TomPele" class="col s12 panel">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Tom de Pele <span class="qtd">1/29</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="TomPele" class="input-number col s4" type="number" value="0" min="1" max="29" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="heads" class="col s12 panel ">                        
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Largura da cabeça <span class="qtd">1/14</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">                           
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x84D6" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>               
+                                </div>
+                            </div>
+                        </div>     
+
+                        <div id="eyes" class="col s12 panel">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Olhos <span class="qtd">1/14</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Olhos" class="input-number col s4" type="number" value="0" min="1" max="14" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="hair" class="col s12 panel">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Cabelo <span class="qtd">1/429</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Cabelos" class="input-number col s4" type="number" value="0" min="0" max="429" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>                        
+
+                        <div id="mustache" class="col s12 panel">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Barba <span class="qtd">0/408</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="BarbaMenu" class="input-number col s4" type="number" value="0" min="0" max="408" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+<!-- 
+                        <div id="saltura" class="col s12 panel ">
+                            <a href="#">
+                                <div class="col s12 panel-title" style="background: url('img/inputgold.png');background-size: 100% 100%;">
+                                    <h6 class="grey-text"> DEFINIR ROSTO ALEATORIAMENTE</h6>
+                                </div> 
+                            </a>                         
+                        </div> -->
+
+                        <div id="saltura" class="col s12 panel ">
+                            <div class="col s12 panel-title">
+                                <h6 class="grey-text"> SOBRANCELHAS</h6>
+                            </div>
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Altura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x3303" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="slargura" class="col s12 panel ">     
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Largura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x2FF9" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="sprofundidade" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Profundidade</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x4AD1" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="oaltura" class="col s12 panel ">
+                            <div class="col s12 panel-title">
+                                <h6 class="grey-text"> Orelhas</h6>
+                            </div>
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Largura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0xC04F" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="oangulo" class="col s12 panel ">     
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Angulo</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0xB6CE" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="oaltura" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Altura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x2844" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="otamanho" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Tamanho</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0xED30" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <div id="baltura" class="col s12 panel ">
+                            <div class="col s12 panel-title">
+                                <h6 class="grey-text"> Bochehas</h6>
+                            </div>
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Altura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0xABCF" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="blargura" class="col s12 panel ">     
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Largura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x6A0B" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="bprofundidade" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Profundidade</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x358D" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div id="maltura" class="col s12 panel ">
+                            <div class="col s12 panel-title">
+                                <h6 class="grey-text"> Mandibula</h6>
+                            </div>
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Altura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x8D0A" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="mlargura" class="col s12 panel ">     
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Largura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0xEBAE" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="mprofundidade" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Profundidade</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x1DF6" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="qaltura" class="col s12 panel ">
+                            <div class="col s12 panel-title">
+                                <h6 class="grey-text"> Queixo</h6>
+                            </div>
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Altura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x3C0F" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>  
+                        <div id="qlargura" class="col s12 panel ">     
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Largura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0xC3B2" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="qprof" class="col s12 panel ">     
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Profundidade</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0xE323" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div id="paltura" class="col s12 panel ">
+                            <div class="col s12 panel-title">
+                                <h6 class="grey-text"> Palpebra</h6>
+                            </div>
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Altura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x8B2B" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="plargura" class="col s12 panel ">     
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Largura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x1B6B" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="eyealtura" class="col s12 panel ">
+                            <div class="col s12 panel-title">
+                                <h6 class="grey-text"> Olhos</h6>
+                            </div>
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Altura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0xDDFB" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="eyeangulo" class="col s12 panel ">     
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Angulo</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0xD266" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="eyedistancia" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Distância</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0xA54E" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="eyeprofundidade" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Profundidade</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0xEE44" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div id="naltura" class="col s12 panel ">
+                            <div class="col s12 panel-title">
+                                <h6 class="grey-text"> Nariz</h6>
+                            </div>
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Altura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x03F5" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="nlargura" class="col s12 panel ">     
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Largura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x6E7F" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="ntamanho" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Tamanho</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x3471" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="nangulo" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Angulo</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x34B1" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="ncurva" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Curva</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0xF156" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="ndistancia" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Distancia das Narinas</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x561E" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="bcalargura" class="col s12 panel ">
+                            <div class="col s12 panel-title">
+                                <h6 class="grey-text"> Boca</h6>
+                            </div>
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Largura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0xF065" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="bcdentes" class="col s12 panel ">     
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title">Dentes <span class="qtd">1/6</span></h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Dentes" class="input-number col s4" type="number" min="1" value="1"  max="6" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="bcprofundidade" class="col s12 panel ">     
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Profundidade</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0xAA69" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="bchorizontal" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Pos horizontal</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x7AC3" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="bcvertical" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Pos Vertical</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x410D" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="lsaltura" class="col s12 panel ">
+                            <div class="col s12 panel-title">
+                                <h6 class="grey-text"> Lábio Superior</h6>
+                            </div>
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Altura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x1A00" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="lslargura" class="col s12 panel ">     
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Largura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x91C1" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="lsprofundidade" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Profundidade</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0xC375" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="lialtura" class="col s12 panel ">
+                            <div class="col s12 panel-title">
+                                <h6 class="grey-text"> Lábio Inferior</h6>
+                            </div>
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Altura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0xBB4D" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="lilargura" class="col s12 panel ">     
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Largura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0xB0B0" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                        <div id="liprofundidade" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Profundidade</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="FaceFeatured" class="input-number col s4" type="number" min="-1.0" value="0.0" data-value="0x5D16" max="1.0" step="0.1" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="body-char" class="row" style="display: none;">
+                    <div class="scroll-container">               
+                        <div id="lialtura" class="col s12 panel ">
+                            <div class="col s12 panel-title">
+                                <h6 class="grey-text"> Corpulência</h6>
+                            </div>
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col" >
+                                    <h6 class="grey-text title" style="height: 50px;"> Altura</h6>
+                                    <span class="grey-text" style="font-size: 0.8em; position:absolute; margin-top: -30px;">Mudar altura física<br/> do personagem</span>                         
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="PedSize" class="input-number col s4" type="number" min="170" value="185" max="200" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="corpernas" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col" >
+                                    <h6 class="grey-text title" style="height: 50px;">Porte <span class="qtd">1/14</span></h6>
+                                    <span class="grey-text" style="font-size: 0.8em; position:absolute; margin-top: -30px;">Mudar estrutura física<br/> do personagem</span>  
+                                </div>
+                                <div class="col s12 panel-col" style="display: flex; flex-direction: row; justify-content: center; align-content: center;">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="Porte" class="input-number col s4" type="number" min="0" value="0"  max="4" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>                          
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div id="corpernas" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col" >
+                                    <h6 class="grey-text title" style="height: 50px;">Peso</h6>
+                                    <span class="grey-text" style="font-size: 0.8em; position:absolute; margin-top: -30px;">Mudar peso<br/> do personagem</span>  
+                                </div>                         
+                                    <div class="col s6 panel-col">
+                                        <button class="button-left col s4 waves-effect waves-light btn">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </button>
+                                        <input class="input-number col s4" type="number" min="50" value="80" max="130" disabled />
+                                        <button class="button-right col s4 waves-effect waves-light btn">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </button>        
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="confirm">
+                        <button id="confirm" class="confirm-button btn" onsubmit="required()" onclick="confirm()"><span>Confirmar</span></button>
+                    </div>    
+                </div>
+
+
+                <!-- <div id="skills" class="row" style="display:none">
+                    <div class="scroll-container">
+
+                        <div id="corcorpo" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Cor do Corpo</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="HeadType" class="input-number col s4" type="number" value="0" min="0" max="29" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="corpernas" class="col s12 panel ">
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Cor das Pernas</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input id="HeadType" class="input-number col s4" type="number" value="0" min="0" max="29" />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>   
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="lialtura" class="col s12 panel ">
+                            <div class="col s12 panel-title">
+                                <h6 class="grey-text"> Corpulência</h6>
+                            </div>
+                            <div class="col s12 panel item">
+                                <div class="col s6 panel-col item" >
+                                    <h6 class="grey-text title"> Altura</h6>                             
+                                </div>
+                                <div class="col s6 panel-col">
+                                    <button class="button-left col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <input class="input-number col s4" type="number" min="1.60" value="1.80" max="2.0" step=".0" disabled />
+                                    <button class="button-right col s4 waves-effect waves-light btn">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>        
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div> -->    
+        
+            </div>
+        </div>        
+ 
+    </div>
+    <script src="script.js" type="text/javascript"></script>
+</body>
+
+</html>

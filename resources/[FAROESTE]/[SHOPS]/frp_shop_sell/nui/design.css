@@ -1,0 +1,299 @@
+@font-face {
+    font-family: 'Lino';
+    src: url("nui://frp_inventory/nui/fonts/RDRLino-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Hapna';
+    /* nui:// */
+    src: url("nui://frp_inventory/nui/fonts/HapnaSlabSerif-DemiBold.ttf");
+}
+
+* {
+    font-family: 'Lino';
+    color: white;
+    user-select: none;
+    letter-spacing: 0.05em;
+    font-weight: 100;
+}
+
+/* body {
+} */
+
+.container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: left;
+    margin-left:1%;
+    z-index: 999;
+}
+
+.container .shop {
+    position: relative;
+    width: 361px;
+    height: 592px;
+    z-index: 999;
+}
+
+.container #background-image {
+    width: 100%;
+    height: 100%;
+}
+
+.container .shop .inner-container {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.container .shop .inner-container .info {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+
+.container .shop .inner-container .info span {
+    font-size: 12px;
+}
+
+.container .shop .inner-container span {
+    width: auto;
+    margin-left: 5px;
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .shop .inner-container span img {
+    position: relative;
+    width: 22px;
+    margin-right: 4px;
+}
+
+.container .shop .inner-container header {
+    margin: 20px auto -5px auto;
+    width: 100%;
+    text-align: center;
+}
+
+.container .shop .inner-container .divider {
+    margin: 7px auto 7px auto;
+    background-image: url(nui://frp_inventory/nui/images/divider.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 2px;
+    opacity: 0.7;
+}
+
+.container .shop .inner-container .bottom-container{
+    position: absolute;
+    bottom:5%;
+    width: 100%;
+    z-index: 1;
+    /* background: green; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container .shop .inner-container .bottom-container .inner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* background: red; */
+    width: 80%;
+    font-family: 'Hapna';
+    font-size: 14px;
+}
+
+.container .shop .inner-container .slot-container {
+    margin: -10px auto -10px auto;
+    padding: 5px 0 0 0;
+    height: 286px;
+    width: 286px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.container .shop .inner-container .slot-container .slot {
+    position: relative;
+    margin: -2px -0px;
+    width: 70px;
+    height: 70px;
+    background-image: url(nui://frp_inventory/nui/images/slot.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .shop .inner-container .slot-container .slot img {
+    max-width: 70%;
+    max-height: 70%;
+}
+
+.container .shop .inner-container .slot-container .selected {
+    /* opacity: 0.3; */
+    background-image: url(nui://frp_inventory/nui/images/border.png);
+    background-size: contain;
+}
+
+.container .shop .inner-container .description-container {
+    max-width: 80%;
+    margin: 20px auto 10px auto;
+    height: 70px;
+    max-height: 110px;
+}
+
+.container .shop .inner-container .description-container .description-title {
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+#confirmation-bg{
+    top: 0;
+    left:0;
+    position:fixed;
+    width:100%;
+    height:100%;
+    z-index: -999;
+    backdrop-filter: blur(5px);
+}
+
+#confirmation-content{
+    position: fixed;
+    left:4%;
+    top:45%;
+    background-image: url(nui://frp_inventory/nui/images/bginventory.png);
+    background-size: cover;
+    width: 250px;
+    height: auto;    
+    padding: 10px;
+    z-index: 1100;    
+    transition: all 0.5s;
+}
+
+#confirmation-container {
+    position:fixed;
+    width:100%;
+    height:100%;
+    z-index:1000;
+}
+
+#confirm_title{
+    font-size:1em;
+}
+
+
+
+
+.description-description span{
+    font-family: "Hapna" !important;
+    letter-spacing: 1px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.row button {
+    outline: none;
+    color: black;
+    background: white;
+    border: 0;
+}
+
+.row button:hover {
+    transform: scale(1.1);
+    transition: 0.2s;
+}
+
+.row button:first-child {
+    background: rgb(97, 0, 0);
+    color: white;
+}
+
+#p_gold {
+    color: rgb(255, 200, 0);
+}
+
+/* #p_gold_img:hover {
+    animation: pulse1 2s infinite;
+    border-radius: 50%;
+}
+
+#p_dollar_img:hover {
+    animation: pulse2 2s infinite;
+    border-radius: 50%; */
+/* } */
+
+/* .fhover_gold {
+    animation: pulse1 2s infinite;
+    border-radius: 50%;
+}
+
+.fhover_dollar {
+    animation: pulse2 2s infinite;
+    border-radius: 50%;
+} */
+
+@keyframes pulse1 {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(233, 229, 30, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+}
+
+@keyframes pulse2 {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+}
+
+#carrying {
+    font-family: 'Hapna';
+    font-size: 12px;
+}

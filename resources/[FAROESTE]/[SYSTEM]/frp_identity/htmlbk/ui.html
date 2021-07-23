@@ -1,0 +1,79 @@
+<html>
+
+<head>
+	<title>Faroeste - Criação de Personagem</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Roboto:light,regular,medium,thin,italic,mediumitalic,bold"
+		title="roboto">
+	<link href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" rel="stylesheet">
+	<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+	<script src="js/jquery.js" type="text/javascript"></script>
+</head>
+
+<body id="body">
+	<div id="logo" style="display: none;"></div>
+	<script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
+	<script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
+	<script src="js/jquery-func.js" type="text/javascript"></script>
+	<script src="js/listener.js" type="text/javascript"></script>
+	<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+	<div id="main">
+	</div>
+	<div id="creatorcontain" style="display:none;">
+	</div>
+	<script>
+		window.addEventListener('message', (event) => {
+			if (event.data.type == 1){
+				loadCharacters(event.data.list);
+			} else if(event.data.type == 2) {
+				window.location.reload();
+			}
+		});
+		var body = document.getElementById('body');
+		var main = document.getElementById('main');
+		function loadCharacters(list) {
+			document.getElementById("body").style.display = "block";
+			document.getElementById("logo").style.display = "block";
+			main.style.visibility = 'visible';
+			if (list != undefined) {
+				main.innerHTML = "";
+				var free = list.length;
+				var set = false;
+				for (var i = 0; i < list.length; i++) {
+					char = list[i];
+					var chid = char.charid;
+					if (i != chid && !set){
+						set = true;
+						free = i;
+					}
+					main.innerHTML += '<div class="char"><header><h2>Personagem</h2></header><br/><div class="linehead"></div><div class="nometitle">Nome</div><div class="fname">' + char.characterName + '</div><div class="linehead"></div>' +
+							'<button class="create" onclick="select(' + chid + ')">Selecionar</button><br/><button class="delete" onclick="delet(' + chid + ')">Deletar Personagem</button></div></div>';
+				}
+				if (list.length < 2) {
+					main.innerHTML += '<div class="char"><header><h2 style="font-size:30px;">Criar Personagem</h2></header> <button class="createnew" onclick="createNewCharacter()">CRIAR</button></div>'
+				}
+
+			} else {
+				main.innerHTML = '<div class="char"><div class="ctext">Criar personagem</div> <button class="createnew" onclick="createNewCharacter()">CRIAR</button></div>'
+			}
+		}
+
+		function createNewCharacter() {
+			document.getElementById("body").style.display = "none";
+			$.post('http:/frp_identity/createCharacter', JSON.stringify({}));
+		}
+
+		function select(id) {
+			document.getElementById("body").style.display = "none";
+			$.post('http:/frp_identity/selectCharacter', JSON.stringify(id));
+		}
+		
+		function delet(id) {
+			$.post('http:/frp_identity/deleteCharacter', JSON.stringify(id));
+		}
+	</script>
+
+</body>
+
+</html>
