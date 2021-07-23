@@ -1,6 +1,5 @@
 citizen/system_resources/
 cache
-*.cfg
 *.bat
 *.txt
 savedata
