@@ -3,6 +3,9 @@ Discontinued Project
 
 **Developers/Founders:** [Key_Value](https://github.com/slashkeyvalue) and [KlandesTino](https://github.com/klandestino7) 
 
+**Discord**: [FRP - Framework](https://discord.gg/uVDf5kGbB8)
+
+
 ## Requerimentos
 * [MariaDB](https://mariadb.org/)
 
