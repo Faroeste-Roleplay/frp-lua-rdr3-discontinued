@@ -14,9 +14,11 @@ AddEventHandler(
 
         local appearence = {}
 
-        for i = 1, #User:getCharacters() do
-            local userId = User:getCharacters()[i].charid
-            table.insert(appearence,User:getCharacterAppearenceFromId(userId))     
+        if User:getCharacters() ~= nil then
+            for i = 1, #User:getCharacters() do
+                local userId = User:getCharacters()[i].charid
+                table.insert(appearence,User:getCharacterAppearenceFromId(userId))     
+            end            
         end
         
         TriggerClientEvent('FRP:IDENTITY:DisplayCharSelection', User:getSource(), User:getCharacters(), appearence)
@@ -35,7 +37,7 @@ AddEventHandler(
 
         for i = 1, #User:getCharacters() do
             local userId = User:getCharacters()[i].charid
-            table.insert(appearence,User:getCharacterAppearenceFromId(userId))     
+            table.insert(appearence,User:getCharacterAppearenceFromId(userId))
         end
         
         TriggerClientEvent('FRP:IDENTITY:DisplayCharSelection', User:getSource(), User:getCharacters(), appearence)
