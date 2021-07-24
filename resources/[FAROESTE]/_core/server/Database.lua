@@ -180,6 +180,7 @@ API_Database.prepare("FCRP/SetComponentsPed", "UPDATE characters_appearence SET 
 API_Database.prepare("FCRP/SetfaceFeaturePeds", "UPDATE characters_appearence SET faceFeatures = @value WHERE charid = @charid")
 API_Database.prepare("FCRP/SetPlayerPedModel", "UPDATE characters_appearence SET model = @model AND isMale = @isMale WHERE charid = @charid")
 API_Database.prepare("FCRP/SetPedHeight", "UPDATE characters_appearence SET pedHeight = @value WHERE charid = @charid")
+API_Database.prepare("FCRP/SetPedWeight", "UPDATE characters_appearence SET pedWeight = @value WHERE charid = @charid")
 
 API_Database.prepare("FCRP/GetCharModel", "SELECT model from characters_appearence WHERE charid = @charid")
 

@@ -29,13 +29,46 @@ function cAPI.SetPedScale(ped, num)
         SetPedScale(ped, tonumber(num))
     end
 end
+       
+local WAIST_TYPES = {
+    -2045421226,    -- smallest
+    -1745814259,
+    -325933489,
+    -1065791927,
+    -844699484,
+    -1273449080,
+    927185840,
+    149872391,
+    399015098,
+    -644349862,
+    1745919061,      -- default
+    1004225511,
+    1278600348,
+    502499352,
+    -2093198664,
+    -1837436619,
+    1736416063,
+    2040610690,
+    -1173634986,
+    -867801909,
+    1960266524,      -- biggest    
+}
+
+function cAPI.SetPedPortAndWeight(ped, bodySize, pedWeight)
+    print(bodySize, pedWeight)
+    Citizen.InvokeNative(0xA5BAE410B03E7371, ped, bodySize, false, true)     
+    Citizen.InvokeNative(0xCC8CA3E88256E58F, ped, 0, 1, 1, 1, 0) 
+
+    Citizen.InvokeNative(0x1902C4CFCC5BE57C,ped, WAIST_TYPES[pedWeight])
+    Citizen.InvokeNative(0xCC8CA3E88256E58F,ped, 0, 1, 1, 1, false)
+end
 
 function cAPI.SetPedFaceFeature(ped, faceFeatures)
     faceFeatures = json.decode(faceFeatures)
 
     for index, floatValue in pairs(faceFeatures) do
         -- Doesn't need to be requested !!!!!!        
-        NativeSetPedFaceFeature(ped, floatValue.hash, tonumber(floatValue.index))
+        NativeSetPedFaceFeature(ped, tonumber(index), tonumber(floatValue))
     end
 end
 

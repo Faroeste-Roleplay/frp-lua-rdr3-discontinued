@@ -99,11 +99,11 @@
                             <div id="info" class="col s12 panel">
                                 <div class="col s12 panel">
                                     <div class='spacing2'></div>                                
-                                    <div class="col s6 panel-col">
+                                    <!-- <div class="col s6 panel-col">
                                         <div class="col">
                                             <input type="text" class="input-text s6" placeholder="Cidade" value="">
                                         </div>                                      
-                                    </div>
+                                    </div> -->
                                     <div class="col s6 panel-col">                                   
                                         <div class="col">                                    
                                             <input id="Idade" type="number" class="input-number s6" placeholder="Idade" onchange="changeoptions('Idade')">
@@ -906,7 +906,8 @@
                 </div>
 
                 <div id="body-char" class="row" style="display: none;">
-                    <div class="scroll-container">               
+                    <div class="scroll-container">         
+                        
                         <div id="lialtura" class="col s12 panel ">
                             <div class="col s12 panel-title">
                                 <h6 class="grey-text"> Corpulência</h6>
@@ -931,14 +932,14 @@
                         <div id="corpernas" class="col s12 panel ">
                             <div class="col s12 panel item">
                                 <div class="col s6 panel-col" >
-                                    <h6 class="grey-text title" style="height: 50px;">Porte <span class="qtd">1/14</span></h6>
+                                    <h6 class="grey-text title" style="height: 50px;">Porte <span class="qtd">1/5</span></h6>
                                     <span class="grey-text" style="font-size: 0.8em; position:absolute; margin-top: -30px;">Mudar estrutura física<br/> do personagem</span>  
                                 </div>
                                 <div class="col s12 panel-col" style="display: flex; flex-direction: row; justify-content: center; align-content: center;">
                                     <button class="button-left col s4 waves-effect waves-light btn">
                                         <i class="fas fa-chevron-left"></i>
                                     </button>
-                                    <input id="Porte" class="input-number col s4" type="number" min="0" value="0"  max="4" disabled />
+                                    <input id="Porte" class="input-number col s4" type="number" min="1" value="0"  max="5" disabled />
                                     <button class="button-right col s4 waves-effect waves-light btn">
                                         <i class="fas fa-chevron-right"></i>
                                     </button>                          
@@ -946,7 +947,7 @@
                             </div>
                         </div>
 
-                        <!-- <div id="corpernas" class="col s12 panel ">
+                        <div id="corpernas" class="col s12 panel ">
                             <div class="col s12 panel item">
                                 <div class="col s6 panel-col" >
                                     <h6 class="grey-text title" style="height: 50px;">Peso</h6>
@@ -956,14 +957,15 @@
                                         <button class="button-left col s4 waves-effect waves-light btn">
                                             <i class="fas fa-chevron-left"></i>
                                         </button>
-                                        <input class="input-number col s4" type="number" min="50" value="80" max="130" disabled />
+                                        <input  id="Gordura" class="input-number col s4" type="number" min="1" value="1" max="21" disabled />
                                         <button class="button-right col s4 waves-effect waves-light btn">
                                             <i class="fas fa-chevron-right"></i>
                                         </button>        
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
+
                     </div>
                     <div class="confirm">
                         <button id="confirm" class="confirm-button btn" onsubmit="required()" onclick="confirm()"><span>Confirmar</span></button>

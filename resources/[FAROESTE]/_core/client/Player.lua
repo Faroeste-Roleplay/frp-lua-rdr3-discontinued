@@ -16,13 +16,13 @@ function cAPI.Initialize(pedModel, charAppearence, lastPosition, stats)
     gLastPosition = lastPosition
     gStats = stats   
 
+
     local decodedLastPosition = json.decode(lastPosition)
     if decodedLastPosition.x ~= nil then
         decodedLastPosition = {decodedLastPosition.x, decodedLastPosition.y, decodedLastPosition.z}
     end
 
-   -- local pBodySize = charAppearence.bodySize
-    local pScale = charAppearence.pedSize
+    local pScale = gCharAppearence.pedSize
     -- local pClothing
 
     -- if type(clothing) ~= "string" then
@@ -78,6 +78,8 @@ function cAPI.setPlayerAppearence(playerId)
     cAPI.SetPedFaceFeature(playerId, gCharAppearence.faceFeatures)
     
     cAPI.SetPedScale(playerId, gCharAppearence.pedHeight)
+
+    cAPI.SetPedPortAndWeight(playerId, json.decode(gCharAppearence.enabledComponents)["bodySize"], gCharAppearence.pedWeight)
 
     if gCharAppearence.clothes ~= nil then
         cAPI.SetSkin(playerId, gCharAppearence.clothes)   

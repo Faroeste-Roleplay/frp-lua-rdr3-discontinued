@@ -10,7 +10,7 @@ function API.Inventory(id, capacity, slots)
     if slots ~= nil then
         for slotId, values in pairs(slots) do
             slotId = tonumber(slotId)
-            local itemId = values.name
+            local itemId = values.name    
             local itemAmount = tonumber(values.amount[1]) or tonumber(values.amount)
             local ammoInClip = values.amount[2] ~= nil and tonumber(values.amount[2]) or nil
             local ammoInWeapon = values.amount[3] ~= nil and tonumber(values.amount[3]) or nil

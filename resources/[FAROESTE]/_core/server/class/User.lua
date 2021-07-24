@@ -62,7 +62,7 @@ function API.User(source, id, ipAddress)
     --
     -- @info Wont do any checks, just create a new Character and into the Database
 
-    self.createCharacter = function(this, characterName, age, isMale)
+    self.createCharacter = function(this, characterName, age, male)
         local Character = nil
         local rows = API_Database.query("FCRP/CreateCharacter", {user_id = self:getId(), charName = characterName, charAge = age})
         if #rows > 0 then
@@ -74,7 +74,7 @@ function API.User(source, id, ipAddress)
             -- Character:setData(charId, "metaData", "thirst", 0)
             -- Character:setData(charId, "metaData", "banco", 0)
 
-            API_Database.execute("FCRP/CharacterAppearence", {charId = Character:getId(), isMale = isMale})
+            API_Database.execute("FCRP/CharacterAppearence", {charId = Character:getId(), isMale = male})
 
             API_Database.execute(
                 "FCRP/Inventory",

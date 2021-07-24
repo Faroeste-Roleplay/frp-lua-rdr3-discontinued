@@ -9,11 +9,10 @@ local car = nil
 local ped = nil
 local coords = vector3(2538.675,-1144.211,50.175)
 
-
+--[[
 RegisterCommand('first', function()
     TriggerEvent('FRP:CREATOR:FirstSpawn')
 end)
---[[
 RegisterCommand('goped', function()
    -- TriggerMusicEvent("REDLP_START")
   --  TriggerMusicEvent("REHR_START") -- MELHOR

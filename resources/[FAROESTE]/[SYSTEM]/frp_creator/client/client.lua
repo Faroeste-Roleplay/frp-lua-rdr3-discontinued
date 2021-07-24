@@ -26,7 +26,6 @@ groundCam = nil
 A_M_M_CHELONIAN_01
 A_M_M_FOREMAN
 ]] local light = {
-    {x = -561.86, y = -3776.757, z = 238.59, r = 50.0, f = 50.0},
     {x = -559.59, y = -3780.757, z = 238.59, r = 50.0, f = 50.0}
 }
 
@@ -198,6 +197,7 @@ PorteUsing = nil
 TeethUsing = nil
 MustacheUsing = nil
 PedScaleUsing = 1.0
+pedWeight = 1
 
 
 RegisterNUICallback(
@@ -233,6 +233,7 @@ RegisterNUICallback(
     "TomPele",
     function(data)
         interpCamera2("Corpo", pedSelected)   
+
         if sex == "mp_male" then
             for k, v in pairs(MaleTorsos) do
                 if MaleTorsos[k].id == tonumber(data.id) then
@@ -252,6 +253,7 @@ RegisterNUICallback(
                 end
             end
         end
+
     end
 )
 
@@ -288,17 +290,61 @@ RegisterNUICallback(
     "Porte",
     function(data)
         interpCamera2("Corpo", pedSelected)   
-        if sex == "mp_male" then
-            Citizen.InvokeNative(0xA5BAE410B03E7371, pedSelected, math.floor(tonumber(data.id + 124)), true, true, true)
-            Citizen.InvokeNative(0xD3A7B003ED343FD9, pedSelected, HeadUsing, true, true, true)
-            PorteUsing = math.floor(tonumber(data.id + 124))
-        else
-            Citizen.InvokeNative(0xA5BAE410B03E7371, pedSelected, math.floor(tonumber(data.id + 110)), true, true, true)
-            Citizen.InvokeNative(0xD3A7B003ED343FD9, pedSelected, HeadUsing, true, true, true)
-            PorteUsing = math.floor(tonumber(data.id + 124))
+        local offset = 132
+
+        if sex == "mp_female" then
+            offset = 114
         end
+
+        local finalIndex = offset + data.id
+
+        PorteUsing = finalIndex
+
+        Citizen.InvokeNative(0xA5BAE410B03E7371, pedSelected, finalIndex, false, true)        
+        Citizen.InvokeNative(0xCC8CA3E88256E58F, pedSelected, 0, 1, 1, 1, 0)
+
     end
 )
+
+
+RegisterNUICallback(
+    "Gordura",
+    function(data)
+        interpCamera2("Corpo", pedSelected)   
+
+        local WAIST_TYPES = {
+            -2045421226,    -- smallest
+            -1745814259,
+            -325933489,
+            -1065791927,
+            -844699484,
+            -1273449080,
+            927185840,
+            149872391,
+            399015098,
+            -644349862,
+            1745919061,      -- default
+            1004225511,
+            1278600348,
+            502499352,
+            -2093198664,
+            -1837436619,
+            1736416063,
+            2040610690,
+            -1173634986,
+            -867801909,
+            1960266524,      -- biggest    
+        }
+
+        local waistIndex = data.id
+
+        pedWeight = waistIndex
+
+        Citizen.InvokeNative(0x1902C4CFCC5BE57C,pedSelected, WAIST_TYPES[waistIndex])
+        Citizen.InvokeNative(0xCC8CA3E88256E58F,pedSelected, 0, 1, 1, 1, false)
+    end
+)
+
 
 RegisterNUICallback(
     "Dentes",
@@ -376,12 +422,12 @@ RegisterNUICallback(
 --     end
 -- )
 
-RegisterCommand(
-    "deleteped",
-    function()
-        DeleteEntity(pedSelected)
-    end
-)
+-- RegisterCommand(
+--     "deleteped",
+--     function()
+--         DeleteEntity(pedSelected)
+--     end
+-- )
 
 RegisterNUICallback(
     "BarbaMenu",
@@ -446,7 +492,6 @@ RegisterNUICallback(
         PedScaleUsing = 1.0 + variation
     end
 )
-
 
 
 RegisterNUICallback(
@@ -528,37 +573,40 @@ RegisterNUICallback(
         local ffDados = {}
 
         for _, value in pairs(faceFeatures) do
+
             local facemod = Citizen.InvokeNative(0xFD1BA1EEF7985BB8, pedSelected, tonumber(value), Citizen.ResultAsFloat())
-            print(facemod)
+    
             if facemod then
-                table.insert(ffDados, tonumber(string.format("%.2f", facemod)))
-            else
-                table.insert(ffDados, 0.0)
+                ffDados[value] = facemod
             end
         end
 
-        local modSkin = {
-            HeadUsing,
-            HairUsing,
-            TorsoUsing,
-            LegsUsing,
-            EyesUsing,
-            TeethUsing,
-            MustacheUsing
+        local pedAppearance = {
+            ["heads"] = HeadUsing,
+            ["BODIES_UPPER"] = TorsoUsing,
+            ["BODIES_LOWER"] = LegsUsing,
+            ["hair"] = HairUsing,
+            ["eyes"] = EyesUsing,
+            ["teeth"] = TeethUsing,
+            ["Mustache"] = MustacheUsing,
+            ["bodySize"] = PorteUsing
         }
 
         local SkinModf = {
             ["model"] = sex,
-            ["modSkin"] = json.encode(modSkin),
-            ["bodySize"] = tonumber(PorteUsing),
+            ["modSkin"] = json.encode(pedAppearance),
+           --["bodySize"] = tonumber(PorteUsing),
             ["pedSize"] = tonumber(PedScaleUsing),
+            ['pedWeight'] = tonumber(pedWeight),
             ["features"] = json.encode(ffDados)
         }
+
         TriggerServerEvent("FRP:CREATOR:saveCreation", CharacterName, CharacterAge, SkinModf, IsPedMale(pedSelected))
         closeAll()
 
         SetNuiFocus(false, false)   
         cAPI.StartFade(500)
+
         Wait(12000)
         cAPI.EndFade(500)
     end
@@ -571,7 +619,7 @@ function closeAll()
 
     vpcreator = false
     inCustomization = false
-    print("fechou")
+
     SetEntityVisible(PlayerPedId(), true)
     SetEntityInvincible(PlayerPedId(), false)
     NetworkSetEntityInvisibleToNetwork(PlayerPedId(), false)
@@ -644,7 +692,6 @@ function createCamera()
     InterP = true
 end
 
-
 DeletePed = false
 
 function createPeds()
@@ -663,17 +710,13 @@ function createPeds()
             SetVehicleHasBeenOwnedByPlayer(choosePed[k], true)
             -- SetModelAsNoLongerNeeded(hash)
             if peds[k].genrer == "mp_female" then
-                Citizen.InvokeNative(0xD3A7B003ED343FD9, choosePed[k], 0x10F5497A, true, true, true) -- PANTS
-                Citizen.InvokeNative(0xD3A7B003ED343FD9, choosePed[k], 0x14511493, true, true, true) -- COAT
-        --        Citizen.InvokeNative(0xD3A7B003ED343FD9, choosePed[k], 0xD03D522, true, true, true) -- BOOT
-            else
-     --           Citizen.InvokeNative(0xD3A7B003ED343FD9, choosePed[k], 0x10051C7, true, true, true) -- PANTS
-    --            Citizen.InvokeNative(0xD3A7B003ED343FD9, choosePed[k], 0x12E51663, true, true, true) -- COAT
-       --         Citizen.InvokeNative(0xD3A7B003ED343FD9, choosePed[k], 0x192C2A4B, true, true, true) -- BOOT
-            end
+                SetPedOutfitPreset(choosePed[k], 17)
 
-            if DeletePed then
-                DeleteEntity(choosePed[k])
+                Citizen.InvokeNative(0xD710A5007C2AC539, choosePed[k], 0x9925C067, 0)
+                Citizen.InvokeNative(0xCC8CA3E88256E58F, choosePed[k], 0, 1, 1, 1, 0)
+
+            else
+                SetPedOutfitPreset(choosePed[k], 43)
             end
         end
     end
@@ -687,7 +730,9 @@ AddEventHandler(
     "onResourceStop",
     function(resourceName)
         if GetCurrentResourceName() == resourceName then
-            DeletePed = true
+            for index, _ in pairs(choosePed) do
+                DeleteEntity(choosePed[index])
+            end
         end
     end
 )
