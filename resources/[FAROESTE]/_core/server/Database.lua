@@ -160,6 +160,7 @@ API_Database.prepare("RemoveIdentifierWhitelist", "UPDATE users SET whitelist = 
 
 -------- CHARACTER QUERIES -----------
 API_Database.prepare("FCRP/CreateCharacter", "INSERT INTO characters(user_id, characterName, groups, age) VALUES (@user_id, @charName, 0,@charAge); SELECT LAST_INSERT_ID() AS id")
+API_Database.prepare("FCRP/CharacterAppearence", "INSERT INTO characters_appearence (charid, isMale, model, enabledComponents, faceFeatures, overlays, clothes, pedHeight) VALUES (@charId, @isMale, 'mp_male', '{}', '{}', '{}', '{}', 1.0)")
 API_Database.prepare("FCRP/GetCharacters", "SELECT * from characters WHERE user_id = @user_id")
 API_Database.prepare("FCRP/GetCharacter", "SELECT * from characters WHERE charid = @charid")
 API_Database.prepare("FCRP/GetCharacterAppearence", "SELECT * from characters_appearence WHERE charid = @charid")
@@ -175,7 +176,11 @@ API_Database.prepare("FCRP/SetCData", "CALL setData(@target, @key, @value, @char
 API_Database.prepare("FCRP/GetCData", "CALL getData(@target, @charid, @key)")
 API_Database.prepare("FCRP/RemCData", "CALL remData(@target, @key, @charid)")
 
-API_Database.prepare("FCRP/SetSkinData", "UPDATE characters SET SkinMdf = @value WHERE charid = @charid")
+API_Database.prepare("FCRP/SetComponentsPed", "UPDATE characters_appearence SET enabledComponents = @value WHERE charid = @charid")
+API_Database.prepare("FCRP/SetfaceFeaturePeds", "UPDATE characters_appearence SET faceFeatures = @value WHERE charid = @charid")
+API_Database.prepare("FCRP/SetPlayerPedModel", "UPDATE characters_appearence SET model = @model AND isMale = @isMale WHERE charid = @charid")
+API_Database.prepare("FCRP/SetPedHeight", "UPDATE characters_appearence SET pedHeight = @value WHERE charid = @charid")
+
 API_Database.prepare("FCRP/GetCharModel", "SELECT model from characters_appearence WHERE charid = @charid")
 
 API_Database.prepare("FCRP/SetCWeaponData", "UPDATE characters SET weapons = @weapons WHERE charid = @charid")

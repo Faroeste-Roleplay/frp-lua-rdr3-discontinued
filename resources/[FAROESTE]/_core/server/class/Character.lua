@@ -189,8 +189,13 @@ function API.Character(id, charName, level, xp, role, charAge, inventory)
         API_Database.query("FCRP/SetCData", {target = targetName, key = key, value = value, charid = cid})
     end
 
-    self.setSkinData = function(this, cid, value)
-        API_Database.execute("FCRP/SetSkinData", {value = value, charid = cid})
+    self.setSkinData = function(this, cid, data)
+
+        API_Database.execute("FCRP/SetComponentsPed", {value = data.modSkin, charid = cid})
+        API_Database.execute("FCRP/SetfaceFeaturePeds", {value = data.features, charid = cid})
+        API_Database.execute("FCRP/SetPlayerPedModel", {charid = cid, model = data.model})
+        API_Database.execute("FCRP/SetPedHeight", {value = data.pedSize, charid = cid})
+
         --      API_Database.query("FCRP/SetSkinData", {key = key, value = value, charid = cid})
     end
 

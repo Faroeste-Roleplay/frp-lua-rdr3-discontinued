@@ -16,6 +16,7 @@ AddEventHandler(
 
         if User:getCharacters() ~= nil then
             for i = 1, #User:getCharacters() do
+                
                 local userId = User:getCharacters()[i].charid
                 table.insert(appearence,User:getCharacterAppearenceFromId(userId))     
             end            

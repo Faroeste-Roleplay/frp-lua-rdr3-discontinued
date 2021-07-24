@@ -554,7 +554,7 @@ RegisterNUICallback(
             ["pedSize"] = tonumber(PedScaleUsing),
             ["features"] = json.encode(ffDados)
         }
-        TriggerServerEvent("FRP:CREATOR:saveCreation", CharacterName, CharacterAge, SkinModf)
+        TriggerServerEvent("FRP:CREATOR:saveCreation", CharacterName, CharacterAge, SkinModf, IsPedMale(pedSelected))
         closeAll()
 
         SetNuiFocus(false, false)   
