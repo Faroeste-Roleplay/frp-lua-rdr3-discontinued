@@ -129,14 +129,23 @@ AddEventHandler(
       local itemData = API.getItemDataFromId(itemId)
 
       if itemData:getType() == "weapon" then
-        parsed[i] = {itemId, itemAmount, 0, 1}
+        parsed[i] = {
+          name = itemId, 
+          amount = {itemAmount, 0, 1}        
+        }
+
       else
-        parsed[i] = {itemId, itemAmount}
+        parsed[i] = {
+          name = itemId,
+          amount = {itemAmount}
+        }
       end
     end
 
     chest_id = "e:" .. math.random(9999)
+
     local chest_Inventory = API.Inventory("chest:" .. chest_id, 20, parsed)
+
     chest_Inventory:setAutoSort(false)
 
     local Chest = API.Chest(chest_id)
@@ -144,8 +153,7 @@ AddEventHandler(
     Chest:setInventory(0, chest_Inventory)
     Chest:cache() -- Se torna disponivel para sync com os clients
 
-    bauId[chest_id] = true
- 
+    bauId[chest_id] = true 
 
     print('Tesouro Perdido Spawn ID'..chest_id)
     TriggerClientEvent("TREASURE:create", -1, x, y, z)
