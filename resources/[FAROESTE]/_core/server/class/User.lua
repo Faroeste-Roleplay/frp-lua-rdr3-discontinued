@@ -62,19 +62,27 @@ function API.User(source, id, ipAddress)
     --
     -- @info Wont do any checks, just create a new Character and into the Database
 
-    self.createCharacter = function(this, characterName, age, male)
+    self.createCharacter = function(this, characterName, age, isPedMale)
         local Character = nil
+        
         local rows = API_Database.query("FCRP/CreateCharacter", {user_id = self:getId(), charName = characterName, charAge = age})
         if #rows > 0 then
             local charId = rows[1].id
 
             Character = API.Character(charId, characterName, 1, 0, 0, age, API.Inventory("char:" .. charId, nil, nil))
+
             --    Character:createHorse("A_C_Donkey_01", "Burrinho")
             -- Character:setData(charId, "metaData", "hunger", 0)
             -- Character:setData(charId, "metaData", "thirst", 0)
-            -- Character:setData(charId, "metaData", "banco", 0)
+            -- Character:setData(charId, "metaData", "banco", 0)           
 
-            API_Database.execute("FCRP/CharacterAppearence", {charId = Character:getId(), isMale = male})
+            if isPedMale then
+                pedModel = "mp_male"
+            else
+                pedModel = "mp_female"
+            end
+            
+            API_Database.execute("FCRP/CharacterAppearence", {charId = Character:getId(), isMale = isPedMale, model = pedModel})
 
             API_Database.execute(
                 "FCRP/Inventory",

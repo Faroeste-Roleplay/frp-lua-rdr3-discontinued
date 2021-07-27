@@ -9,9 +9,10 @@ AddEventHandler('FRP:CREATOR:saveCreation', function(characterName, Age, SkinMdf
     local _source = source
     local User = API.getUserFromSource(_source)
     local Character = User:createCharacter(characterName, Age, isMale)
+    local pedModel 
     if Character ~= nil then
-
-        Character:setSkinData(Character:getId(), SkinMdf)
+        
+        Character:setSkinData(Character:getId(), SkinMdf) 
 
         Character:setData(Character:getId(), "metaData", "hunger", 100)
         Character:setData(Character:getId(), "metaData", "thirst", 100)
@@ -21,6 +22,7 @@ AddEventHandler('FRP:CREATOR:saveCreation', function(characterName, Age, SkinMdf
         Character:setData(Character:getId(), "metaData", "position", encoded)       
         User:setCharacter(Character:getId()) -- Will draw itself      
     end
-     Wait(1000)
-    TriggerClientEvent('FRP:CREATOR:FirstSpawn', _source)    
+    Wait(1000)
+    TriggerClientEvent('FRP:CREATOR:FirstSpawn', _source)
+
 end)

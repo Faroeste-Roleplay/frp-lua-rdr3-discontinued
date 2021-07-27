@@ -9,10 +9,11 @@ local car = nil
 local ped = nil
 local coords = vector3(2538.675,-1144.211,50.175)
 
---[[
+
 RegisterCommand('first', function()
     TriggerEvent('FRP:CREATOR:FirstSpawn')
 end)
+--[[
 RegisterCommand('goped', function()
    -- TriggerMusicEvent("REDLP_START")
   --  TriggerMusicEvent("REHR_START") -- MELHOR
@@ -27,8 +28,8 @@ RegisterNetEvent("FRP:CREATOR:FirstSpawn")
 AddEventHandler(
     "FRP:CREATOR:FirstSpawn",
     function()
-        if not FirstSpawn then
-            TriggerMusicEvent("REHR_START")
+        if not FirstSpawn and Config.EnableCutscene then
+            TriggerMusicEvent("REHR_START")            
             NetworkSetEntityInvisibleToNetwork(PlayerPedId(), true)           
             Wait(100)
             SetEntityCoords(PlayerPedId(), 2541.934,-363.564,41.574)
@@ -41,6 +42,10 @@ AddEventHandler(
             Wait(2000)               
             TriggerEvent('FRP:CREATOR:StartNotify')
             FirstSpawn = true
+        else            
+            TriggerEvent('FRP:CREATOR:StartNotify')            
+            SetEntityCoords(PlayerPedId(), Config.FirstSpawnCoords)
+            FirstSpawn = false
         end
     end
 )
@@ -132,18 +137,21 @@ AddEventHandler(
 				Citizen.Wait(10)
 			end
         end
-
-		ped = CreatePed(pedModelHash, coords, GetEntityHeading(PlayerPedId()), false, 0)
-		Citizen.InvokeNative(0x283978A15512B2FE, ped, true)
+        
+		ped = CreatePed(pedModelHash, coords, GetEntityHeading(PlayerPedId()), false, 0)        
+        Citizen.InvokeNative(0x283978A15512B2FE, ped, true)
         Citizen.InvokeNative(0x58A850EAEE20FAA3, ped)
-        SetEntityAsMissionEntity(ped)
-        -- SetModelAsNoLongerNeeded(pedModelHash)
-        Citizen.Wait(500)
 
+        SetEntityAsMissionEntity(ped)
+
+        -- SetModelAsNoLongerNeeded(pedModelHash)
+        Citizen.Wait(150)
         SetPedAsGroupMember(ped, GetPedGroupIndex(PlayerPedId()))
 
         SetPedIntoVehicle(ped, car, -1)   
         TaskVehicleDriveToCoord(ped, GetVehiclePedIsIn(ped, false), 2538.675,-1144.211,50.175, 10.0, 1.0, GetEntityModel(GetVehiclePedIsIn(PlayerPedId())), 67633207, 5.0, false)
+        
+        Citizen.Wait(250)
 	end
 )
 

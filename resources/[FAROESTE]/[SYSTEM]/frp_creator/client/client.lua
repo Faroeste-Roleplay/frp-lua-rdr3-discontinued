@@ -564,12 +564,7 @@ RegisterNUICallback(
             }
         )
         SetEntityVisible(PlayerPedId(), true)
-        showroomHorse_model = nil
-        if showroomHorse_entity ~= nil then
-            DeleteEntity(showroomHorse_entity)
-        end
-        showroomHorse_entity = nil
-
+   
         local ffDados = {}
 
         for _, value in pairs(faceFeatures) do
@@ -595,7 +590,6 @@ RegisterNUICallback(
         local SkinModf = {
             ["model"] = sex,
             ["modSkin"] = json.encode(pedAppearance),
-           --["bodySize"] = tonumber(PorteUsing),
             ["pedSize"] = tonumber(PedScaleUsing),
             ['pedWeight'] = tonumber(pedWeight),
             ["features"] = json.encode(ffDados)

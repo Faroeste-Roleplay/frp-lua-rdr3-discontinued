@@ -160,7 +160,7 @@ API_Database.prepare("RemoveIdentifierWhitelist", "UPDATE users SET whitelist = 
 
 -------- CHARACTER QUERIES -----------
 API_Database.prepare("FCRP/CreateCharacter", "INSERT INTO characters(user_id, characterName, groups, age) VALUES (@user_id, @charName, 0,@charAge); SELECT LAST_INSERT_ID() AS id")
-API_Database.prepare("FCRP/CharacterAppearence", "INSERT INTO characters_appearence (charid, isMale, model, enabledComponents, faceFeatures, overlays, clothes, pedHeight) VALUES (@charId, @isMale, 'mp_male', '{}', '{}', '{}', '{}', 1.0)")
+API_Database.prepare("FCRP/CharacterAppearence", "INSERT INTO characters_appearence (charid, isMale, model, enabledComponents, faceFeatures, overlays, clothes, pedHeight) VALUES (@charId, @isMale, @model, '{}', '{}', '{}', '{}', 1.0)")
 API_Database.prepare("FCRP/GetCharacters", "SELECT * from characters WHERE user_id = @user_id")
 API_Database.prepare("FCRP/GetCharacter", "SELECT * from characters WHERE charid = @charid")
 API_Database.prepare("FCRP/GetCharacterAppearence", "SELECT * from characters_appearence WHERE charid = @charid")
@@ -303,6 +303,7 @@ do
 		},
 		character = {
 			["FCRP/CreateCharacter"] = "INSERT INTO characters(user_id, characterName, groups, age) VALUES (@user_id, @charName, 0,@charAge); SELECT LAST_INSERT_ID() AS id",
+			["FCRP/CharacterAppearence"] = "INSERT INTO characters_appearence (charid, isMale, model, enabledComponents, faceFeatures, overlays, clothes, pedHeight) VALUES (@charId, @isMale, 'mp_male', '{}', '{}', '{}', '{}', 1.0)",
 			["FCRP/GetCharacters"] = "SELECT * from characters WHERE user_id = @user_id",
 			["FCRP/GetCharacter"] = "SELECT * from characters WHERE charid = @charid",
 			["FCRP/DeleteCharacter"] = "DELETE FROM characters WHERE charid = @charid",
