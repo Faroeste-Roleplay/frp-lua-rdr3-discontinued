@@ -1,0 +1,2 @@
+set mysql_connection_string "user=root;database=faroeste"
+set mysql_debug "Console"
