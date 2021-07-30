@@ -131,6 +131,8 @@ function Destroy()
     FreezeEntityPosition(PlayerPedId(), false)
     fakePeds = {}
 
+    playerSelected = false
+    
     DestroyCam(tempCam, true)
     tempCam = nil
 end
