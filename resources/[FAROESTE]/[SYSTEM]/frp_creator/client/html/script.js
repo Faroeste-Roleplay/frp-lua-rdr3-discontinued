@@ -137,8 +137,10 @@ $(".button-left").on('click', function() {
 
 });
 function confirm(){
-    $.post('http://frp_creator/CloseCreator')
     $("#creatormenu").fadeOut(500);
+    $("#creatormenu").css("display","none");
+
+    $.post('http://frp_creator/CloseCreator');
 }
 
 function changeoptions(name) {
