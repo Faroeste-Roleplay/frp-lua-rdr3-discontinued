@@ -5,6 +5,7 @@ cAPI = Proxy.getInterface("API")
 API = Tunnel.getInterface("API")
 
 local fakePeds = {}
+local playerSelected = false
 
 RegisterNetEvent("FRP:IDENTITY:DisplayCharSelection")
 AddEventHandler(
@@ -44,6 +45,8 @@ AddEventHandler(
 
         cAPI.PlayerAsInitialized(false)
 
+        TriggerEvent("FRP:IDENTITY:SetTime")
+
         ShutdownLoadingScreen()
         createCamera()
 
@@ -60,8 +63,10 @@ AddEventHandler(
         )
 
         local fakePedCoords = {
-            vec3(1062.20, 1591.10, 369.42 - 0.98),
-            vec3(1061.10, 1591.20, 369.36 - 0.98)
+            vec3(883.233,1269.009,234.920 - 0.98),            
+            vec3(886.051,1272.002,235.121 - 0.98),            
+            vec3(883.233,1269.009,234.920 - 0.98),
+            vec3(885.192,1271.949,235.108 - 0.98)
         }
 
         if charAppearence ~= nil then
@@ -84,15 +89,33 @@ AddEventHandler(
                 
                 cAPI.SetPedScale(ped, charAppearence[i][1].pedHeight)
 
+                cAPI.SetPedPortAndWeight(ped, json.decode(charAppearence[i][1].enabledComponents)["bodySize"], charAppearence[i][1].pedWeight)
+
                 if charAppearence[i][1].clothes ~= nil then
                     cAPI.SetSkin(ped, charAppearence[i][1].clothes)                       
                 end
 
                 table.insert(fakePeds, ped)
+                            
+                local coords = GetEntityCoords(ped, false)
+                Citizen.InvokeNative(0x322BFDEA666E2B0E, ped,  coords.x, coords.y, coords.z, 5.0, -1, 1, 1, 1, 1)
+                
             end
         end
     end
 )
+
+
+RegisterNetEvent("FRP:IDENTITY:SetTime")
+AddEventHandler(
+    "FRP:IDENTITY:SetTime",
+    function()
+    while not playerSelected do
+        Citizen.Wait(0)
+        SetClockTime(14,01,01)
+    end
+
+end)
 
 function Destroy()
     for _, ped in pairs(fakePeds) do
@@ -107,6 +130,9 @@ function Destroy()
 
     FreezeEntityPosition(PlayerPedId(), false)
     fakePeds = {}
+
+    DestroyCam(tempCam, true)
+    tempCam = nil
 end
 
 RegisterNUICallback(
@@ -118,15 +144,50 @@ RegisterNUICallback(
     end
 )
 
+function createTempCam()
+    tempCam = CreateCam("DEFAULT_SCRIPTED_CAMERA")
+    SetCamActive(tempCam, true)
+end
+
+function interpCamera(entity)
+    local entityCoords = GetEntityCoords(entity)
+
+    AttachCamToEntity(tempCam, entity, 884.872 - entityCoords.x, 0.0, 0.6)
+
+    local entityRot = GetEntityRotation(entity)
+    SetCamRot(tempCam, entityRot.x, entityRot.y, entityRot.z - 180.0)
+    
+    SetCamActiveWithInterp(tempCam, cam, 1200, true, true)    
+end
+
+
+
+
 RegisterNUICallback(
     "selectCharacter",
-    function(id)
+    function(index)
+        index = index + 1
+
+        if tempCam == nil then
+            createTempCam()
+        end
+
+        interpCamera(fakePeds[index])
+    end
+)
+
+
+
+RegisterNUICallback(
+    "spawnCharacterSelected",
+    function(charId)
         SetNuiFocus(false, false)
         DisplayHud(true)
-        TriggerServerEvent("FRP:IDENTITY:selectCharacter", id)
+        TriggerServerEvent("FRP:IDENTITY:selectCharacter", charId)
         cAPI.StartFade(500)
         Citizen.Wait(500)
-        Destroy()
+        Destroy()        
+        playerSelected = false
         NetworkSetEntityInvisibleToNetwork(PlayerPedId(), false)
         SetEntityInvincible(PlayerPedId(), false)
         Wait(1800)
@@ -136,8 +197,8 @@ RegisterNUICallback(
 
 RegisterNUICallback(
     "deleteCharacter",
-    function(id)
-        TriggerServerEvent("FRP:IDENTITY:deleteCharacter", id)
+    function(charId)
+        TriggerServerEvent("FRP:IDENTITY:deleteCharacter", charId)
         TriggerEvent("FRP:NOTIFY:Simple", "Personagem deletado.")
     end
 )
@@ -145,7 +206,6 @@ RegisterNUICallback(
 RegisterCommand(
     "Deletarenti",
     function()
-        print("deletou")
         Destroy()
     end
 )
@@ -155,11 +215,11 @@ function createCamera()
 
     NetworkSetEntityInvisibleToNetwork(PlayerPedId(), true)
     SetEntityInvincible(PlayerPedId(), true)
-    SetEntityCoords(PlayerPedId(), 1060.94, 1597.82, 373.00)
+    SetEntityCoords(PlayerPedId(), 881.128,1263.624,234.630)
     FreezeEntityPosition(PlayerPedId(), true)
 
-    cam = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 1062.48, 1592.20, 369.79, -10.00, 0.00, 168.00, 95.00, false, 0) -- CAMERA COORDS
-    PointCamAtCoord(cam, 1062.48, 1592.20, 369.79)
+    cam = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", 881.128,1263.624,236.630, 0.00, 0.00, 0.00, 50.00, false, 0) -- CAMERA COORDS
+    PointCamAtCoord(cam, 882.818,1265.922, 235.682)
     SetCamActive(cam, true)
     RenderScriptCams(true, false, 1, true, true)
 end

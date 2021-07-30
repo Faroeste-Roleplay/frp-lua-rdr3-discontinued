@@ -7,73 +7,28 @@
 		href="https://fonts.googleapis.com/css?family=Roboto:light,regular,medium,thin,italic,mediumitalic,bold"
 		title="roboto">
 	<script src="nui://game/ui/jquery.js" type="text/javascript"></script>	
+
+	<script type="text/javascript" src="../config/locale_ui.js"></script>
+
 	<script src="https://kit.fontawesome.com/eb73bbb7e4.js" crossorigin="anonymous"></script>
-	<script src="js/jquery.js" type="text/javascript"></script>
 </head>
 
+
 <body id="body">
-	<div class="contain">		
-		<div id="head">
-			<div class="header-text">   PERSONAGENS</div>
-			<div id="main">
+
+	<div class="container">		
+		<div id="loading" class="spinner" style="display: block">
+			
+			<div class="svelte-2gtczp">
+				<div class="spinner svelte-2gtczp">
+					
+				</div>
 			</div>
-			<div class='line'></div>
+			
 		</div>
 	</div>
-
-	<script>
-		window.addEventListener('message', (event) => {
-			if (event.data.type == 1){
-				loadCharacters(event.data.list);
-			} else if(event.data.type == 2) {
-				window.location.reload();
-			}
-		});
-		var body = document.getElementById('body');
-		var main = document.getElementById('main');
-		function loadCharacters(list) {
-			$("body").slideDown();			
-			$(".contain").slideDown();
-			if (list != undefined) {
-				main.innerHTML = "";
-				var free = list.length;
-				var set = false;
-				for (var i = 0; i < list.length; i++) {
-					char = list[i];
-					var chid = char.charid;
-					if (i != chid && !set){
-						set = true;
-						free = i;
-					}
-					main.innerHTML += '<div class="char"><div class="content"><div class="fname">' + char.characterName + '</div><div class="job">' + char.age + ' anos</div><div class="money">$ 0.0</div>'  +
-							'</div><div class="buttons"><div class="b1"><button class="create" onclick="select(' + chid + ')"><i class="fas fa-play"></i><span class="name" style="padding-left: 0.2vw;"> Play</span></button></div></div></div></div>';
-												
-					}
-
-				if (list.length < 2) {
-					main.innerHTML += '<button class="createnew" onclick="createNewCharacter()">CRIAR UM NOVO PERSONAGEM</button>'
-				}
-
-			} else {
-				main.innerHTML = '<button class="createnew" onclick="createNewCharacter()">CRIAR UM NOVO PERSONAGEM</button>'
-			}
-		}
-
-		function createNewCharacter() {
-			$("body").slideUp();
-			$.post('http://frp_identity/createCharacter', JSON.stringify({}));
-		}
-
-		function select(id) {			
-			$("body").slideUp();
-			$.post('http://frp_identity/selectCharacter', JSON.stringify(id));
-		}
-		
-		function delet(id) {
-			$.post('http://frp_identity/deleteCharacter', JSON.stringify(id));
-		}
-	</script>
-
+	
+	<script src="js/main.js" type="text/javascript"></script>	
 </body>
 
 </html>

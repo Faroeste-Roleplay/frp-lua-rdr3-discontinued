@@ -14,6 +14,7 @@ server_scripts {
 
 files{
 	'./html/*',
+	'./config/locale_ui.js',
 	'./html/css/*',
 	'./html/font/*',
 	'./html/img/*',
