@@ -155,9 +155,16 @@ AddEventHandler(
         -- SetModelAsNoLongerNeeded(pedModelHash)
         Citizen.Wait(150)
         SetPedAsGroupMember(ped, GetPedGroupIndex(PlayerPedId()))
+		
+		SetEntityAsMissionEntity(car, false, false)
+        SetEntityAsMissionEntity(ped, false, false)
+            
+        npc_group = GetPedRelationshipGroupHash(ped)
+        SetRelationshipBetweenGroups(1 , GetHashKey("PLAYER") , npc_group)
 
-        SetPedIntoVehicle(ped, car, -1)   
-        TaskVehicleDriveToCoord(ped, GetVehiclePedIsIn(ped, false), 2538.675,-1144.211,50.175, 10.0, 1.0, GetEntityModel(GetVehiclePedIsIn(PlayerPedId())), 67633207, 5.0, false)
+        SetPedIntoVehicle(ped, car, -1)
+        TaskVehicleDriveToCoord(ped, GetVehiclePedIsIn(ped, false), 2539.83,-1129.33,50.03, 10.0, 1.0, GetEntityModel(GetVehiclePedIsIn(PlayerPedId())), 67633207, 5.0, false)
+        Citizen.InvokeNative(0x971D38760FBC02EF, ped, true)
         
         Citizen.Wait(250)
 	end
