@@ -34,7 +34,14 @@ function LoadCharacters(list) {
         </div>
     `);
 
-    for (let i = 0; i < list.length; i++){
+
+    let listLength = 0;
+
+    if (list) {
+        listLength = list.length;
+    }
+
+    for (let i = 0; i < listLength; i++){
         let char = list[i];
 
         $(".main").append(`
@@ -44,7 +51,7 @@ function LoadCharacters(list) {
         `);     
     }
 
-    let empty_slot = LimitCharacters - list.length;   
+    let empty_slot = LimitCharacters - listLength;   
 
     if (empty_slot > 0) {
         for (let i = 0; i < empty_slot; i++){
@@ -70,13 +77,13 @@ function charSelected(charId, index) {
 
 function enterWorld() {			
     if(Identity.CharSelected != null){
+
         $.post('http://frp_identity/spawnCharacterSelected', JSON.stringify(Identity.CharSelected));
+
+        $(".container").fadeOut(500);        
+        setTimeout(function(){ $(".container").html(''); }, 2000);
+        
     }
-
-    $(".container").fadeOut(500);
-
-    setTimeout(function(){ $(".container").html(''); }, 2000);
-
 }
 
 function createNewCharacter() {
