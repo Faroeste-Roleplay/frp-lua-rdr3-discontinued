@@ -7,7 +7,7 @@ API = Tunnel.getInterface("API")
 local FirstSpawn = false
 local car = nil
 local ped = nil
-local coords = vector3(2538.675,-1144.211,50.175)
+local coords = vector3(2539.83,-1129.33,50.03)
 
 
 RegisterCommand('first', function()
@@ -32,7 +32,7 @@ AddEventHandler(
             TriggerMusicEvent("REHR_START")            
             NetworkSetEntityInvisibleToNetwork(PlayerPedId(), true)           
             Wait(100)
-            SetEntityCoords(PlayerPedId(), 2541.934,-363.564,41.574)
+            SetEntityCoords(PlayerPedId(), 2520.09,-358.05,41.61)
             Wait(2500)
             TriggerEvent('FRP:CREATOR:CreateVehicle', 'STAGECOACH001X')
             Wait(1000)
@@ -75,6 +75,7 @@ Citizen.CreateThread(
                     Wait(10000)
                   --  TriggerEvent('FRP:NOTIFY:Simple', 'Digite /guiainiciante ver o Jornal Guia de Iniciante.', 10000)
                     DeleteVehicle(car)
+					Citizen.InvokeNative(0x971D38760FBC02EF, ped, false)
                     DeleteEntity(ped)
                 else               
                     N_0x69d65e89ffd72313(true)
@@ -100,7 +101,8 @@ AddEventHandler(
                     Wait(1000)                    
 				end
 				if HasModelLoaded(veh) then
-                    car = CreateVehicle(veh, coords, 264.0, false, true, false, true)
+                    car = CreateVehicle(veh, 2520.09, -358.05, 41.61, 268.89169, true, false)
+					SetVehicleOnGroundProperly(car)
 				end
 			end
 		)
@@ -141,6 +143,12 @@ AddEventHandler(
 		ped = CreatePed(pedModelHash, coords, GetEntityHeading(PlayerPedId()), false, 0)        
         Citizen.InvokeNative(0x283978A15512B2FE, ped, true)
         Citizen.InvokeNative(0x58A850EAEE20FAA3, ped)
+		
+		SetEntityNoCollisionEntity(PlayerPedId(), ped, false)
+        SetEntityCanBeDamaged(ped, false)
+        SetEntityInvincible(ped, true)
+        Wait(1000)
+        SetBlockingOfNonTemporaryEvents(ped, true)
 
         SetEntityAsMissionEntity(ped)
 
