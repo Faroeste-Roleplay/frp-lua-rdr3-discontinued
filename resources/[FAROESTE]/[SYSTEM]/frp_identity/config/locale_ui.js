@@ -13,6 +13,12 @@ const LOCALES =
         "DESCRIPTION":"Selecione ou crie um novo personagem.",
         "ENTER_WORLD":"Entrar no Mundo",        
         "CREATE_CHAR":"CRIAR PERSONAGEM"
+    },
+    "FR":{
+        "CHARACTERS":"PERSONNAGES",
+        "DESCRIPTION":"Sélectionnez ou créez un nouveau personnage.",
+        "ENTER_WORLD":"Entrez dans le monde",        
+        "CREATE_CHAR":"CRÉER UN PERSONNAGE"
     }
 
 } 
