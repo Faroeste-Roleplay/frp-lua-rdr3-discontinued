@@ -70,17 +70,18 @@ local pz = 0
 
 Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker vert
   while true do
-
-    Citizen.Wait(0)
-
+    --Citizen.Wait(0)
+    local sleep = 1000
+    local playercoords = GetEntityCoords(PlayerPedId())
+    local distance = #(vector3(place.x, place.y, place.z) - playercoords)
     if isInJobDelivery == false then
-      Citizen.InvokeNative(0x2A32FAA57B937173,0x6903B113, place.x,place.y,place.z-0.99, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5, 1.5, 1.5, 255, 0, 0, 20, 0, 0, 2, 0, 0, 0, false)    
-
-
-      if GetDistanceBetweenCoords(place.x, place.y, place.z, GetEntityCoords(PlayerPedId(),true)) < 1.5 then
+      MarkerFrp(place.x,place.y,place.z,255, 0, 0, 20 )
+      --Citizen.InvokeNative(0x2A32FAA57B937173,0x6903B113, place.x,place.y,place.z-0.99, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5, 1.5, 1.5, 255, 0, 0, 20, 0, 0, 2, 0, 0, 0, false)    
+      if distance < 1.5 then
+        sleep = 4
         DrawText("Aperte ALT para pegar as cartas" , 0.925, 0.96, 0.25, 0.25, false, 255, 255, 255, 145, 1, 7)
-
         if IsControlJustReleased(0, 0xE8342FF2) then -- LEFT ALT
+            cancelar()
             notif = true
             isInJobDelivery = true
             isToHouse = true
@@ -89,19 +90,16 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
             px = livpt[livr].x
             py = livpt[livr].y
             pz = livpt[livr].z
-            distance = round(GetDistanceBetweenCoords(place.x, place.y, place.z, px,py,pz))
+            distance = round(#vector3(place.x, place.y, place.z) - vector3(px,py,pz))
             paie = distance * coefflouze
-
-          --  spawn_faggio()
             goliv(livpt,livr)
             nbDelivery = 5
-
-           -- TriggerServerEvent("FRP:DELIVERY:itemadd", nbDelivery)
         end
       end
     end
 
     if isToHouse == true then
+      sleep = 4
 
       destinol = livpt[livr].name
 
@@ -112,34 +110,19 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
 
         i = 1
       end
-      Citizen.InvokeNative(0x2A32FAA57B937173,0x6903B113, livpt[livr].x,livpt[livr].y,livpt[livr].z-0.99, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5, 1.5, 1.5, 255, 0, 0, 20, 0, 0, 2, 0, 0, 0, false)    
-
-
-
-      if GetDistanceBetweenCoords(px,py,pz, GetEntityCoords(PlayerPedId(),true)) < 3 then
-    --    HelpText("Appuyez sur ~INPUT_CONTEXT~ pour livrer la pizza",0,1,0.5,0.8,0.6,255,255,255,255)
-
+      MarkerFrp(livpt[livr].x,livpt[livr].y,livpt[livr].z, 255, 0, 0, 20)
+      --Citizen.InvokeNative(0x2A32FAA57B937173,0x6903B113, livpt[livr].x,livpt[livr].y,livpt[livr].z-0.99, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5, 1.5, 1.5, 255, 0, 0, 20, 0, 0, 2, 0, 0, 0, false)    
+      if #(vector3(px,py,pz) - GetEntityCoords(PlayerPedId())) < 3 then
+        sleep = 4
         DrawText("Aperte ALT para entregar" , 0.925, 0.96, 0.25, 0.25, false, 255, 255, 255, 145, 1, 7)
-
         if IsControlJustReleased(0, 0xE8342FF2) then -- LEFT ALT
-
           notif2 = true
           posibilidad = math.random(1, 100)
           afaitunepizzamin = true
-
-         -- TriggerServerEvent("FRP:DELIVERY:itemrm")
           nbDelivery = nbDelivery - 1
-
-          if (posibilidad > 70) and (posibilidad < 90) then
-
-            pourboire = math.random(25, 60)
-
-            TriggerEvent('FRP:NOTIFY:Simple', 'Você recebeu $'.. pourboire, 10000)
-
-            TriggerServerEvent("FRP:DELIVERY:pay", pourboire)
-
-          end
-
+          pourboire = math.random(25, 60)
+          TriggerEvent('FRP:NOTIFY:Simple', 'Você recebeu $0.'.. pourboire, 10000)
+          TriggerServerEvent("FRP:DELIVERY:pay", pourboire)
           RemoveBlip(blip) 
           ClearGpsMultiRoute()
           Wait(250)
@@ -160,79 +143,42 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
 
             goliv(livpt,livr)
           end
-
-
         end
       end
     end
-
     if isToPizzaria == true then
-
+      sleep = 4
       while notif2 == true do
-     --   SetNewWaypoint(place.x,place.y)
-
         TriggerEvent('FRP:NOTIFY:Simple', 'Volte para pegar mais cartas.', 10000)
-
         notif2 = false
-
       end
-      Citizen.InvokeNative(0x2A32FAA57B937173,0x6903B113, place.x,place.y,place.z-0.99, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5, 1.5, 1.5, 255, 0, 0, 20, 0, 0, 2, 0, 0, 0, false)    
-
-
-      if GetDistanceBetweenCoords(place.x,place.y,place.z, GetEntityCoords(PlayerPedId(),true)) < 3 and afaitunepizzamin == true then
+      MarkerFrp(place.x,place.y,place.z, 255, 0, 0, 20)
+      --Citizen.InvokeNative(0x2A32FAA57B937173,0x6903B113, place.x,place.y,place.z-0.99, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5, 1.5, 1.5, 255, 0, 0, 20, 0, 0, 2, 0, 0, 0, false)    
+      if #(vector3(place.x,place.y,place.z) -  GetEntityCoords(PlayerPedId())) < 3 and afaitunepizzamin == true then
+        sleep = 4
         DrawText("Aperte ALT para pegar as cartas" , 0.925, 0.96, 0.25, 0.25, false, 255, 255, 255, 145, 1, 7)
-
-        -- local CoordsCarroca = GetEntityCoords(GetPlayersLastVehicle(PlayerPedId()))
-      --  if IsVehicleModel(GetVehiclePedIsIn(PlayerPedId(), true), GetHashKey("UTILLIWAG"))  then
-
           if IsControlJustReleased(0, 0xE8342FF2) then -- LEFT ALT
-   
-        --    if GetDistanceBetweenCoords(place.x,place.y,place.z, CoordsCarroca) > 30 then
-
               afaitunepizzamin = false
-
               TriggerEvent('FRP:NOTIFY:Simple', 'Obrigado pelo seu trabalho, aqui está seu pagamento $'.. paie, 10000)
-
               TriggerServerEvent("FRP:DELIVERY:pay", paie)
-
               isInJobDelivery = true
               isToHouse = true
-              livr = math.random(1, 48)
+              livr = math.random(1, 30)
 
               px = livpt[livr].x
               py = livpt[livr].y
               pz = livpt[livr].z
 
-              distance = round(GetDistanceBetweenCoords(place.x, place.y, place.z, px,py,pz))
+              distance = round(#vector3(place.x, place.y, place.z) - vector3(px,py,pz))
               paie = distance * coefflouze
 
               goliv(livpt,livr)
               nbDelivery = 5
-
-        --      TriggerServerEvent("FRP:DELIVERY:itemadd", nbDelivery)
-
-           --[[ else
-              notifmoto1 = true
-              while notifmoto1 == true do                
-                TriggerEvent('FRP:NOTIFY:Simple', 'Cadê a carroça?', 10000)
-              notifmoto1 = false
-              end
-            end ]]
           end
-      --[[  else     
-          while notifmoto2 == true do
-            TriggerEvent('FRP:NOTIFY:Simple', 'Cadê a carroça?', 10000)
-            notifmoto2 = false
-          end
-        end ]]
       end
-
-
-
-
+     
     end
     if IsEntityDead(PlayerPedId()) then
-
       isInJobDelivery = false
       livr = 0
       isToHouse = false
@@ -244,70 +190,88 @@ Citizen.CreateThread(function() --Thread lancement + livraison depuis le marker 
       pz = 0
       RemoveBlip(blip) 
       ClearGpsMultiRoute()
-
     end
+    Citizen.Wait(sleep)
   end
 end)
 
 
 
-Citizen.CreateThread(function() -- Thread de "fin de service" depuis le point rouge
+Citizen.CreateThread(function() -- Thread de "fim de serviço"
   while true do
-
-    Citizen.Wait(0)
-
+    local sleep = 1000
+    local pedcoord = GetEntityCoords(PlayerPedId())
     if isInJobDelivery == true then
-      Citizen.InvokeNative(0x2A32FAA57B937173,0x6903B113, placefin.x,placefin.y,placefin.z-0.99, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5, 1.5, 1.5, 255, 0, 0, 20, 0, 0, 2, 0, 0, 0, false)    
-     -- DrawMarker(1,placefin.x,placefin.y,placefin.z, 0, 0, 0, 0, 0, 0, 1.5001, 1.5001, 0.6001,255,0,0, 200, 0, 0, 0, 0)
-
-      if GetDistanceBetweenCoords(placefin.x, placefin.y, placefin.z, GetEntityCoords(PlayerPedId(),true)) < 1.5 then
+      MarkerFrp(placefin.x,placefin.y,placefin.z, 255, 0, 0, 20)
+      if #(vector3(placefin.x, placefin.y, placefin.z) - pedcoord) < 2.5 then
+        sleep = 4
         DrawText("Aperte ALT para cancelar as entregas.", 0.925, 0.96, 0.25, 0.25, false, 255, 255, 255, 145, 1, 7)
-
         if IsControlJustReleased(0, 0xE8342FF2) then -- LEFT ALT
-     --     TriggerServerEvent('FRP:DELIVERY:deleteAllPizz')
           isInJobDelivery = false
           livr = 0
           isToHouse = false
           isToPizzaria = false
-
           paie = 0
           px = 0
           py = 0
           pz = 0
-
           if afaitunepizzamin == true then
-
             local vehicleu = GetVehiclePedIsIn(PlayerPedId(), false)
-
             SetEntityAsMissionEntity( vehicleu, true, true )
             deleteCar( vehicleu )
-
             TriggerEvent('FRP:NOTIFY:Simple', 'Obrigado pelos seus serviços.', 10000)
-
-           -- TriggerServerEvent("FRP:DELIVERY:paiefinale")
-
             SetWaypointOff()
-
             afaitunepizzamin = false
-
           else
-
             local vehicleu = GetVehiclePedIsIn(PlayerPedId(), false)
-
             SetEntityAsMissionEntity( vehicleu, true, true )
             deleteCar( vehicleu )
-
             TriggerEvent('FRP:NOTIFY:Simple', 'Obrigado pelos seus serviços.', 10000)
-
           end
         end
       end
     end
+    Citizen.Wait(sleep)
   end
 end)
 
 --FONCTIONS--
 
+function cancelar()
+  CreateThread(function()
+    while isInJobDelivery do
+      Wait(5)
+      if IsControlJustReleased(0, 0x3C0A40F2) then -- TECLA F6
+        ClearGpsMultiRoute()
+        SetWaypointOff()
+        isInJobDelivery = false
+        livr = 0
+        isToHouse = false
+        isToPizzaria = false
+        paie = 0
+        px = 0
+        py = 0
+        pz = 0
+        if afaitunepizzamin == true then
+          local vehicleu = GetVehiclePedIsIn(PlayerPedId(), false)
+          SetEntityAsMissionEntity( vehicleu, true, true )
+          deleteCar( vehicleu )
+          SetWaypointOff()
+          afaitunepizzamin = false
+        else
+          local vehicleu = GetVehiclePedIsIn(PlayerPedId(), false)
+          SetEntityAsMissionEntity( vehicleu, true, true )
+          deleteCar( vehicleu )
+        end
+        TriggerEvent('FRP:NOTIFY:Simple', 'Obrigado pelos seus serviços.', 10000)
+      end
+    end
+  end)
+end
+
+function MarkerFrp(x,y,z,r,g,b,a)
+  Citizen.InvokeNative(0x2A32FAA57B937173,0x6903B113, x,y,z-0.99, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.5, 1.5, 1.5, r, g, b, a, 0, 0, 2, 0, 0, 0, false)    
+end
 
 
 function goliv(livpt,livr)
