@@ -200,6 +200,19 @@ function API.Character(id, charName, level, xp, role, charAge, inventory)
         --      API_Database.query("FCRP/SetSkinData", {key = key, value = value, charid = cid})
     end
 
+        
+    self.createAppearance = function(this, cid, data)
+
+        API_Database.execute("FCRP/SetComponentsPed", {value = data.components, charid = cid})        
+        API_Database.execute("FCRP/SetfaceFeaturePeds", {value = json.encode(data.faceFeatures), charid = cid}) 
+        API_Database.execute("FCRP/SetOverlayPeds", {value = data.overlays, charid = cid})
+        API_Database.execute("FCRP/SetPlayerPedModel", {charid = cid, model = data.pedModel})
+        API_Database.execute("FCRP/SetPedHeight", {value = data.pedSize, charid = cid})
+        API_Database.execute("FCRP/SetPedWeight", {value = data.waistType, charid = cid})
+
+        --      API_Database.query("FCRP/SetSkinData", {key = key, value = value, charid = cid})
+    end
+
     self.getData = function(this, cid, targetName, key)
         if key == nil then
             key = "all"
