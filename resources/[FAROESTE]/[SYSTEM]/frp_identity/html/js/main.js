@@ -100,3 +100,4 @@ function deleteChar() {
         $.post('http://frp_identity/deleteCharacter', JSON.stringify(Identity.CharSelected));
     }
 }
+

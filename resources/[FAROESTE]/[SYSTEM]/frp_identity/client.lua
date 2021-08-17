@@ -45,6 +45,13 @@ AddEventHandler(
 
         cAPI.PlayerAsInitialized(false)
 
+        local playerPed = PlayerPedId()
+
+        SetFocusEntity(playerPed) 
+        SetEntityInvincible(playerPed, true)
+        SetEntityVisible(playerPed, false)
+        NetworkSetEntityInvisibleToNetwork(playerPed, true)
+
         TriggerEvent("FRP:IDENTITY:SetTime")
 
         ShutdownLoadingScreen()
@@ -82,17 +89,21 @@ AddEventHandler(
                 local ped = CreatePed(charAppearence[i][1].model, fakePedCoords[i], 350.77, 0, 0)
 
                 Citizen.Wait(300)
-
+                
                 cAPI.SetSkin(ped, charAppearence[i][1].enabledComponents)   
 
                 cAPI.SetPedFaceFeature(ped, charAppearence[i][1].faceFeatures)
                 
                 cAPI.SetPedScale(ped, charAppearence[i][1].pedHeight)
 
-                cAPI.SetPedPortAndWeight(ped, json.decode(charAppearence[i][1].enabledComponents)["bodySize"], charAppearence[i][1].pedWeight)
+                cAPI.SetPedOverlay(ped, charAppearence[i][1].overlays)
+                
+                local bodySize = json.decode(charAppearence[i][1].enabledComponents)
+
+                cAPI.SetPedPortAndWeight(ped, bodySize['porte'], charAppearence[i][1].pedWeight)
 
                 if charAppearence[i][1].clothes ~= nil then
-                    cAPI.SetSkin(ped, charAppearence[i][1].clothes)                       
+                    cAPI.SetSkin(ped, charAppearence[i][1].clothes)   
                 end
 
                 table.insert(fakePeds, ped)
@@ -135,6 +146,15 @@ function Destroy()
     
     DestroyCam(tempCam, true)
     tempCam = nil
+
+    local playerPed = PlayerPedId()
+
+    Wait(1500)
+
+    SetFocusEntity(playerPed) 
+    SetEntityInvincible(playerPed, false)
+    SetEntityVisible(playerPed, true)
+    NetworkSetEntityInvisibleToNetwork(playerPed, false)
 end
 
 RegisterNUICallback(
@@ -161,8 +181,6 @@ function interpCamera(entity)
     
     SetCamActiveWithInterp(tempCam, cam, 1200, true, true)    
 end
-
-
 
 
 RegisterNUICallback(
