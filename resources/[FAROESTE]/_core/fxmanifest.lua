@@ -10,6 +10,8 @@ client_scripts {
 	"config/Items.lua",
 	"config/CraftableItems.lua",
 	"config/Permissions.lua",
+	"config/Components.lua",
+	"config/Overlays.js",
 	---------------------
 	"client/_Main.lua",
 	"client/BasicNeeds.lua",
