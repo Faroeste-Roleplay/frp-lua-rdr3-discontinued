@@ -16,8 +16,12 @@ function cAPI.Initialize(pedModel, charAppearence, lastPosition, stats)
     gLastPosition = lastPosition
     gStats = stats   
 
+    if lastPosition == nil then
+        lastPosition = "{-1099.470,-1839.129,60.327}"
+    end
 
     local decodedLastPosition = json.decode(lastPosition)
+    
     if decodedLastPosition.x ~= nil then
         decodedLastPosition = {decodedLastPosition.x, decodedLastPosition.y, decodedLastPosition.z}
     end
@@ -79,7 +83,11 @@ function cAPI.setPlayerAppearence(playerId)
     
     cAPI.SetPedScale(playerId, gCharAppearence.pedHeight)
 
-    cAPI.SetPedPortAndWeight(playerId, json.decode(gCharAppearence.enabledComponents)["bodySize"], gCharAppearence.pedWeight)
+    cAPI.SetPedOverlay(playerId, gCharAppearence.overlays)
+    
+    local bodySize = json.decode(gCharAppearence.enabledComponents)
+
+    cAPI.SetPedPortAndWeight(playerId, bodySize['porte'], gCharAppearence.pedWeight)
 
     if gCharAppearence.clothes ~= nil then
         cAPI.SetSkin(playerId, gCharAppearence.clothes)   

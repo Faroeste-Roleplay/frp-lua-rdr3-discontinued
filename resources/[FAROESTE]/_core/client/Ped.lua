@@ -29,7 +29,13 @@ function cAPI.SetPedScale(ped, num)
         SetPedScale(ped, tonumber(num))
     end
 end
-       
+
+
+function cAPI.SetPedOverlay(ped, data)
+
+end
+
+
 local WAIST_TYPES = {
     -2045421226,    -- smallest
     -1745814259,
@@ -55,12 +61,13 @@ local WAIST_TYPES = {
 }
 
 function cAPI.SetPedPortAndWeight(ped, bodySize, pedWeight)
-    print(bodySize, pedWeight)
+    print('sizeee', bodySize, pedWeight)
     Citizen.InvokeNative(0xA5BAE410B03E7371, ped, bodySize, false, true)     
     Citizen.InvokeNative(0xCC8CA3E88256E58F, ped, 0, 1, 1, 1, 0) 
 
     Citizen.InvokeNative(0x1902C4CFCC5BE57C,ped, WAIST_TYPES[pedWeight])
     Citizen.InvokeNative(0xCC8CA3E88256E58F,ped, 0, 1, 1, 1, false)
+    
 end
 
 function cAPI.SetPedFaceFeature(ped, faceFeatures)
@@ -89,21 +96,76 @@ function cAPI.SetPedBodyType(ped, bodyTypeHash)
 end
 
 function cAPI.SetSkin(ped, componentArray)
+    
     componentArray = json.decode(componentArray)
 
-    for index, componentHash in pairs(componentArray) do
-        componentHash = tonumber(componentHash)
-        if componentHash ~= 0 then
-            -- Doesn't need to be requested !!!!!!
-            NativeSetPedComponentEnabled(ped, componentHash, true, true)
-        end
+    local isMale = "female"
 
-        while not NativeHasPedComponentLoaded(ped) do
-            Wait(10)
-        end
-
-        SetModelAsNoLongerNeeded(componentHash)
+    if IsPedMale(pedHandle) then
+        isMale = "male"
     end
+   
+    for index, componentHash in pairs(componentArray) do        
+     --   print(index)
+        if type(componentHash) ~= "table" then
+
+            componentHash = tonumber(componentHash)
+
+            if componentHash ~= 0 then
+                -- Doesn't need to be requested !!!!!!
+                NativeSetPedComponentEnabled(ped, componentHash, true, true)
+            end
+
+            while not NativeHasPedComponentLoaded(ped) do
+                Wait(10)
+            end
+
+            SetModelAsNoLongerNeeded(componentHash)
+        else         
+
+            local categoryIndex = index
+            local componentIndex = componentHash[1]
+            local variationIndex = componentHash[2]
+
+            for i = 1, #componentsHashNames do
+
+                local components = componentsHashNames[i]                
+
+                if components.ped_type == isMale then
+                    if components.category_hashname == categoryIndex then                    
+
+                        local componentHash = components.models[componentIndex][variationIndex].hash
+
+                        componentHash = tonumber(componentHash)
+                        
+                        if componentHash ~= 0 then
+                            -- Doesn't need to be requested !!!!!!
+                            NativeSetPedComponentEnabled(ped, componentHash, true, true)
+                        end
+                
+                        while not NativeHasPedComponentLoaded(ped) do
+                            Wait(10)
+                        end
+                
+                        SetModelAsNoLongerNeeded(componentHash)           
+                    end
+
+                    if categoryIndex == "BODIES_UPPER" then
+                        if components.category_hashname == "BODIES_UPPER" then
+
+                            local componentHash = componentsHashNames[i-2].models[componentIndex][variationIndex].hash
+                            Citizen.InvokeNative(0xD3A7B003ED343FD9, ped, componentHash, true, true, true)
+
+                        end
+                    end
+
+                end
+            end
+            
+        end
+    end
+
+
 end
 
 function cAPI.SetPedClothing(ped, clothingArray)
@@ -234,7 +296,7 @@ function NativeSetPedComponentEnabled(ped, componentHash, immediately, isMp)
     -- print(componentHash, categoryHash, NativeGetMetapedType(ped))
     
     Citizen.InvokeNative(0xD3A7B003ED343FD9, ped, componentHash, immediately, isMp, true)
-    NativeUpdatePedVariation(ped)
+    --NativeUpdatePedVariation(ped)
 end
 
 function NativeUpdatePedVariation(ped)
