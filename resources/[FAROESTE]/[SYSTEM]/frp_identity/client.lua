@@ -100,7 +100,7 @@ AddEventHandler(
                 
                 local bodySize = json.decode(charAppearence[i][1].enabledComponents)
 
-                cAPI.SetPedPortAndWeight(ped, bodySize['porte'], charAppearence[i][1].pedWeight)
+                cAPI.SetPedPortAndWeight(ped, tonumber(bodySize['porte']), charAppearence[i][1].pedWeight)
 
                 if charAppearence[i][1].clothes ~= nil then
                     cAPI.SetSkin(ped, charAppearence[i][1].clothes)   
@@ -109,8 +109,8 @@ AddEventHandler(
                 table.insert(fakePeds, ped)
                             
                 local coords = GetEntityCoords(ped, false)
-                Citizen.InvokeNative(0x322BFDEA666E2B0E, ped,  coords.x, coords.y, coords.z, 5.0, -1, 1, 1, 1, 1)
                 
+                Citizen.InvokeNative(0x322BFDEA666E2B0E, ped,  coords.x, coords.y, coords.z, 5.0, -1, 1, 1, 1, 1)                
             end
         end
     end
