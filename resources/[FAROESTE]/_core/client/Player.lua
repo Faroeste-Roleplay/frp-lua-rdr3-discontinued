@@ -79,10 +79,10 @@ function cAPI.setPlayerAppearence(playerId)
 
     cAPI.SetSkin(playerId, gCharAppearence.enabledComponents)   
 
-    cAPI.SetPedFaceFeature(playerId, gCharAppearence.faceFeatures)
-    
-    cAPI.SetPedScale(playerId, gCharAppearence.pedHeight)
+    cAPI.SetPedFaceFeature(playerId, gCharAppearence.faceFeatures)    
 
+    cAPI.SetPedScale(playerId, gCharAppearence.pedHeight) 
+    
     cAPI.SetPedOverlay(playerId, gCharAppearence.overlays)
     
     local bodySize = json.decode(gCharAppearence.enabledComponents)
@@ -92,7 +92,7 @@ function cAPI.setPlayerAppearence(playerId)
     if gCharAppearence.clothes ~= nil then
         cAPI.SetSkin(playerId, gCharAppearence.clothes)   
     end
- 
+    
 end
 
 

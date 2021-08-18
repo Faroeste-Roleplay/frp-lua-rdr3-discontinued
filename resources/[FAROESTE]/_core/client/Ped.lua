@@ -28,13 +28,18 @@ function cAPI.SetPedScale(ped, num)
     else
         SetPedScale(ped, tonumber(num))
     end
+    
+   -- Citizen.InvokeNative(0xCC8CA3E88256E58F, ped, 0, 1, 1, 1, 0) -- update
 end
-
 
 function cAPI.SetPedOverlay(ped, data)
-
+    if data ~= "{}" then
+        data = json.decode(data)
+        for i = 1, #data do
+            exports._core:setOverlayData(ped, data[i]) 
+        end
+    end
 end
-
 
 local WAIST_TYPES = {
     -2045421226,    -- smallest
@@ -101,67 +106,69 @@ function cAPI.SetSkin(ped, componentArray)
 
     local isMale = "female"
 
-    if IsPedMale(pedHandle) then
+    if IsPedMale(ped) then
         isMale = "male"
     end
    
     for index, componentHash in pairs(componentArray) do        
-     --   print(index)
-        if type(componentHash) ~= "table" then
 
-            componentHash = tonumber(componentHash)
+        if index ~= "porte" then
+            if type(componentHash) ~= "table" then
 
-            if componentHash ~= 0 then
-                -- Doesn't need to be requested !!!!!!
-                NativeSetPedComponentEnabled(ped, componentHash, true, true)
-            end
+                componentHash = tonumber(componentHash)
 
-            while not NativeHasPedComponentLoaded(ped) do
-                Wait(10)
-            end
-
-            SetModelAsNoLongerNeeded(componentHash)
-        else         
-
-            local categoryIndex = index
-            local componentIndex = componentHash[1]
-            local variationIndex = componentHash[2]
-
-            for i = 1, #componentsHashNames do
-
-                local components = componentsHashNames[i]                
-
-                if components.ped_type == isMale then
-                    if components.category_hashname == categoryIndex then                    
-
-                        local componentHash = components.models[componentIndex][variationIndex].hash
-
-                        componentHash = tonumber(componentHash)
-                        
-                        if componentHash ~= 0 then
-                            -- Doesn't need to be requested !!!!!!
-                            NativeSetPedComponentEnabled(ped, componentHash, true, true)
-                        end
-                
-                        while not NativeHasPedComponentLoaded(ped) do
-                            Wait(10)
-                        end
-                
-                        SetModelAsNoLongerNeeded(componentHash)           
-                    end
-
-                    if categoryIndex == "BODIES_UPPER" then
-                        if components.category_hashname == "BODIES_UPPER" then
-
-                            local componentHash = componentsHashNames[i-2].models[componentIndex][variationIndex].hash
-                            Citizen.InvokeNative(0xD3A7B003ED343FD9, ped, componentHash, true, true, true)
-
-                        end
-                    end
-
+                if componentHash ~= 0 then
+                    -- Doesn't need to be requested !!!!!!
+                    NativeSetPedComponentEnabled(ped, componentHash, true, true)
                 end
+
+                while not NativeHasPedComponentLoaded(ped) do
+                    Wait(10)
+                end
+
+                SetModelAsNoLongerNeeded(componentHash)
+            else         
+
+                local categoryIndex = index
+                local componentIndex = componentHash[1]
+                local variationIndex = componentHash[2]
+
+                for i = 1, #componentsHashNames do
+
+                    local components = componentsHashNames[i]                
+
+                    if components.ped_type == isMale then
+                        if components.category_hashname == categoryIndex then                    
+
+                            local componentHash = components.models[componentIndex][variationIndex].hash
+
+                            componentHash = tonumber(componentHash)
+                            
+                            if componentHash ~= 0 then
+                                -- Doesn't need to be requested !!!!!!
+                                NativeSetPedComponentEnabled(ped, componentHash, true, true)
+                            end
+                    
+                            while not NativeHasPedComponentLoaded(ped) do
+                                Wait(10)
+                            end
+                    
+                            SetModelAsNoLongerNeeded(componentHash)           
+                        end
+
+                        if categoryIndex == "BODIES_UPPER" then
+                            if components.category_hashname == "BODIES_UPPER" then
+
+                                local componentHash = componentsHashNames[i-2].models[componentIndex][variationIndex].hash
+                                Citizen.InvokeNative(0xD3A7B003ED343FD9, ped, componentHash, true, true, true)
+
+                            end
+                        end
+
+                    end
+                end
+                
             end
-            
         end
     end
 

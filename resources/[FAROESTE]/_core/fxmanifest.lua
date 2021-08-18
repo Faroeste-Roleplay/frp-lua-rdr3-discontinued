@@ -70,3 +70,15 @@ files {
 }
 
 ui_page "html/index.html"
+
+
+exports {	
+	'setOverlayData',
+	'colorPalettes',
+	'textureTypes',
+	'overlaysInfo',
+	'clothOverlayItems',
+	'overlayAllLayers',
+	'setOverlaySelected',
+	'getDataCreator'
+}
