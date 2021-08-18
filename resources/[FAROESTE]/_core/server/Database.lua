@@ -178,6 +178,7 @@ API_Database.prepare("FCRP/RemCData", "CALL remData(@target, @key, @charid)")
 
 API_Database.prepare("FCRP/SetComponentsPed", "UPDATE characters_appearence SET enabledComponents = @value WHERE charid = @charid")
 API_Database.prepare("FCRP/SetfaceFeaturePeds", "UPDATE characters_appearence SET faceFeatures = @value WHERE charid = @charid")
+API_Database.prepare("FCRP/SetOverlayPeds", "UPDATE characters_appearence SET overlays = @value WHERE charid = @charid")
 API_Database.prepare("FCRP/SetPlayerPedModel", "UPDATE characters_appearence SET model = @model AND isMale = @isMale WHERE charid = @charid")
 API_Database.prepare("FCRP/SetPedHeight", "UPDATE characters_appearence SET pedHeight = @value WHERE charid = @charid")
 API_Database.prepare("FCRP/SetPedWeight", "UPDATE characters_appearence SET pedWeight = @value WHERE charid = @charid")
