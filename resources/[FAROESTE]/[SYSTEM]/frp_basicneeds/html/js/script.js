@@ -102,9 +102,9 @@ window.addEventListener('message', function (event) {
     }
 });
 var bar1 = new ProgressBar.Circle(progcircle1, {
-    strokeWidth: 11,
+    strokeWidth: 10,
     trailColor: 'rgba(0,0,0,0.2)',
-    trailWidth: 11,
+    trailWidth: 10,
     easing: 'easeInOut',
     duration: 500,
     color: 'rgba(245, 19, 0,1)',
@@ -112,9 +112,9 @@ var bar1 = new ProgressBar.Circle(progcircle1, {
 });
 
 var bar2 = new ProgressBar.Circle(progcircle2, {
-    strokeWidth: 11,
+    strokeWidth: 10,
     trailColor: 'rgba(0,0,0,0.2)',
-    trailWidth: 11,
+    trailWidth: 10,
     easing: 'easeInOut',
     duration: 500,
     color: 'rgba(255,255,255,0.8)',
@@ -122,9 +122,9 @@ var bar2 = new ProgressBar.Circle(progcircle2, {
 });
 
 var bar3 = new ProgressBar.Circle(progcircle3, {
-    strokeWidth: 11,
+    strokeWidth: 10,
     trailColor: 'rgba(0,0,0,0.2)',
-    trailWidth: 11,
+    trailWidth: 10,
     easing: 'easeInOut',
     duration: 500,
     color: 'rgba(255,255,255,0.8)',
@@ -132,9 +132,9 @@ var bar3 = new ProgressBar.Circle(progcircle3, {
 });
 
 // var bar4 = new ProgressBar.Circle(progcircle4, {
-//     strokeWidth: 11,
+//     strokeWidth: 10,
 //     trailColor: 'rgba(0,0,0,0.2)',
-//     trailWidth: 11,
+//     trailWidth: 10,
 //     easing: 'easeInOut',
 //     duration: 500,
 //     color: 'rgba(125,255,125,0.8)',

@@ -1,3 +1,9 @@
+local Tunnel = module("_core", "lib/Tunnel")
+local Proxy = module("_core", "lib/Proxy")
+
+cAPI = Proxy.getInterface("API")
+API = Tunnel.getInterface("API")
+
 myHealth = 0
 updateValue = false
 
@@ -15,10 +21,6 @@ updateValue = false
 
 -- end)
 
-RegisterCommand('nuioff', function()
-    SetNuiFocus(false,false)
-end)
-
 local gHunger 
 local gThirst
 
@@ -27,7 +29,6 @@ RegisterNetEvent("BasicNeeds.update")
 AddEventHandler(
     "BasicNeeds.update",
     function(hunger, thirst, health)
-
         if gHunger ~= hunger or gThirst ~= thirst then
             SendNUIMessage(
                 {
@@ -56,11 +57,33 @@ AddEventHandler(
     end
 )
 
+Citizen.CreateThread(
+    function()
+        while true do
+            Citizen.Wait(0)
+            if not IsPedOnMount(PlayerPedId()) and not IsPedSittingInAnyVehicle(PlayerPedId()) then
+                DisplayRadar(true)
+                SendNUIMessage(
+                    {
+                        action = "isMounted"
+                    }
+                )
+            else
+                DisplayRadar(true)
+                SendNUIMessage(
+                    {
+                        action = "isMounted"
+                    }
+                )
+            end
+        end
+    end
+)
 
 Citizen.CreateThread(
     function()
         while true do
-            Citizen.Wait(700)
+            Citizen.Wait(500)
 
             if updateValue then
                 myHealth = GetEntityHealth(PlayerPedId())
@@ -70,9 +93,6 @@ Citizen.CreateThread(
                         health = myHealth
                     }
                 )
-
-                updateValue = false
-
             end
         end
     end
@@ -87,9 +107,7 @@ AddEventHandler(
                 action = "showHud"
             }
         )
-
         --TriggerEvent('BasicNeeds.update', 0, 0)
-
     end
 )
 
@@ -109,80 +127,37 @@ end
 
 local location = {}
 
-
-local dataHud = {
-    stamina = nil,
-    temptemp = nil,
-    temp = nil,
-    hours = nil,
-    compas = nil
-}
-
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(800)
+        Citizen.Wait(500)
         
         local player = PlayerPedId()
-
         local stamina = GetAttributeCoreValue(player,1)
         local temptemp = GetTemperatureAtCoords(GetEntityCoords(player))
         local temp = math.floor(temptemp + 0.5)
-
         local hours = GetClockHours()
-        local compas = DirectionHeading(GetEntityHeading(player))        
-
-        -- if string.len(tostring(hours)) == 1 then
-        --     trash = '0'..hours
-        -- else
-        --     hours = trash
-        -- end
+        local compas = DirectionHeading(GetEntityHeading(player))
+        if string.len(tostring(hours)) == 1 then
+            trash = '0'..hours
+        else
+            trash = hours
+        end
 
         local mins = GetClockMinutes()
-
         if string.len(tostring(mins)) == 1 then
             mins = '0'..mins
         else
             mins = mins
         end        
-
-
-        if dataHud.stamina ~= stamina then
-            dataHud.stamina = stamina
-            dataChanged = true
-        end
-
-        if dataHud.temptemp ~= temptemp then
-            dataHud.temptemp = temptemp
-            dataChanged = true
-        end
-
-        if dataHud.temp ~= temp then
-            dataHud.temp = temp
-            dataChanged = true
-        end
-
-        if dataHud.hours ~= hours then
-            dataHud.hours = hours
-            dataChanged = true
-        end
-
-        if dataHud.compas ~= compas then
-            dataHud.compas = compas
-            dataChanged = true
-        end
-        
-        if dataChanged then
-            SendNUIMessage({
-                action = 'updateStatusHud',
-                show = toghud,
-                time = hours .. ':' .. mins,
-                temp = temp..'.0',
-                compas = compas,
-                location = location
-            })
-            dataChanged = false
-        end
-
+        SendNUIMessage({
+            action = 'updateStatusHud',
+            show = toghud,
+            time = hours .. ':' .. mins,
+            temp = temp..'.0',
+            compas = compas,
+            location = location
+        })
+        Citizen.Wait(200)
     end
 end)
 
@@ -190,14 +165,10 @@ end)
 Citizen.CreateThread(function()
     local currLevel = 1
     while true do
-        Citizen.Wait(500)
-
+        Citizen.Wait(0)
         if IsControlJustReleased(1, 0x26E9DC00) then
-
             if isTokovoip == true then
-
                 currLevel =  exports.tokovoip_script:getPlayerData(GetPlayerServerId(PlayerId()), 'voip:mode')
-                
                 if currLevel == 1 then
                     SendNUIMessage({
                         action = "UpdateVoice",
@@ -214,11 +185,8 @@ Citizen.CreateThread(function()
                         prox = 3
                     })
                 end
-
             else
-
                 currLevel = (currLevel + 1) % 3
-
                 if currLevel == 0 then
                     SendNUIMessage({
                     action = "UpdateVoice",
@@ -235,11 +203,8 @@ Citizen.CreateThread(function()
                         prox = 1
                     })
                 end
-
             end
-
         end
-
     end
 end)
 
@@ -259,10 +224,9 @@ local Town = {
     },
 }
 
-
 Citizen.CreateThread(function()
     while true do       
-        Wait(1000) 
+        Wait(0) 
         local Coords = GetEntityCoords(PlayerPedId())
         if  GetDistanceBetweenCoords(Coords.x, Coords.y, Coords.z, Town["Locaties"][1]["X"], Town["Locaties"][1]["Y"], Town["Locaties"][1]["Z"], true) <= 200.0 then
         location = 'Valentine'
