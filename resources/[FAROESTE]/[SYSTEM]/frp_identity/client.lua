@@ -188,11 +188,13 @@ RegisterNUICallback(
     function(index)
         index = index + 1
 
-        if tempCam == nil then
-            createTempCam()
-        end
+        if fakePeds[index] ~= nil then
+            if tempCam == nil then
+                createTempCam()
+            end
 
-        interpCamera(fakePeds[index])
+            interpCamera(fakePeds[index])
+        end
     end
 )
 
