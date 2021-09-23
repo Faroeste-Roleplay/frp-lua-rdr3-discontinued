@@ -584,7 +584,7 @@ RegisterNUICallback(
             ["eyes"] = EyesUsing,
             ["teeth"] = TeethUsing,
             ["Mustache"] = MustacheUsing,
-            ["bodySize"] = PorteUsing
+            ["porte"] = PorteUsing
         }
 
         local SkinModf = {
