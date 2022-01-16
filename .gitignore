@@ -4,6 +4,8 @@
 configs/private/credentials.cfg
 configs/private/database.cfg
 
+**/node_modules/*
+
 citizen/system_resources/
 cache
 *.bat
