@@ -4,291 +4,325 @@ const playerDatas = {};
 let slotsUsed = 0;
 
 function assignSlotId() {
-    for (let i = 0; i < 32; i++) {
-        if (!(slotsUsed & (1 << i))) {
-            slotsUsed |= (1 << i);
-            return i;
-        }
-    }
+	for (let i = 0; i < 32; i++) {
+		if (!(slotsUsed & (1 << i))) {
+			slotsUsed |= (1 << i);
+			return i;
+		}
+	}
 
-    return -1;
+	return -1;
 }
 
 let hostIndex = -1;
+const isOneSync = GetConvar("onesync", "off") !== "off";
 
 protobuf.load(GetResourcePath(GetCurrentResourceName()) + "/rline.proto", function(err, root) {
-    if (err) {
-        console.log(err);
-        return;
-    }
+	if (err) {
+		console.log(err);
+		return;
+	}
 
-    const RpcMessage = root.lookupType("rline.RpcMessage");
-    const RpcResponseMessage = root.lookupType("rline.RpcResponseMessage");
-    const InitSessionResponse = root.lookupType("rline.InitSessionResponse");
-    const InitPlayer2_Parameters = root.lookupType("rline.InitPlayer2_Parameters");
-    const InitPlayerResult = root.lookupType("rline.InitPlayerResult");
-    const GetRestrictionsResult = root.lookupType("rline.GetRestrictionsResult");
-    const QueueForSession_Seamless_Parameters = root.lookupType("rline.QueueForSession_Seamless_Parameters");
-    const QueueForSessionResult = root.lookupType("rline.QueueForSessionResult");
-    const QueueEntered_Parameters = root.lookupType("rline.QueueEntered_Parameters");
-    const scmds_Parameters = root.lookupType("rline.scmds_Parameters");
+	const RpcMessage = root.lookupType("rline.RpcMessage");
+	const RpcResponseMessage = root.lookupType("rline.RpcResponseMessage");
+	const InitSessionResponse = root.lookupType("rline.InitSessionResponse");
+	const InitPlayer2_Parameters = root.lookupType("rline.InitPlayer2_Parameters");
+	const InitPlayerResult = root.lookupType("rline.InitPlayerResult");
+	const GetRestrictionsResult = root.lookupType("rline.GetRestrictionsResult");
+	const QueueForSession_Seamless_Parameters = root.lookupType("rline.QueueForSession_Seamless_Parameters");
+	const QueueForSessionResult = root.lookupType("rline.QueueForSessionResult");
+	const QueueEntered_Parameters = root.lookupType("rline.QueueEntered_Parameters");
+	const TransitionReady_PlayerQueue_Parameters = root.lookupType("rline.TransitionReady_PlayerQueue_Parameters");
+	const TransitionToSession_Parameters = root.lookupType("rline.TransitionToSession_Parameters");
+	const TransitionToSessionResult = root.lookupType("rline.TransitionToSessionResult");
+	const scmds_Parameters = root.lookupType("rline.scmds_Parameters");
 
-    function toArrayBuffer(buf) {
-        var ab = new ArrayBuffer(buf.length);
-        var view = new Uint8Array(ab);
-        for (var i = 0; i < buf.length; ++i) {
-            view[i] = buf[i];
-        }
-        return ab;
-    }
+	function toArrayBuffer(buf) {
+		var ab = new ArrayBuffer(buf.length);
+		var view = new Uint8Array(ab);
+		for (var i = 0; i < buf.length; ++i) {
+			view[i] = buf[i];
+		}
+		return ab;
+	}
 
-    function emitMsg(target, data) {
-        emitNet('__cfx_internal:pbRlScSession', target, toArrayBuffer(data));
-    }
+	function emitMsg(target, data) {
+		emitNet('__cfx_internal:pbRlScSession', target, toArrayBuffer(data));
+	}
 
-    function emitSessionCmds(target, cmd, cmdname, msg) {
-        const stuff = {};
-        stuff[cmdname] = msg;
+	function emitSessionCmds(target, cmd, cmdname, msg) {
+		const stuff = {};
+		stuff[cmdname] = msg;
 
-        emitMsg(target, RpcMessage.encode({
-            Header: {
-                MethodName: 'scmds'
-            },
-            Content: scmds_Parameters.encode({
-                sid: {
-                    value: {
-                        a: 2,
-                        b: 2
-                    }
-                },
-                ncmds: 1,
-                cmds: [{
-                    cmd,
-                    cmdname,
-                    ...stuff
-                }]
-            }).finish()
-        }).finish());
-    }
+		emitMsg(target, RpcMessage.encode({
+			Header: {
+				MethodName: 'scmds'
+			},
+			Content: scmds_Parameters.encode({
+				sid: {
+					value: {
+						a: 2,
+						b: 2
+					}
+				},
+				ncmds: 1,
+				cmds: [
+					{
+						cmd,
+						cmdname,
+						...stuff
+					}
+				]
+			}).finish()
+		}).finish());
+	}
 
-    function emitAddPlayer(target, msg) {
-        emitSessionCmds(target, 2, 'AddPlayer', msg);
-    }
+	function emitAddPlayer(target, msg) {
+		emitSessionCmds(target, 2, 'AddPlayer', msg);
+	}
 
-    function emitRemovePlayer(target, msg) {
-        emitSessionCmds(target, 3, 'RemovePlayer', msg);
-    }
+	function emitRemovePlayer(target, msg) {
+		emitSessionCmds(target, 3, 'RemovePlayer', msg);
+	}
 
-    function emitHostChanged(target, msg) {
-        emitSessionCmds(target, 5, 'HostChanged', msg);
-    }
+	function emitHostChanged(target, msg) {
+		emitSessionCmds(target, 5, 'HostChanged', msg);
+	}
 
-    onNet('playerDropped', () => {
-        try {
-            const oData = playerDatas[source];
-            delete playerDatas[source];
+	onNet('playerDropped', () => {
+		if (isOneSync) {
+			return;
+		}
 
-            if (oData && hostIndex === oData.slot) {
-                const pda = Object.entries(playerDatas);
+		try {
+			const oData = playerDatas[source];
+			delete playerDatas[source];
 
-                if (pda.length > 0) {
-                    hostIndex = pda[0][1].slot | 0; // TODO: actually use <=31 slot index *and* check for id
+			if (oData && hostIndex === oData.slot) {
+				const pda = Object.entries(playerDatas);
 
-                    for (const [id, data] of Object.entries(playerDatas)) {
-                        emitHostChanged(id, {
-                            index: hostIndex
-                        });
-                    }
-                } else {
-                    hostIndex = -1;
-                }
-            }
+				if (pda.length > 0) {
+					hostIndex = pda[0][1].slot | 0; // TODO: actually use <=31 slot index *and* check for id
 
-            if (!oData) {
-                return;
-            }
+					for (const [ id, data ] of Object.entries(playerDatas)) {
+						emitHostChanged(id, {
+							index: hostIndex
+						});
+					}
+				} else {
+					hostIndex = -1;
+				}
+			}
 
-            if (oData.slot > -1) {
-                slotsUsed &= ~(1 << oData.slot);
-            }
+			if (!oData) {
+				return;
+			}
 
-            let playerIdLength = Object.entries(playerDatas).filter(a => a[1].id).length;
+			if (oData.slot > -1) {
+				slotsUsed &= ~(1 << oData.slot);
+			}
 
-            // if (playerIdLength < 32) {
-            emit("connectqueue:sessionmanager_numslotsused", playerIdLength);
-            // }
+			for (const [ id, data ] of Object.entries(playerDatas)) {
+				emitRemovePlayer(id, {
+					id: oData.id
+				});
+			}
+		} catch (e) {
+			console.log(e);
+			console.log(e.stack);
+		}
+	});
 
-            console.log('Sessionmanager | SessionSize: down ' + playerIdLength);
+	function makeResponse(type, data) {
+		return {
+			Header: {
+			},
+			Container: {
+				Content: type.encode(data).finish()
+			}
+		};
+	}
 
-            for (const [id, data] of Object.entries(playerDatas)) {
-                emitRemovePlayer(id, {
-                    id: oData.id
-                });
-            }
-        } catch (e) {
-            console.log(e);
-            console.log(e.stack);
-        }
-    });
+	const handlers = {
+		async InitSession(source, data) {
+			return makeResponse(InitSessionResponse, {
+				sesid: Buffer.alloc(16),
+				/*token: {
+					tkn: 'ACSTOKEN token="meow",signature="meow"'
+				}*/
+			});
+		},
 
-    function makeResponse(type, data) {
-        return {
-            Header: {},
-            Container: {
-                Content: type.encode(data).finish()
-            }
-        };
-    }
+		async InitPlayer2(source, data) {
+			const req = InitPlayer2_Parameters.decode(data);
 
-    const handlers = {
-        async InitSession(source, data) {
-            return makeResponse(InitSessionResponse, {
-                sesid: Buffer.alloc(16),
-                /*token: {
-                	tkn: 'ACSTOKEN token="meow",signature="meow"'
-                }*/
-            });
-        },
+			if (!isOneSync) {
+				playerDatas[source] = {
+					gh: req.gh,
+					peerAddress: req.peerAddress,
+					discriminator: req.discriminator,
+					slot: -1
+				};
+			}
 
-        async InitPlayer2(source, data) {
-            const req = InitPlayer2_Parameters.decode(data);
+			return makeResponse(InitPlayerResult, {
+				code: 0
+			});
+		},
 
-            playerDatas[source] = {
-                gh: req.gh,
-                peerAddress: req.peerAddress,
-                discriminator: req.discriminator,
-                slot: -1
-            };
+		async GetRestrictions(source, data) {
+			return makeResponse(GetRestrictionsResult, {
+				data: {
 
-            return makeResponse(InitPlayerResult, {
-                code: 0
-            });
-        },
+				}
+			});
+		},
 
-        async GetRestrictions(source, data) {
-            return makeResponse(GetRestrictionsResult, {
-                data: {
+		async ConfirmSessionEntered(source, data) {
+			return {};
+		},
 
-                }
-            });
-        },
+		async TransitionToSession(source, data) {
+			const req = TransitionToSession_Parameters.decode(data);
 
-        async ConfirmSessionEntered(source, data) {
-            return {};
-        },
+			return makeResponse(TransitionToSessionResult, {
+				code: 1 // in this message, 1 is success
+			});
+		},
 
-        async QueueForSession_Seamless(source, data) {
-            if ( Object.entries(playerDatas).filter(a => a[1].id).length == 32) {
-                DropPlayer(source, 'Sessão cheia, como que você conseguiu entrar?');
-                return
-            }
+		async QueueForSession_Seamless(source, data) {
+			const req = QueueForSession_Seamless_Parameters.decode(data);
 
-            const req = QueueForSession_Seamless_Parameters.decode(data);
+			if (!isOneSync) {
+				playerDatas[source].req = req.requestId;
+				playerDatas[source].id = req.requestId.requestor;
+				playerDatas[source].slot = assignSlotId();
+			}
 
-            playerDatas[source].req = req.requestId;
-            playerDatas[source].id = req.requestId.requestor;
-            playerDatas[source].slot = assignSlotId();
+			setTimeout(() => {
+				emitMsg(source, RpcMessage.encode({
+					Header: {
+						MethodName: 'QueueEntered'
+					},
+					Content: QueueEntered_Parameters.encode({
+						queueGroup: 69,
+						requestId: req.requestId,
+						optionFlags: req.optionFlags
+					}).finish()
+				}).finish());
 
-            let playerIdLength = Object.entries(playerDatas).filter(a => a[1].id).length;
+				if (isOneSync) {
+					hostIndex = 16
+				} else if (hostIndex === -1) {
+					hostIndex = playerDatas[source].slot | 0;
+				}
 
-            console.log('Sessionmanager | SessionSize: up ' + playerIdLength);
+				emitMsg(source, RpcMessage.encode({
+					Header: {
+						MethodName: 'TransitionReady_PlayerQueue'
+					},
+					Content: TransitionReady_PlayerQueue_Parameters.encode({
+						serverUri: {
+							url: ''
+						},
+						requestId: req.requestId,
+						id: {
+							value: {
+								a: 2,
+								b: 0
+							}
+						},
+						serverSandbox: 0xD656C677,
+						sessionType: 3,
+						transferId: {
+							value: {
+								a: 2,
+								b: 2
+							}
+						},
+					}).finish()
+				}).finish());
 
-            emit("connectqueue:sessionmanager_numslotsused", playerIdLength);
+				setTimeout(() => {
+					emitSessionCmds(source, 0, 'EnterSession', {
+						index: (isOneSync) ? 16 : playerDatas[source].slot | 0,
+						hindex: hostIndex,
+						sessionFlags: 0,
+						mode: 0,
+						size: (isOneSync) ? 0 : Object.entries(playerDatas).filter(a => a[1].id).length,
+						//size: 2,
+						//size: Object.entries(playerDatas).length,
+						teamIndex: 0,
+						transitionId: {
+							value: {
+								a: 2,
+								b: 0
+							}
+						},
+						sessionManagerType: 0,
+						slotCount: 32
+					});
+				}, 50);
 
-            emit("connectqueue:sessionmanager_playerenteredsession");
+				if (!isOneSync) {
+					setTimeout(() => {
+						// tell player about everyone, and everyone about player
+						const meData = playerDatas[source];
 
-            setTimeout(() => {
-                emitMsg(source, RpcMessage.encode({
-                    Header: {
-                        MethodName: 'QueueEntered'
-                    },
-                    Content: QueueEntered_Parameters.encode({
-                        queueGroup: 69,
-                        requestId: req.requestId,
-                        optionFlags: req.optionFlags
-                    }).finish()
-                }).finish());
+						const aboutMe = {
+							id: meData.id,
+							gh: meData.gh,
+							addr: meData.peerAddress,
+							index: playerDatas[source].slot | 0
+						};
 
-                if (hostIndex === -1) {
-                    hostIndex = playerDatas[source].slot | 0;
-                }
+						for (const [ id, data ] of Object.entries(playerDatas)) {
+							if (id == source || !data.id) continue;
 
-                emitSessionCmds(source, 0, 'EnterSession', {
-                    index: playerDatas[source].slot | 0,
-                    hindex: hostIndex,
-                    sessionFlags: 0,
-                    mode: 0,
-                    size: Object.entries(playerDatas).filter(a => a[1].id).length,
-                    //size: 2,
-                    //size: Object.entries(playerDatas).length,
-                    teamIndex: 0,
-                    transitionId: {
-                        value: {
-                            a: 0, //2,
-                            b: 0
-                        }
-                    },
-                    sessionManagerType: 0,
-                    slotCount: 32
-                });
+							emitAddPlayer(source, {
+								id: data.id,
+								gh: data.gh,
+								addr: data.peerAddress,
+								index: data.slot | 0
+							});
 
-                setTimeout(() => {
-                    // tell player about everyone, and everyone about player
-                    const meData = playerDatas[source];
+							emitAddPlayer(id, aboutMe);
+						}
+					}, 150);
+				}
+			}, 250);
 
-                    const aboutMe = {
-                        id: meData.id,
-                        gh: meData.gh,
-                        addr: meData.peerAddress,
-                        index: playerDatas[source].slot | 0
-                    };
+			return makeResponse(QueueForSessionResult, {
+				code: 1
+			});
+		},
+	};
 
-                    for (const [id, data] of Object.entries(playerDatas)) {
-                        if (id == source || !data.id) continue;
+	async function handleMessage(source, method, data) {
+		if (handlers[method]) {
+			return await handlers[method](source, data);
+		}
 
-                        emitAddPlayer(source, {
-                            id: data.id,
-                            gh: data.gh,
-                            addr: data.peerAddress,
-                            index: data.slot | 0
-                        });
+		return {};
+	}
 
-                        emitAddPlayer(id, aboutMe);
-                    }
-                }, 150);
-            }, 50);
+	onNet('__cfx_internal:pbRlScSession', async (data) => {
+		const s = source;
 
-            return makeResponse(QueueForSessionResult, {
-                code: 1
-            });
-        },
-    };
+		try {
+			const message = RpcMessage.decode(new Uint8Array(data));
+			const response = await handleMessage(s, message.Header.MethodName, message.Content);
 
-    async function handleMessage(source, method, data) {
-        if (handlers[method]) {
-            return await handlers[method](source, data);
-        }
+			if (!response || !response.Header) {
+				return;
+			}
 
-        return {};
-    }
+			response.Header.RequestId = message.Header.RequestId;
 
-    onNet('__cfx_internal:pbRlScSession', async(data) => {
-        const s = source;
-
-        try {
-            const message = RpcMessage.decode(new Uint8Array(data));
-            const response = await handleMessage(s, message.Header.MethodName, message.Content);
-
-            if (!response || !response.Header) {
-                return;
-            }
-
-            response.Header.RequestId = message.Header.RequestId;
-
-            emitMsg(s, RpcResponseMessage.encode(response).finish());
-        } catch (e) {
-            console.log(e);
-            console.log(e.stack);
-        }
-    });
+			emitMsg(s, RpcResponseMessage.encode(response).finish());
+		} catch (e) {
+			console.log(e);
+			console.log(e.stack);
+		}
+	});
 });
